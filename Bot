@@ -1,0 +1,1 @@
+<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script><div id="webchat" role="main"></div><script>  window.WebChat.renderWebChat({    directLine: window.WebChat.createDirectLine({ token: 'YOUR_DIRECT_LINE_TOKEN' })  }, document.getElementById('webchat'));</script>
