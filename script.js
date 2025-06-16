@@ -80,3 +80,19 @@ async function getMarketTrends() {
     console.log(`Прогноз ринку: ${data.trends}`);
 }
 getMarketTrends();
+async function detectUserLanguage() {
+    let userLang = navigator.language || navigator.userLanguage;
+    document.documentElement.lang = userLang;
+    console.log(`Мова користувача: ${userLang}`);
+}
+detectUserLanguage();
+async function postAdToSocial(platform, adContent) {
+    let response = await fetch(`https://api.${platform}.com/post`, {
+        method: "POST",
+        headers: { "Authorization": "Bearer ВАШ_API_КЛЮЧ" },
+        body: JSON.stringify({ content: adContent })
+    });
+    let result = await response.json();
+    console.log(`Реклама на ${platform}: ${result.status}`);
+}
+postAdToSocial("facebook", "AgroProsper – інновації агробізнесу!");
