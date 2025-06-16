@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('images/bg-agroprosper.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
+}
+header img {
+    width: 200px;
+    height: auto;
+    margin: 20px auto;
+}
+h1 {
+    font-size: 28px;
+    color: #2a7b30;
+}
