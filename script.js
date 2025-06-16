@@ -16,3 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
         return income - expenses;
     }
 });
+async function getCommodityPrice(commodity) {
+    let response = await fetch(`https://api.api-ninjas.com/v1/commodityprice?name=${commodity}`, {
+        headers: { "X-Api-Key": "ВАШ_API_КЛЮЧ" }
+    });
+    let data = await response.json();
+    console.log(`Ціна ${commodity}: $${data.price}`);
+}
+getCommodityPrice("wheat"); // Отримати ціну на пшеницю
