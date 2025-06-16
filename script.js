@@ -41,3 +41,27 @@ async function registerWithMicrosoft() {
     let data = await response.json();
     console.log(`Реєстрація через Microsoft: ${data.email}`);
 }
+async function registerWithGoogle() {
+    let response = await fetch("https://accounts.google.com/o/oauth2/auth", {
+        method: "POST",
+        headers: { "Authorization": "Bearer ВАШ_API_КЛЮЧ" }
+    });
+    let data = await response.json();
+    console.log(`Користувач зареєстрований через Google: ${data.email}`);
+}
+async function registerWithMicrosoft() {
+    let response = await fetch("https://login.microsoftonline.com/oauth2/v2.0/authorize", {
+        method: "POST",
+        headers: { "Authorization": "Bearer ВАШ_API_КЛЮЧ" }
+    });
+    let data = await response.json();
+    console.log(`Користувач зареєстрований через Microsoft: ${data.email}`);
+}
+function checkAgreementStatus(user) {
+    if (user.hasSignedAgreement) {
+        let commission = user.paymentAmount * 0.10;
+        console.log(`Комісія за угоду: ${commission} USD`);
+    } else {
+        console.log("Користувач не підписав угоду.");
+    }
+}
