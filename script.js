@@ -65,3 +65,18 @@ function checkAgreementStatus(user) {
         console.log("Користувач не підписав угоду.");
     }
 }
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'ВАШ_КОД_АНАЛІТИКИ', 'auto');
+ga('send', 'pageview');
+async function getMarketTrends() {
+    let response = await fetch("https://api.agroanalytics.com/trends", {
+        headers: { "Authorization": "Bearer ВАШ_API_КЛЮЧ" }
+    });
+    let data = await response.json();
+    console.log(`Прогноз ринку: ${data.trends}`);
+}
+getMarketTrends();
