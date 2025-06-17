@@ -15,3 +15,7 @@ h1 {
     font-size: 28px;
     color: #2a7b30;
 }
+openssl rand -hex 32
+BOT_SECRET_KEY=ваш_тут_секретний_токен
+GET https://webchat.botframework.com/api/tokens
+Authorization: BotConnector REAL_SECRET_KEY_HERE
