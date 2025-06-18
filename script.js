@@ -133,3 +133,48 @@ files.forEach(f => {
   const matches = content.match(regex);
   if (matches) console.warn(`⚠️ ${f} →`, matches);
 });
+const fs = require('fs');
+const path = require('path');
+const logsDir = path.join(__dirname, '../logs');
+
+if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir);
+
+const logFile = path.join(logsDir, 'access.log');
+let requestCount = 0;
+
+function logger(req, res, next) {
+  const now = new Date().toISOString();
+  const entry = `[${now}] ${req.method} ${req.url}\n`;
+
+  fs.appendFileSync(logFile, entry);
+  requestCount++;
+
+  next();
+}
+
+function getMetrics() {
+  return {
+    uptime: process.uptime().toFixed(2),
+    requestCount,
+    lastRestart: new Date(Date.now() - process.uptime() * 1000).toISOString()
+  };
+}
+
+function getLogs() {
+  return fs.existsSync(logFile) ? fs.readFileSync(logFile, 'utf8') : 'No logs yet.';
+}
+
+module.exports = { logger, getMetrics, getLogs };
+const { logger, getMetrics, getLogs } = require('./logger');
+app.use(logger);
+app.get('/metrics', (req, res) => {
+  res.json(getMetrics());
+});
+
+app.get('/logs', (req, res) => {
+  res.type('text').send(getLogs());
+});
+
+app.get('/health', (req, res) => {
+  res.json({ status: '✅ OK', uptime: process.uptime().toFixed(2) });
+});
