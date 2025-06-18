@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📘 AgroToken Docs</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; line-height: 1.6; background: #f0fdf4; }
+    h1 { color: #15803d; }
+    nav a { margin-right: 1rem; color: #16a34a; text-decoration: none; font-weight: bold; }
+    #content { background: white; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 0 10px #ccc; }
+  </style>
+</head>
+<body>
+  <h1>📘 AgroToken Docs</h1>
+  <nav>
+    <a href="#" onclick="load('tokenomics.md')">Токеноміка</a>
+    <a href="#" onclick="load('roadmap.md')">Roadmap</a>
+    <a href="/dashboard/claim.html" target="_blank">Claim AGT</a>
+    <a href="/dashboard/token.html" target="_blank">AGT Dashboard</a>
+  </nav>
+  <div id="content"><em>⬅️ Обери документ для перегляду...</em></div>
+
+  <script>
+    async function load(file) {
+      const res = await fetch(file);
+      const txt = await res.text();
+      document.getElementById("content").innerHTML = marked.parse(txt);
+    }
+  </script>
+</body>
+</html>
