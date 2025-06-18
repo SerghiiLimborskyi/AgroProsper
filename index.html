@@ -19,3 +19,25 @@
 </html>
 <script src="script.js"></script>
 openssl rand -hex 32
+<button onclick="generate()">Згенерувати токен</button>
+<pre id="output"></pre>
+<script>
+function generate() {
+  fetch('/api/admin/gen-token', { method: 'POST' })
+    .then(r => r.json()).then(t => {
+      document.getElementById('output').textContent = JSON.stringify(t, null, 2);
+    });
+}
+</script>
+name: Auth Check
+on: [push]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Перевірка токена
+        env:
+          TOKEN: ${{ secrets.BOT_SECRET_KEY }}
+        run: |
+          echo "🔐 Перевірка: ${TOKEN:0:8}********"
