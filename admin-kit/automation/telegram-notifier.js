@@ -9,3 +9,4 @@ function notifySecurityAlert(file, line) {
     text: message
   });
 }
+node admin-kit/automation/telegram-notifier.js
