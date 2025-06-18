@@ -21,3 +21,4 @@
 [![Site Status](https://img.shields.io/badge/Live%20Site-%E2%9C%85-success?logo=githubpages)](https://serghiilimborskyi.github.io/AgroProsper/)
 [![🟢 Live](https://img.shields.io/badge/Site--Status-Online-brightgreen?logo=githubpages)](https://serghiilimborskyi.github.io/AgroProsper)
 [![🟢 Site Status](https://img.shields.io/badge/Site--Status-Online-brightgreen?logo=githubpages)](https://serghiilimborskyi.github.io/AgroProsper)
+zip -r agroprosper-live.zip index.html vercel.json README.md
