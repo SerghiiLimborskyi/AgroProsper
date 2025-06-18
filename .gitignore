@@ -1,0 +1,22 @@
+# Ignore secrets and tokens
+*.env
+*.token
+*.key
+*.pem
+*.json
+
+# Ignore log and debug files
+logs/
+*.log
+*.cache
+*.gz
+
+# Ignore deployment archives
+*.zip
+*.tar
+*.tgz
+
+# Node & Python defaults
+node_modules/
+.env*
+__pycache__/
