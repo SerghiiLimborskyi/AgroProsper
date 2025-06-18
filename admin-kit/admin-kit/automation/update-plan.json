@@ -1,0 +1,15 @@
+{
+  "files": [
+    "backend/index.js",
+    "backend/logger.js",
+    "admin-metrics.html",
+    "scripts/generate-token.js",
+    ".github/workflows/auth-check.yml"
+  ],
+  "mustContain": {
+    "backend/index.js": ["/metrics", "/logs", "/health"]
+  }
+}
+git add admin-kit/automation
+git commit -m "🔧 Fix: додано sync-agent.js та план для CI"
+git push origin admin-kit
