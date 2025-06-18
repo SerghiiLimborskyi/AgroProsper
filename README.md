@@ -20,3 +20,4 @@
 ![Site status](https://img.shields.io/badge/AgroProsper--Site-%E2%9C%85-brightgreen?style=flat&logo=githubpages)
 [![Site Status](https://img.shields.io/badge/Live%20Site-%E2%9C%85-success?logo=githubpages)](https://serghiilimborskyi.github.io/AgroProsper/)
 [![🟢 Live](https://img.shields.io/badge/Site--Status-Online-brightgreen?logo=githubpages)](https://serghiilimborskyi.github.io/AgroProsper)
+[![🟢 Site Status](https://img.shields.io/badge/Site--Status-Online-brightgreen?logo=githubpages)](https://serghiilimborskyi.github.io/AgroProsper)
