@@ -22,3 +22,19 @@
 [![🟢 Live](https://img.shields.io/badge/Site--Status-Online-brightgreen?logo=githubpages)](https://serghiilimborskyi.github.io/AgroProsper)
 [![🟢 Site Status](https://img.shields.io/badge/Site--Status-Online-brightgreen?logo=githubpages)](https://serghiilimborskyi.github.io/AgroProsper)
 zip -r agroprosper-live.zip index.html vercel.json README.md
+# 🌿 AgroToken (AGT)
+
+An ERC-20 token for the AgroProsper AI platform.
+
+- Contract: `AgroToken.sol`
+- Symbol: `AGT`
+- Initial Supply: `1,000,000 AGT`
+
+## 🚀 Quickstart
+
+```bash
+git clone https://github.com/SerghiiLimborskyi/AgroProsper
+cd AgroProsper
+npm install
+cp .env.example .env
+npx hardhat run scripts/deploy.js --network goerli
