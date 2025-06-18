@@ -42,3 +42,44 @@ jobs:
         run: |
           echo "🔐 Перевірка: ${TOKEN:0:8}********"
 ![Site status](https://img.shields.io/badge/AgroProsper--Site-%E2%9C%85-brightgreen?style=flat&logo=githubpages)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AgroProsper — Smart AI Farming</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      text-align: center;
+      padding: 5vh;
+      background: #f0fdf4;
+    }
+    h1 {
+      font-size: 2.6em;
+      color: #22c55e;
+    }
+    p {
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div id="uk" style="display:none">
+    <h1>🌿 AgroProsper — платформа AI-фермерства</h1>
+    <p>Розумний асистент для агробізнесу та аналітики в реальному часі</p>
+    <p><em>Версія: v1.2</em></p>
+  </div>
+
+  <div id="en" style="display:none">
+    <h1>🌿 AgroProsper — AI farming assistant</h1>
+    <p>Smart tools for agriculture and real-time insight.</p>
+    <p><em>Version: v1.2</em></p>
+  </div>
+
+  <script>
+    const lang = navigator.language.startsWith('uk') ? 'uk' : 'en';
+    document.getElementById(lang).style.display = 'block';
+  </script>
+</body>
+</html>
