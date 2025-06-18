@@ -21,3 +21,8 @@ if (restored.length > 0) {
 } else {
   console.log('✅ Усі файли на місці. Автовиправлення не потрібне.');
 }
+const envFile = path.join(__dirname, '.env');
+if (fs.existsSync(envFile)) {
+  fs.unlinkSync(envFile);
+  console.log('🚫 .env detected and deleted for safety');
+}
