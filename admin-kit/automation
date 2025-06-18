@@ -1,0 +1,7 @@
+admin-kit/
+└── automation/
+    ├── update-plan.json          # чекліст очікуваних файлів та ключових рядків
+    ├── sync-agent.js             # логіка перевірки відповідності плану
+    ├── telegram-notifier.js      # Telegram бот для сповіщень
+    └── config/
+        └── telegram.env          # токен та чат для бота
