@@ -96,3 +96,40 @@ async function postAdToSocial(platform, adContent) {
     console.log(`Реклама на ${platform}: ${result.status}`);
 }
 postAdToSocial("facebook", "AgroProsper – інновації агробізнесу!");
+require('dotenv').config();
+const express = require('express');
+const crypto = require('crypto');
+const app = express();
+
+app.use(express.json());
+
+// 🔐 Перевірка токена
+app.post('/api/secure-endpoint', (req, res) => {
+  const token = req.headers['authorization'];
+  const secret = process.env.BOT_SECRET_KEY;
+  if (token !== `Bearer ${secret}`) return res.status(403).json({ error: '❌ Невірний токен' });
+  res.json({ message: '✅ Авторизовано!' });
+});
+
+// 🔧 Генерація токена з панелі
+app.post('/api/admin/gen-token', (req, res) => {
+  const token = crypto.randomBytes(32).toString('hex');
+  res.json({ token, created: new Date() });
+});
+
+app.listen(process.env.PORT || 3001, () => console.log('🔒 Backend OK'));
+API_ACCESS_TOKEN=ваш_токен_доступу_до_API
+BOT_SECRET_KEY=секретний_ключ_для_бота
+const crypto = require('crypto');
+const fs = require('fs');
+const token = crypto.randomBytes(32).toString('hex');
+fs.writeFileSync('.env', `BOT_SECRET_KEY=${token}\n`, { flag: 'a' });
+console.log('✅ BOT_SECRET_KEY створено та збережено у .env');
+const fs = require('fs');
+const files = ['.env', 'backend/index.js'];
+const regex = /(ghp|github_pat|token|secret)[^\s"']{10,}/gi;
+files.forEach(f => {
+  const content = fs.readFileSync(f, 'utf8');
+  const matches = content.match(regex);
+  if (matches) console.warn(`⚠️ ${f} →`, matches);
+});
