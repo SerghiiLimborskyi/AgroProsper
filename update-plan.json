@@ -1,0 +1,13 @@
+{
+  "files": [
+    "backend/index.js",
+    "backend/logger.js",
+    "admin.html",
+    "admin-metrics.html",
+    "scripts/generate-token.js",
+    ".github/workflows/auth-check.yml"
+  ],
+  "mustContain": {
+    "backend/index.js": ["app.get('/metrics')", "app.get('/logs')"]
+  }
+}

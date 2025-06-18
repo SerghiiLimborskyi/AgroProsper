@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>📊 Метрики AgroProsper</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2>📈 Метрики</h2>
+  <canvas id="chart" width="400" height="200"></canvas>
+
+  <script>
+    async function loadMetrics() {
+      const res = await fetch('/metrics');
+      const data = await res.json();
+
+      const ctx = document.getElementById('chart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Uptime (сек)', 'Запити'],
+          datasets: [{
+            label: 'AgroMetrics',
+            data: [data.uptime, data.requestCount],
+            backgroundColor: ['#4caf50', '#2196f3']
+          }]
+        }
+      });
+    }
+
+    loadMetrics();
+  </script>
+</body>
+</html>
+logs/

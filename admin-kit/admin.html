@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head><meta charset="UTF-8"><title>Менеджер токенів</title></head>
+<body>
+  <h2>🔐 Admin Token Panel</h2>
+  <button onclick="gen()">Згенерувати токен</button>
+  <pre id="out"></pre>
+  <script>
+    function gen() {
+      fetch('/api/admin/gen-token', { method: 'POST' })
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+        });
+    }
+  </script>
+</body>
+</html>
