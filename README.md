@@ -32,11 +32,5 @@ An ERC-20 token for the AgroProsper AI platform.
 
 ## 🚀 Quickstart
 
-```bash
-git clone https://github.com/SerghiiLimborskyi/AgroProsper
-cd AgroProsper
-npm install
-cp .env.example .env
-npx hardhat run scripts/deploy.js --network goerli
-📦 AgroPromo.zip – Встановлення:
+
 
