@@ -47,3 +47,92 @@
   background-color: #cc0000;
 }
 </style>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>AgroPromo • Відеопрезентація</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f0fdf4;
+      padding: 2rem;
+    }
+    .card {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    video {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .links {
+      margin-top: 1.5rem;
+    }
+    .links a {
+      display: inline-block;
+      margin: 0.3rem 0.7rem 0.3rem 0;
+      padding: 0.6rem 1rem;
+      background: #16a34a;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .links a:hover {
+      background: #15803d;
+    }
+    .yt-btn {
+      display: inline-flex;
+      align-items: center;
+      background-color: #FF0000;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      margin-top: 1rem;
+    }
+    .yt-btn:hover {
+      background-color: #cc0000;
+    }
+    .yt-btn svg {
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🎬 AgroToken – Відеопрезентація</h1>
+
+    <video controls poster="assets/prevu-agrotoken.png">
+      <source src="video/agro-intro.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="links">
+      <h3>🌍 Субтитри / Переклад:</h3>
+      <a href="subtitles/uk.srt" download>🇺🇦 Українські</a>
+      <a href="subtitles/en.srt" download>🇬🇧 English</a>
+      <a href="subtitles/pl.srt" download>🇵🇱 Polski</a>
+      <a href="transcript.html">📝 Стенограма</a>
+    </div>
+
+    <a href="https://www.youtube.com/@AgroProsper-s8m9z" target="_blank" class="yt-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="22">
+        <path d="M23.498 6.186a2.898 2.898 0 00-2.037-2.048C19.547 3.5 12 3.5 12 3.5s-7.547 0-9.461.638a2.898 2.898 0 00-2.037 2.048A30.06 30.06 0 000 12a30.06 30.06 0 00.502 5.814 2.898 2.898 0 002.037 2.048C4.453 20.5 12 20.5 12 20.5s7.547 0 9.461-.638a2.898 2.898 0 002.037-2.048A30.06 30.06 0 0024 12a30.06 30.06 0 00-.502-5.814zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/>
+      </svg>
+      Watch on YouTube
+    </a>
+  </div>
+</body>
+</html>
