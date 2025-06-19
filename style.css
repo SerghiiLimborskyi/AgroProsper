@@ -19,3 +19,19 @@ openssl rand -hex 32
 BOT_SECRET_KEY=ваш_тут_секретний_токен
 GET https://webchat.botframework.com/api/tokens
 Authorization: BotConnector REAL_SECRET_KEY_HERE
+.yt-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: #FF0000;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+.yt-btn:hover {
+  background-color: #cc0000;
+}
