@@ -31,6 +31,7 @@ An ERC-20 token for the AgroProsper AI platform.
 - Initial Supply: `1,000,000 AGT`
 
 ## 🚀 Quickstart
+📽 [🎥 Дивитись відео презентацію](https://yourusername.github.io/AgroProsper/promo/)
 
 
 
