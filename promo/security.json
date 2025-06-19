@@ -1,0 +1,17 @@
+promo/
+ ├─ index.html
+ ├─ transcript.html
+ ├─ style.css
+ ├─ script_multilang.md
+ ├─ README.txt
+ ├─ assets/
+ │    ├─ agro-logo.svg
+ │    ├─ qr-agrotoken.png
+ │    └─ prevu-agrotoken.png
+ ├─ subtitles/
+ │    ├─ uk.srt
+ │    ├─ en.srt
+ │    └─ pl.srt
+ └─ video/
+      ├─ agro-intro.mp4
+      └─ agro-reels.mp4
