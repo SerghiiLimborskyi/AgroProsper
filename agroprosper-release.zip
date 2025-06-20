@@ -1,0 +1,24 @@
+agroprosper-release/
+├─ promo/
+│   ├─ index.html
+│   ├─ transcript.html
+│   ├─ drop.html     🔐 (захист через key-параметр)
+├─ media-kit/
+│   ├─ AgroToken-logo.svg
+│   ├─ qr-agrotoken.png
+│   ├─ OG-preview.png
+│   ├─ cover-agrotoken.png
+│   ├─ agrotoken-press.txt
+│   ├─ agrotoken-promo.docx
+│   └─ README.md
+├─ agrobadge-sbt/
+│   ├─ grower/agrobadge-grower.svg
+│   ├─ grower/tokenURI.json
+│   ├─ ...
+├─ contracts/
+│   └─ AgroBadge.sol
+├─ docs/
+│   ├─ SBT.md
+│   ├─ media-kit.md
+│   └─ partners.md
+├─ README.md ✅ (оновлено, без відкритого доступу до дропа)
