@@ -36,7 +36,18 @@ An ERC-20 token for the AgroProsper AI platform.
 [🎁 Отримати SBT бейдж](./promo/drop.html)
 # 🎖 AgroBadge SBT Collection (1–10)
 
+🎉 AgroProsper v1.0 • DAO-ready публікація
 
+Цей дистрибутив містить повний набір файлів, які сформували першу фазу запуску:
+
+- 🌿 Презентація AgroToken
+- 🎁 Soulbound Token-дроп з 10 унікальними бейджами
+- 📦 Media Kit для пітчів і партнерів
+- 🤝 Сторінка партнери DAO-комʼюніті
+
+🛡️ Дроп зашифровано, токени видано через зачинений маршрут.
+
+Created with 💚 by Copilot + Serhii
 
 
 
