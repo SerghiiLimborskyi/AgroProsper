@@ -19,3 +19,4 @@ AgroToken/
 ├── README.md                 # Інструкція для інвестора/власника токена
 ├── hardhat.config.js         # Налаштування для розгортання
 └── package.json              # Залежності (`openzeppelin`, `hardhat`)
+mint(user, "ipfs://Qm.../tokenURI.json");
