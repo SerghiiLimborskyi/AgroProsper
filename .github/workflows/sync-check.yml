@@ -1,13 +1,1 @@
-name: 🔄 Sync-перевірка admin-kit
 
-on: [push, pull_request]
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Встановити залежності
-        run: npm install node-fetch
-      - name: Перевірка структури
-        run: node admin-kit/automation/sync-agent.js
