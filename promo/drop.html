@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>AgroToken • Drop SBT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../promo/style.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f0fdf4;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2rem;
+      text-align: center;
+    }
+    .drop-card {
+      max-width: 640px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+    h1 {
+      color: #15803d;
+    }
+    .btn-mint {
+      background: #16a34a;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 1.5rem;
+    }
+    .btn-mint:hover {
+      background: #15803d;
+    }
+    .address-display {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="drop-card">
+    <h1>🌿 Отримай свій AgroBadge (SBT)</h1>
+    <p>Ти переглянув(-ла) презентацію? Участь у DAO підтверджено? Зберігай цифровий бейдж як Soulbound Token 💚</p>
+
+    <button class="btn-mint" onclick="mintSBT()">🎁 Забрати свій бейдж</button>
+    <div class="address-display" id="wallet"></div>
+  </div>
+
+  <script>
+    async function mintSBT() {
+      if (typeof window.ethereum === 'undefined') {
+        alert('Потрібен MetaMask або інший Web3 гаманець!');
+        return;
+      }
+      const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      document.getElementById('wallet').innerText = `🔗 Підключено: ${account}`;
+      // Тут встав свій контракт + взаємодію
+      alert('Запит на отримання SBT надіслано! 🎉 (Демо-версія)');
+    }
+  </script>
+</body>
+</html>
