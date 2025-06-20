@@ -1,0 +1,10 @@
+{
+  "name": "AgroBadge #001",
+  "description": "Soulbound Token для учасників DAO або перегляду відео-презентації AgroToken.",
+  "image": "ipfs://Qm.../agro-badge.svg",
+  "attributes": [
+    { "trait_type": "Type", "value": "SBT" },
+    { "trait_type": "Level", "value": "Verified Viewer" },
+    { "trait_type": "Campaign", "value": "AgroPromo 2025" }
+  ]
+}
