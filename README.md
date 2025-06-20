@@ -34,5 +34,6 @@ An ERC-20 token for the AgroProsper AI platform.
 📽 [🎥 Дивитись відео презентацію](https://yourusername.github.io/AgroProsper/promo/)
 
 [🎁 Отримати SBT бейдж](./promo/drop.html)
+window.location.href = './drop.html';
 
 
