@@ -48,6 +48,34 @@ An ERC-20 token for the AgroProsper AI platform.
 🛡️ Дроп зашифровано, токени видано через зачинений маршрут.
 
 Created with 💚 by Copilot + Serhii
+## 🌍 Презентація AgroProsper (багатомовна)
+
+AgroProsper підтримує автоматичне перенаправлення залежно від мови браузера користувача (ua / en / pl).
+
+> Перейти до презентації:
+
+<p align="center">
+  <a href="https://serghiilimborskyi.github.io/AgroProsper/" target="_blank">
+    <img src="https://img.shields.io/badge/🎥%20Відкрити%20презентацію-AgroProsper-green?style=for-the-badge" alt="Відкрити презентацію" />
+  </a>
+</p>
+
+---
+
+### 🧭 Детекція мови
+
+- `uk/` — українська  
+- `en/` — англійська  
+- `pl/` — польська  
+
+Автоматичне перенаправлення через `promo/index.html`:
+
+```html
+<script>
+  const lang = navigator.language.slice(0, 2);
+  const target = ['en', 'pl'].includes(lang) ? lang : 'uk';
+  location.href = `./${target}/`;
+</script>
 
 
 
