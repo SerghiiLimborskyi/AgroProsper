@@ -10,6 +10,50 @@
     "backend/index.js": ["/metrics", "/logs", "/health"]
   }
 }
-git add admin-kit/automation
-git commit -m "🔧 Fix: додано sync-agent.js та план для CI"
-git push origin admin-kit
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroProsper</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Ласкаво просимо до AgroProsper</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">Про нас</a></li>
+        <li><a href="#metrics">Метрики</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>Про нас</h2>
+      <p>AgroProsper — це інноваційна платформа для агроаналітики та автоматизації.</p>
+    </section>
+
+    <section id="metrics">
+      <h2>Метрики</h2>
+      <ul>
+        <li><a href="/metrics">/metrics</a></li>
+        <li><a href="/logs">/logs</a></li>
+        <li><a href="/health">/health</a></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Контакти</h2>
+      <p>Зв’яжіться з нами: info@agroprosper.dev</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 AgroProsper. Усі права захищено.</p>
+  </footer>
+</body>
+</html>
+
