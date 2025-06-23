@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mint SBT – AgroChampion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif; text-align: center;
+      background: #f5fff4; color: #222;
+      padding: 2rem;
+    }
+    button {
+      font-size: 1.2rem; padding: 1rem 2rem;
+      background: #34a853; color: #fff;
+      border: none; border-radius: 10px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    img { margin: 2rem auto; display: block; width: 180px; }
+  </style>
+</head>
+<body>
+  <h1>🥇 Mint your <em>Top Farmer</em> SBT</h1>
+  <p>Connect wallet and claim your non-transferable achievement!</p>
+
+  <img src="../../media-kit/badges/top-farmer.svg" alt="Top Farmer Badge" />
+
+  <button onclick="mint()">🎖️ Mint SBT</button>
+
+  <script>
+    const contractAddress = "0xYOUR_CONTRACT_ADDRESS"; // встав сюди адресу контракту
+    const tokenURI = "ipfs://Qm.../top-farmer.json";   // URI з JSON, який ми створили
+
+    const abi = [
+      "function mintSBT(address to, string memory tokenURI) external",
+    ];
+
+    async function mint() {
+      if (!window.ethereum) return alert("💡 Встанови MetaMask для взаємодії.");
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const contract = new ethers.Contract(contractAddress, abi, signer);
+      const addr = await signer.getAddress();
+      const tx = await contract.mintSBT(addr, tokenURI);
+      await tx.wait();
+      alert("✅ Готово! Твій бейдж Top Farmer вже у гаманці!");
+    }
+  </script>
+</body>
+</html>
