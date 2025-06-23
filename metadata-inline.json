@@ -1,0 +1,10 @@
+{
+  "name": "Top Farmer – AgroTycoon Champion",
+  "description": "Awarded to serhiitycoon.eth for harvesting 100+ AGT tokens in AgroTycoon DAO.",
+  "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI4MCIgdmlld0JveD0iMCAwIDI4MCAyODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyODAiIGZpbGw9IiMzNGE4NTMiIHJ4PSIxNCIvPjxjaXJjbGUgY3g9IjE0MCIgY3k9IjE0MCIgcj0iMTEwIiBmaWxsPSIjMzRhODUzIiBzdHJva2U9IiMyMjhCMjIiIHN0cm9rZS13aWR0aD0iMTAiLz48dGV4dCB4PSIxNDAiIHk9IjE1NSIgZm9udC1mYW1pbHk9IlZlcmRhbmEiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn5m9IFRvcCBGYXJtZXI8L3RleHQ+PC9zdmc+",
+  "attributes": [
+    { "trait_type": "Farmer", "value": "serhiitycoon.eth" },
+    { "trait_type": "Rank", "value": "🥇 Top 1%" },
+    { "trait_type": "Season", "value": "DAO Season I" }
+  ]
+}
