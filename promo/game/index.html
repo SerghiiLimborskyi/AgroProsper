@@ -1,0 +1,15 @@
+<div class="score">💰 <span id="tokens">0</span> AGT</div>
+<button onclick="sell()">🚜 Продати врожай</button>
+<div id="mintLink" style="margin-top:1rem;"></div>
+function sell() {
+  const add = Math.floor(Math.random() * 5) + 1;
+  tokens += add;
+  document.getElementById('tokens').textContent = tokens;
+
+  if (tokens >= 100) {
+    document.getElementById('mintLink').innerHTML =
+      `<a href="../sbt/mint.html" target="_blank">
+        🥇 <strong>Mint SBT-бейдж "Top Farmer"</strong>
+      </a>`;
+  }
+}
