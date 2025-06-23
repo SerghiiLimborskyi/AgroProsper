@@ -1,0 +1,10 @@
+{
+  "name": "Top Farmer – AgroTycoon Champion",
+  "description": "Awarded to the top player of AgroTycoon for outstanding AGT token harvest.",
+  "image": "ipfs://QmYourHash/media-kit/badges/top-farmer.svg",
+  "attributes": [
+    { "trait_type": "Rank", "value": "🥇 Top 1%" },
+    { "trait_type": "Season", "value": "DAO Season I" },
+    { "trait_type": "AGT Earned", "value": "100+" }
+  ]
+}
