@@ -24,6 +24,14 @@
 zip -r agroprosper-live.zip index.html vercel.json README.md
 # 🌿 AgroToken (AGT)
 
+<p align="center">
+  <a href="https://serghiilimborskyi.github.io/AgroProsper/promo/sbt/mint.html" target="_blank">
+    <img src="media-kit/sbt/QR-mint-top-farmer.png" alt="Mint Top Farmer QR" width="220" />
+  </a>
+</p>
+
+> Scan the QR to mint your soulbound Top Farmer badge (SBT) after playing AgroTycoon 🌿
+
 An ERC-20 token for the AgroProsper AI platform.
 
 - Contract: `AgroToken.sol`
@@ -76,6 +84,15 @@ AgroProsper підтримує автоматичне перенаправлен
   const target = ['en', 'pl'].includes(lang) ? lang : 'uk';
   location.href = `./${target}/`;
 </script>
+### 🪪 Claim your Top Farmer SBT
+
+<p align="center">
+  <a href="https://serghiilimborskyi.github.io/AgroProsper/promo/sbt/mint.html" target="_blank">
+    <img src="media-kit/sbt/QR-mint-top-farmer.png" alt="Mint Top Farmer QR" width="220" />
+  </a>
+</p>
+
+> Scan the QR to mint your soulbound Top Farmer badge (SBT) after playing AgroTycoon 🌿
 
 
 
