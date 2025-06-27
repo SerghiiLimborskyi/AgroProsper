@@ -12,6 +12,13 @@
 
 🔗 Останній реліз: [AgroProsper v1.0 – DAO-ready](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest)
 
+## 📄 Статус та Релізи
+
+[![📦 Media Kit](https://img.shields.io/badge/media--kit.zip-✅-blue?style=for-the-badge&logo=github)](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest)
+
+⬇️ Що включає:
+- `agroprosper-live.zip` …
+
 ⬇️ **Що включає:**
 - `agroprosper-live.zip` — HTML+JS збірка для швидкого розгортання
 - `top-farmer-ipfs-kit.zip` — ZIP-архів з метаданими та графікою для SBT
