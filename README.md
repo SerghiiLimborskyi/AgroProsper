@@ -6,6 +6,13 @@
 
 ## 🚦 CI/CD Status
 
+## 🌍 Live Deployment
+
+👉 Перейти до сайту: [AgroProsper на GitHub Pages](https://serghiilimborskyi.github.io/AgroProsper/)
+
+🗺️ Карта сайту: [sitemap.xml](https://serghiilimborskyi.github.io/AgroProsper/sitemap.xml)  
+🤖 robots.txt: [robots.txt](https://serghiilimborskyi.github.io/AgroProsper/robots.txt)
+
 | Перевірка                  | Статус                                                                                                                                         |
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | 🗺️ Site Map Generator      | ![Site Map Generator](https://github.com/SerghiiLimborskyi/AgroProsper/actions/workflows/update-site-map.yml/badge.svg)                     |
