@@ -1,3 +1,35 @@
-git add .github/workflows/update-site-map.yml
-git commit -m "🛠️ Додано GitHub Action для генерації site-map.json"
-git push
+name: Update site-map.json and sitemap.xml
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-site-map:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout репозиторій
+        uses: actions/checkout@v3
+
+      - name: Встановити Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Запуск generate-site-map.py
+        run: python generate-site-map.py
+
+      - name: Запуск generate-sitemap-xml.py
+        run: python generate-sitemap-xml.py
+
+      - name: Коміт обох файлів
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add site-map.json sitemap.xml
+          git commit -m "🔄 Автооновлення site-map і sitemap.xml"
+          git push
+        continue-on-error: true
+
