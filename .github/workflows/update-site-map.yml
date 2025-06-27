@@ -1,0 +1,3 @@
+git add .github/workflows/update-site-map.yml
+git commit -m "🛠️ Додано GitHub Action для генерації site-map.json"
+git push
