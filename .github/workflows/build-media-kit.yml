@@ -1,0 +1,30 @@
+name: 📦 Build media-kit.zip
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-media-kit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Клон репозиторію
+        uses: actions/checkout@v3
+
+      - name: 🗜️ Створити ZIP архів
+        run: |
+          cd media-kit
+          zip -r ../agroprosper-media-kit.zip .
+
+      - name: 🚀 Додати ZIP до релізу
+        uses: softprops/action-gh-release@v1
+        with:
+          files: agroprosper-media-kit.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+=
