@@ -14,6 +14,23 @@
 
 ## 📄 Статус та Релізи
 
+## 📦 Media Kit
+
+Офіційний комплект візуальних і технічних матеріалів AgroProsper для грантів, партнерств та презентацій:
+
+| Файл                     | Призначення                                                   |
+|--------------------------|---------------------------------------------------------------|
+| `cover-agroprosper.png`  | Стилізована обкладинка з прапором 🇺🇦, логотипом та гаслом     |
+| `qr-release-notes.png`   | QR-код на `release-notes.md`                                  |
+| `qr-changelog.png`       | QR-код на `CHANGELOG.md`                                      |
+| `qr-tech-spec.png`       | QR-код на `tech-spec.md`                                      |
+| `agroprosper-logo.svg`   | Векторний логотип AgroProsper                                 |
+| `top-farmer.svg`         | Бейдж “Top Farmer” у SBT-стилі                                |
+| `QR-mint-top-farmer.png` | QR для мінту soulbound-бейджа після гри в AgroTycoon          |
+| `agroprosper-presentation-full.pdf` | Повна презентація для друку та подання              |
+
+⬇️ [Завантажити Media Kit.zip](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest)
+
 [![📦 Media Kit](https://img.shields.io/badge/media--kit.zip-✅-blue?style=for-the-badge&logo=github)](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest)
 
 ⬇️ Що включає:
