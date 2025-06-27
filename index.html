@@ -92,3 +92,15 @@ jobs:
   </script>
 </body>
 </html>
+
+<script>
+  const lang = navigator.language.slice(0, 2);
+  const supported = { uk: "README.uk.md", en: "README.en.md", pl: "README.pl.md" };
+  const fallback = "README.uk.md";
+  const readmeFile = supported[lang] || fallback;
+  fetch(readmeFile)
+    .then(res => res.text())
+    .then(md => {
+      document.getElementById("readme").innerText = md;
+    });
+</script>
