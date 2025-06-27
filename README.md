@@ -73,6 +73,10 @@ An ERC-20 token for the AgroProsper AI platform.
 
 🎉 AgroProsper v1.0 • DAO-ready публікація
 
+git add README.md
+git commit -m "📎 Додано бейдж media-kit.zip ✅ до README"
+git push
+
 Цей дистрибутив містить повний набір файлів, які сформували першу фазу запуску:
 
 - 🌿 Презентація AgroToken
