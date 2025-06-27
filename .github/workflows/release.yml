@@ -1,0 +1,30 @@
+name: 📦 Create GitHub Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Наприклад: v1.0.0
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout репозиторій
+        uses: actions/checkout@v3
+
+      - name: 📦 Створити реліз
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release ${{ github.ref_name }}
+          body_path: release-notes.md
+          files: |
+            agroprosper-release.zip
+            top-farmer-ipfs-kit.zip
+            metadata-inline.json
+            top-farmer.svg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
