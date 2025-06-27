@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://serghiilimborskyi.github.io/AgroProsper/sitemap.xml
+Sitemap: https://serghiilimborskyi.github.io/AgroProsper/sitemap.xml
