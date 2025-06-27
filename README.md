@@ -122,4 +122,9 @@ AgroProsper підтримує автоматичне перенаправлен
 ```js
 const tokenURI = "ipfs://<твій_CID>/metadata-inline.json";
 
+git add README.md
+git commit -m "📛 Додано статус-бейдж для GitHub Action"
+git push
 
+![CodeQL](https://github.com/SerghiiLimborskyi/AgroProsper/actions/workflows/codeql.yml/badge.svg)
+![Secrets Check](https://github.com/SerghiiLimborskyi/AgroProsper/actions/workflows/secrets-check.yml/badge.svg)
