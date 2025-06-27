@@ -110,3 +110,81 @@ jobs:
 <link rel="icon" href="favicon-en.ico" sizes="any">
 
 <link rel="icon" type="image/svg+xml" href="favicon-en.svg">
+
+<style>
+  :root {
+    --bg-light: #f8faff;
+    --bg-dark: #0d1117;
+    --text-light: #111;
+    --text-dark: #c9d1d9;
+    --card-light: white;
+    --card-dark: #161b22;
+    --border-light: #ddd;
+    --border-dark: #30363d;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0; padding: 2rem;
+    background: var(--bg-light);
+    color: var(--text-light);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    .card {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      box-shadow: none;
+    }
+  }
+
+  .card {
+    background: var(--card-light);
+    border: 1px solid var(--border-light);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    text-align: center;
+  }
+</style>
+
+<button id="theme-toggle" style="position:fixed;top:1rem;right:1rem;background:#eee;border:none;padding:0.5rem;border-radius:5px;cursor:pointer;">
+  🌘
+</button>
+
+<script>
+  const themeToggle = document.getElementById("theme-toggle");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const saved = localStorage.getItem("theme");
+  const isDark = saved ? saved === "dark" : prefersDark;
+
+  setTheme(isDark);
+
+  themeToggle.addEventListener("click", () => {
+    const nowDark = document.body.classList.toggle("dark");
+    themeToggle.textContent = nowDark ? "🌞" : "🌘";
+    localStorage.setItem("theme", nowDark ? "dark" : "light");
+    applyThemeColors(nowDark);
+  });
+
+  function setTheme(dark) {
+    if (dark) document.body.classList.add("dark");
+    themeToggle.textContent = dark ? "🌞" : "🌘";
+    applyThemeColors(dark);
+  }
+
+  function applyThemeColors(dark) {
+    document.body.style.background = dark ? "#0d1117" : "#f8faff";
+    document.body.style.color = dark ? "#c9d1d9" : "#111";
+    document.querySelectorAll(".card").forEach(c => {
+      c.style.background = dark ? "#161b22" : "white";
+      c.style.border = `1px solid ${dark ? "#30363d" : "#ddd"}`;
+      c.style.boxShadow = dark ? "none" : "0 2px 6px rgba(0,0,0,0.04)";
+    });
+  }
+</script>
