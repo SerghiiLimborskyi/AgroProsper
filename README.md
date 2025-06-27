@@ -4,6 +4,14 @@
 
 **AgroProsper** – це автоматизована AI-платформа, що допомагає фермерам аналізувати ринок, оптимізувати продажі та контролювати фінанси.
 
+## 🚦 CI/CD Status
+
+| Перевірка                  | Статус                                                                                                                                         |
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| 🗺️ Site Map Generator      | ![Site Map Generator](https://github.com/SerghiiLimborskyi/AgroProsper/actions/workflows/update-site-map.yml/badge.svg)                     |
+| 🛡️ CodeQL Security Scan    | ![CodeQL](https://github.com/SerghiiLimborskyi/AgroProsper/actions/workflows/codeql.yml/badge.svg)                                           |
+| 🔐 Secrets Check           | ![Secrets Check](https://github.com/SerghiiLimborskyi/AgroProsper/actions/workflows/secrets-check.yml/badge.svg)                             |
+
 ## 🚜 Функціональність
 ✅ **Чат-бот** – AI-помічник для консультацій фермерів  
 ✅ **Автоматичні продажі** – інтеграція з аграрними біржами  
