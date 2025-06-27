@@ -8,6 +8,16 @@
 
 ## 🌍 Live Deployment
 
+## 📦 Release Assets
+
+🔗 Останній реліз: [AgroProsper v1.0 – DAO-ready](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest)
+
+⬇️ **Що включає:**
+- `agroprosper-live.zip` — HTML+JS збірка для швидкого розгортання
+- `top-farmer-ipfs-kit.zip` — ZIP-архів з метаданими та графікою для SBT
+- `metadata-inline.json` — ERC-721 метадані з вбудованим base64 зображенням
+- `top-farmer.svg` — окрема векторна версія бейджа
+
 👉 Перейти до сайту: [AgroProsper на GitHub Pages](https://serghiilimborskyi.github.io/AgroProsper/)
 
 🗺️ Карта сайту: [sitemap.xml](https://serghiilimborskyi.github.io/AgroProsper/sitemap.xml)  
