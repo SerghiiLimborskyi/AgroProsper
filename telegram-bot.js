@@ -78,3 +78,13 @@ bot.hears(/^[0-9]/, async (ctx) => {
 });
 
 bot.launch();
+
+const { logToAirtable } = require('./airtable-logs');
+
+logToAirtable({
+  user_id: ctx.from.id,
+  username: ctx.from.username,
+  region: detectRegion(ctx),
+  action: 'Натиснуто 3️⃣ Ліцензія',
+  document: 'license.pdf'
+});
