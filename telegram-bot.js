@@ -1,3 +1,5 @@
+const { logToAirtable } = require('./airtable-logs');
+
 require('dotenv').config();
 const { Telegraf, Markup } = require('telegraf');
 const fs = require('fs');
