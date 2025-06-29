@@ -181,3 +181,89 @@
   <meta name="twitter:description" content="Переглянь презентацію, ознайомся з бейджами та приєднуйся до DAO AgroProsper" />
   <meta name="twitter:image" content="https://serghiilimborskyi.github.io/AgroProsper/media-kit/OG-preview.png" />
 </head>
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>AgroProsper — DAO-ready AgTech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ethics. Governance. Trust. Open-core платформа для аграрного DAO.">
+  <meta property="og:title" content="AgroProsper — DAO-ready AgTech">
+  <meta property="og:description" content="Ethics. Governance. Trust. Платформа для фермерів з відкритими цінностями.">
+  <meta property="og:image" content="../docs/assets/preview.png">
+  <meta property="og:url" content="https://serghiilimborskyi.github.io/AgroProsper/promo/index.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../docs/assets/favicon.ico" type="image/x-icon">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e0f7e7, #f6fcf6);
+      color: #203020;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3em;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 0.2em;
+    }
+    h2 {
+      font-weight: normal;
+      color: #4c7c59;
+      margin-bottom: 2em;
+    }
+    .btn {
+      display: inline-block;
+      margin: 0.5em;
+      padding: 0.8em 1.5em;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #388e3c;
+    }
+    footer {
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #888;
+    }
+    img {
+      max-width: 180px;
+      margin: 2em 0;
+    }
+  </style>
+
+  <script>
+    window.onload = function() {
+      const lang = navigator.language || navigator.userLanguage;
+      if (lang.startsWith('en')) location.href = 'index.en.html';
+    };
+  </script>
+</head>
+
+<body>
+  <img src="../docs/assets/preview.png" alt="AgroProsper logo preview">
+  <h1>AgroProsper</h1>
+  <h2>Ethics. Governance. Trust.</h2>
+
+  <a class="btn" href="../docs/manifesto.md">📘 Маніфест</a>
+  <a class="btn" href="../docs/ethics.uk.md">🛡️ Етика</a>
+  <a class="btn" href="../docs/governance.uk.md">🧭 Управління</a>
+  <a class="btn" href="../AGRO-LICENSE.uk.txt">🔐 Ліцензія</a>
+  <a class="btn" href="https://github.com/SerghiiLimborskyi/AgroProsper" target="_blank">🌍 GitHub</a>
+
+  <footer>
+    Made with 💼 + 🌾 by Copilot & Serhii Limborskyi · <a href="index.en.html">English version</a>
+  </footer>
+</body>
+</html>
