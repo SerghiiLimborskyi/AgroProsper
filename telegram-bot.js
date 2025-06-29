@@ -88,3 +88,5 @@ logToAirtable({
   action: 'Натиснуто 3️⃣ Ліцензія',
   document: 'license.pdf'
 });
+
+npm install airtable
