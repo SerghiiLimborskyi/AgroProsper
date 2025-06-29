@@ -33,6 +33,20 @@
 
 [![📦 Media Kit](https://img.shields.io/badge/media--kit.zip-✅-blue?style=for-the-badge&logo=github)](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest)
 
+## 📄 Документація та політики
+
+🛡️ **Етика**
+- 🇺🇦 [Етичні принципи (укр)](docs/ethics.uk.md)
+- 🇬🇧 [Ethics Statement (eng)](docs/ethics.en.md)
+
+🧭 **Управління**
+- 🇺🇦 [Правила управління (укр)](docs/governance.uk.md)
+- 🇬🇧 [Governance Charter (eng)](docs/governance.en.md)
+
+🔐 **Ліцензія**
+- 🇺🇦 [AGRO-LICENSE (укр)](AGRO-LICENSE.uk.txt)
+- 🇬🇧 [AGRO-LICENSE (eng)](AGRO-LICENSE.en.txt)
+
 ⬇️ Що включає:
 - `agroprosper-live.zip` …
 
