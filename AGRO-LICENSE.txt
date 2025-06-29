@@ -1,0 +1,8 @@
+🛡️ AGRO LICENSE v1.0
+
+Цей репозиторій містить багатомовну ліцензію. Оберіть мовну версію:
+
+🇺🇦 Ukrainian version → [AGRO-LICENSE.uk.txt](./AGRO-LICENSE.uk.txt)  
+🇬🇧 English version → [AGRO-LICENSE.en.txt](./AGRO-LICENSE.en.txt)
+
+Додаткові умови та юридичні запити — через legal@agroprosper.ai або DAO-форми партнерства.
