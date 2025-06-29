@@ -1,4 +1,6 @@
-const throttleMap = new Map(); // user_id → timestamp
+“Зроби адаптивний throttle”
+  const throttleMap = new Map(); // user_id → timestamp
+
 const THROTTLE_MS = 10 * 1000; // 10 секунд
 
 const { logToAirtable } = require('./airtable-logs');
