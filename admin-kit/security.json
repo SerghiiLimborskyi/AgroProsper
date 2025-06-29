@@ -2,3 +2,27 @@
   "status": "✅ No leaks detected",
   "checked_at": "2025-06-18T18:47:00+02:00"
 }
+
+[
+  {
+    "region": "UA_KYIV",
+    "lang": "uk",
+    "product": "🌿 Біодобрива AgroLife",
+    "cta": "Доставка по Київщині за 24 год.",
+    "link": "https://agroprosper.link/biodobryva"
+  },
+  {
+    "region": "PL_SZCZECIN",
+    "lang": "pl",
+    "product": "🚁 Дрони GreenSpray",
+    "cta": "До -40% з EU-субсидією",
+    "link": "https://agroprosper.link/drony"
+  },
+  {
+    "region": "EU_CZ",
+    "lang": "en",
+    "product": "🌐 Гайд по грантах",
+    "cta": "Безкоштовна консультація",
+    "link": "https://agroprosper.link/grants"
+  }
+]
