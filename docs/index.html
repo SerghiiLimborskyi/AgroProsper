@@ -2,74 +2,21 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>📘 AgroToken Docs</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <style>
-    body { font-family: system-ui, sans-serif; padding: 2rem; line-height: 1.6; background: #f0fdf4; }
-    h1 { color: #15803d; }
-    nav a { margin-right: 1rem; color: #16a34a; text-decoration: none; font-weight: bold; }
-    #content { background: white; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 0 10px #ccc; }
-  </style>
-</head>
-<body>
-  <h1>📘 AgroToken Docs</h1>
-  <nav>
-    <a href="#" onclick="load('tokenomics.md')">Токеноміка</a>
-    <a href="#" onclick="load('roadmap.md')">Roadmap</a>
-    <a href="/dashboard/claim.html" target="_blank">Claim AGT</a>
-    <a href="/dashboard/token.html" target="_blank">AGT Dashboard</a>
-  </nav>
-  <div id="content"><em>⬅️ Обери документ для перегляду...</em></div>
-
-  <script>
-    async function load(file) {
-      const res = await fetch(file);
-      const txt = await res.text();
-      document.getElementById("content").innerHTML = marked.parse(txt);
-    }
-  </script>
-</body>
-</html>
-<a href="/promo/promo-preview.html" class="promo-btn" target="_blank">
-  🎬 Дивитись презентацію AgroToken
-</a>
-
-<style>
-.promo-btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: #16a34a;
-  color: white;
-  text-decoration: none;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: background 0.3s;
-}
-.promo-btn:hover {
-  background: #15803d;
-}
-</style>
-
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8" />
   <title>AgroProsper – Документація</title>
-  <meta name="description" content="Багатомовна політика, етика та governance AgroProsper — відкритий, етичний agrotech-проєкт.">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Багатомовна політика, етика та governance AgroProsper — відкритий, етичний agrotech-проєкт." />
+  <meta name="keywords" content="AgroProsper, DAO, етика, агротек, governance, Web3, ліцензія" />
+  <meta name="author" content="AgroProsper DAO / Serhii Limborskyi" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- 🌍 Meta для соцмереж -->
-  <meta property="og:title" content="AgroProsper – Open AgTech Governance" />
-  <meta property="og:description" content="Ethics. Governance. Trust. Аграрна екосистема з DAO та прозорою ліцензією." />
+  <!-- OG для соцмереж -->
+  <meta property="og:title" content="AgroProsper – Відкрите управління для фермерів" />
+  <meta property="og:description" content="Етика. DAO. Прозорість. Агроплатформа зі зрозумілою ліцензією та відкритим governance." />
   <meta property="og:image" content="https://serghiilimborskyi.github.io/AgroProsper/docs/assets/preview.png" />
   <meta property="og:url" content="https://serghiilimborskyi.github.io/AgroProsper/" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- 🌿 Favicon -->
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
 
-  <!-- 💅 Мінімальні стилі -->
   <style>
     body {
       font-family: sans-serif;
@@ -79,21 +26,18 @@
       color: #333;
     }
     h1 { font-size: 2.5em; margin-bottom: 0.3em; }
-    .lang { margin: 1em 0; }
     .btn {
       display: inline-block;
       margin: 0.5em;
       padding: 0.6em 1.2em;
-      text-decoration: none;
       background: #4CAF50;
       color: white;
-      border-radius: 5px;
-      transition: background 0.3s ease;
+      text-decoration: none;
+      border-radius: 6px;
     }
     .btn:hover { background: #388e3c; }
   </style>
 
-  <!-- 🌍 Авто-перемикач за мовою -->
   <script>
     window.onload = function() {
       const lang = navigator.language || navigator.userLanguage;
@@ -107,14 +51,12 @@
 <body>
   <h1>🌾 AgroProsper – Документація</h1>
   <p>Обери розділ:</p>
-
-  <div class="lang">
+  <div>
     <a href="ethics.uk.md" class="btn">🛡️ Етика</a>
     <a href="governance.uk.md" class="btn">🧭 Управління</a>
     <a href="../AGRO-LICENSE.uk.txt" class="btn">🔐 Ліцензія</a>
     <a href="manifesto.md" class="btn">📘 Маніфест</a>
   </div>
-
-  <p>Need English version? <a href="index.en.html">Click here</a></p>
+  <p>🇬🇧 Need English version? <a href="index.en.html">Click here</a></p>
 </body>
 </html>
