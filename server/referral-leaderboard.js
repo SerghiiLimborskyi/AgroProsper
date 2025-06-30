@@ -22,3 +22,7 @@ app.get('/api/referral-leaderboard', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch leaderboard' });
   }
 });
+
+AgroProsper/
+└── api/
+    └── referral-leaderboard.js ← Сюди встав код
