@@ -136,3 +136,13 @@ bot.command('game', (ctx) => {
     }
   });
 });
+
+bot.command('game', (ctx) => {
+  ctx.reply('🎮 Грай у AgroTycoon 2.0:', {
+    reply_markup: {
+      inline_keyboard: [[
+        { text: '▶️ Почати гру', web_app: { url: 'https://serghiilimborskyi.github.io/AgroProsper/game/index.html' } }
+      ]]
+    }
+  });
+});
