@@ -6,6 +6,24 @@
   <title>AgroTycoon DAO Landing</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+  <script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const savedTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+
+  document.body.classList.add(savedTheme);
+  toggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+  toggleBtn.onclick = () => {
+    const current = document.body.classList.contains('dark') ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.body.classList.remove(current);
+    document.body.classList.add(next);
+    toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', next);
+  };
+</script>
+
 <body>
   <div id="landing-container">
     <h1>🌾 AgroTycoon 2.0</h1>
