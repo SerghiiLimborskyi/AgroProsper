@@ -50,3 +50,60 @@
   </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎖️ Отримати DAO-SBT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="mint-container">
+    <h1>🎖️ Вітаємо, фермере!</h1>
+    <p>Ваш AgroScore: <span id="score">—</span></p>
+
+    <p>Підключіть гаманець, щоб отримати DAO-бейдж:</p>
+    <button id="connect-btn">🔗 Підключити гаманець</button>
+
+    <div id="wallet-section" style="display:none;">
+      <p>Адреса: <span id="wallet-address"></span></p>
+      <button id="mint-btn">🎖️ Мінт SBT</button>
+    </div>
+
+    <p id="status-msg"></p>
+  </div>
+
+  <script>
+    let walletAddress = '';
+    const urlParams = new URLSearchParams(window.location.search);
+    const score = urlParams.get('score') || '0';
+    document.getElementById('score').textContent = score;
+
+    document.getElementById('connect-btn').onclick = async () => {
+      // 🔗 Псевдо-підключення (реальне — через WalletConnect або TonConnect)
+      walletAddress = prompt("Введіть адресу гаманця:");
+      if (walletAddress) {
+        document.getElementById('wallet-address').textContent = walletAddress;
+        document.getElementById('wallet-section').style.display = 'block';
+      }
+    };
+
+    document.getElementById('mint-btn').onclick = async () => {
+      document.getElementById('status-msg').textContent = '⏳ Мінтинг...';
+      try {
+        const res = await fetch(`https://api.agroprosper.link/mint-sbt?wallet=${walletAddress}&score=${score}`);
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('status-msg').textContent = '✅ SBT успішно видано!';
+        } else {
+          document.getElementById('status-msg').textContent = '🚫 Помилка мінтингу.';
+        }
+      } catch (err) {
+        document.getElementById('status-msg').textContent = '❌ Зʼєднання з API не вдалося.';
+      }
+    };
+  </script>
+</body>
+</html>
