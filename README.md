@@ -2,6 +2,8 @@
 
 ![Site Map Generator](https://github.com/SerghiiLimborskyi/AgroProsper/actions/workflows/update-site-map.yml/badge.svg)
 
+<button id="theme-toggle" style="position: absolute; top: 16px; right: 16px;">🌙</button>
+
 **AgroProsper** – це автоматизована AI-платформа, що допомагає фермерам аналізувати ринок, оптимізувати продажі та контролювати фінанси.
 
 ## 🚦 CI/CD Status
