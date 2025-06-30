@@ -171,3 +171,25 @@ body {
   color: var(--text);
   transition: background 0.3s ease, color 0.3s ease;
 }
+
+.logo-animated {
+  width: 120px;
+  margin-bottom: 16px;
+  animation: logoFadeIn 1.2s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+@keyframes logoFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-10deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
