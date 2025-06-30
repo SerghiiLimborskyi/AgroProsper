@@ -146,3 +146,9 @@ bot.command('game', (ctx) => {
     }
   });
 });
+
+bot.command('referral', (ctx) => {
+  const id = ctx.from.id;
+  const link = `https://openagromarket.com/?ref=${id}`;
+  ctx.reply(`🔗 Ваше реферальне посилання:\n${link}`);
+});
