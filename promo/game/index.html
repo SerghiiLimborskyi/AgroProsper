@@ -13,3 +13,34 @@ function sell() {
       </a>`;
   }
 }
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgroTycoon 2.0</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="game-container">
+    <h1>🌾 AgroTycoon 2.0</h1>
+    <p>Стань DAO-фермером. Пройди шлях від поля до голосування!</p>
+
+    <button id="start-btn">▶️ Почати гру</button>
+
+    <div id="game-stage" style="display:none;">
+      <!-- Динамічні сцени гри зʼявлятимуться тут -->
+    </div>
+
+    <div id="result-screen" style="display:none;">
+      <h2>🏆 Ваш результат:</h2>
+      <p id="score-text"></p>
+      <a id="mint-link" href="#" target="_blank">🎖️ Отримати SBT</a>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
