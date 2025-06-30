@@ -10,3 +10,85 @@ function notifySecurityAlert(file, line) {
   });
 }
 node admin-kit/automation/telegram-notifier.js
+
+document.getElementById('start-btn').addEventListener('click', startGame);
+
+let score = 0;
+let stage = 0;
+
+const stages = [
+  {
+    title: '🌱 Сцена 1: Почни ферму',
+    question: 'Що ви оберете для старту?',
+    options: [
+      { text: '🚜 Купити техніку', value: 2 },
+      { text: '🚁 Арендувати дрон', value: 3 },
+      { text: '🌿 Біодобрива', value: 4 }
+    ]
+  },
+  {
+    title: '⚖️ Сцена 2: Етичне рішення',
+    question: 'Інспектор просить “подарунок”. Що робити?',
+    options: [
+      { text: '💸 Дати хабар', value: -2 },
+      { text: '📘 Дотриматись етики DAO', value: 5 }
+    ]
+  },
+  {
+    title: '🗳️ Сцена 3: Голосування в DAO',
+    question: 'Куди інвестувати DAO-кошт?',
+    options: [
+      { text: '🏫 Освіта фермерів', value: 4 },
+      { text: '🌍 Купити землю', value: 2 },
+      { text: '📣 Реклама', value: 1 }
+    ]
+  }
+];
+
+function startGame() {
+  document.getElementById('start-btn').style.display = 'none';
+  showStage();
+}
+
+function showStage() {
+  const container = document.getElementById('game-stage');
+  container.innerHTML = '';
+  container.style.display = 'block';
+
+  const current = stages[stage];
+  const title = document.createElement('h2');
+  title.textContent = current.title;
+
+  const question = document.createElement('p');
+  question.textContent = current.question;
+
+  container.appendChild(title);
+  container.appendChild(question);
+
+  current.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.textContent = opt.text;
+    btn.onclick = () => {
+      score += opt.value;
+      stage++;
+      if (stage < stages.length) {
+        showStage();
+      } else {
+        showResult();
+      }
+    };
+    container.appendChild(btn);
+  });
+}
+
+function showResult() {
+  document.getElementById('game-stage').style.display = 'none';
+  const result = document.getElementById('result-screen');
+  result.style.display = 'block';
+
+  const scoreText = document.getElementById('score-text');
+  scoreText.textContent = `Ваш AgroScore: ${score} балів`;
+
+  const mintLink = document.getElementById('mint-link');
+  mintLink.href = `https://agroprosper.link/mint.html?score=${score}`;
+}
