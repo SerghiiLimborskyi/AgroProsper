@@ -210,3 +210,29 @@ bot.command('leaderboard', async (ctx) => {
     ctx.reply('🚨 Помилка при отриманні рейтингу.');
   }
 });
+
+const fetch = require('node-fetch'); // якщо ще не підключено
+
+bot.command('leaderboard', async (ctx) => {
+  try {
+    const response = await fetch('https://your-domain.com/api/referral-leaderboard');
+    const data = await response.json();
+
+    if (!data || !Array.isArray(data.leaders)) {
+      return ctx.reply('⚠️ Неможливо отримати рейтинг. Спробуйте пізніше.');
+    }
+
+    const top = data.leaders
+      .slice(0, 5)
+      .map((user, i) => {
+        const title = user.username ? `@${user.username}` : `ID ${user.ref_id}`;
+        return `🏅 ${i + 1}. ${title} — ${user.count} переходів`;
+      })
+      .join('\n');
+
+    ctx.reply(`📊 Топ-5 DAO-амбасадорів:\n\n${top}`);
+  } catch (err) {
+    console.error('❌ Помилка /leaderboard:', err);
+    ctx.reply('🚨 Помилка при отриманні рейтингу.');
+  }
+});
