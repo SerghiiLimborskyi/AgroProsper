@@ -97,3 +97,32 @@ logToAirtable({
 });
 
 npm install airtable
+
+npm install axios
+
+async function checkSBT(walletAddress) {
+  try {
+    const response = await axios.get(`https://api.agroprosper.link/sbt-check?wallet=${walletAddress}`);
+    return response.data.hasSBT === true;
+  } catch (err) {
+    console.error('❌ SBT перевірка не вдалася:', err);
+    return false;
+  }
+}
+
+bot.command('verify', (ctx) => {
+  ctx.reply('🔗 Надішліть адресу вашого гаманця для перевірки SBT:');
+});
+
+bot.hears(/^0x[a-fA-F0-9]{40}$/, async (ctx) => {
+  const wallet = ctx.message.text.trim();
+  const hasSBT = await checkSBT(wallet);
+
+  if (hasSBT) {
+    ctx.reply('✅ Ви підтверджені як DAO-учасник! Доступ розширено.');
+    // Можна зменшити throttle:
+    throttleMap.set(ctx.from.id, Date.now() - 10000); // обнуляємо затримку
+  } else {
+    ctx.reply('🚫 У цьому гаманці не знайдено DAO-SBT. Спробуйте інший або mint.');
+  }
+});
