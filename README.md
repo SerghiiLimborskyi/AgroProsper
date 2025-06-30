@@ -1,5 +1,7 @@
 # 🌱 AgroProsper – Інновації для агробізнесу
 
+<img id="theme-logo" class="logo-animated" src="media-kit/logo-dark.svg" alt="AgroProsper Logo" />
+
 ![Site Map Generator](https://github.com/SerghiiLimborskyi/AgroProsper/actions/workflows/update-site-map.yml/badge.svg)
 
 <button id="theme-toggle" style="position: absolute; top: 16px; right: 16px;">🌙</button>
