@@ -126,3 +126,13 @@ bot.hears(/^0x[a-fA-F0-9]{40}$/, async (ctx) => {
     ctx.reply('🚫 У цьому гаманці не знайдено DAO-SBT. Спробуйте інший або mint.');
   }
 });
+
+bot.command('game', (ctx) => {
+  ctx.reply('🎮 Грай у AgroTycoon 2.0:', {
+    reply_markup: {
+      inline_keyboard: [[
+        { text: '▶️ Почати гру', web_app: { url: 'https://serghiilimborskyi.github.io/AgroProsper/game/index.html' } }
+      ]]
+    }
+  });
+});
