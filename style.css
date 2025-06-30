@@ -35,3 +35,20 @@ Authorization: BotConnector REAL_SECRET_KEY_HERE
 .yt-btn:hover {
   background-color: #cc0000;
 }
+
+#landing-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 24px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.qr-section {
+  margin: 32px 0;
+}
+
+.qr-section img {
+  border: 8px solid #2a7a2f;
+  border-radius: 12px;
+}
