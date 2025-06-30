@@ -120,3 +120,32 @@ a:hover {
     width: 180px;
   }
 }
+
+:root {
+  --bg: #121212;
+  --text: #f0f0f0;
+  --accent: #2a7a2f;
+  --card: #1e1e1e;
+  --border: #333;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+#landing-container {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.qr-section img {
+  border-color: var(--accent);
+}
+
+a {
+  color: var(--accent);
+}
