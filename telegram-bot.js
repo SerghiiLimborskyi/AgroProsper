@@ -169,3 +169,23 @@ ctx.reply('🔗 Ваше реферальне посилання:', {
     ]]
   }
 });
+
+const fetch = require('node-fetch'); // якщо ще не підключено
+
+bot.command('score', async (ctx) => {
+  const ref = ctx.from.id;
+
+  try {
+    const response = await fetch(`https://your-domain.com/api/referral-count?ref=${ref}`);
+    const data = await response.json();
+
+    if (data.count !== undefined) {
+      ctx.reply(`📊 Ваш DAO-рейтинг: ${data.count} переходів`);
+    } else {
+      ctx.reply('⚠️ Не вдалося отримати рейтинг. Спробуйте пізніше.');
+    }
+  } catch (err) {
+    console.error('❌ Помилка /score:', err);
+    ctx.reply('🚨 Помилка при отриманні рейтингу.');
+  }
+});
