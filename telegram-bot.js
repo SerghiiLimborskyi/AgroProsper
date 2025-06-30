@@ -158,3 +158,14 @@ bot.command('referral', (ctx) => {
   const link = `https://openagromarket.com/?ref=${id}`;
   ctx.reply(`🔗 Ваше реферальне посилання:\n${link}`);
 });
+
+const name = ctx.from.username || ctx.from.first_name || ctx.from.id;
+const link = `https://openagromarket.com/?ref=${encodeURIComponent(name)}`;
+
+ctx.reply('🔗 Ваше реферальне посилання:', {
+  reply_markup: {
+    inline_keyboard: [[
+      { text: '👥 Поділитись посиланням', url: link }
+    ]]
+  }
+});
