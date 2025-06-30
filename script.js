@@ -133,3 +133,19 @@ files.forEach(f => {
   const matches = content.match(regex);
   if (matches) console.warn(`⚠️ ${f} →`, matches);
 });
+
+const logo = document.getElementById('theme-logo');
+
+function updateTheme(next) {
+  document.body.classList.remove('dark', 'light');
+  document.body.classList.add(next);
+  toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('theme', next);
+  logo.src = next === 'dark' ? 'media-kit/logo-light.svg' : 'media-kit/logo-dark.svg';
+}
+
+toggleBtn.onclick = () => {
+  const current = document.body.classList.contains('dark') ? 'dark' : 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  updateTheme(next);
+};
