@@ -52,3 +52,71 @@ Authorization: BotConnector REAL_SECRET_KEY_HERE
   border: 8px solid #2a7a2f;
   border-radius: 12px;
 }
+
+/* Загальні стилі */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #e6f2e6, #d0f0c0);
+  color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#landing-container {
+  max-width: 720px;
+  width: 90%;
+  padding: 24px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #2a7a2f;
+}
+
+.qr-section {
+  margin: 32px 0;
+}
+
+.qr-section img {
+  width: 240px;
+  max-width: 80%;
+  border: 8px solid #2a7a2f;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.qr-section img:hover {
+  transform: scale(1.05);
+}
+
+a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #2a7a2f;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Адаптивність */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .qr-section {
+    margin: 24px 0;
+  }
+
+  .qr-section img {
+    width: 180px;
+  }
+}
