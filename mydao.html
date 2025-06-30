@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>👤 Мій DAO-профіль</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="landing-container">
+    <h1>👤 Ваш DAO-профіль</h1>
+    <p id="username">Завантаження...</p>
+    <h2>📊 Переходів: <span id="clicks">—</span></h2>
+    <h3>🏅 Рівень: <span id="level">—</span></h3>
+    <img id="badge" src="" alt="Бейдж" style="width: 160px; margin: 16px auto;" />
+    <h3>📱 Ваш QR</h3>
+    <img id="qr" src="" alt="QR" />
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    const ref = tg.initDataUnsafe?.user?.id || 'unknown';
+    const username = tg.initDataUnsafe?.user?.username || `ID ${ref}`;
+    const base = `https://your-domain.com/ref?ref=${ref}`;
+
+    document.getElementById('username').textContent = `@${username}`;
+    document.getElementById('qr').src =
+      'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' + encodeURIComponent(base);
+
+    fetch(`https://your-domain.com/api/referral-count?ref=${ref}`)
+      .then(res => res.json())
+      .then(data => {
+        const count = data.count || 0;
+        document.getElementById('clicks').textContent = count;
+
+        let level = '🌱 Новачок';
+        let badge = 'https://your-domain.com/badges/seedling.png';
+
+        if (count >= 50) {
+          level = '🏆 DAO-Лідер';
+          badge = 'https://your-domain.com/badges/dao-leader.png';
+        } else if (count >= 25) {
+          level = '🎖️ Агро-Інфлюенсер';
+          badge = 'https://your-domain.com/badges/agro-influencer.png';
+        } else if (count >= 10) {
+          level = '🥇 DAO-Посол';
+          badge = 'https://your-domain.com/badges/dao-ambassador.png';
+        }
+
+        document.getElementById('level').textContent = level;
+        document.getElementById('badge').src = badge;
+      })
+      .catch(() => {
+        document.getElementById('clicks').textContent = '—';
+        document.getElementById('level').textContent = '—';
+      });
+  </script>
+</body>
+</html>
