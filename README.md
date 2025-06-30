@@ -113,6 +113,8 @@ An ERC-20 token for the AgroProsper AI platform.
 
 🎉 AgroProsper v1.0 • DAO-ready публікація
 
+<img src="https://serghiilimborskyi.github.io/AgroProsper/media-kit/agroprosper-logo.svg" alt="AgroProsper Logo" style="width: 120px; margin-bottom: 16px;" />
+
 
 Цей дистрибутив містить повний набір файлів, які сформували першу фазу запуску:
 
