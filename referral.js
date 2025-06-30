@@ -57,3 +57,6 @@ app.get('/ref', async (req, res) => {
 app.listen(port, () => {
   console.log(`🔗 Referral logger працює на http://localhost:${port}/ref`);
 });
+
+// Псевдо-код
+SELECT COUNT(*) FROM Referrals WHERE ref_id = '123456'
