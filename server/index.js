@@ -17,3 +17,7 @@ app.use('/api', addProduct);
 const createOrder = require('./api/create-order');
 app.use(express.json());
 app.use('/api', createOrder);
+
+const addTech = require('./api/add-tech');
+app.use(express.json());
+app.use('/api', addTech);
