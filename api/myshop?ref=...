@@ -1,0 +1,25 @@
+app.get('/api/myshop', async (req, res) => {
+  const ref = req.query.ref;
+  if (!ref) return res.status(400).json({ error: 'Missing ref' });
+
+  try {
+    const records = await base('Products').select({
+      filterByFormula: `{ref_id} = '${ref}'`,
+      sort: [{ field: 'timestamp', direction: 'desc' }],
+      maxRecords: 50
+    }).all();
+
+    const products = records.map(r => ({
+      name: r.fields.name,
+      region: r.fields.region,
+      price: r.fields.price,
+      unit: r.fields.unit,
+      contact: r.fields.contact
+    }));
+
+    res.json({ products });
+  } catch (err) {
+    console.error('❌ MyShop error:', err);
+    res.status(500).json({ error: 'Failed to fetch products' });
+  }
+});
