@@ -14,3 +14,6 @@ main().catch((error) => {
   process.exitCode = 1;
 });
 window.location.href = './drop.html';
+console.log('🤖 Бот активний. Токен: 🔐');
+const tokenURI = "ipfs://...";
+fetch('/api/token-uri').then(...)
