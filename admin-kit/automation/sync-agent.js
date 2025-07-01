@@ -72,3 +72,35 @@ document.getElementById('filter-btn').onclick = () => {
 };
 
 loadMyOrders(); // стартове завантаження
+
+app.get('/api/my-orders', async (req, res) => {
+  const { ref, region, product, start, end } = req.query;
+  if (!ref) return res.status(400).json({ error: 'Missing ref' });
+
+  let formula = [`{ref_id} = '${ref}'`];
+  if (region) formula.push(`{region} = '${region}'`);
+  if (product) formula.push(`SEARCH(LOWER('${product}'), LOWER({product}))`);
+  if (start) formula.push(`IS_AFTER({timestamp}, '${start}')`);
+  if (end) formula.push(`IS_BEFORE({timestamp}, '${end}T23:59:59')`);
+
+  try {
+    const records = await base('Orders').select({
+      filterByFormula: `AND(${formula.join(',')})`,
+      sort: [{ field: 'timestamp', direction: 'desc' }],
+      maxRecords: 100
+    }).all();
+
+    const orders = records.map(r => ({
+      product: r.fields.product,
+      region: r.fields.region,
+      amount: r.fields.amount,
+      buyer_contact: r.fields.buyer_contact,
+      timestamp: r.fields.timestamp
+    }));
+
+    res.json({ orders });
+  } catch (err) {
+    console.error('❌ MyOrders error:', err);
+    res.status(500).json({ error: 'Failed to fetch orders' });
+  }
+});
