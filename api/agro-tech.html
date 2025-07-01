@@ -71,3 +71,33 @@
   </script>
 </body>
 </html>
+
+app.get('/api/agro-tech', async (req, res) => {
+  const { category, region } = req.query;
+
+  let formula = [];
+  if (category) formula.push(`{category} = '${category}'`);
+  if (region) formula.push(`{region} = '${region}'`);
+
+  try {
+    const records = await base('AgroTech').select({
+      filterByFormula: formula.length ? `AND(${formula.join(',')})` : undefined,
+      sort: [{ field: 'timestamp', direction: 'desc' }],
+      maxRecords: 100
+    }).all();
+
+    const items = records.map(r => ({
+      title: r.fields.title,
+      region: r.fields.region,
+      category: r.fields.category,
+      description: r.fields.description,
+      author: r.fields.author,
+      timestamp: r.fields.timestamp
+    }));
+
+    res.json({ items });
+  } catch (err) {
+    console.error('❌ AgroTech error:', err);
+    res.status(500).json({ error: 'Failed to fetch agro-tech items' });
+  }
+});
