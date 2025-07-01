@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🛒 Реєстрація продавця</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="landing-container">
+    <h1>🛒 Реєстрація продавця</h1>
+    <form id="register-form">
+      <label>📛 Назва компанії</label>
+      <input type="text" name="company" required />
+
+      <label>📍 Регіон</label>
+      <input type="text" name="region" required />
+
+      <label>📦 Тип продукції</label>
+      <input type="text" name="product" required />
+
+      <label>📞 Контакт</label>
+      <input type="text" name="contact" required />
+
+      <input type="hidden" name="ref" id="ref" />
+      <button type="submit">🚀 Зареєструватися</button>
+    </form>
+    <p id="status" style="margin-top: 12px;"></p>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    const ref = tg.initDataUnsafe?.user?.id || 'unknown';
+    document.getElementById('ref').value = ref;
+
+    document.getElementById('register-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const form = new FormData(e.target);
+      const data = Object.fromEntries(form.entries());
+
+      const res = await fetch('https://your-domain.com/api/register-seller', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      document.getElementById('status').textContent = result.success
+        ? '✅ Реєстрація успішна!'
+        : '❌ Помилка: ' + (result.error || 'Спробуйте пізніше');
+    };
+  </script>
+</body>
+</html>
