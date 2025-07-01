@@ -90,3 +90,33 @@ loadMyOrders(); // стартове завантаження
   </script>
 </body>
 </html>
+
+app.get('/api/my-orders', async (req, res) => {
+  const { ref, region, product } = req.query;
+  if (!ref) return res.status(400).json({ error: 'Missing ref' });
+
+  let formula = [`{ref_id} = '${ref}'`];
+  if (region) formula.push(`{region} = '${region}'`);
+  if (product) formula.push(`SEARCH(LOWER('${product}'), LOWER({product}))`);
+
+  try {
+    const records = await base('Orders').select({
+      filterByFormula: `AND(${formula.join(',')})`,
+      sort: [{ field: 'timestamp', direction: 'desc' }],
+      maxRecords: 100
+    }).all();
+
+    const orders = records.map(r => ({
+      product: r.fields.product,
+      region: r.fields.region,
+      amount: r.fields.amount,
+      buyer_contact: r.fields.buyer_contact,
+      timestamp: r.fields.timestamp
+    }));
+
+    res.json({ orders });
+  } catch (err) {
+    console.error('❌ MyOrders error:', err);
+    res.status(500).json({ error: 'Failed to fetch orders' });
+  }
+});
