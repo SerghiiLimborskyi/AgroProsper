@@ -13,3 +13,7 @@ const addProduct = require('./api/add-product');
 
 app.use(express.json());
 app.use('/api', addProduct);
+
+const createOrder = require('./api/create-order');
+app.use(express.json());
+app.use('/api', createOrder);
