@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🛒 DAO-стрічка продавців</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="landing-container">
+    <h1>🛒 Нові продавці DAO</h1>
+    <div id="feed">Завантаження...</div>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    fetch('https://your-domain.com/api/sellers-feed')
+      .then(res => res.json())
+      .then(data => {
+        const feed = document.getElementById('feed');
+        if (!Array.isArray(data.sellers) || data.sellers.length === 0) {
+          feed.textContent = 'Поки що немає продавців.';
+          return;
+        }
+
+        feed.innerHTML = data.sellers.map(seller => `
+          <div class="seller-card">
+            <h3>🏢 ${seller.company}</h3>
+            <p>📍 ${seller.region}</p>
+            <p>📦 ${seller.product}</p>
+            <p>📞 ${seller.contact}</p>
+            <p>🕒 ${new Date(seller.timestamp).toLocaleString()}</p>
+          </div>
+        `).join('');
+      })
+      .catch(() => {
+        document.getElementById('feed').textContent = '❌ Помилка при завантаженні.';
+      });
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🛒 DAO-стрічка продавців</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="landing-container">
+    <h1>🛒 Нові продавці DAO</h1>
+    <div id="feed">Завантаження...</div>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    fetch('https://your-domain.com/api/sellers-feed')
+      .then(res => res.json())
+      .then(data => {
+        const feed = document.getElementById('feed');
+        if (!Array.isArray(data.sellers) || data.sellers.length === 0) {
+          feed.textContent = 'Поки що немає продавців.';
+          return;
+        }
+
+        feed.innerHTML = data.sellers.map(seller => `
+          <div class="seller-card">
+            <h3>🏢 ${seller.company}</h3>
+            <p>📍 ${seller.region}</p>
+            <p>📦 ${seller.product}</p>
+            <p>📞 ${seller.contact}</p>
+            <p>🕒 ${new Date(seller.timestamp).toLocaleString()}</p>
+          </div>
+        `).join('');
+      })
+      .catch(() => {
+        document.getElementById('feed').textContent = '❌ Помилка при завантаженні.';
+      });
+  </script>
+</body>
+</html>
