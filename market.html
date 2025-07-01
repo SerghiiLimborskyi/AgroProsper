@@ -45,7 +45,22 @@
             return;
           }
 
-          container.innerHTML = data.products.map(p => `
+          container.innerHTML = data.products.map(p => container.innerHTML = data.products.map(p => {
+  const telLink = `https://t.me/${p.contact.replace('@', '')}`;
+  return `
+    <div class="product-card">
+      <h3>📦 ${p.name}</h3>
+      <p>📍 ${p.region}</p>
+      <p>💰 ${p.price} грн / ${p.unit}</p>
+      <p>📞 ${p.contact}</p>
+      <p>👤 ref: ${p.ref_id}</p>
+      <a href="${telLink}" target="_blank">
+        <button style="margin-top: 8px;">🛒 Купити</button>
+      </a>
+    </div>
+  `;
+}).join('');
+`
             <div class="product-card">
               <h3>📦 ${p.name}</h3>
               <p>📍 ${p.region}</p>
