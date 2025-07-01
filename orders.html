@@ -25,6 +25,44 @@
     const tg = window.Telegram.WebApp;
     tg.expand();
 
+    function loadOrders(region = '', product = '') {
+  const url = new URL('https://your-domain.com/api/orders');
+  if (region) url.searchParams.append('region', region);
+  if (product) url.searchParams.append('product', product);
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('orders');
+      if (!Array.isArray(data.orders) || data.orders.length === 0) {
+        container.textContent = '😔 Немає замовлень за цим фільтром.';
+        return;
+      }
+
+      container.innerHTML = data.orders.map(o => `
+        <div class="order-card">
+          <h3>📦 ${o.product}</h3>
+          <p>📍 ${o.region}</p>
+          <p>📐 ${o.amount}</p>
+          <p>📞 ${o.buyer_contact}</p>
+          <p>👤 ref: ${o.ref_id}</p>
+          <p>🕒 ${new Date(o.timestamp).toLocaleString()}</p>
+        </div>
+      `).join('');
+    })
+    .catch(() => {
+      document.getElementById('orders').textContent = '❌ Помилка при завантаженні.';
+    });
+}
+
+document.getElementById('filter-btn').onclick = () => {
+  const region = document.getElementById('region').value.trim();
+  const product = document.getElementById('product').value.trim();
+  loadOrders(region, product);
+};
+
+loadOrders(); // стартове завантаження
+
     fetch('https://your-domain.com/api/orders')
       .then(res => res.json())
       .then(data => {
