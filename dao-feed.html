@@ -87,3 +87,49 @@
   </script>
 </body>
 </html>
+
+<!-- Додай перед <div id="feed"> -->
+<label for="region-select">📍 Обрати регіон:</label>
+<select id="region-select">
+  <option value="">Усі регіони</option>
+  <option value="Київська обл.">Київська обл.</option>
+  <option value="Львівська обл.">Львівська обл.</option>
+  <option value="Вінницька обл.">Вінницька обл.</option>
+  <!-- Додай інші регіони за потреби -->
+</select>
+
+// Замість fetch(...) одразу
+function loadFeed(region = '') {
+  const url = region
+    ? `https://your-domain.com/api/sellers-feed?region=${encodeURIComponent(region)}`
+    : `https://your-domain.com/api/sellers-feed`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const feed = document.getElementById('feed');
+      if (!Array.isArray(data.sellers) || data.sellers.length === 0) {
+        feed.textContent = 'Немає продавців у цьому регіоні.';
+        return;
+      }
+
+      feed.innerHTML = data.sellers.map(seller => `
+        <div class="seller-card">
+          <h3>🏢 ${seller.company}</h3>
+          <p>📍 ${seller.region}</p>
+          <p>📦 ${seller.product}</p>
+          <p>📞 ${seller.contact}</p>
+          <p>🕒 ${new Date(seller.timestamp).toLocaleString()}</p>
+        </div>
+      `).join('');
+    })
+    .catch(() => {
+      document.getElementById('feed').textContent = '❌ Помилка при завантаженні.';
+    });
+}
+
+document.getElementById('region-select').onchange = (e) => {
+  loadFeed(e.target.value);
+};
+
+loadFeed(); // завантажити все при старті
