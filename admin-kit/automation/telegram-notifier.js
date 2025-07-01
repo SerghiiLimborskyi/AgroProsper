@@ -92,3 +92,5 @@ function showResult() {
   const mintLink = document.getElementById('mint-link');
   mintLink.href = `https://agroprosper.link/mint.html?score=${score}`;
 }
+
+npx dotenv-vault encrypt
