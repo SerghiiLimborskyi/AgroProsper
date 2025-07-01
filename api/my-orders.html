@@ -17,6 +17,7 @@
 <input type="date" id="end" />
 
 <button id="filter-btn">🔍 Фільтрувати</button>
+<button id="clear-btn">🧹 Очистити</button>
 
     
     <div id="orders">⏳ Завантаження...</div>
@@ -73,7 +74,14 @@ function loadMyOrders(region = '', product = '') {
     });
 }
 
-document.getElementById('filter-btn').onclick = () => {
+document.getElementById('filter-btn').onclick = document.getElementById('clear-btn').onclick = () => {
+  document.getElementById('region').value = '';
+  document.getElementById('product').value = '';
+  document.getElementById('start').value = '';
+  document.getElementById('end').value = '';
+  loadMyOrders(); // перезавантажити замовлення без фільтрів
+};
+() => {
   const region = document.getElementById('region').value.trim();
   const product = document.getElementById('product').value.trim();
   loadMyOrders(region, product);
