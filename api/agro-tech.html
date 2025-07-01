@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌿 DAO Агротехнології</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="landing-container">
+    <h1>🌿 DAO Агротехнології</h1>
+
+    <label for="category">🧪 Категорія:</label>
+    <select id="category">
+      <option value="">Усі</option>
+      <option value="Дрони">Дрони</option>
+      <option value="Біопрепарати">Біопрепарати</option>
+      <option value="Ґрунт">Ґрунт</option>
+      <option value="Прогнозування">Прогнозування</option>
+    </select>
+
+    <label for="region">📍 Регіон:</label>
+    <input type="text" id="region" placeholder="Напр. Вінницька обл." />
+
+    <button id="filter-btn">🔍 Фільтрувати</button>
+    <div id="tech-feed">⏳ Завантаження...</div>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    function loadTech(category = '', region = '') {
+      const url = new URL('https://your-domain.com/api/agro-tech');
+      if (category) url.searchParams.append('category', category);
+      if (region) url.searchParams.append('region', region);
+
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          const feed = document.getElementById('tech-feed');
+          if (!Array.isArray(data.items) || data.items.length === 0) {
+            feed.textContent = '😔 Немає агротехнологій за цим фільтром.';
+            return;
+          }
+
+          feed.innerHTML = data.items.map(item => `
+            <div class="tech-card">
+              <h3>🧪 ${item.title}</h3>
+              <p>📍 ${item.region}</p>
+              <p>📂 ${item.category}</p>
+              <p>📝 ${item.description}</p>
+              <p>👤 ${item.author}</p>
+              <p>🕒 ${new Date(item.timestamp).toLocaleString()}</p>
+            </div>
+          `).join('');
+        })
+        .catch(() => {
+          document.getElementById('tech-feed').textContent = '❌ Помилка при завантаженні.';
+        });
+    }
+
+    document.getElementById('filter-btn').onclick = () => {
+      const category = document.getElementById('category').value;
+      const region = document.getElementById('region').value.trim();
+      loadTech(category, region);
+    };
+
+    loadTech(); // стартове завантаження
+  </script>
+</body>
+</html>
