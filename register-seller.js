@@ -89,3 +89,18 @@ router.post('/register-seller', async (req, res) => {
 });
 
 module.exports = router;
+
+const DAO_GROUP_ID = process.env.TELEGRAM_DAO_GROUP_ID;
+
+const message = `🛒 *Нова реєстрація продавця!*\n\n🏢 *${company}*\n📍 ${region}\n📦 ${product}\n📞 ${contact}\n👤 ref: ${ref}`;
+
+// Надіслати в DAO-групу
+await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    chat_id: DAO_GROUP_ID,
+    text: message,
+    parse_mode: 'Markdown'
+  })
+});
