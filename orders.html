@@ -10,8 +10,16 @@
 <body>
   <div id="landing-container">
     <h1>📋 DAO-замовлення</h1>
+    
     <div id="orders">⏳ Завантаження...</div>
   </div>
+<label for="region">📍 Регіон:</label>
+<input type="text" id="region" placeholder="Напр. Київська обл." />
+
+<label for="product">📦 Товар:</label>
+<input type="text" id="product" placeholder="Напр. пшениця" />
+
+<button id="filter-btn">🔍 Фільтрувати</button>
 
   <script>
     const tg = window.Telegram.WebApp;
