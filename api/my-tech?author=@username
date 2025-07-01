@@ -1,0 +1,25 @@
+app.get('/api/my-tech', async (req, res) => {
+  const { author } = req.query;
+  if (!author) return res.status(400).json({ error: 'Missing author' });
+
+  try {
+    const records = await base('AgroTech').select({
+      filterByFormula: `{author} = '${author}'`,
+      sort: [{ field: 'timestamp', direction: 'desc' }],
+      maxRecords: 100
+    }).all();
+
+    const items = records.map(r => ({
+      title: r.fields.title,
+      category: r.fields.category,
+      region: r.fields.region,
+      description: r.fields.description,
+      timestamp: r.fields.timestamp
+    }));
+
+    res.json({ items });
+  } catch (err) {
+    console.error('❌ MyTech error:', err);
+    res.status(500).json({ error: 'Failed to fetch tech items' });
+  }
+});
