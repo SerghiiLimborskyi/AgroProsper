@@ -23,3 +23,33 @@ app.get('/api/my-tech', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch tech items' });
   }
 });
+
+app.get('/api/my-tech', async (req, res) => {
+  const { author, category, region } = req.query;
+  if (!author) return res.status(400).json({ error: 'Missing author' });
+
+  let formula = [`{author} = '${author}'`];
+  if (category) formula.push(`{category} = '${category}'`);
+  if (region) formula.push(`{region} = '${region}'`);
+
+  try {
+    const records = await base('AgroTech').select({
+      filterByFormula: `AND(${formula.join(',')})`,
+      sort: [{ field: 'timestamp', direction: 'desc' }],
+      maxRecords: 100
+    }).all();
+
+    const items = records.map(r => ({
+      title: r.fields.title,
+      category: r.fields.category,
+      region: r.fields.region,
+      description: r.fields.description,
+      timestamp: r.fields.timestamp
+    }));
+
+    res.json({ items });
+  } catch (err) {
+    console.error('❌ MyTech error:', err);
+    res.status(500).json({ error: 'Failed to fetch tech items' });
+  }
+});
