@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🛡️ Статус токенів</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div id="landing-container">
+    <h1>🛡️ Статус токенів</h1>
+
+    <div id="status-block">
+      <p>🔄 Остання перевірка: <span id="last-scan">⏳</span></p>
+      <p>🧪 Виявлено токенів: <span id="found">⏳</span></p>
+      <p>📁 Перевірено файлів: <span id="files">⏳</span></p>
+    </div>
+
+    <button id="scan-btn">🔍 Запустити перевірку</button>
+    <p id="scan-result" style="margin-top: 12px;"></p>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    function loadStatus() {
+      fetch('https://your-domain.com/api/token-status')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('last-scan').textContent = new Date(data.lastScan).toLocaleString();
+          document.getElementById('found').textContent = data.tokensFound;
+          document.getElementById('files').textContent = data.filesScanned;
+        })
+        .catch(() => {
+          document.getElementById('status-block').textContent = '❌ Помилка при завантаженні статусу.';
+        });
+    }
+
+    document.getElementById('scan-btn').onclick = async () => {
+      document.getElementById('scan-result').textContent = '⏳ Сканування...';
+      const res = await fetch('https://your-domain.com/api/scan-now');
+      const result = await res.json();
+      document.getElementById('scan-result').textContent = result.success
+        ? '✅ Сканування завершено. Оновлено статус.'
+        : '❌ Помилка при скануванні.';
+      loadStatus();
+    };
+
+    loadStatus();
+  </script>
+</body>
+</html>
