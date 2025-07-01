@@ -108,4 +108,8 @@ router.post('/add-tech', async (req, res) => {
   }
 });
 
+const addTech = require('./api/add-tech');
+app.use(express.json());
+app.use('/api', addTech);
+
 module.exports = router;
