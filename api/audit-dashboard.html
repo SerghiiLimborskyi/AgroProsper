@@ -98,3 +98,8 @@ if (!user) {
   </script>
 </body>
 </html>
+
+const user = tg.initDataUnsafe?.user;
+if (user) {
+  document.querySelector('h1').textContent += ` для ${user.first_name}`;
+}
