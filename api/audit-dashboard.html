@@ -9,6 +9,15 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 const tg = window.Telegram.WebApp;
 tg.expand();
+fetch('/api/log-auth', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    telegramId: tg.initDataUnsafe?.user?.id,
+    name: tg.initDataUnsafe?.user?.first_name,
+    username: tg.initDataUnsafe?.user?.username
+  })
+});
 
 const user = tg.initDataUnsafe?.user;
 if (!user) {
