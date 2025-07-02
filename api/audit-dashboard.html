@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📊 DAO Audit Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="landing-container">
+    <h1>📊 DAO Audit Dashboard</h1>
+
+    <section>
+      <h2>🛡️ Безпека токенів</h2>
+      <p>Остання перевірка: <span id="last-scan">⏳</span></p>
+      <p>🔐 Виявлено токенів: <span id="tokens-found">⏳</span></p>
+      <p>📁 Перевірено файлів: <span id="files-scanned">⏳</span></p>
+    </section>
+
+    <section>
+      <h2>📈 Мінти NFT</h2>
+      <canvas id="mintChart" height="60"></canvas>
+    </section>
+
+    <section>
+      <h2>📁 Перевірені файли</h2>
+      <canvas id="fileChart" height="60"></canvas>
+    </section>
+
+    <section>
+      <h2>🏆 DAO-нагороди</h2>
+      <div id="top-rewards">⏳ Завантаження...</div>
+    </section>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    async function loadStatus() {
+      const res = await fetch('/api/token-status');
+      const data = await res.json();
+      document.getElementById('last-scan').textContent = new Date(data.lastScan).toLocaleString();
+      document.getElementById('tokens-found').textContent = data.tokensFound;
+      document.getElementById('files-scanned').textContent = data.filesScanned;
+    }
+
+    async function loadChart(id, url, label, color) {
+      const res = await fetch(url);
+      const data = await res.json();
+      const ctx = document.getElementById(id).getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: data.map(d => new Date(d.date).toLocaleDateString()),
+          datasets: [{
+            label,
+            data: data.map(d => d.count),
+            borderColor: color,
+            backgroundColor: color + '33',
+            tension: 0.3,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: { display: false }
+          }
+        }
+      });
+    }
+
+    async function loadTopRewards() {
+      const res = await fetch('/api/top-rewards');
+      const data = await res.json();
+      document.getElementById('top-rewards').innerHTML = data.map(r => `
+        <p>🏅 ${r.reward} — ${r.count} мінтів</p>
+      `).join('');
+    }
+
+    loadStatus();
+    loadChart('mintChart', '/api/mint-history', '🏆 Мінтів', '#4CAF50');
+    loadChart('fileChart', '/api/file-history', '📁 Перевірено файлів', '#2196F3');
+    loadTopRewards();
+  </script>
+</body>
+</html>
