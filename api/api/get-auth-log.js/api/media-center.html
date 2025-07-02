@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎮 DAO Media Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="landing-container">
+    <h1>🎮 DAO Media Center</h1>
+    <p>Переглянь усі DAO-ігри, відео, графіки та звіти:</p>
+
+    <section>
+      <h2>🎮 DAO-ігри</h2>
+      <ul>
+        <li><a href="/games/dao-of-crops.html" target="_blank">DAO of Crops</a></li>
+        <li><a href="/games/agro-mystery.html" target="_blank">AgroMystery</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📽️ Відео-презентації</h2>
+      <ul>
+        <li><a href="https://youtube.com/@AgroProsper" target="_blank">YouTube канал AgroProsper</a></li>
+        <li><a href="/exports/dao-promo.mp4" target="_blank">🎬 DAO Promo Video</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📊 DAO-графіки</h2>
+      <ul>
+        <li><a href="/mint-log.html" target="_blank">🏆 Графік мінтів</a></li>
+        <li><a href="/auth-log.html" target="_blank">🔐 Графік входів</a></li>
+        <li><a href="/audit-dashboard.html" target="_blank">📈 Audit Dashboard</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📄 Звіти PDF</h2>
+      <ul>
+        <li><a href="/export-center.html" target="_blank">📤 Центр експорту</a></li>
+        <li><a href="/export-history.html" target="_blank">📋 Історія експорту</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+  </script>
+</body>
+</html>
