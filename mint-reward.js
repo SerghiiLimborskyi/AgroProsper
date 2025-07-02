@@ -22,6 +22,9 @@ router.post('/mint-reward', async (req, res) => {
         'Authorization': `Bearer ${TON_API_KEY}`,
         'Content-Type': 'application/json'
       },
+      const { logMint } = require('./log-mint');
+await logMint({ wallet, game: 'DAO of Crops', reward: 'Top Farmer NFT' });
+
       body: JSON.stringify({
         to: wallet,
         contract: NFT_CONTRACT_ADDRESS,
