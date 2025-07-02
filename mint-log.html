@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📋 Журнал мінтів</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="landing-container">
+    <h1>📋 Журнал мінтів NFT</h1>
+    <div id="mint-log">⏳ Завантаження...</div>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    fetch('https://your-domain.com/api/mint-log')
+      .then(res => res.json())
+      .then(data => {
+        const log = document.getElementById('mint-log');
+        if (!Array.isArray(data.items) || data.items.length === 0) {
+          log.textContent = '😔 Мінтів ще не було.';
+          return;
+        }
+
+        log.innerHTML = data.items.map(item => `
+          <div class="mint-card">
+            <p>🧑‍🌾 <strong>${item.wallet}</strong></p>
+            <p>🎮 ${item.game}</p>
+            <p>🏆 ${item.reward}</p>
+            <p>🕒 ${new Date(item.timestamp).toLocaleString()}</p>
+          </div>
+        `).join('');
+      })
+      .catch(() => {
+        document.getElementById('mint-log').textContent = '❌ Помилка при завантаженні.';
+      });
+  </script>
+</body>
+</html>
