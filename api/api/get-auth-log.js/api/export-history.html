@@ -102,3 +102,18 @@ loadExportLog(); // стартове завантаження
     }
   ]
 }
+
+const { report, username, date } = req.query;
+let formula = [];
+
+if (report) formula.push(`FIND("${report}", {Report})`);
+if (username) formula.push(`FIND("${username}", {Username})`);
+if (date) formula.push(`IS_SAME(DATETIME_FORMAT({Timestamp}, 'YYYY-MM-DD'), "${date}")`);
+
+const filterFormula = formula.length ? `AND(${formula.join(',')})` : undefined;
+
+const records = await base('ExportLog').select({
+  filterByFormula: filterFormula,
+  sort: [{ field: 'Timestamp', direction: 'desc' }],
+  maxRecords: 100
+}).all();
