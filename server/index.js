@@ -21,3 +21,7 @@ app.use('/api', createOrder);
 const addTech = require('./api/add-tech');
 app.use(express.json());
 app.use('/api', addTech);
+
+const mintReward = require('./api/mint-reward');
+app.use(express.json());
+app.use('/api', mintReward);
