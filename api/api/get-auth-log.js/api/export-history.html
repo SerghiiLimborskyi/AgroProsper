@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📄 Історія експорту DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="landing-container">
+    <h1>📄 Історія експорту DAO</h1>
+    <div id="export-log">⏳ Завантаження...</div>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    fetch('/api/export-history')
+      .then(res => res.json())
+      .then(data => {
+        const log = document.getElementById('export-log');
+        if (!Array.isArray(data.items) || data.items.length === 0) {
+          log.textContent = '😔 Експортів ще не було.';
+          return;
+        }
+
+        log.innerHTML = data.items.map(item => `
+          <div class="export-card">
+            <p>📄 <strong>${item.report}</strong></p>
+            <p>🧑‍💻 ${item.name} (${item.username || '—'})</p>
+            <p>🕒 ${new Date(item.timestamp).toLocaleString()}</p>
+            <p>🔗 <a href="${item.url}" target="_blank">Завантажити PDF</a></p>
+          </div>
+        `).join('');
+      })
+      .catch(() => {
+        document.getElementById('export-log').textContent = '❌ Помилка при завантаженні.';
+      });
+  </script>
+</body>
+</html>
