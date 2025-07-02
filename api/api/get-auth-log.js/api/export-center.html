@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📤 DAO Export Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="landing-container">
+    <h1>📤 DAO Export Center</h1>
+    <p>Завантаж звіти DAO у форматі PDF:</p>
+
+    <ul>
+      <li>🔐 <a href="/exports/auth-log.pdf" target="_blank">Журнал входів</a></li>
+      <li>🏆 <a href="/exports/mint-log.pdf" target="_blank">Журнал мінтів</a></li>
+      <li>📊 <a href="/exports/audit-report.pdf" target="_blank">Звіт аудиту</a></li>
+      <li>🎮 <a href="/exports/game-stats.pdf" target="_blank">DAO-ігри та нагороди</a></li>
+    </ul>
+
+    <p>🕒 Оновлено: <span id="last-updated">⏳</span></p>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    fetch('/api/export-status')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('last-updated').textContent =
+          new Date(data.lastUpdated).toLocaleString();
+      });
+  </script>
+</body>
+</html>
