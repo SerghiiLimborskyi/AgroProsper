@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <meta charset="UTF-8" />
   <title>📋 Журнал мінтів</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,6 +13,33 @@ function loadMintLog(filters = {}) {
   if (filters.wallet) url.searchParams.append('wallet', filters.wallet);
   if (filters.game) url.searchParams.append('game', filters.game);
   if (filters.date) url.searchParams.append('date', filters.date);
+<h2>📈 Графік мінтів за 7 днів</h2>
+<canvas id="mintChart" width="100%" height="60"></canvas>
+function loadMintChart() {
+  fetch('https://your-domain.com/api/mint-history')
+    .then(res => res.json())
+    .then(data => {
+      const ctx = document.getElementById('mintChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: data.map(d => new Date(d.date).toLocaleDateString()),
+          datasets: [{
+            label: '🏆 Мінтів',
+            data: data.map(d => d.count),
+            backgroundColor: '#4CAF50'
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: { display: true, text: 'DAO-мінти за останні 7 днів' }
+          }
+        }
+      });
+    });
+}
 
   fetch(url)
     .then(res => res.json())
