@@ -44,3 +44,6 @@ function startWatch() {
 
 startWatch();
 setInterval(startWatch, INTERVAL);
+
+const { logScan } = require('./log-token');
+logScan({ tokensFound: totalFound, filesScanned: totalFiles });
