@@ -48,3 +48,5 @@ generateGame({
   mechanic: 'керуй посівами, продавай врожай, отримуй бейджі',
   reward: 'NFT-бейдж “Top Farmer”'
 });
+
+play-game.html?title=DAO%20of%20Crops&genre=Стратегія&setting=ринок%20фермерів&mechanic=продай%20врожай&reward=NFT%20Top%20Farmer
