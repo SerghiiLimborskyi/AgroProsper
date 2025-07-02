@@ -8,3 +8,17 @@
     }
   ]
 }
+const { wallet, game, date } = req.query;
+let formula = [];
+
+if (wallet) formula.push(`FIND("${wallet}", {Wallet})`);
+if (game) formula.push(`FIND("${game}", {Game})`);
+if (date) formula.push(`IS_SAME(DATETIME_FORMAT({Timestamp}, 'YYYY-MM-DD'), "${date}")`);
+
+const filterFormula = formula.length ? `AND(${formula.join(',')})` : undefined;
+
+const records = await base('MintLog').select({
+  filterByFormula: filterFormula,
+  sort: [{ field: 'Timestamp', direction: 'desc' }],
+  maxRecords: 100
+}).all();
