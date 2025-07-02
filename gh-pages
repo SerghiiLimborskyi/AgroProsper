@@ -1,0 +1,6 @@
+git checkout --orphan gh-pages
+git rm -rf .
+echo "<h1>AgroProsper авто-деплой</h1>" > index.html
+git add index.html
+git commit -m "Створено базу для авто-деплою"
+git push origin gh-pages
