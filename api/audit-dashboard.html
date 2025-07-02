@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="../style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+const tg = window.Telegram.WebApp;
+tg.expand();
+
+const user = tg.initDataUnsafe?.user;
+if (!user) {
+  document.body.innerHTML = '<h2>⛔ Доступ лише через Telegram WebApp</h2>';
+  throw new Error('Unauthorized access');
+}
+
 </head>
 <body>
   <div id="landing-container">
