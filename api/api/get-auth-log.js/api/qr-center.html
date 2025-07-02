@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📲 DAO QR Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="landing-container">
+    <h1>📲 DAO QR Center</h1>
+    <p>Скануй, грай, переглядай, отримуй:</p>
+
+    <section>
+      <h2>🎮 DAO-ігри</h2>
+      <div class="qr-block">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://your-domain.com/games/dao-of-crops.html" alt="QR DAO of Crops" />
+        <p><a href="/games/dao-of-crops.html" target="_blank">DAO of Crops</a></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>🏆 NFT-мінтинг</h2>
+      <div class="qr-block">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://your-domain.com/mint-reward.html" alt="QR Mint" />
+        <p><a href="/mint-reward.html" target="_blank">Отримати NFT</a></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>📇 DAO-профіль</h2>
+      <div class="qr-block">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://your-domain.com/profile/limborskyi.html" alt="QR Профіль" />
+        <p><a href="/profile/limborskyi.html" target="_blank">Профіль Лімборського</a></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>🎬 DAO-трейлер</h2>
+      <div class="qr-block">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://your-domain.com/exports/limborskyi-trailer.mp4" alt="QR Трейлер" />
+        <p><a href="/exports/limborskyi-trailer.mp4" target="_blank">🎥 Переглянути трейлер</a></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>📄 PDF-звіти</h2>
+      <div class="qr-block">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://your-domain.com/exports/auth-log.pdf" alt="QR Auth Log" />
+        <p><a href="/exports/auth-log.pdf" target="_blank">Журнал входів</a></p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+  </script>
+</body>
+</html>
 
