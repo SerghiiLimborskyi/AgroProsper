@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎮 DAO Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="game-container">
+    <h1 id="game-title">🎮 DAO Game</h1>
+    <p><strong>Жанр:</strong> <span id="genre">⏳</span></p>
+    <p><strong>Сеттінг:</strong> <span id="setting">⏳</span></p>
+    <p><strong>Механіка:</strong> <span id="mechanic">⏳</span></p>
+    <p><strong>Нагорода:</strong> <span id="reward">⏳</span></p>
+
+    <button id="start-btn">🚀 Почати гру</button>
+    <div id="game-output" style="margin-top: 20px;"></div>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get('title') || 'DAO Game';
+    const genre = params.get('genre') || 'Стратегія';
+    const setting = params.get('setting') || 'фермерський DAO-світ';
+    const mechanic = params.get('mechanic') || 'керуй посівами, продавай врожай';
+    const reward = params.get('reward') || 'NFT-бейдж “Top Farmer”';
+
+    document.getElementById('game-title').textContent = title;
+    document.getElementById('genre').textContent = genre;
+    document.getElementById('setting').textContent = setting;
+    document.getElementById('mechanic').textContent = mechanic;
+    document.getElementById('reward').textContent = reward;
+
+    document.getElementById('start-btn').onclick = () => {
+      document.getElementById('game-output').innerHTML = `
+        <p>🔍 Ви починаєте DAO-пригоду в світі <strong>${setting}</strong>.</p>
+        <p>🎯 Завдання: ${mechanic}</p>
+        <p>🏆 Успішне завершення — ${reward}</p>
+      `;
+    };
+  </script>
+</body>
+</html>
