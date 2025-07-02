@@ -3,6 +3,34 @@
 <head>
   <h2>📁 Графік перевірених файлів</h2>
 <canvas id="fileChart" width="100%" height="60"></canvas>
+function loadFileChart() {
+  fetch('https://your-domain.com/api/file-history')
+    .then(res => res.json())
+    .then(data => {
+      const ctx = document.getElementById('fileChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: data.map(d => new Date(d.date).toLocaleDateString()),
+          datasets: [{
+            label: '📁 Перевірено файлів',
+            data: data.map(d => d.count),
+            borderColor: '#2196F3',
+            backgroundColor: 'rgba(33, 150, 243, 0.2)',
+            tension: 0.3,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: { display: true, text: 'DAO-нагляд: обсяг перевірок' }
+          }
+        }
+      });
+    });
+}
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
