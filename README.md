@@ -8,6 +8,37 @@
 
 **AgroProsper** – це автоматизована AI-платформа, що допомагає фермерам аналізувати ринок, оптимізувати продажі та контролювати фінанси.
 
+# 🌾 AgroProsper — DAO WebApp для фермерських ініціатив
+
+AgroProsper — це децентралізована платформа для голосування, ідентифікації, доступу до документації та взаємодії з DAO-ком’юніті.
+
+Сайт розгорнуто через **GitHub Pages із папки `/docs/`** — і відкривається за адресою:  
+🔗 https://serghiilimborskyi.github.io/AgroProsper/
+
+---
+
+## 🧩 Структура репозиторію
+
+```bash
+AgroProsper/
+├── docs/                 # 🌐 WebApp — головна директорія для GitHub Pages
+│   ├── index.html        # 🎯 Головна сторінка WebApp
+│   ├── start.html        # 🎬 Старт DAO-панелі
+│   ├── vote.html         # 🗳️ Голосування з OTP
+│   ├── card.html         # 📘 DAO-картка учасника
+│   ├── gov-access.html   # 🔐 Панель адміністрування / gov
+│   ├── qr.html           # 📲 Центр QR і Telegram команд
+│   ├── media-center.html # 🎞️ Всі трейлери і гіди
+│   ├── assets/           # 🎨 Зображення, стилі
+│   ├── scripts/          # ⚙️ JavaScript логіка DAO
+│   ├── exports/          # 📦 ZIP-файли, PDF, трейлери
+│   └── docs/             # 📄 DAO-документи (етика, правила, whitepaper)
+├── .github/              # 🤖 GitHub Actions та шаблони PR
+│   └── workflows/
+│       └── deploy.yml    # 🔁 Авто-деплой у gh-pages (опційно)
+├── README.md             # 📘 Опис проєкту AgroProsper
+└── LICENSE               # ⚖️ Ліцензія (якщо буде додана)
+
 ## 🚦 CI/CD Status
 
 ## 🌍 Live Deployment
