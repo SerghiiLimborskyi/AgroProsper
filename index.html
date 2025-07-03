@@ -324,3 +324,13 @@ jobs:
   </body>
 </html>
 
+// telegram-notifier.js
+const axios = require('axios')
+bot.command('status-web', async (ctx) => {
+  const res = await axios.get('https://serghiilimborskyi.github.io/AgroProsper/')
+  if (res.data.includes('AgroProsper') || res.status === 200) {
+    ctx.reply('✅ Сайт AgroProsper онлайн\n🌐 https://serghiilimborskyi.github.io/AgroProsper/')
+  } else {
+    ctx.reply('❌ Сайт не розгорнуто або в режимі очікування')
+  }
+})
