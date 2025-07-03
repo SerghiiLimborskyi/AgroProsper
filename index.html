@@ -334,3 +334,18 @@ bot.command('status-web', async (ctx) => {
     ctx.reply('❌ Сайт не розгорнуто або в режимі очікування')
   }
 })
+
+<!-- 🟢 DAO Autodeploy Indicator -->
+<div style="font-size: 0.9em; color: #4CAF50; padding: 10px; text-align: center;">
+  🟢 WebApp оновлено автоматично: 
+  <span id="last-updated">завантаження...</span>
+</div>
+
+<script>
+  // Вставляє дату останнього оновлення (загальна оцінка по кешу браузера)
+  const lastUpdated = new Date(document.lastModified);
+  document.getElementById("last-updated").textContent = lastUpdated.toLocaleString("uk-UA", {
+    day: '2-digit', month: '2-digit', year: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  });
+</script>
