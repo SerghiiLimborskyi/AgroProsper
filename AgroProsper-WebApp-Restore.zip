@@ -1,0 +1,12 @@
+docs/
+├── index.html              # 🌐 Головна WebApp-сторінка
+├── start.html              # 🎬 Стартова панель
+├── vote.html               # 🗳️ Голосування
+├── card.html               # 📘 DAO-картка учасника
+├── gov-access.html         # 🔐 Панель управління DAO
+├── qr.html                 # 📲 Центр QR-кодування
+├── media-center.html       # 🎞️ Всі трейлери + PDF
+├── assets/                 # 🎨 Стилі, логотипи, фон
+├── scripts/                # ⚙️ JavaScript логіка
+├── exports/                # 📦 ZIP, PDF, трейлери
+└── docs/                   # 📄 Ліцензії, whitepaper DAO
