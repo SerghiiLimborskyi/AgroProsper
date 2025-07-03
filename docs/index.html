@@ -19,6 +19,33 @@
 
   <style>
     body {
+     <!-- 🌱 Created by Partner #1 (Szczecin) -->
+<div style="text-align: center; padding: 1em;">
+  <h1>🌾 AgroProsper DAO WebApp</h1>
+  <p>Автономна панель взаємодії з DAO-системою AgroProsper</p>
+
+  <div style="margin-top: 1.5em;">
+    <a href="start.html" class="btn">🚀 Старт</a>
+    <a href="vote.html" class="btn">🗳️ Голосування</a>
+    <a href="card.html" class="btn">📘 DAO-картка</a>
+    <a href="media-center.html" class="btn">🎞️ Трейлер / PDF</a>
+    <a href="qr.html" class="btn">📲 Команди / QR</a>
+  </div>
+
+  <div style="margin-top: 2em; font-size: 0.9em; color: #4CAF50;">
+    🟢 WebApp оновлено автоматично: 
+    <span id="last-updated">завантаження...</span>
+  </div>
+</div>
+
+<script>
+  const lastUpdated = new Date(document.lastModified);
+  document.getElementById("last-updated").textContent = lastUpdated.toLocaleString("uk-UA", {
+    day: '2-digit', month: '2-digit', year: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  });
+</script>
+ 
       font-family: sans-serif;
       text-align: center;
       padding: 2em;
