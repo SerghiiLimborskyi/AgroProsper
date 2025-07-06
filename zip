@@ -1,0 +1,7 @@
+<svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+  <rect width="280" height="280" fill="#34a853" rx="14"/>
+  <circle cx="140" cy="140" r="110" fill="#34a853" stroke="#228B22" stroke-width="10"/>
+  <text x="140" y="155" font-family="Verdana" font-size="22" fill="white" text-anchor="middle">
+    🏅 Top Farmer
+  </text>
+</svg>
