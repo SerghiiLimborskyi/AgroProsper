@@ -1,0 +1,74 @@
+Для статичних сайтів ідеально підходить nginx:
+# Вихідний образ
+FROM nginx:alpine
+
+# Копіюємо всі файли сайту в стандартну директорію nginx
+COPY . /usr/share/nginx/html
+
+# Відкриваємо порт 80
+EXPOSE 80
+
+# Запуск nginx (дефолтна команда)
+CMD ["nginx", "-g", "daemon off;"]
+
+
+Побудувати образ
+docker build -t agroprosper .
+
+
+Запустити контейнер
+docker run -p 8080:80 agroprosper
+
+
+Відкрити сайт у браузері:
+ http://localhost:8080
+------------------------------
+
+package.json для простого live-сервера
+Можна використати live-server для локального запуску:
+
+{
+  "name": "agroprosper",
+  "version": "1.0.0",
+  "description": "AgroProsper – автоматизована AI-платформа для агробізнесу",
+  "scripts": {
+    "start": "live-server --port=8080 --open=./index.html"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
+
+
+
+
+Встановити залежності:
+ш
+
+npm install
+
+
+Запустити сайт:
+npm start
+
+------------
+
+
+Як запустити локально:
+Сайт вже доступний онлайн:
+https://serghiilimborskyi.github.io/AgroProsper
+
+Для локального перегляду:
+
+Клонуй репозиторій:
+ш
+git clone https://github.com/SerghiiLimborskyi/AgroProsper.git
+cd AgroProsper
+
+
+
+важно HTML/JS/CSS, достатньо відкрити у браузері або скористатися простим локальним сервером (наприклад, через Python):index.html
+
+
+
+Потім відкрий у браузері: http://localhost:8000

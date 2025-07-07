@@ -1,0 +1,47 @@
+{
+  "files": [
+    "backend/index.js",
+    "backend/logger.js",
+    "admin-metrics.html",
+    "scripts/generate-token.js",
+    ".github/workflows/auth-check.yml"
+  ],
+  "mustContain": {
+    "backend/index.js": ["/metrics", "/logs", "/health"]
+  }
+}
+# Architecture Overview
+
+Below is a high-level architecture overview represented using a Mermaid diagram.
+
+```mermaid
+graph TD
+    Client[Client Application]
+    API[REST API Layer]
+    Auth[Authentication Service]
+    DB[(Database)]
+    Cache[Cache Layer]
+    MQ[Message Queue]
+    Worker[Background Worker]
+    ExtAPI[External API]
+
+    Client -->|HTTP Requests| API
+    API -->|Authenticate| Auth
+    API -->|Read/Write| DB
+    API -->|Cache Ops| Cache
+    API -->|Send Tasks| MQ
+    MQ --> Worker
+    Worker -->|External Calls| ExtAPI
+    Worker -->|DB Ops| DB
+    Auth --> DB
+```
+
+**Legend:**
+- **Client Application**: UI or frontend interface accessing the system.
+- **REST API Layer**: Handles client requests and business logic.
+- **Authentication Service**: Validates user credentials and manages sessions/tokens.
+- **Database**: Stores persistent data.
+- **Cache Layer**: Speeds up data access for frequent queries.
+- **Message Queue**: Decouples background tasks from main workflow.
+- **Background Worker**: Processes asynchronous jobs (e.g., sending emails, heavy computation).
+- **External API**: Integrations with third-party services.
