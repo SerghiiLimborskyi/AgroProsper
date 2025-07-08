@@ -1,4 +1,3 @@
-
 ---
 
 ⬇️ Можеш зберегти це як `docs/promo-install.md`, або я можу сформувати новий PR з ним — тільки скажи: **“Зроби PR з цим файлом”**  
@@ -8,7 +7,20 @@
 **#PromoInstallDoc #DocsLive #FromVideoToDocs**  
 ⠀  
 🚜 Let’s deploy, document, and dominate!  
-⠀  
+
+⠀ import uk from './locales/uk.json';
+import pl from './locales/pl.json';
+import en from './locales/en.json';
+
+const locales = { ua: uk, pl, en };
+
+function setBotLanguage(code) {
+  const lang = ['pl', 'en'].includes(code) ? code : 'ua';
+  const dict = locales[lang];
+  const t = (key) => key.split('.').reduce((o, k) => (o || {})[k], dict) || key;
+  return { lang, t };
+}
+ 
 ⠀  
 ⠀  
 ⠀  
