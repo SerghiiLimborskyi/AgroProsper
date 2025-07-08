@@ -43,3 +43,11 @@ const { lang, t } = await setLanguage();
 document.querySelector('h1').textContent = t('greeting');
 document.querySelector('button').textContent = t('menu.contact');
 </script>
+
+<script type="module">
+  import { setLanguage } from './scripts/lang-utils.js';
+
+  const { lang, t } = await setLanguage();
+  document.querySelector('h1').textContent = t('greeting');
+  document.querySelector('#contact-form button').textContent = t('form.submit');
+</script>
