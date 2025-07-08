@@ -2,93 +2,36 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>AgroProsper – Документація</title>
-  <meta name="description" content="Багатомовна політика, етика та governance AgroProsper — відкритий, етичний agrotech-проєкт." />
-  <meta name="keywords" content="AgroProsper, DAO, етика, агротек, governance, Web3, ліцензія" />
-  <meta name="author" content="AgroProsper DAO / Serhii Limborskyi" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- OG для соцмереж -->
-  <meta property="og:title" content="AgroProsper – Відкрите управління для фермерів" />
-  <meta property="og:description" content="Етика. DAO. Прозорість. Агроплатформа зі зрозумілою ліцензією та відкритим governance." />
-  <meta property="og:image" content="https://serghiilimborskyi.github.io/AgroProsper/docs/assets/preview.png" />
-  <meta property="og:url" content="https://serghiilimborskyi.github.io/AgroProsper/" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-
-  <style>
-    body {
-     <!-- 🌱 Created by Partner #1 (Szczecin) -->
-<div style="text-align: center; padding: 1em;">
-  <h1>🌾 AgroProsper DAO WebApp</h1>
-  <p>Автономна панель взаємодії з DAO-системою AgroProsper</p>
-
-  <div style="margin-top: 1.5em;">
-    <a href="start.html" class="btn">🚀 Старт</a>
-    <a href="vote.html" class="btn">🗳️ Голосування</a>
-    <a href="card.html" class="btn">📘 DAO-картка</a>
-    <a href="media-center.html" class="btn">🎞️ Трейлер / PDF</a>
-    <a href="qr.html" class="btn">📲 Команди / QR</a>
-  </div>
-
-  <div style="margin-top: 2em; font-size: 0.9em; color: #4CAF50;">
-    🟢 WebApp оновлено автоматично: 
-    <span id="last-updated">завантаження...</span>
-  </div>
-</div>
-
-<script>
-  const lastUpdated = new Date(document.lastModified);
-  document.getElementById("last-updated").textContent = lastUpdated.toLocaleString("uk-UA", {
-    day: '2-digit', month: '2-digit', year: 'numeric',
-    hour: '2-digit', minute: '2-digit'
-  });
-</script>
- 
-      font-family: sans-serif;
-      text-align: center;
-      padding: 2em;
-      background: #f5f9f2;
-      color: #333;
-    }
-    h1 { font-size: 2.5em; margin-bottom: 0.3em; }
-    .btn {
-      display: inline-block;
-      margin: 0.5em;
-      padding: 0.6em 1.2em;
-      background: #4CAF50;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-    .btn:hover { background: #388e3c; }
-  </style>
-
-  <script>
-    window.onload = function() {
-      const lang = navigator.language || navigator.userLanguage;
-      if (lang.startsWith('en')) {
-        window.location.href = "index.en.html";
-      }
-    };
-  </script>
+  <title>AgroProsper DAO</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="AgroProsper — фінансова підтримка фермерів через DAO" />
 </head>
-<div style="font-size: 0.9em; color: #4CAF50; text-align: center;">
-  🟢 WebApp оновлено автоматично: 
-  <span id="last-updated">завантаження...</span>
-</div>
-<script>
-  const lastUpdated = new Date(document.lastModified);
-  document.getElementById("last-updated").textContent = lastUpdated.toLocaleString("uk-UA", {
-    day: '2-digit', month: '2-digit', year: 'numeric',
-    hour: '2-digit', minute: '2-digit'
-  });
-</script>
+<body style="font-family: sans-serif; margin:0; background:#f9f9f9; color:#222;">
+  <header style="padding:2em; text-align:center; background:#eef9ee;">
+    <img src="images/agro-tree-logo.png" alt="AgroProsper Logo" style="max-width:200px; margin-bottom:1em;" />
+    <h1>AgroProsper — Платформа для фермерів</h1>
+    <p>Підтримка. Довіра. Ріст. 🌱</p>
+  </header>
 
-<body>
- 
-  </div>
-  <p>🇬🇧 Need English version? <a href="index.en.html">Click here</a></p>
+  <section style="padding:2em; text-align:center;">
+    <img src="images/promo-banner.jpg" alt="Promo Banner" style="width:100%; max-width:900px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);" />
+  </section>
+
+  <section style="padding:2em; max-width:700px; margin:0 auto;">
+    <h2>Зворотній зв'язок</h2>
+    <form>
+      <input type="text" placeholder="Ваше імʼя" required style="width:100%; margin-bottom:1em; padding:0.8em;" />
+      <input type="email" placeholder="Email" required style="width:100%; margin-bottom:1em; padding:0.8em;" />
+      <textarea placeholder="Повідомлення" required style="width:100%; margin-bottom:1em; padding:0.8em;" rows="4"></textarea>
+      <button type="submit" style="padding:1em 2em; background:#2a7f2e; color:#fff; border:none; border-radius:6px; cursor:pointer;">Надіслати</button>
+    </form>
+  </section>
+
+  <footer style="text-align:center; padding:2em; font-size:0.9em; color:#666;">
+    &copy; AgroProsper DAO — 2025. Всі права захищено.
+  </footer>
+
+  <script src="scripts/form-handler.js"></script>
 </body>
 </html>
