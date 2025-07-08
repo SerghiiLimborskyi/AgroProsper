@@ -264,3 +264,4 @@ git push
 
 ![CodeQL](https://github.com/SerghiiLimborskyi/AgroProsper/actions/workflows/codeql.yml/badge.svg)
 ![Secrets Check](https://github.com/SerghiiLimborskyi/AgroProsper/actions/workflows/secrets-check.yml/badge.svg)
+
