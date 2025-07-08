@@ -36,3 +36,69 @@
   <script src="scripts/form-handler.js"></script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>AgroProsper DAO</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header>
+    <img src="assets/agro-tree-logo.png" alt="Logo" style="height: 64px;" />
+    <h1 id="greeting">👋</h1>
+    <p id="intro"></p>
+  </header>
+
+  <section>
+    <img src="assets/promo-banner.jpg" alt="Banner" style="max-width: 100%;" />
+
+    <h2 id="form-title">📩</h2>
+    <form id="contact-form">
+      <label for="name" id="label-name"></label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email" id="label-email"></label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message" id="label-message"></label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit" id="submit-btn">📤</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 AgroProsper DAO</p>
+    <div>
+      <strong id="language-label">🌍</strong>
+      <button onclick="switchLang('ua')">UA</button>
+      <button onclick="switchLang('pl')">PL</button>
+      <button onclick="switchLang('en')">EN</button>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { setLanguage } from './scripts/lang-utils.js';
+
+    let t;
+    async function initLang(code = null) {
+      const { lang, t: translator } = await setLanguage(code);
+      t = translator;
+
+      document.getElementById('greeting').textContent = t('greeting');
+      document.getElementById('intro').textContent = 'AgroProsper DAO WebApp'; // можна теж локалізувати
+      document.getElementById('form-title').textContent = t('form.title');
+      document.getElementById('label-name').textContent = t('form.name');
+      document.getElementById('label-email').textContent = t('form.email');
+      document.getElementById('label-message').textContent = t('form.message');
+      document.getElementById('submit-btn').textContent = t('form.submit');
+      document.getElementById('language-label').textContent = t('menu.language');
+    }
+
+    window.switchLang = initLang;
+    initLang();
+  </script>
+</body>
+</html>
