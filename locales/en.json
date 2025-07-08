@@ -1,0 +1,12 @@
+{
+  "greeting": "👋 Welcome to AgroProsper DAO!",
+  "menu": {
+    "game": "🎮 Play",
+    "video": "🎬 Presentation",
+    "contact": "📲 Contact"
+  },
+  "thanks": "✅ Thank you for your message!",
+  "error": "⚠️ An error occurred. Please try again.",
+  "select_lang": "🌍 Choose your language:",
+  "fallback": "😅 I currently support Ukrainian, Polish and English only."
+}
