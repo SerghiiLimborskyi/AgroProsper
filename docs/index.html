@@ -1,72 +1,36 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroProsper DAO</title>
-  <link rel="stylesheet" href="style.css" />
-  <meta name="description" content="AgroProsper — фінансова підтримка фермерів через DAO" />
+  <meta charset="UTF-8">
+  <title>AgroProsper – DAO WebApp</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
-<body style="font-family: sans-serif; margin:0; background:#f9f9f9; color:#222;">
-  <header style="padding:2em; text-align:center; background:#eef9ee;">
-    <img src="images/agro-tree-logo.png" alt="AgroProsper Logo" style="max-width:200px; margin-bottom:1em;" />
-    <h1>AgroProsper — Платформа для фермерів</h1>
-    <p>Підтримка. Довіра. Ріст. 🌱</p>
+<body>
+  <header>
+    <img src="assets/agro-tree-logo.png" alt="Логотип AgroProsper" style="height: 64px;">
+    <h1>AgroProsper</h1>
+    <p>Автоматизована платформа для фермерських DAO</p>
   </header>
 
-  <section style="padding:2em; text-align:center;">
-    <img src="images/promo-banner.jpg" alt="Promo Banner" style="width:100%; max-width:900px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);" />
-  </section>
-
-  <section style="padding:2em; max-width:700px; margin:0 auto;">
-    <h2>Зворотній зв'язок</h2>
-    <form>
-      <input typ<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroProsper DAO</title>
-  <link rel="stylesheet" href="style.css" />
-  <meta name="description" content="AgroProsper — фінансова підтримка фермерів через DAO" />
-</head>
-<body style="font-family: sans-serif; margin:0; background:#f9f9f9; color:#222;">
-  <header style="padding:2em; text-align:center; background:#eef9ee;">
-    <img src="images/agro-tree-logo.png" alt="AgroProsper Logo" style="max-width:200px; margin-bottom:1em;" />
-    <h1>AgroProsper — Платформа для фермерів</h1>
-    <p>Підтримка. Довіра. Ріст. 🌱</p>
-  </header>
-
-  <section style="padding:2em; text-align:center;">
-    <img src="images/promo-banner.jpg" alt="Promo Banner" style="width:100%; max-width:900px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);" />
-  </section>
-
-  <section style="padding:2em; max-width:700px; margin:0 auto;">
-    <h2>Зворотній зв'язок</h2>
-    <form>
-      <input type="text" placeholder="Ваше імʼя" required style="width:100%; margin-bottom:1em; padding:0.8em;" />
-      <input type="email" placeholder="Email" required style="width:100%; margin-bottom:1em; padding:0.8em;" />
-      <textarea placeholder="Повідомлення" required style="width:100%; margin-bottom:1em; padding:0.8em;" rows="4"></textarea>
-      <button type="submit" style="padding:1em 2em; background:#2a7f2e; color:#fff; border:none; border-radius:6px; cursor:pointer;">Надіслати</button>
+  <section>
+    <img src="assets/promo-banner.jpg" alt="Промо Банер" style="max-width: 100%;">
+    <h2>Зворотній звʼязок</h2>
+    <form id="contact-form">
+      <label for="name">Імʼя:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="message">Повідомлення:</label>
+      <textarea id="message" name="message" required></textarea>
+      
+      <button type="submit">Надіслати</button>
     </form>
   </section>
 
-  <footer style="text-align:center; padding:2em; font-size:0.9em; color:#666;">
-    &copy; AgroProsper DAO — 2025. Всі права захищено.
-  </footer>
-
-  <script src="scripts/form-handler.js"></script>
-</body>
-</html>
-e="text" placeholder="Ваше імʼя" required style="width:100%; margin-bottom:1em; padding:0.8em;" />
-      <input type="email" placeholder="Email" required style="width:100%; margin-bottom:1em; padding:0.8em;" />
-      <textarea placeholder="Повідомлення" required style="width:100%; margin-bottom:1em; padding:0.8em;" rows="4"></textarea>
-      <button type="submit" style="padding:1em 2em; background:#2a7f2e; color:#fff; border:none; border-radius:6px; cursor:pointer;">Надіслати</button>
-    </form>
-  </section>
-
-  <footer style="text-align:center; padding:2em; font-size:0.9em; color:#666;">
-    &copy; AgroProsper DAO — 2025. Всі права захищено.
+  <footer>
+    <p>&copy; 2025 AgroProsper DAO. Всі права захищено.</p>
   </footer>
 
   <script src="scripts/form-handler.js"></script>
