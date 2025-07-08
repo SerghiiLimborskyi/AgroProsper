@@ -38,3 +38,6 @@ function walk(dir) {
 console.log('🛡️ Guardian Bot scanning...');
 walk(ROOT_DIR);
 console.log('✅ Scan complete.');
+
+const t = locales[userLang] || locales['ua'];
+bot.sendMessage(chatId, t.greeting);
