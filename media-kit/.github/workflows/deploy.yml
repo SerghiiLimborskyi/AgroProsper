@@ -23,3 +23,33 @@ jobs:
           git add .
           git commit -m "🔁 Auto-deploy from main branch"
           git push origin gh-pages
+
+name: 🔄 Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🧩 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: 🏗️ Upload `/docs` as artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: docs
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
