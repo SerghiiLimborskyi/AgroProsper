@@ -10,3 +10,43 @@
   "select_lang": "🌍 Choose your language:",
   "fallback": "😅 I currently support Ukrainian, Polish and English only."
 }
+
+{
+  "greeting": "👋 Welcome to AgroProsper DAO!",
+  "menu": {
+    "home": "🏠 Home",
+    "game": "🎮 Play",
+    "video": "🎬 Presentation",
+    "contact": "📲 Contact",
+    "language": "🌍 Language"
+  },
+  "form": {
+    "title": "Contact form",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Submit"
+  },
+  "form_response": {
+    "empty": "Please fill out all fields!",
+    "email_invalid": "📛 Email must contain '@'",
+    "success": "✅ Thank you, {{name}}! Your message has been sent."
+  },
+  "bot": {
+    "play": "🎮 Play now",
+    "video": "🎬 Watch video",
+    "contact": "📲 Message us on Telegram",
+    "thanks": "💚 Thanks for your feedback!",
+    "error": "⚠️ An error occurred. Please try again."
+  },
+  "game": {
+    "start": "🚜 Start Game",
+    "score": "🔢 Score: {{score}}",
+    "win": "🏆 Congratulations! You're Farmer of the Month!",
+    "retry": "🔁 Try again"
+  },
+  "misc": {
+    "select_lang": "🌍 Choose your language:",
+    "fallback": "😅 I currently support Ukrainian, Polish and English."
+  }
+}
