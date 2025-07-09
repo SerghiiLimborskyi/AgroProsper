@@ -128,3 +128,28 @@ bot.sendMessage(chatId, '🎬 Презентація AgroProsper DAO готов�
     ]]
   }
 });
+
+bot.sendMessage(chatId, '💚 AgroProsper – обери дію:', {
+  reply_markup: {
+    inline_keyboard: [
+      [
+        {
+          text: '📺 Відео презентація',
+          web_app: { url: 'https://serghiilimborskyi.github.io/AgroProsper/promo/' }
+        }
+      ],
+      [
+        {
+          text: '📄 PDF гайд',
+          url: 'https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest/download/agroprosper-presentation-full.pdf'
+        }
+      ],
+      [
+        {
+          text: '🎮 Грати в AgroTycoon',
+          web_app: { url: 'https://serghiilimborskyi.github.io/AgroProsper/promo/game/agrotycoon.html' }
+        }
+      ]
+    ]
+  }
+});
