@@ -347,3 +347,65 @@ AgroProsper презентує себе як багатомовна DAO-плат
 - 🎬 [Переглянути відео презентацію](https://serghiilimborskyi.github.io/AgroProsper/promo/)
 - 📄 [Завантажити PDF](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest/download/agroprosper-presentation-full.pdf)
 - 📦 [Promo ZIP v1.0](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest/download/promo-localized.zip)
+
+# 🌾 AgroProsper DAO WebApp
+
+AgroProsper — це децентралізована AI-платформа для фермерів, що допомагає:
+- Аналізувати ринок
+- Оптимізувати продажі
+- Контролювати фінанси
+- Спілкуватися через DAO-картки, голосування, чат-бот
+
+🔗 Сайт: [AgroProsper WebApp (GitHub Pages)](https://serghiilimborskyi.github.io/AgroProsper/)
+
+---
+
+## 🧩 Структура репозиторію
+
+
+---
+
+## 🚀 CI/CD та хостинг
+
+| Компонент         | Стан | Технологія         |
+|------------------|------|--------------------|
+| GitHub Pages     | ✅   | `/docs` → публікація сайту |
+| Azure Pipelines  | ✅   | `azure-pipeline.yml` |
+| GitHub Actions   | ✅   | `main.yml`, `deploy.yml` |
+| Static Web App   | ⏳   | Можна активувати через Azure |
+| Telegram Bot     | 🟢   | `telegram-notifier.js` |
+
+---
+
+## 🧠 Особливості AgroProsper
+
+- 🧾 Голосування з OTP (SMS або Telegram)
+- 📘 Ідентифікація через NFT-картку DAO
+- 🔒 Захист бізнес-звітів → доступ лише за ролями
+- 🧬 Soulbound-бейдж “Top Farmer” через QR-mint
+- 📦 Повний MediaKit (PDF, ZIP, презентації)
+
+---
+
+## 📌 Інструкції
+
+- ➡️ [azure-config.md](./azure-config.md) — кроки деплою в Azure  
+- ➡️ [Promo ZIP](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest) — трейлери, презентації, гайди  
+- ➡️ [Token Mint Page](https://serghiilimborskyi.github.io/AgroProsper/promo/sbt/mint.html) — SBT-дроп після гри
+
+---
+
+## 🧾 Ліцензія
+
+Проєкт публікується відповідно до умов [AGRO-LICENSE.uk.txt](./AGRO-LICENSE.uk.txt)
+
+---
+
+## 📣 Контакти
+
+- Telegram: [`@AgroProsperBot`](https://t.me/AgroProsperBot)  
+- Email: `agroprosper.dao@gmail.com`
+
+---
+
+> 🧑‍🌾 AgroProsper DAO — це не просто WebApp. Це прозора інфраструктура для нової фермерської епохи 💚
