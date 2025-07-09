@@ -94,3 +94,15 @@ function showResult() {
 }
 
 npx dotenv-vault encrypt
+
+const messagePromo = `
+🎬 AgroProsper DAO • Презентація
+
+👀 Переглянути відео: https://serghiilimborskyi.github.io/AgroProsper/promo/
+📄 PDF презентація: AgroProsper DAO Pitch (UA/PL/EN)
+📦 Завантажити: promo-localized.zip
+💬 Telegram Bot: @AgroProsperBot
+💚 Розумні фермери, децентралізовані рішення.
+`;
+
+bot.sendMessage(chatId, messagePromo);
