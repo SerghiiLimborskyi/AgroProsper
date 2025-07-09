@@ -284,3 +284,14 @@
   const target = langMap[lang] || 'uk';
   window.location.href = `/AgroProsper/promo/${target}/`;
 </script>
+
+bot.sendMessage(chatId, '🎬 Дивись презентацію AgroProsper DAO:', {
+  reply_markup: {
+    inline_keyboard: [[
+      {
+        text: '📺 Перейти до відео',
+        web_app: { url: 'https://serghiilimborskyi.github.io/AgroProsper/promo/' }
+      }
+    ]]
+  }
+});
