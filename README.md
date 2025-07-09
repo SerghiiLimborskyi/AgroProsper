@@ -339,3 +339,11 @@ AgroProsper презентує себе як багатомовна DAO-плат
 - 🎬 [Переглянути відео презентацію](https://serghiilimborskyi.github.io/AgroProsper/promo/)
 - 📄 [Завантажити PDF](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest/download/agroprosper-presentation-full.pdf)
 - 📦 [Promo ZIP v1.0](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest/download/promo-localized.zip)
+
+## 📽️ DAO-комунікація / Презентація AgroProsper
+
+AgroProsper презентує себе як багатомовна DAO-платформа через відео, PDF, ZIP-пакети та WebApp.
+
+- 🎬 [Переглянути відео презентацію](https://serghiilimborskyi.github.io/AgroProsper/promo/)
+- 📄 [Завантажити PDF](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest/download/agroprosper-presentation-full.pdf)
+- 📦 [Promo ZIP v1.0](https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest/download/promo-localized.zip)
