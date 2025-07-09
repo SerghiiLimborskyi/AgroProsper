@@ -106,3 +106,14 @@ const messagePromo = `
 `;
 
 bot.sendMessage(chatId, messagePromo);
+
+if (text === '!promo') {
+  bot.sendMessage(chatId, '🎬 AgroProsper DAO — презентація запущена!', {
+    reply_markup: {
+      inline_keyboard: [[
+        { text: '📺 Відео', web_app: { url: 'https://serghiilimborskyi.github.io/AgroProsper/promo/' } },
+        { text: '📄 PDF', url: 'https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest/download/agroprosper-presentation-full.pdf' }
+      ]]
+    }
+  });
+}
