@@ -277,3 +277,10 @@
 <a class="btn" href="https://www.facebook.com/profile.php?id=61576200248391" target="_blank">📘 Facebook</a>
 
 <iframe src="https://www.youtube.com/embed/..." allowfullscreen></iframe>
+
+<script>
+  const langMap = { uk: 'uk', ua: 'uk', pl: 'pl', en: 'en' };
+  const lang = navigator.language.slice(0, 2).toLowerCase();
+  const target = langMap[lang] || 'uk';
+  window.location.href = `/AgroProsper/promo/${target}/`;
+</script>
