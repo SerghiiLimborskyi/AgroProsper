@@ -327,3 +327,14 @@ bot.sendMessage(chatId, '🎬 Дивись презентацію AgroProsper DA
     <img src="../assets/shield-email.svg" alt="Email Share" />
   </a>
 </div>
+
+<script>
+  const lang = navigator.language || navigator.userLanguage;
+  if (lang.startsWith('uk')) {
+    window.location.href = '../index-uk.html';
+  } else if (lang.startsWith('pl')) {
+    window.location.href = '../index-pl.html';
+  } else {
+    window.location.href = '../index-en.html';
+  }
+</script>
