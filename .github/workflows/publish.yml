@@ -14,11 +14,6 @@ on:
 
 name: 📦 Publish NFT Package
 
-on:
-  push:
-    tags:
-      - 'dao-nft-v*'
-
 jobs:
   publish:
     runs-on: ubuntu-latest
