@@ -33,3 +33,11 @@ jobs:
           git push
         continue-on-error: true
 
+
+- name: Встановити Node.js
+  uses: actions/setup-node@v3
+  with:
+    node-version: '18'
+    
+ - name: 🗺️ Generate sitemap
+  run: node docs/scripts/generate-sitemap.js
