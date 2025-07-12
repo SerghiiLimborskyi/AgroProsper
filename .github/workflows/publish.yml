@@ -1,3 +1,9 @@
+on:
+  push:
+    tags:
+      - 'dao-nft-v*'
+  workflow_dispatch:  # ⬅️ Дозволяє запуск вручну
+
 name: 📦 Publish NFT Package
 
 on:
