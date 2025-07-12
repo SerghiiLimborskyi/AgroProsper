@@ -1,6 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const { logAuth } = require('./log-auth');
+const rateLimit = require('express-rate-limit');
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: '🔒 Занадто багато спроб входу. Спробуйте пізніше.'
+});
 
 router.post('/log-auth', loginLimiter, async (req, res) => {
   const { telegramId, name, username } = req.body;
