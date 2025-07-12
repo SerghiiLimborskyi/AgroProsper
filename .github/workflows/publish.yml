@@ -1,3 +1,11 @@
+name: 📦 Publish NFT Package
+
+on:
+  push:
+    tags:
+      - 'dao-nft-v*'
+  workflow_dispatch:  # ✅ правильно
+
 on:
   push:
     tags:
