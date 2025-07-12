@@ -11,3 +11,16 @@ router.post('/log-auth', async (req, res) => {
 });
 
 module.exports = router;
+
+const rateLimit = require('express-rate-limit');
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 хвилин
+  max: 10, // максимум 10 запитів
+  message: '🔒 Занадто багато спроб входу. Спробуйте пізніше.'
+});
+
+// Застосувати до маршруту входу
+app.post('/login', loginLimiter, (req, res) => {
+  // логіка входу
+});
