@@ -22,3 +22,14 @@ function setLanguage(ctx) {
   const t = (key) => key.split('.').reduce((o, k) => (o || {})[k], dict) || key;
   return { lang, t };
 }
+
+const { generateCard } = require('@serghiilimborskyi/nft-card-generator');
+
+const svg = generateCard({
+  name: "Serhii Limborskyi",
+  badge: "Top Farmer",
+  joinDate: "2025-06-21",
+  tokenId: "#DAO000147"
+});
+
+console.log(svg);
