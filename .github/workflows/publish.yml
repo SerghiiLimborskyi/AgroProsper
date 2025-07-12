@@ -4,15 +4,7 @@ on:
   push:
     tags:
       - 'dao-nft-v*'
-  workflow_dispatch:  # ✅ правильно
-
-on:
-  push:
-    tags:
-      - 'dao-nft-v*'
-  workflow_dispatch:  # ⬅️ Дозволяє запуск вручну
-
-name: 📦 Publish NFT Package
+  workflow_dispatch:  # ✅ дозволяє запуск вручну
 
 jobs:
   publish:
@@ -29,5 +21,6 @@ jobs:
 
       - name: 📦 Publish to GitHub Packages
         run: npm publish
+        working-directory: nft-card-generator
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
