@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
+
+  function escapeHTML(str) {
+  return str.replace(/[&<>"']/g, m => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[m]);
+}
+const safeSetting = escapeHTML(setting);
+const safeMechanic = escapeHTML(mechanic);
+const safeReward = escapeHTML(reward);
+
+document.getElementById('start-btn').onclick = () => {
+  document.getElementById('game-output').innerHTML = `
+    <p>🔍 Ви починаєте DAO-пригоду в світі <strong>${safeSetting}</strong>.</p>
+    <p>🎯 Завдання: ${safeMechanic}</p>
+    <p>🏆 Успішне завершення — ${safeReward}</p>
+  `;
+};
+
   <meta charset="UTF-8" />
   <title>🎮 DAO Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
