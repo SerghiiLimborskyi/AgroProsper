@@ -9,10 +9,6 @@ router.post('/log-auth', loginLimiter, async (req, res) => {
   res.json({ success: true });
 });
 
-  await logAuth({ telegramId, name, username });
-  res.json({ success: true });
-});
-
 module.exports = router;
 
 const rateLimit = require('express-rate-limit');
