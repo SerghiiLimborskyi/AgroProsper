@@ -4,7 +4,7 @@ on:
   push:
     tags:
       - 'dao-nft-v*'
-  workflow_dispatch:  # ✅ дозволяє запуск вручну
+  workflow_dispatch:
 
 jobs:
   publish:
