@@ -43,7 +43,21 @@ document.getElementById('start-btn').onclick = () => {
 
   <script><script>
   const tg = window.Telegram.WebApp;
-  tg.expand();
+  tg.expand();function escapeHTML(str) {
+  return str.replace(/[&<>"']/g, m => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[m]);
+}
+const title = escapeHTML(params.get('title') || 'DAO Game');
+const genre = escapeHTML(params.get('genre') || 'Стратегія');
+const setting = escapeHTML(params.get('setting') || 'фермерський DAO-світ');
+const mechanic = escapeHTML(params.get('mechanic') || 'керуй посівами, продавай врожай');
+const reward = escapeHTML(params.get('reward') || 'NFT-бейдж “Top Farmer”');
+
 
   // 🛡️ Додай функцію екранування
   function escapeHTML(str) {
