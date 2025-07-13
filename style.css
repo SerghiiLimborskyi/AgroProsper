@@ -1,123 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    background-image: url('images/bg-agroprosper.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    text-align: center;
-}
-header img {
-    width: 200px;
-    height: auto;
-    margin: 20px auto;
-}
-h1 {
-    font-size: 28px;
-    color: #2a7b30;
-}
-
-.yt-btn {
-  display: inline-flex;
-  align-items: center;
-  background-color: #FF0000;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.6rem 1.2rem;
-  border-radius: 999px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-}
-.yt-btn:hover {
-  background-color: #cc0000;
-}
-
-#landing-container {
-  max-width: 600px;
-  margin: auto;
-  padding: 24px;
-  text-align: center;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.qr-section {
-  margin: 32px 0;
-}
-
-.qr-section img {
-  border: 8px solid #2a7a2f;
-  border-radius: 12px;
-}
-
-/* Загальні стилі */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(120deg, #e6f2e6, #d0f0c0);
-  color: #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-#landing-container {
-  max-width: 720px;
-  width: 90%;
-  padding: 24px;
-  text-align: center;
-}
-
-h1 {
-  font-size: 2rem;
-  color: #2a7a2f;
-}
-
-.qr-section {
-  margin: 32px 0;
-}
-
-.qr-section img {
-  width: 240px;
-  max-width: 80%;
-  border: 8px solid #2a7a2f;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-
-.qr-section img:hover {
-  transform: scale(1.05);
-}
-
-a {
-  display: inline-block;
-  margin-top: 12px;
-  color: #2a7a2f;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Адаптивність */
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  .qr-section {
-    margin: 24px 0;
-  }
-
-  .qr-section img {
-    width: 180px;
-  }
-}
-
 :root {
   --bg: #121212;
   --text: #f0f0f0;
@@ -127,24 +7,22 @@ a:hover {
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #e6f2e6, #d0f0c0);
+  background-image: url('images/bg-agroprosper.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   background-color: var(--bg);
   color: var(--text);
-}
-
-#landing-container {
-  background-color: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-}
-
-.qr-section img {
-  border-color: var(--accent);
-}
-
-a {
-  color: var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 body.light {
@@ -163,10 +41,74 @@ body.dark {
   --border: #333;
 }
 
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  transition: background 0.3s ease, color 0.3s ease;
+header img {
+  width: 200px;
+  height: auto;
+  margin: 20px auto;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #2a7a2f;
+}
+
+#landing-container {
+  max-width: 720px;
+  width: 90%;
+  margin: auto;
+  padding: 24px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.qr-section {
+  margin: 32px 0;
+}
+
+.qr-section img {
+  width: 240px;
+  max-width: 80%;
+  border: 8px solid var(--accent);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.qr-section img:hover {
+  transform: scale(1.05);
+}
+
+a {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.yt-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: #FF0000;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.yt-btn:hover {
+  background-color: #cc0000;
 }
 
 .logo-animated {
@@ -200,4 +142,19 @@ body {
   0% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.08); opacity: 0.9; }
   100% { transform: scale(1); opacity: 1; }
+}
+
+/* Адаптивність */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .qr-section {
+    margin: 24px 0;
+  }
+
+  .qr-section img {
+    width: 180px;
+  }
 }
