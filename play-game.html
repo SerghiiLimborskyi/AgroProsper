@@ -41,7 +41,46 @@ document.getElementById('start-btn').onclick = () => {
     <div id="game-output" style="margin-top: 20px;"></div>
   </div>
 
-  <script>
+  <script><script>
+  const tg = window.Telegram.WebApp;
+  tg.expand();
+
+  // 🛡️ Додай функцію екранування
+  function escapeHTML(str) {
+    return str.replace(/[&<>"']/g, m => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    })[m]);
+  }
+
+  // 🧼 Отримай і екрануй параметри
+  const params = new URLSearchParams(window.location.search);
+  const title = escapeHTML(params.get('title') || 'DAO Game');
+  const genre = escapeHTML(params.get('genre') || 'Стратегія');
+  const setting = escapeHTML(params.get('setting') || 'фермерський DAO-світ');
+  const mechanic = escapeHTML(params.get('mechanic') || 'керуй посівами, продавай врожай');
+  const reward = escapeHTML(params.get('reward') || 'NFT-бейдж “Top Farmer”');
+
+  // 📋 Встав безпечно
+  document.getElementById('game-title').textContent = title;
+  document.getElementById('genre').textContent = genre;
+  document.getElementById('setting').textContent = setting;
+  document.getElementById('mechanic').textContent = mechanic;
+  document.getElementById('reward').textContent = reward;
+
+  document.getElementById('start-btn').onclick = () => {
+    document.getElementById('game-output').innerHTML = `
+      <p>🔍 Ви починаєте DAO-пригоду в світі <strong>${setting}</strong>.</p>
+      <p>🎯 Завдання: ${mechanic}</p>
+      <p>🏆 Успішне завершення — ${reward}</p>
+    `;
+  };
+</script>
+
+    
     const tg = window.Telegram.WebApp;
     tg.expand();
 
