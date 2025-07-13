@@ -87,3 +87,150 @@ footer p {
   margin-top: 1rem;
   display: inline-block;
 }
+
+:root {
+  --bg: #f5f5f5;
+  --text: #333;
+  --accent: #2a7a2f;
+  --card: #ffffff;
+  --border: #ccc;
+  --header-bg: #195c36;
+  --nav-bg: #298d4c;
+  --nav-hover: #1b6a39;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer {
+  background-color: var(--header-bg);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+h1 {
+  margin: 0.5rem 0;
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav ul li a {
+  background-color: var(--nav-bg);
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: var(--nav-hover);
+}
+
+section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  background: var(--card);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  height: 360px;
+  margin-bottom: 2rem;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+}
+
+.cta-button {
+  background-color: var(--nav-hover);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.logo-animated {
+  width: 120px;
+  margin-bottom: 16px;
+  animation: logoFadeIn 1.2s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+@keyframes logoFadeIn {
+  0% { opacity: 0; transform: scale(0.8) rotate(-10deg); }
+  60% { opacity: 1; transform: scale(1.05) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+#badge {
+  animation: pulseBadge 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes pulseBadge {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Адаптивність */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero {
+    height: 240px;
+  }
+
+  .cta-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
