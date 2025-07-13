@@ -18,49 +18,50 @@
     <div id="game-output" style="margin-top: 20px;"></div>
   </div>
 
-  <script>
-    const tg = window.Telegram.WebApp;
-    tg.expand();
+ <script>
+  const tg = window.Telegram.WebApp;
+  tg.expand();
 
-    function escapeHTML(str) {
-      return str.replace(/[&<>"']/g, m => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-      })[m]);
-    }
+  function escapeHTML(str) {
+    return str.replace(/[&<>"']/g, m => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    })[m]);
+  }
 
-    const params = new URLSearchParams(window.location.search);
-    const title = escapeHTML(params.get('title') || 'DAO Game');
-    const genre = escapeHTML(params.get('genre') || 'Стратегія');
-    const setting = escapeHTML(params.get('setting') || 'фермерський DAO-світ');
-    const mechanic = escapeHTML(params.get('mechanic') || 'керуй посівами, продавай врожай');
-    const reward = escapeHTML(params.get('reward') || 'NFT-бейдж “Top Farmer”');
+  const params = new URLSearchParams(window.location.search);
+  const title = escapeHTML(params.get('title') || 'DAO Game');
+  const genre = escapeHTML(params.get('genre') || 'Стратегія');
+  const setting = escapeHTML(params.get('setting') || 'фермерський DAO-світ');
+  const mechanic = escapeHTML(params.get('mechanic') || 'керуй посівами, продавай врожай');
+  const reward = escapeHTML(params.get('reward') || 'NFT-бейдж “Top Farmer”');
 
-    document.getElementById('game-title').textContent = title;
-    document.getElementById('genre').textContent = genre;
-    document.getElementById('setting').textContent = setting;
-    document.getElementById('mechanic').textContent = mechanic;
-    document.getElementById('reward').textContent = reward;
+  document.getElementById('game-title').textContent = title;
+  document.getElementById('genre').textContent = genre;
+  document.getElementById('setting').textContent = setting;
+  document.getElementById('mechanic').textContent = mechanic;
+  document.getElementById('reward').textContent = reward;
 
-    document.getElementById('start-btn').onclick = () => {
-      const output = document.getElementById('game-output');
-      output.innerHTML = ''; // очистити
+  document.getElementById('start-btn').onclick = () => {
+    const output = document.getElementById('game-output');
+    output.innerHTML = ''; // очистити
 
-      const p1 = document.createElement('p');
-      p1.textContent = `🔍 Ви починаєте DAO-пригоду в світі ${setting}`;
-      output.appendChild(p1);
+    const p1 = document.createElement('p');
+    p1.textContent = `🔍 Ви починаєте DAO-пригоду в світі ${setting}`;
+    output.appendChild(p1);
 
-      const p2 = document.createElement('p');
-      p2.textContent = `🎯 Завдання: ${mechanic}`;
-      output.appendChild(p2);
+    const p2 = document.createElement('p');
+    p2.textContent = `🎯 Завдання: ${mechanic}`;
+    output.appendChild(p2);
 
-      const p3 = document.createElement('p');
-      p3.textContent = `🏆 Успішне завершення — ${reward}`;
-      output.appendChild(p3);
-    };
-  </script>
+    const p3 = document.createElement('p');
+    p3.textContent = `🏆 Успішне завершення — ${reward}`;
+    output.appendChild(p3);
+  };
+</script>
+ 
 </body>
 </html>
