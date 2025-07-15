@@ -23,3 +23,31 @@
   </form>
 </body>
 </html>
+<form id="contactForm">
+  <input type="text" name="name" placeholder="Ім’я" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="message" placeholder="Повідомлення" required></textarea>
+  <button type="submit">Надіслати</button>
+</form>
+
+<script>
+const TOKEN = '7642561888:AAHixhqO-yZerBH18dHrYZw1lQ5ON4froZ0';
+const CHAT_ID = '2142492323';
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = this.name.value;
+  const email = this.email.value;
+  const message = this.message.value;
+
+  const text = `📩 Нове повідомлення з AgroProsper DAO:\n👤 Ім’я: ${name}\n📧 Email: ${email}\n📝 Повідомлення: ${message}`;
+
+  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: CHAT_ID, text })
+  })
+  .then(res => res.ok ? alert("✅ Дякуємо! Повідомлення надіслано.") : alert("❌ Помилка надсилання"))
+  .catch(() => alert("❌ Помилка з'єднання"));
+});
+</script>
