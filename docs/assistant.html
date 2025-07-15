@@ -1,49 +1,69 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
   <title>AgroProsper Assistant</title>
   <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f4f8f9;
       text-align: center;
       padding: 2rem;
+      margin: 0;
     }
     h2 {
       color: #2e7d32;
       margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
     button {
-      display: block;
-      margin: 1rem auto;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
+      padding: 1rem;
+      font-size: 1.1rem;
       background-color: #2e7d32;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
     }
     button:hover {
       background-color: #1b5e20;
+    }
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 1.5rem;
+      }
+      button {
+        font-size: 1rem;
+        padding: 0.75rem;
+      }
     }
   </style>
 </head>
 <body>
   <h2>AgroProsper Assistant</h2>
+  <div class="button-grid">
+    <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/promo/')">🎥 Презентація</button>
+    <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/promo/sbt/mint.html')">🎖 NFT-бейдж</button>
+    <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/docs/governance.en.md')">📄 Документи</button>
+    <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/game/')">🕹️ Гра</button>
+    <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/vote/')">🗳️ Голосування</button>
+    <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/partners/')">🤝 Партнерство</button>
+    <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/analytics/')">📊 Аналітика</button>
+    <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/contact/')">📬 Звʼязок</button>
+    <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/ads/')">📢 Реклама</button>
+  </div>
 
-  <!-- Кнопки з діями -->
-  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/promo/')">🎥 Презентація</button>
-  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/promo/sbt/mint.html')">🎖 NFT-бейдж</button>
-  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/docs/governance.en.md')">📄 Документи</button>
-  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/game/')">🕹️ Гра</button>
-  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/vote/')">🗳️ Голосування</button>
-  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/partners/')">🤝 Партнерство</button>
-
-  <!-- Надсилання повідомлення в Telegram -->
   <script>
     const TOKEN = '7642561888:AAHixhqO-yZerBH18dHrYZw1lQ5ON4froZ0';
     const CHAT_ID = '2142492323';
