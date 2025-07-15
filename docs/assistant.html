@@ -1,19 +1,65 @@
-<h2>AgroProsper Assistant</h2>
-<button onclick="sendToBot('🎥 Презентація')">🎥 Презентація</button>
-<button onclick="sendToBot('🎖 NFT-бейдж')">🎖 NFT-бейдж</button>
-<button onclick="sendToBot('📄 Документи')">📄 Документи</button>
+ <!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>AgroProsper Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8f9;
+      text-align: center;
+      padding: 2rem;
+    }
+    h2 {
+      color: #2e7d32;
+      margin-bottom: 2rem;
+    }
+    button {
+      display: block;
+      margin: 1rem auto;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <h2>AgroProsper Assistant</h2>
 
-<script>
-const TOKEN = '7642561888:AAHixhqO-yZerBH18dHrYZw1lQ5ON4froZ0';
-const CHAT_ID = '2142492323';
+  <!-- Кнопки з діями -->
+  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/promo/')">🎥 Презентація</button>
+  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/promo/sbt/mint.html')">🎖 NFT-бейдж</button>
+  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/docs/governance.en.md')">📄 Документи</button>
+  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/game/')">🕹️ Гра</button>
+  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/vote/')">🗳️ Голосування</button>
+  <button onclick="openLink('https://serghiilimborskyi.github.io/AgroProsper/partners/')">🤝 Партнерство</button>
 
-function sendToBot(text) {
-  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: CHAT_ID, text })
-  })
-  .then(() => alert("✅ Запит надіслано в бот"))
-  .catch(() => alert("❌ Помилка з'єднання"));
-}
-</script>
+  <!-- Надсилання повідомлення в Telegram -->
+  <script>
+    const TOKEN = '7642561888:AAHixhqO-yZerBH18dHrYZw1lQ5ON4froZ0';
+    const CHAT_ID = '2142492323';
+
+    function openLink(url) {
+      window.open(url, '_blank');
+      sendToBot(`🔗 Користувач відкрив: ${url}`);
+    }
+
+    function sendToBot(text) {
+      fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: CHAT_ID, text })
+      });
+    }
+  </script>
+</body>
+</html>
