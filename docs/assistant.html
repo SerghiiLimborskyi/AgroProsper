@@ -1,0 +1,19 @@
+<h2>AgroProsper Assistant</h2>
+<button onclick="sendToBot('🎥 Презентація')">🎥 Презентація</button>
+<button onclick="sendToBot('🎖 NFT-бейдж')">🎖 NFT-бейдж</button>
+<button onclick="sendToBot('📄 Документи')">📄 Документи</button>
+
+<script>
+const TOKEN = '7642561888:AAHixhqO-yZerBH18dHrYZw1lQ5ON4froZ0';
+const CHAT_ID = '2142492323';
+
+function sendToBot(text) {
+  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: CHAT_ID, text })
+  })
+  .then(() => alert("✅ Запит надіслано в бот"))
+  .catch(() => alert("❌ Помилка з'єднання"));
+}
+</script>
