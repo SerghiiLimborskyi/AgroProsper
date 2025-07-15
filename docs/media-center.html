@@ -5,16 +5,27 @@
   <title>DAO Studio – AgroProsper</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    :root {
+      --primary: #2e7d32;
+      --hover: #1b5e20;
+      --bg: #f4f8f9;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f8f9;
-      text-align: center;
-      padding: 2rem;
+      background-color: var(--bg);
       margin: 0;
+      padding: 1rem;
+      text-align: center;
     }
     h2 {
-      color: #2e7d32;
-      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      color: #333;
     }
     .section {
       margin-bottom: 2rem;
@@ -22,19 +33,27 @@
     a.button {
       display: inline-block;
       margin: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #2e7d32;
+      padding: 0.75rem 1.2rem;
+      background-color: var(--primary);
       color: white;
       text-decoration: none;
       border-radius: 6px;
       font-size: 1rem;
+      transition: background-color 0.3s ease;
     }
     a.button:hover {
-      background-color: #1b5e20;
+      background-color: var(--hover);
     }
     img {
-      max-width: 200px;
+      max-width: 90%;
+      height: auto;
       margin-top: 1rem;
+      border-radius: 8px;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #666;
     }
   </style>
 </head>
