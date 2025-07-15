@@ -1,26 +1,29 @@
-# Ignore secrets and tokens
+# 🔐 Ігноруємо всі файли з токенами, ключами та секретами
 *.env
+.env*
 *.token
 *.key
 *.pem
 *.json
+*.secrets
+*.private
 
-# Ignore log and debug files
+# 🗂️ Ігноруємо лог-файли та кеш
 logs/
 *.log
 *.cache
 *.gz
 
-# Ignore deployment archives
+# 📦 Ігноруємо архіви та білди
 *.zip
 *.tar
 *.tgz
 
-# Node & Python defaults
+# 🧰 Node.js та Python
 node_modules/
-.env*
 __pycache__/
 
+# 🧠 DAO конфігурація (не комітити в публічний репозиторій)
 DAO_ADMIN_EMAIL=agroprosper74@gmail.com
 TELEGRAM_BOT_TOKEN=...
 META_API_KEY=...
