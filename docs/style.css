@@ -52,3 +52,74 @@ button {
 button:hover {
   background-color: #1b5e20;
 }
+/* 🌿 Базові стилі */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  color: #333;
+}
+
+header, footer {
+  background: #2e7d32;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+nav {
+  background: #c8e6c9;
+  padding: 1em;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 1em;
+  text-decoration: none;
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+main {
+  padding: 2em;
+}
+
+section {
+  margin-bottom: 2em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 🧑‍🦯 Підтримка Forced Colors Mode */
+@media (forced-colors: active) {
+  body {
+    background: Canvas;
+    color: CanvasText;
+    forced-color-adjust: none;
+  }
+
+  header, footer {
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  nav a {
+    color: LinkText;
+  }
+
+  img {
+    forced-color-adjust: none;
+  }
+
+  button, a {
+    background: ButtonFace;
+    color: ButtonText;
+    border: 1px solid ButtonText;
+  }
+}
