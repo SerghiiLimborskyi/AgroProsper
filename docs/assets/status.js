@@ -1,5 +1,5 @@
 async function loadRepoStatus() {
-  const base = "https://api.github.com/repos/SerghiiLimborskyi/AgroProsper/contents/";
+  const base = "https://api.github.com/repos/SerghiiLimborskyi/AgroProsper/contents/docs/";
   const components = {
     "index.html": "🌐 Головна сторінка",
     "status.html": "📊 Статус DAO",
@@ -21,11 +21,7 @@ async function loadRepoStatus() {
   for (const [path, label] of Object.entries(components)) {
     const res = await fetch(base + path);
     const li = document.createElement("li");
-    if (res.ok) {
-      li.textContent = `✅ ${label}`;
-    } else {
-      li.textContent = `❌ ${label}`;
-    }
+    li.textContent = res.ok ? `✅ ${label}` : `❌ ${label}`;
     list.appendChild(li);
   }
 
