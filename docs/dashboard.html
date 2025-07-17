@@ -3,14 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <title>📊 Панель AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/status.js" defer></script>
   <style>
-    body { font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
-    header, footer { background: #2e7d32; color: white; padding: 1em; text-align: center; }
-    main { padding: 2em; max-width: 960px; margin: auto; }
-    section { margin-bottom: 2em; background: white; padding: 1em; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    h2 { color: #2e7d32; }
-    a.button { display: inline-block; margin: 0.5em 0; padding: 0.5em 1em; background: #2e7d32; color: white; text-decoration: none; border-radius: 4px; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      margin: 0;
+    }
+    header, footer {
+      background: #2e7d32;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+    main {
+      padding: 1em;
+      max-width: 960px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 2em;
+      background: white;
+      padding: 1em;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+    h2 {
+      color: #2e7d32;
+      font-size: 1.2em;
+    }
+    a.button {
+      display: inline-block;
+      margin: 0.5em 0.5em 0.5em 0;
+      padding: 0.5em 1em;
+      background: #2e7d32;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 0.3em 0;
+    }
+    @media (max-width: 600px) {
+      a.button {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -42,7 +90,10 @@
 
     <section>
       <h2>📊 Статус DAO</h2>
-      <a class="button" href="status.html">📋 Переглянути статус</a>
+      <p id="last-updated">Оновлено: ...</p>
+      <ul id="status-list">
+        <li>Завантаження статусу...</li>
+      </ul>
     </section>
   </main>
 
