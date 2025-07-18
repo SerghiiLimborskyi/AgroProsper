@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">AgroProsper DAO</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/lang.js" defer></script>
+  <script src="assets/status.js" defer></script>
+</head>
+<body>
+
+  <!-- Банер -->
+  <header>
+    <img src="assets/banner.jpg" alt="AgroProsper Banner" style="width: 100%; max-height: 320px; object-fit: cover; border-radius: 8px;">
+  </header>
+
+  <!-- Логотип + Заголовок -->
+  <section style="text-align: center;">
+    <img src="assets/logo.svg" alt="AgroProsper Logo" style="height: 100px; margin: 2em auto 0;">
+    <h1 data-i18n="title">AgroProsper DAO</h1>
+    <p data-i18n="subtitle">Автоматизована платформа для фермерів</p>
+  </section>
+
+  <!-- Документи -->
+  <section>
+    <h2 data-i18n="docs">📄 Документи та гіди</h2>
+    <a href="guide.pdf" class="button" data-i18n="pdf">📥 PDF-гайд</a>
+    <a href="media.html" class="button" data-i18n="media">🎞️ Медіацентр</a>
+    <a href="assets/media-kit.zip" class="button" data-i18n="kit">📦 Media Kit ZIP</a>
+  </section>
+
+  <!-- Функціональність -->
+  <section>
+    <h2 data-i18n="vote">🗳️ Голосування</h2>
+    <a href="vote.html" class="button">🔘 Vote</a>
+    <a href="card.html" class="button" data-i18n="card">🆔 NFT-картка</a>
+    <a href="mint.html" class="button" data-i18n="mint">🎖️ Мінт бейджа</a>
+  </section>
+
+  <!-- Статус -->
+  <section>
+    <h2 data-i18n="status">📊 Статус DAO</h2>
+    <p><span data-i18n="updated">Оновлено:</span> <span id="last-updated">...</span></p>
+  </section>
+
+  <!-- Відео-трейлер -->
+  <section>
+    <h2 data-i18n="video">🎬 Відео-презентація</h2>
+    <iframe width="100%" height="315"
+      src="https://www.youtube.com/embed/729E-OxwSkQ"
+      title="AgroProsper DAO Trailer"
+      frameborder="0"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+    <video src="assets/promo.mp4" controls style="width:100%; max-height:400px; border-radius: 8px; margin-top: 1em;">
+      Ваш браузер не підтримує відео.
+    </video>
+  </section>
+
+  <!-- Перемикач мови -->
+  <footer>
+    <p data-i18n="footer">© 2025 AgroProsper DAO</p>
+    <button onclick="switchLang('uk')" data-i18n="lang_ua">🇺🇦 Українська</button>
+    <button onclick="switchLang('pl')" data-i18n="lang_pl">🇵🇱 Polski</button>
+    <button onclick="switchLang('en')" data-i18n="lang_en">🇬🇧 English</button>
+  </footer>
+
+</body>
+</html>
