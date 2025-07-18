@@ -58,4 +58,9 @@
   </section>
 
 </body>
-</html>
+
+<script>
+  const now = new Date();
+  const formatted = now.toLocaleDateString("uk-UA", { year: 'numeric', month: 'long', day: 'numeric' });
+  document.getElementById("build-date").textContent = formatted;
+</script>
