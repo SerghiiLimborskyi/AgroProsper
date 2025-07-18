@@ -1,0 +1,27 @@
+name: Generate index.html
+
+on:
+  push:
+    paths:
+      - "docs/template.html"
+      - "docs/dao-data.json"
+      - "docs/generate-index.js"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Run generator
+        run: node docs/generate-index.js
+      - name: Commit output
+        run: |
+          git config user.name "AgroBot"
+          git config user.email "bot@agroprosper.com"
+          git add docs/index.html
+          git commit -m "🚀 Автозбірка index.html"
+          git push
