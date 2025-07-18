@@ -10,3 +10,20 @@ for (const key in data) {
 
 fs.writeFileSync("docs/index.html", output);
 console.log("✅ index.html згенеровано!");
+const fs = require("fs");
+
+const data = JSON.parse(fs.readFileSync("docs/dao-data.json", "utf8"));
+const template = fs.readFileSync("docs/template.html", "utf8");
+
+let output = template;
+for (const key in data) {
+  output = output.replaceAll(`%%${key}%%`, data[key]);
+}
+
+// Зберігаємо index.html
+fs.writeFileSync("docs/index.html", output);
+
+// Формуємо паралельний preview-файл
+fs.writeFileSync("docs/v1.1-preview.html", output);
+
+console.log("✅ Згенеровано index.html + v1.1-preview.html");
