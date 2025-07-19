@@ -1,0 +1,24 @@
+name: Release DAO v2.2
+
+on:
+  push:
+    tags:
+      - 'v2.2.0'
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v2.2.0
+          name: AgroProsper DAO v2.2
+          body: |
+            ✅ Нові функції DAO-фрілансу:
+            - SBT-бейдж після задач
+            - Заявки від компаній
+            - NFT-мінт за гру
+            - Telegram інтеграція
