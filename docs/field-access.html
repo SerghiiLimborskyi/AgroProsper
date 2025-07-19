@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>DAO Поля — Доступ та Верифікація</title>
+  <meta name="description" content="AgroProsper DAO — контроль доступу до NFT-місій та агро-локацій, верифікація виконавців.">
+  <link rel="stylesheet" href="style.css">
+  <script src="status.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <h1>🚜 DAO Поля — Доступ та Верифікація</h1>
+    <p>Тільки офіційно верифіковані акаунти мають право запускати місії.</p>
+  </header>
+
+  <!-- 🔎 Панель фільтрації -->
+  <section>
+    <h2>🧬 Фільтрувати доступ</h2>
+    <label for="sourceFilter">📎 Джерело акаунта:</label>
+    <select id="sourceFilter">
+      <option>Усі</option>
+      <option>Microsoft Learn</option>
+      <option>Google Account</option>
+      <option>Telegram WebApp</option>
+    </select>
+
+    <label for="levelFilter">🧠 Рівень верифікації:</label>
+    <select id="levelFilter">
+      <option>Всі</option>
+      <option>Level 1 — базовий</option>
+      <option>Level 2 — з бейджами</option>
+      <option>Level 3 — GOV-доступ</option>
+    </select>
+
+    <label>
+      <input type="checkbox" id="visibleOnly" checked>
+      👁️ Тільки видимі акаунти
+    </label>
+
+    <button onclick="applyFilters()">🔍 Перевірити доступ</button>
+  </section>
+
+  <!-- 📋 DAO поля -->
+  <section>
+    <h2>📋 Доступні локації</h2>
+    <ul id="fieldList">
+      <li>🏞️ Поле #27 — Mission: Spray</li>
+      <li>🌽 Поле #28 — Mission: Planting</li>
+      <li>🚁 Поле #29 — Mission: Drone Recon</li>
+    </ul>
+  </section>
+
+  <!-- ✅ Перевірка статусу -->
+  <section>
+    <h2>✅ Ваш статус верифікації</h2>
+    <div id="userStatus">
+      <p>👤 ID: <span id="userId">—</span></p>
+      <p>🧠 Рівень: <span id="userLevel">—</span></p>
+      <p>📎 Джерело: <span id="userSource">—</span></p>
+      <p>🧾 Доступ до Полів: <span id="userAccess">—</span></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; AgroProsper DAO 2025 — контрольоване розгортання виконавців 🍬✨</p>
+  </footer>
+
+</body>
+</html>
