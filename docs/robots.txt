@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /gov-access.html
+Disallow: /admin.html
+Disallow: /mint-private.html
+Allow: /
+
+Sitemap: https://serghiilimborskyi.github.io/AgroProsper/sitemap.xml
