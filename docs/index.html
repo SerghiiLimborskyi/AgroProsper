@@ -123,3 +123,62 @@
 <meta name="robots" content="index, follow">
 <meta name="language" content="uk-UA">
 <link rel="manifest" href="manifest.json">
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroProsper DAO WebApp</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="abc123xyz">
+  <script src="dao-ui.js" defer></script>
+  <script src="telegram-web-app.js"></script>
+</head>
+<body>
+
+  <header>
+    <img src="assets/logo-agroprosper.svg" alt="AgroProsper Logo" style="height:64px;">
+    <h1>AgroProsper DAO</h1>
+    <p>Сервісна DAO-платформа для допомоги покупцям і компаніям без реферальної системи.</p>
+  </header>
+
+  <section id="registration">
+    <h2>📄 Реєстрація фрілансера</h2>
+    <button onclick="mintFreelancer()">🔐 Зареєструватися як DAO-виконавець</button>
+    <script>
+      function mintFreelancer() {
+        Telegram.WebApp.sendData(JSON.stringify({ action: "mint", role: "freelancer" }));
+      }
+    </script>
+  </section>
+
+  <section id="companies">
+    <h2>🏢 Компанії, що підтримують DAO</h2>
+    <ul>
+      <li>AgriTrade Global — 15% комісія фрілансеру</li>
+      <li>GrainCorp — 10% DAO-виконавець</li>
+      <li>TerraGrow — технічна допомога + токени</li>
+    </ul>
+  </section>
+
+  <section id="dashboard">
+    <h2>📊 Статус DAO-проєкту</h2>
+    <iframe src="dashboard.html" style="width:100%; height:500px; border:none;"></iframe>
+  </section>
+
+  <section id="auth">
+    <h2>🎯 Авторизація WebApp</h2>
+    <p>Ваш статус виконавця: <span id="dao-status">Невідомо</span></p>
+    <script>
+      const userStatus = Telegram.WebApp.initDataUnsafe.user?.status || "Невідомо";
+      document.getElementById("dao-status").textContent = userStatus;
+    </script>
+  </section>
+
+  <footer>
+    <p>&copy; AgroProsper DAO 2025 — безреферальна Web3-платформа 🍬✨</p>
+  </footer>
+
+</body>
+</html>
