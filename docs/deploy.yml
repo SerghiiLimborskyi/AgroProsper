@@ -66,3 +66,50 @@ jobs:
             ✅ GOV API-звʼязок
             ✅ SBT бейджі після задач
             ✅ Telegram WebApp-мінт + Edge-інтеграція
+name: Release DAO v4.5.0
+
+on:
+  push:
+    tags:
+      - 'v4.5.0'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: 📦 Build ZIP Package
+        run: zip -r agroprosper-v4.5.zip ./docs/*
+
+      - name: 🚀 Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v4.5.0
+          name: AgroProsper DAO v4.5.0
+          body: |
+            🌟 Масштабне оновлення DAO до версії 4.5
+            ✅ DAO Academy v2 з іспитами
+            ✅ Місії Поле #31–#33 з дронами та SBT
+            ✅ Grain Market AI-аналітика
+            ✅ Режим “Тиха благодійність” + підтвердження Microsoft Rewards / Банки
+            ✅ GovBook v2 презентація для державних структур
+            ✅ Telegram WebApp → AI Mission Routing
+
+      - name: 📎 Upload ZIP Asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: agroprosper-v4.5.zip
+
+      - name: 🧠 Запис у status.json
+        run: |
+          echo '{
+            "version": "v4.5.0",
+            "status": "released",
+            "date": "'$(date +%Y-%m-%d')'",
+            "components": [
+              "academy.html", "mission-31.html", "dashboard-ai.html",
+              "charity-hub.html", "govbook-v2.html", "telegram-auth.html"
+            ]
+          }' > ./docs/status.json
