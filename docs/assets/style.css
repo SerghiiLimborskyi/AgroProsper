@@ -28,3 +28,12 @@ main {
 section {
   margin-bottom: 2em;
 }
+.button img {
+  height: 32px;
+  border-radius: 6px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+.button img:hover {
+  transform: scale(1.05);
+}
