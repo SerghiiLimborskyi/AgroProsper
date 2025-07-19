@@ -30,3 +30,19 @@ async function loadRepoStatus() {
 }
 
 document.addEventListener("DOMContentLoaded", loadRepoStatus);
+fetch("status.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("dao-status");
+    if (container) {
+      container.innerHTML = `
+        <h2>📊 Стан DAO</h2>
+        <ul style="list-style:none; padding-left:0; font-size:1.1em;">
+          <li><strong>Версія:</strong> ${data.version}</li>
+          <li><strong>Дата генерації:</strong> ${new Date(data.date).toLocaleDateString("uk-UA")}</li>
+          <li><strong>Стан збірки:</strong> ✅ ${data.build}</li>
+          <li><strong>Наступний крок:</strong> ${data.next}</li>
+        </ul>
+      `;
+    }
+  });
