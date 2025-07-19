@@ -8,3 +8,15 @@
   "access": ["field27", "droneOps", "gov-booklet"],
   "visible": true
 }
+{
+  "requests": [
+    {
+      "userDAOid": "serhiilimborskyi",
+      "source": "Microsoft Learn",
+      "level": "Level 3",
+      "date": "2025-07-20",
+      "access": ["field27", "gov-access"],
+      "status": "Pending"
+    }
+  ]
+}
