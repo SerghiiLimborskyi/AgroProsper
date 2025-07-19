@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>📋 DAO Заявки — Перегляд та Модерація</title>
+  <meta name="description" content="AgroProsper DAO — контроль доступу до NFT-місій та верифікація виконавців.">
+  <link rel="stylesheet" href="style.css">
+  <script src="review.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <h1>📋 DAO Submission Review Panel</h1>
+    <p>Адміністративний перегляд заявок на доступ до Полів та локацій DAO.</p>
+  </header>
+
+  <!-- 🔎 Панель фільтрації -->
+  <section id="filterPanel">
+    <h2>🧬 Фільтрувати заявки</h2>
+    <label for="sourceFilter">📎 Джерело акаунта:</label>
+    <select id="sourceFilter">
+      <option>Усі</option>
+      <option>Microsoft Learn</option>
+      <option>Google Account</option>
+      <option>Telegram WebApp</option>
+    </select>
+
+    <label for="levelFilter">🧠 Рівень запиту:</label>
+    <select id="levelFilter">
+      <option>Усі</option>
+      <option>Level 1</option>
+      <option>Level 2</option>
+      <option>Level 3</option>
+    </select>
+
+    <button onclick="filterRequests()">🔍 Застосувати фільтри</button>
+  </section>
+
+  <!-- 📋 Таблиця заявок -->
+  <section id="requestList">
+    <h2>📥 Заявки на доступ</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>👤 DAO ID</th>
+          <th>📎 Джерело</th>
+          <th>🧠 Рівень</th>
+          <th>📅 Дата</th>
+          <th>🧾 Локації</th>
+          <th>✅ Статус</th>
+          <th>⚙️ Дії</th>
+        </tr>
+      </thead>
+      <tbody id="submissionRows">
+        <!-- Динамічно заповнюється через review.js -->
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <p>&copy; AgroProsper DAO 2025 — адміністративна зона керування доступом 🍬🔐</p>
+  </footer>
+
+</body>
+</html>
