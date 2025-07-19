@@ -27,3 +27,11 @@ fs.writeFileSync("docs/index.html", output);
 fs.writeFileSync("docs/v1.1-preview.html", output);
 
 console.log("✅ Згенеровано index.html + v1.1-preview.html");
+const buildStatus = {
+  version: "v1.1",
+  build: "Автозбірка активна",
+  date: new Date().toISOString().split("T")[0],
+  next: "🧪 DAO Dashboard + NFT Mint Engine"
+};
+
+fs.writeFileSync("docs/status.json", JSON.stringify(buildStatus, null, 2));
