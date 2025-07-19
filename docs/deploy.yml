@@ -22,3 +22,25 @@ jobs:
             - Заявки від компаній
             - NFT-мінт за гру
             - Telegram інтеграція
+name: Release DAO v3.0
+
+on:
+  push:
+    tags:
+      - 'v3.0.0'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v3.0.0
+          name: AgroProsper DAO v3.0
+          body: |
+            🚀 Автоматичне оновлення DAO
+            ✅ GOV API-звʼязок
+            ✅ SBT бейджі після задач
+            ✅ Telegram WebApp-мінт + Edge-інтеграція
