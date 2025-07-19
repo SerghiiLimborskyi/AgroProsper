@@ -1,0 +1,3 @@
+<button onclick="daoSetLang('uk')">🇺🇦 Українська</button>
+<button onclick="daoSetLang('pl')">🇵🇱 Polski</button>
+<button onclick="daoSetLang('en')">🇬🇧 English</button>
