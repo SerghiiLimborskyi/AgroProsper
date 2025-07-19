@@ -28,3 +28,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 =
+env:
+  TOKEN: ${{ secrets.PRIVATE_KEY }}
+run: |
+  git config user.name "AgroBot"
+  git config user.email "bot@agroprosper.com"
+  git remote set-url origin https://x-access-token:${TOKEN}@github.com/SerghiiLimborskyi/AgroProsper.git
+  git add docs/index.html docs/v1.1-preview.html
+  git commit -m "🚀 Автозбірка DAO сайту"
+  git push
