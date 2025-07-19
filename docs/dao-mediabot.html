@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>🤍 DAO MediaBot — Добра дія</title>
+  <meta name="description" content="Завантаження добрих дій у систему DAO без публічного розголосу.">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🤍 DAO MediaBot — Добра дія без піару</h1>
+    <p>Збережи свій добрий вчинок — тихо, щиро, назавжди 🌱</p>
+  </header>
+
+  <section>
+    <h2>📩 Завантажити дію</h2>
+    <form id="actionForm">
+      <label for="title">🔎 Назва / фонд / вчинок:</label>
+      <input type="text" id="title" required>
+
+      <label for="date">📅 Дата дії:</label>
+      <input type="date" id="date" required>
+
+      <label for="proof">📎 Підтвердження (номер, код, скан):</label>
+      <input type="text" id="proof">
+
+      <button type="submit">📩 Зберегти приватно</button>
+    </form>
+    <p id="statusMessage"></p>
+  </section>
+
+  <section>
+    <h2>👤 Ваш запис</h2>
+    <ul id="userLog">
+      <!-- Показуються приватні добрі дії -->
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; AgroProsper DAO 2025 — доброта мовчазна, але вічна 🍬🕊️</p>
+  </footer>
+
+  <script>
+    Telegram.WebApp.ready();
+
+    const user = Telegram.WebApp.initDataUnsafe?.user?.username || "anon";
+
+    document.getElementById("actionForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const title = document.getElementById("title").value;
+      const date = document.getElementById("date").value;
+      const proof = document.getElementById("proof").value;
+
+      const entry = `<li>${title} (${date}) ${proof ? '✅' : ''}</li>`;
+      document.getElementById("userLog").innerHTML += entry;
+      document.getElementById("statusMessage").textContent = "✅ Записано приватно в DAO";
+
+      Telegram.WebApp.sendData(JSON.stringify({
+        user,
+        type: "charity",
+        title,
+        date,
+        proof,
+        visibility: "private"
+      }));
+    });
+  </script>
+
+</body>
+</html>
