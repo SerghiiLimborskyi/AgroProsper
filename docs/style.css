@@ -135,3 +135,12 @@ a.button img {
 a.button img:hover {
   transform: scale(1.05);
 }
+:root[data-theme='light'] {
+  --bg: #fff;
+  --text: #333;
+}
+:root[data-theme='dark'] {
+  --bg: #111;
+  --text: #eee;
+}
+body { background: var(--bg); color: var(--text); }
