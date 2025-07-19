@@ -123,3 +123,7 @@ img {
     border: 1px solid ButtonText;
   }
 }
+a.button.gov {
+  background-color: #2b7bba;
+  color: #fff;
+}
