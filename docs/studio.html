@@ -20,3 +20,12 @@
   </footer>
 </body>
 </html>
+// drone-control.js
+const drone = new DroneAPI({
+  token: userDAOtoken,
+  mission: 'sprayField',
+  count: 'unlimited',
+  sync: true
+});
+
+drone.executeMission();
