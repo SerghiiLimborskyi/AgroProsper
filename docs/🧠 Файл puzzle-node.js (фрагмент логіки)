@@ -1,0 +1,20 @@
+const puzzleFiles = [
+  { name: "🧩 banner-block.html", exists: true, role: "Брендовий блок DAO" },
+  { name: "🧩 ethics-manifesto.html", exists: false },
+  { name: "🧩 puzzle-fusion.js", exists: true, role: "Логіка PuzzleNode DAO" },
+];
+
+const grid = document.getElementById("puzzle-grid");
+
+puzzleFiles.forEach(file => {
+  const block = document.createElement("div");
+  block.className = "puzzle-node";
+  block.innerHTML = `
+    <svg viewBox="0 0 120 120" width="80" height="80">
+      <path d="..." fill="#207744"/>
+    </svg>
+    <h3>${file.name}</h3>
+    <p>${file.exists ? file.role : "📘 Модуль сформовано з опису DAO"}</p>
+  `;
+  grid.appendChild(block);
+});
