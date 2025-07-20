@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>🧩 Modifier Preview — DAO Generator</title>
+  <meta name="description" content="Інтерфейс для введення тексту, який створює HTML-модуль DAO Studio.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style-enhanced.css">
+  <script>
+    function generateDAOBlock() {
+      const input = document.getElementById("dao-text").value;
+      const output = document.getElementById("output-block");
+
+      // 🧠 Легка генерація назви модуля
+      const title = input.length > 50 ? input.split('.')[0] : 'DAO Module';
+
+      // 🍬 Автоформатування в блок DAO Studio
+      const htmlBlock = `
+        <section class="dao-module" style="padding:1rem; background:#f5fdf9; border-radius:8px; margin-top:1rem;">
+          <h2 style="color:#1d5c3e;">🧩 ${title}</h2>
+          <p style="font-size:1.05em;">${input}</p>
+        </section>
+      `;
+
+      output.innerHTML = htmlBlock;
+    }
+  </script>
+</head>
+<body>
+
+  <header style="text-align:center; padding:1.5rem; background:#e8f6ec;">
+    <h1>🧩 DAO Text Modifier</h1>
+    <p>Введи будь-який опис — платформа сама сформує його як HTML-модуль DAO Studio 🍬</p>
+  </header>
+
+  <main style="padding:1rem; max-width:800px; margin:auto;">
+    <textarea id="dao-text" rows="6" style="width:100%; font-size:1em; padding:0.5rem;" placeholder="Введи текст філософії, структури або місії DAO..."></textarea>
+    <button onclick="generateDAOBlock()" style="margin-top:1rem; background:#207744; color:white; padding:0.8em 1.2em; border:none; border-radius:6px;">🛠️ Створити DAO-модуль</button>
+
+    <div id="output-block" style="margin-top:2rem;"></div>
+  </main>
+
+  <footer style="text-align:center; background:#e1efe7; padding:1rem;">
+    <p>&copy; DAO Studio — Твій текст формує дії 🍬🧠🧩</p>
+  </footer>
+
+</body>
+</html>
