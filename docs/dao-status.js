@@ -1,26 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const modules = [
-    { name: "index.html", date: "2025-08-02" },
-    { name: "dashboard.html", date: "2025-07-28" },
-    { name: "charity-verify.html", date: "2025-07-27" },
-    { name: "dao-humble-mode.html", date: "2025-07-25" },
-    { name: "soulnode.html", date: "2025-07-25" },
-    { name: "submission-review.html", date: "2025-07-23" },
-    { name: "telegram-auth.html", date: "2025-07-22" },
-    { name: "govbook-v2.html", date: "2025-07-20" },
-  ];
+  // Запит до status.json з DAO
+  fetch("https://serghiilimborskyi.github.io/AgroProsper/status.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const modules = data.components || [];
+      const version = data.version || "—";
+      const date = data.date || "—";
 
-  const tableBody = document.querySelector("table").getElementsByTagName("tbody")[0];
-  if (tableBody) {
-    tableBody.innerHTML = "";
-    modules.forEach((mod) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${mod.name}</td>
-        <td>${mod.date}</td>
-        <td>✅</td>
-      `;
-      tableBody.appendChild(row);
+      // Запис заголовка версії DAO
+      const header = document.querySelector("h1");
+      if (header) {
+        header.innerHTML += ` <span style="font-size:0.8em;">(DAO ${version} — ${date})</span>`;
+      }
+
+      // Оновлення таблиці
+      const tableBody = document.querySelector("table tbody");
+      if (tableBody) {
+        tableBody.innerHTML = "";
+        modules.forEach((mod) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${mod}</td>
+            <td>${date}</td>
+            <td>✅</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("❌ Не вдалося отримати status.json:", error);
     });
-  }
 });
