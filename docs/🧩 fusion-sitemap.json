@@ -1,0 +1,26 @@
+{
+  "🧩 banner-block.html": {
+    "title": "DAO Брендовий Блок",
+    "description": "Обкладинка, слоган, логотип та CTA запуску Studio",
+    "link": "docs/🧩 banner-block.html",
+    "category": "visual"
+  },
+  "🧩 studio-dashboard.html": {
+    "title": "Панель DAO Studio",
+    "description": "Головний вивід трейлерів, PDF, ZIP, місій DAO",
+    "link": "docs/🧩 studio-dashboard.html",
+    "category": "navigation"
+  },
+  "🧩 style-mobile.css": {
+    "title": "Мобільний стиль DAO",
+    "description": "Адаптація для WebApp, Telegram, iOS, Android",
+    "link": "docs/🧩 style-mobile.css",
+    "category": "style"
+  },
+  "🧩 trailer-infocard.pdf": {
+    "title": "DAO InfoCard",
+    "description": "PDF-візитівка трейлера DAO для грантів і GOV",
+    "link": "docs/🧩 trailer-infocard.pdf",
+    "category": "document"
+  }
+}
