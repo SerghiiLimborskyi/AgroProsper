@@ -1,0 +1,4 @@
+// Telegram WebApp trigger (inside bot menu)
+bot.on("buttonClick", (ctx) => {
+  ctx.openWebApp("🎬 Відкрити DAO Studio", "https://serghiilimborskyi.github.io/AgroProsper/media-center.html");
+});
