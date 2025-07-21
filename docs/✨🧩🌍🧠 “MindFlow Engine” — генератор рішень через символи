@@ -1,0 +1,29 @@
+const MindFlowEngine = {
+  version: "v1.0.0",
+  recognizedSymbols: ["🧠", "🧩", "✨", "🌍", "📘", "🕊️", "🎮", "🔐", "💡", "📦"],
+  logicRoutes: {
+    "🧠": "Create structural module",
+    "🧩": "Link to core node",
+    "✨": "Activate workflow",
+    "🌍": "Publish to WebApp",
+    "📘": "Generate documentation",
+    "🕊️": "Attach to ethics",
+    "🎮": "Route to game logic",
+    "🔐": "Apply security module",
+    "💡": "Enable idea expansion",
+    "📦": "Add to trusted ZIP set"
+  },
+  generateDecision(inputName) {
+    const actions = [];
+    this.recognizedSymbols.forEach(sym => {
+      if (inputName.includes(sym)) {
+        actions.push(this.logicRoutes[sym]);
+      }
+    });
+    return actions.length > 0 ? actions : ["No active symbol found"];
+  }
+};
+
+// ▶️ Приклад використання:
+console.log(MindFlowEngine.generateDecision("🧩✨studio-pulse.html"));
+// Виведе: ["Link to core node", "Activate workflow"]
