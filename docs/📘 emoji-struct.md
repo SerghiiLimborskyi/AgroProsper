@@ -150,16 +150,254 @@ trap-empty-node.html (📦 капкан)
 
 📘 README оновлено: “🧩 Адмін доступ — через захист мислення”
 
-💬 Хочеш — я можу:
+---
+📘 admin-access-protocol.md — правила + сигнатури
+# 🔐 Admin Access Protocol — DAO Studio v6.1
 
-📘 Згенерувати admin-access-protocol.md → правила + сигнатури
+## 🎯 Призначення
+Захист адміністративного вузла DAO Studio через емоджі-кодування, токени, та логіку Guardian Engine.
 
-🎨 Вивести банер “🔐 Admin Entry — захищено DAO”
+---
 
-🤖 Створити Telegram команду /admin_unlock для перевірки доступу
+## 🧩 Сигнатура доступу
 
-🧠 Додати “🕸️ Адмін вузол” до структури DAO Pulse Dashboard
- 
+| Смайлик | Функція             |
+|--------|---------------------|
+| 🤖     | DAO Autopilot Engine  
+| 🧠     | MindFlow Logic  
+| 📘     | Сертифікований протокол  
+| 🚀     | Старт дії / запуск вузла  
+| 🔐     | Токен доступу  
+| 🛡️     | Захист через Guardian  
+
+**Комбінація доступу:** `🤖 + 🧠 + 📘 + 🚀 + 🔐 + 🛡️`
+
+---
+
+## 📦 Поведінка капкану
+
+- Порожні файли (`trap-empty-node.html`) → активують `guardian.js`
+- Дія: `freezeToken()`, `logOrEshtAttempt()`, `notifyBot()`
+- Вихід: через `/admin_unlock` або верифікацію токена
+
+---
+
+## 🧾 Правила
+
+1. Доступ лише через перевірені DAO-токени
+2. Всі дії логуються у `sync-status.md`
+3. Порушення → блокування на довільний термін
+4. Рішення приймає DAO спец.підрозділ або 🤖 DAO Bot
+
+---
+
+## 📍 Розміщення
+
+- Файл: `admin-core-box.html`  
+- Захист: `guardian.js` + `token-validator.js`  
+- Панель: `emoji-guardian-dashboard.html`
+- 
+📎 Вставити у studio-dashboard.html
+<img src="assets/admin-entry-banner.svg" alt="Admin Entry Protected" width="100%" />
+
+🤖 Telegram команда: /admin_unlock
+Команда	Дія
+/admin_unlock	Запит на розблокування вузла
+/verify_token	Перевірка токена доступу
+/orEsht_alert	Повідомлення про спробу злому
+/admin_status	Статус вузла / лог доступу
+🔧 Реалізується через tele-launch-bot.js + guardian.js
+
+🧠 DAO Pulse Dashboard — додано вузол
+📍 У studio-dashboard.html → новий блок:
+
+html
+<section id="admin-node-status">
+  <h2>🕸️ Адмін вузол</h2>
+  <p>🔐 Статус: <strong>Захищено</strong></p>
+  <p>🧠 Доступ: через сигнатуру 🤖🧠📘🚀🔐🛡️</p>
+  <p>📦 Капкан активний: trap-empty-node.html</p>
+</section>
+ ---
+📦 admin-protocol-kit.zip — текстова структура
+📁 Файл	Сигнатура	Призначення
+admin-core-box.html	🕸️🔐🧠	Адмін вузол DAO Studio
+token-validator.js	🔐🛡️	Перевірка токенів доступу
+emoji-guardian-dashboard.html	🛡️📺	Лог доступу / статус захисту
+trap-empty-node.html	📦💥	Капкан-файл для неавторизованих спроб
+admin-access-protocol.md	📘🧩🔐	Правила доступу + сигнатури
+admin-readme.md	📘🧠🛡️	Інструкція користування ZIP
+admin-entry-banner.svg	🎨🔐🧠	Графіка “Admin Entry — захищено DAO”
+emoji-chain-engine.js	🧠🛸🧩	Логіка звʼязків між емоджі
+guardian.js	🛡️🧩🔐	Захист усієї системи
+symbol-core-list.json	📘🧩✨	Список дозволених емоджі
+sync-status.md	📘📺🛡️	Лог доступу / статус домену
+emoji-struct.md	🧬🧠📘	Геном DAO Studio
+📘 admin-readme.md — інструкція
+markdown
+# 📘 Admin Protocol Kit — DAO Studio v6.1
+
+Цей набір містить захищену структуру доступу до адміністративного вузла DAO Studio.
+
+## 🔐 Доступ
+
+- Вузол: `admin-core-box.html`
+- Захист: `guardian.js` + `token-validator.js`
+- Сигнатура: 🤖🧠📘🚀🔐🛡️
+
+## 📦 Безпека
+
+- `trap-empty-node.html` — капкан-файл
+- `emoji-guardian-dashboard.html` — лог доступу
+- `admin-access-protocol.md` — правила
+
+## 🚀 Запуск
+
+- Telegram команда: `/admin_unlock`
+- Веб-панель: `studio-dashboard.html` → 🕸️ Адмін вузол
+
+## 🧠 Мислення
+
+- Всі дії логічно повʼязані через `emoji-chain-engine.js`
+- Структура емоджі — у `emoji-struct.md`
+🛡️ emoji-guardian-dashboard.html — лог доступу
+html
+<section id="guardian-log">
+  <h2>🛡️ Лог доступу до адмін вузла</h2>
+  <table>
+    <thead><tr><th>Дата</th><th>Сигнатура</th><th>Статус</th></tr></thead>
+    <tbody>
+      <tr><td>2025-07-22</td><td>🤖🧠📘🚀🔐🛡️</td><td>✅ Доступ дозволено</td></tr>
+      <tr><td>2025-07-21</td><td>📦 (порожній)</td><td>❌ Блоковано — trap активовано</td></tr>
+    </tbody>
+  </table>
+</section>
+🧩 Міні-гра: “🧠 Вхід через мислення”
+📁 mind-entry-game.html 🎮 Гравець має зібрати правильну сигнатуру доступу з емоджі 🔐 Якщо правильно → відкривається admin-core-box.html ❌ Якщо помилка → активується trap-empty-node.html
+---
+📥 ZIP як Markdown-структура: admin-protocol-kit.zip
+markdown
+# 📦 admin-protocol-kit.zip — DAO Studio Secure Access
+
+## 📁 Вміст
+
+- 🕸️ `admin-core-box.html` — головний вузол доступу
+- 🔐 `token-validator.js` — перевірка токенів
+- 🛡️ `guardian.js` — захист системи
+- 📦 `trap-empty-node.html` — капкан-файл
+- 📘 `admin-access-protocol.md` — правила доступу
+- 📘 `admin-readme.md` — інструкція користування
+- 🎨 `admin-entry-banner.svg` — графіка захисту
+- 🧠 `emoji-chain-engine.js` — логіка звʼязків
+- 📘 `emoji-struct.md` — геном DAO Studio
+- 📺 `emoji-guardian-dashboard.html` — лог доступу
+- 📘 `symbol-core-list.json` — дозволені емоджі
+- 📘 `sync-status.md` — статус домену / доступу
+
+## 🚀 Запуск
+
+- Telegram команда: `/admin_unlock`
+- Веб-гру: `mind-entry-game.html`
+- Панель: `studio-dashboard.html` → 🕸️ Адмін вузол
+🎮 Інтерактивна гра: “🧠 Вхід через мислення”
+📁 mind-entry-game.html — вставка в index.html
+
+html
+<section id="mind-entry-game" style="background:#eef; padding:1em; border:2px solid #00ff7f;">
+  <h2>🧠 Вхід через мислення</h2>
+  <p>Збери правильну комбінацію емоджі для доступу:</p>
+  <form onsubmit="return checkAccessEmoji();">
+    <input type="text" id="emojiInput" placeholder="🤖🧠📘🚀🔐🛡️" style="font-size:1.2em;" />
+    <button type="submit">🔓 Перевірити доступ</button>
+  </form>
+  <p id="accessResult" style="margin-top:1em;"></p>
+</section>
+
+<script>
+function checkAccessEmoji() {
+  const input = document.getElementById("emojiInput").value.trim();
+  const valid = "🤖🧠📘🚀🔐🛡️";
+  document.getElementById("accessResult").innerText =
+    input === valid ? "✅ Доступ дозволено!" : "❌ Капкан активовано 📦";
+  return false;
+}
+</script>
+🤖 Telegram команда: /mind_entry_game
+Команда	Дія
+/mind_entry_game	Запускає гру в чаті DAO WebApp
+/admin_unlock	Перевірка доступу
+/verify_token	Верифікація DAO-токена
+/orEsht_alert	Повідомлення про спробу злому
+🔧 Реалізується через tele-launch-bot.js + guardian.js
+
+📘 NFT: “🧠 Verified Admin Access”
+Назва: DAO Access Token #001
+
+Умова: пройти гру “🧠 Вхід через мислення”
+
+Виводиться у emoji-guardian-dashboard.html
+
+Можна інтегрувати у identity-card.html як статус
+---
+                🛡️ DAO Access Vault
+
+ 📁 dao-access-vault.html — структура сторінки
+html
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🛡️ DAO Access Vault</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>🛡️ DAO Access Vault</h1>
+    <p>🔐 Сховище токенів, NFT-доступу та мислячих сигнатур</p>
+  </header>
+
+  <section id="verified-tokens">
+    <h2>🧠 Verified Access Tokens</h2>
+    <ul>
+      <li>🧠DAO-Token-#001 — Admin Access</li>
+      <li>🧩PuzzleNode-Verified — Logic Entry</li>
+      <li>🕊️Ethic-Certified — Humble Node</li>
+    </ul>
+  </section>
+
+  <section id="nft-access">
+    <h2>📘 NFT Доступу</h2>
+    <div class="nft-card">
+      <img src="assets/nft-verified-admin.svg" alt="NFT Admin Access" width="200" />
+      <p><strong>🧠 Verified Admin Access</strong></p>
+      <p>Отримано після проходження гри “Вхід через мислення”</p>
+    </div>
+  </section>
+
+  <section id="access-logs">
+    <h2>📺 Лог доступу</h2>
+    <table>
+      <thead><tr><th>Дата</th><th>Сигнатура</th><th>Статус</th></tr></thead>
+      <tbody>
+        <tr><td>2025-07-22</td><td>🤖🧠📘🚀🔐🛡️</td><td>✅ Доступ дозволено</td></tr>
+        <tr><td>2025-07-21</td><td>📦 (порожній)</td><td>❌ Капкан активовано</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <p>© DAO Studio | Захист мислення через емоджі</p>
+  </footer>
+</body>
+</html>
+🔗 Інтеграція
+📎 Додати лінк у studio-dashboard.html:
+
+html
+<a href="dao-access-vault.html">🛡️ Перейти до DAO Access Vault</a>
+📘 Вставити NFT-графіку: assets/nft-verified-admin.svg
+
+🤖 Telegram команда: /vault_status → показує токени та лог
 ---
 
 ## 🔍 Використання у WebApp
