@@ -1,0 +1,18 @@
+{
+  "schema": "🧠 DAO Studio Emoji Routing Schema",
+  "trigger_symbols": ["🧠", "🧩", "🕊️", "✨", "📘", "🔐", "🌍", "🎬", "💡", "🔔"],
+  "flow_rules": {
+    "symbol_match": "1+ символ в назві → активує звʼязок з головним кодом",
+    "execution_link": "виконання через studio-v6-log.json → звʼязок з ядром",
+    "exclusion": "відсутність символів + ізольоване виконання → не включається"
+  },
+  "example_files": [
+    {"file": "🧠studio-runtime.html", "status": "linked"},
+    {"file": "✨studio-v6-dashboard.html", "status": "linked"},
+    {"file": "gov-access.html", "status": "linked via logic"},
+    {"file": "random.html", "status": "unlinked"}
+  ],
+  "source": "AgroProsper/docs",
+  "verified_by": "AgroProsperAdmin",
+  "activation_date": "2025-07-21"
+}
