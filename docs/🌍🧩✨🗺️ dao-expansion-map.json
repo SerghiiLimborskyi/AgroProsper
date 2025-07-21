@@ -1,0 +1,31 @@
+{
+  "daoStudio": {
+    "version": "v6.0.0",
+    "author": "Serhii Limborskyi",
+    "admin": "AgroProsperAdmin",
+    "base_repo": "https://github.com/SerghiiLimborskyi/AgroProsper",
+    "domains": {
+      "main": "https://agroprosper.link",
+      "studioPanel": "https://studio.agroprosper.com",
+      "daoEthics": "https://dao.agroprosper.io",
+      "creatorBadge": "https://nft.agroprosper.art",
+      "pulseMonitor": "https://pulse.agroprosper.app",
+      "govAccess": "https://gov.agroprosper.org"
+    },
+    "core_files": {
+      "dashboard": "studio-v6-dashboard.html",
+      "certificate": "Studio Certificate V6.pdf",
+      "log": "studio-v6-log.json",
+      "runtime": "studio-runtime.html",
+      "status": "runtime-card.json",
+      "badge": "studio-v6-badge.svg",
+      "ethics": "humble-node.html",
+      "gov_form": "gov-access.html",
+      "nft_creator_meta": "creator-nft.json",
+      "pulse_animation": "pulse.svg",
+      "webapp_alert": "Telegram WebApp /v6status"
+    },
+    "description": "DAO Studio v6 — живе мислення, структурована етика, WebApp розгортання",
+    "expansion_date": "2025-07-21"
+  }
+}
