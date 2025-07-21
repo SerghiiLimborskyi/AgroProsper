@@ -1,0 +1,9 @@
+/start — запускає DAO Autopilot Engine  
+/update — оновлює всі модулі через `mindflow-node.json`  
+/status — перевіряє логіку захисту, сертифікати, гру, етику  
+/trailer — відтворює DAO Studio Trailer  
+/ethics — виводить `humble-node.html`  
+/game — запускає “Перші Жнива” через `game-node-package.zip`  
+/pulse — показує Studio Heartbeat  
+/docs — генерує PDF / Protocol.md / Zip  
+/deploy — розгортає WebApp на мультидомен  
