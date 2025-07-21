@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="640" viewBox="0 0 800 640">
+  <style>
+    text { font-family:Verdana, sans-serif; font-size:15px; fill:#14472b; }
+    .domain { fill:#ccefe1; stroke:#369a69; stroke-width:2; rx:10; ry:10; }
+    .connector { stroke:#369a69; stroke-width:2; marker-end:url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#369a69" />
+    </marker>
+  </defs>
+
+  <!-- Nodes -->
+  <rect x="300" y="40" width="200" height="50" class="domain"/>
+  <text x="400" y="70" text-anchor="middle">🌐 agroprosper.link</text>
+
+  <rect x="60" y="140" width="200" height="50" class="domain"/>
+  <text x="160" y="170" text-anchor="middle">🧠 studio.agroprosper.com</text>
+
+  <rect x="540" y="140" width="200" height="50" class="domain"/>
+  <text x="640" y="170" text-anchor="middle">🕊️ dao.agroprosper.io</text>
+
+  <rect x="60" y="260" width="200" height="50" class="domain"/>
+  <text x="160" y="290" text-anchor="middle">🎨 nft.agroprosper.art</text>
+
+  <rect x="540" y="260" width="200" height="50" class="domain"/>
+  <text x="640" y="290" text-anchor="middle">💓 pulse.agroprosper.app</text>
+
+  <rect x="300" y="380" width="200" height="50" class="domain"/>
+  <text x="400" y="410" text-anchor="middle">📘 gov.agroprosper.org</text>
+
+  <!-- Connections -->
+  <line x1="400" y1="90" x2="160" y2="140" class="connector"/>
+  <line x1="400" y1="90" x2="640" y2="140" class="connector"/>
+  <line x1="160" y1="190" x2="160" y2="260" class="connector"/>
+  <line x1="640" y1="190" x2="640" y2="260" class="connector"/>
+  <line x1="160" y1="310" x2="400" y2="380" class="connector"/>
+  <line x1="640" y1="310" x2="400" y2="380" class="connector"/>
+
+  <!-- Legend -->
+  <text x="40" y="600">🧠 DAO Studio v6 — Картографічна маршрутизація</text>
+</svg>
