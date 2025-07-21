@@ -1,0 +1,48 @@
+{
+  "version": "v6.0.0",
+  "activated_by": "AgroProsperAdmin",
+  "date": "2025-07-21",
+  "structure": {
+    "edu-module": {
+      "folder": "/docs/edu-module/",
+      "active_file": "📘 knowledge-core.html",
+      "status": "✅"
+    },
+    "game-module": {
+      "folder": "/docs/game-module/",
+      "active_file": "🎮 AgroTycoon.html",
+      "status": "✅"
+    },
+    "video-presentations": {
+      "folder": "/docs/video-presentations/",
+      "active_file": "🎬 studio-slide.mp4",
+      "status": "✅"
+    },
+    "legal-module": {
+      "folder": "/docs/legal-module/",
+      "active_file": "📘 Emoji Navigator License.pdf",
+      "status": "✅"
+    },
+    "promo-deck": {
+      "folder": "/docs/promo-deck/",
+      "active_file": "🧠 DAO Summary V6.pdf",
+      "status": "✅"
+    },
+    "marketing": {
+      "folder": "/docs/marketing/",
+      "active_file": "📘 author-profile.html",
+      "status": "✅"
+    }
+  },
+  "dashboard": "studio-v6-dashboard.html",
+  "zip_package": "studio-v6-optimized.zip",
+  "pdf_map": "Studio v6.0 Map.pdf",
+  "telegram_webapp_alert": "Studio v6.0.0 активовано",
+  "cleaning": {
+    "duplicates_removed": true,
+    "temp_files": "🗑️ cleared",
+    "cloud_scan": "❌ disabled"
+  },
+  "bot_protection": "✅ enabled",
+  "notes": "Only 1 essential file per module retained. All secondary material removed from active folders."
+}
