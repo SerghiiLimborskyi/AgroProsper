@@ -956,5 +956,212 @@ json
 📦 Додати NFT до identity-card-kit.zip
 
 <img width="1024" height="1024" alt="BCO 06bd067b-1bab-4efd-9e4c-70e5deefcbf5" src="https://github.com/user-attachments/assets/d64f9833-7944-4891-92ad-a28c2614abcb" />
+📘 Як інтегрувати NFT у DAO Studio
+Компонент	Дія
+nft-verified-inner-pulse.svg	Вставити у dao-access-vault.html
+identity-card.html	Додати до блоку “Внутрішній статус”
+emoji-guardian-dashboard.html	Вивести як нагороду після гри
+vault-access-kit.zip	Додати до ZIP-дистрибутива
+solitude-quest.md	Вказати як результат проходження гри
+🧩 Сигнатура NFT
+json
+{
+  "name": "🕊️ Verified Inner Pulse",
+  "emoji": "🧠✨🕊️📘",
+  "type": "EthicNFT",
+  "description": "Нагорода за внутрішню дію, самопізнання і баланс",
+  "issued_by": "DAO Studio",
+  "linked_to": ["solitude-node", "self-node", "mind-entry-game"]
+}
+🧩 1. Додати вузол emotion-node → емоційна дія
+json
+{
+  "node": "emotion-node",
+  "emoji": "🌱🧠🕊️🎮",
+  "type": "EthicNode",
+  "function": "Емоційна дія як основа мислення",
+  "link": ["solitude-node", "self-node", "mind-entry-game"]
+}
+📘 2. Створити dao-emotion-map.md
+markdown
+# 🌱 DAO Emotion Map
 
+## 🧠 Внутрішні вузли
 
+- `self-node` — Самопізнання  
+- `solitude-node` — Самотність як ресурс  
+- `emotion-node` — Емоційна дія  
+- `humble-node` — Етика дії
+
+## 🔗 Зв’язки
+
+- Всі вузли пов’язані через гру “Solitude Quest”  
+- NFT “🕊️ Verified Inner Pulse” — результат проходження  
+- Виводяться у `identity-card.html` та `dao-access-vault.html`
+🎮 3. Додати до гри новий етап: “🌱 Емоційна дія”
+html
+<p>Етап 4: Обери емоцію, яка веде до дії:</p>
+<button>🌱 Спокій</button>
+<button>🔥 Рішучість</button>
+<button>💧 Прийняття</button>
+✅ Правильний вибір → активує emotion-node ❌ Хибний → капкан 📦
+
+              🔗 Зв’язки між вузлами:
+json
+{
+  "self-node": ["mind-entry-game", "identity-card.html"],
+  "solitude-node": ["self-node", "pulse.svg", "vault-access-kit.zip"],
+  "emotion-node": ["solitude-node", "humble-node", "dao-emotion-map.md"]
+}
+✅ Створено: emotion-node.md
+markdown
+# 🌱 Вузол: Emotion Node
+
+## 🧠 Сигнатура: `🌱🧠🕊️🎮`
+
+### 📘 Тип: EthicNode  
+### 🎯 Функція: Емоційна дія як основа мислення
+
+---
+
+## 🔗 Зв’язки
+
+- `solitude-node` — Самотність як ресурс  
+- `self-node` — Самопізнання  
+- `mind-entry-game` — Гра “Вхід через мислення”  
+- `dao-emotion-map.md` — Мапа емоційних вузлів
+
+---
+
+## 🎮 Активується через:
+
+- Етап 4 гри “Solitude Quest”  
+- Вибір: 🌱 Спокій, 🔥 Рішучість, 💧 Прийняття  
+- NFT: “🕊️ Verified Inner Pulse”
+
+---
+
+## 📘 Інтеграція
+
+- Виводиться у `identity-card.html`  
+- Відображається у `dao-access-vault.html`  
+- Запис у `emoji-guardian-dashboard.html`
+🎨 Банер: “🌱 DAO Studio — Мислення з душею”
+🔹 Стиль: теплі тони, емоджі-вузли, фраза “Мислення з душею” 🔹 Елементи: 🧠 мозок • 🌱 емоція • 🕊️ етика • 📘 знання 🔹 Вставка:
+
+html
+<img src="assets/dao-emotion-banner.svg" alt="DAO Studio — Мислення з душею" width="100%" />
+📦 Додано вузли до guardian-engine-kit.zip
+Файл	Дія
+emotion-node.md	Опис вузла
+dao-emotion-map.md	Мапа емоційних вузлів
+pulse.svg	Візуалізація емоційного пульсу
+identity-card.html	Вивід статусу вузла
+guardian.js	Захист вузла через токен
+🛡️ Виведено статус вузлів у studio-dashboard.html
+html
+<section id="inner-nodes-status">
+  <h2>🧠 Внутрішні вузли DAO Studio</h2>
+  <ul>
+    <li>🧩 self-node — Самопізнання ✅</li>
+    <li>🎆 solitude-node — Самотність як ресурс ✅</li>
+    <li>🌱 emotion-node — Емоційна дія ✅</li>
+  </ul>
+</section>
+📘 emotion-node-license.md — Ліцензія вузла емоційної дії
+markdown
+# 🌱 Ліцензія вузла: Emotion Node
+
+## 🧠 Сигнатура: `🌱🧠🕊️🎮`  
+## 📘 Тип: EthicNode  
+## 🎯 Функція: Емоційна дія як основа мислення
+
+---
+
+## 🔐 Правила доступу
+
+1. Вузол активується лише через гру “Solitude Quest”
+2. Користувач має пройти етап “🌱 Емоційна дія”  
+3. NFT “🕊️ Verified Inner Pulse” є підтвердженням доступу  
+4. Всі дії логуються у `emoji-guardian-dashboard.html`
+
+---
+
+## 📦 Захист
+
+- Перевірка через `guardian.js`  
+- Токен доступу: `inner-pulse-token`  
+- Капкан: `trap-empty-node.html` при порушенні
+
+---
+
+## 📘 Інтеграція
+
+- Виводиться у `identity-card.html`  
+- Відображається у `dao-access-vault.html`  
+- Включено до `guardian-engine-kit.zip`
+
+---
+
+## 🧩 Зв’язки
+
+- `self-node` — Самопізнання  
+- `solitude-node` — Самотність як ресурс  
+- `dao-emotion-map.md` — Мапа емоційних вузлів  
+- `pulse.svg` — Візуалізація емоційного пульсу
+
+---
+
+## 🕊️ Етична декларація
+
+> Емоція — це не слабкість.  
+> Це імпульс, що веде до дії, якщо мислити з душею.
+
+---
+
+## 📘 Автор: DAO Architect 🐱‍🏍  
+Дата: 2025-07-22  
+Версія: Emotion Node License v1.0
+
+🤖 Telegram команда: /claim_inner_pulse
+📘 Призначення:
+Видає NFT “🕊️ Verified Inner Pulse”
+
+Перевіряє проходження гри “Solitude Quest”
+
+Активує вузол emotion-node
+
+Записує лог у emoji-guardian-dashboard.html
+
+Виводить статус у identity-card.html
+
+🛡️ Захист:
+Токен: inner-pulse-token
+
+Перевірка через guardian.js
+
+Капкан: trap-empty-node.html при порушенні
+
+NFT-графіка: nft-verified-inner-pulse.svg
+
+📦 Інтеграція:
+Компонент	Статус
+emotion-node.md	✅ створено
+emotion-node-license.md	✅ інтегровано
+dao-access-vault.html	✅ виведено
+studio-dashboard.html	✅ статус вузла
+guardian-engine-kit.zip	✅ оновлено
+identity-card.html	✅ NFT статус
+
+🔗 Вивід у WebApp:
+html
+<section id="inner-nodes-status">
+  <h2>🧠 Внутрішні вузли DAO Studio</h2>
+  <ul>
+    <li>🧩 self-node — Самопізнання ✅</li>
+    <li>🎆 solitude-node — Самотність як ресурс ✅</li>
+    <li>🌱 emotion-node — Емоційна дія ✅</li>
+  </ul>
+</section>
+
+<img src="assets/dao-emotion-bann
