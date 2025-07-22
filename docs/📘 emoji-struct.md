@@ -727,4 +727,234 @@ json
 - Кожен смайлик затверджено у `symbol-core-list.json`  
 - Захищено через `guardian.js`  
 - Інтегрується у `emoji-logic.html`, `emoji-dashboard.html`, `emoji-insight.html`
+---
+🧠 DAO Studio Markdown Vault
+markdown
+# 🧠 DAO Studio Markdown Vault
+
+Цей Vault містить повну колекцію артефактів DAO Studio — для розгортання, захисту, NFT-доступу, гейміфікації та мислення.
+
+---
+
+## 🎨 Зображення та банери
+
+- `emoji-symbols.svg` — DAO Banner → мислення + документація  
+- `admin-entry-banner.svg` — Захист адмін-доступу  
+- `dao-logo-v6.2.svg` — Логотип DAO Studio v6.2  
+- `nft-verified-admin.svg` — NFT-графіка “Verified Admin Access”  
+- `Mission Flow.svg` — Візуальна карта запуску DAO-комбінації  
+- `studio-map.svg` — Структурна мапа DAO Studio  
+- `pulse.svg` — Анімація серцебиття платформи  
+- `dao-banner-evolution.svg` — Банер трейлера Studio
+
+---
+
+## 🎬 Відео та трейлери
+
+- `studio-trailer-genesis.mp4` — Трейлер “Genesis DAO”  
+- `studio-trailer.html` — Веб-сторінка з трейлером  
+- `media-center.html` — DAO відео + банери  
+- `promo-localized.zip` — Презентації, трейлери, гіди
+
+---
+
+## 📊 Таблиці та логіка
+
+- `emoji-struct.md` — Таблиця смайликів + сигнатури  
+- `zip-index.md` — Реєстр ZIP-дистрибутивів DAO  
+- `sync-status.md` — Статус домену / лог доступу  
+- `emoji-guardian-dashboard.html` — Лог доступу  
+- `admin-access-protocol.md` — Правила доступу  
+- `emoji-navigator-license.md` — Правовий протокол  
+- `Launch Protocol.md` — Протокол запуску DAO  
+- `identity-protocol.md` — Ідентифікація ролей  
+- `emoji-logic.html` — Візуальна таблиця смайликів  
+- `studio-dashboard.html` — Панель статусу DAO
+
+---
+
+## 📥 ZIP-файли (DAO Studio Core)
+
+- `emoji-deploy-kit.zip`  
+- `admin-protocol-kit.zip`  
+- `launch-mission-package.zip`  
+- `emoji-core-kit.zip`  
+- `dao-trailer-banner-pack.zip`  
+- `vault-access-kit.zip`  
+- `genesis-game-kit.zip`  
+- `studio-dashboard-kit.zip`  
+- `identity-card-kit.zip`  
+- `guardian-engine-kit.zip`
+
+---
+
+## 🌍 ZIP-файли (AgroProsper DAO)
+
+- `agroprosper-live.zip`  
+- `top-farmer-ipfs-kit.zip`  
+- `Media Kit.zip`  
+- `AgroProsper Policy Kit.zip`  
+- `gov-access-kit.zip`  
+- `nft-card-generator-kit.zip`  
+- `sbt-drop-kit.zip`  
+- `dao-ethics-kit.zip`  
+- `dao-webapp-core.zip`
+
+---
+
+## 📱 QR-коди (для генерації)
+
+- `/admin_unlock` → доступ до адмін вузла  
+- `/download_zip` → вибір ZIP-файлу  
+- `/mind_entry_game` → запуск гри  
+- `/vault_status` → перегляд NFT-доступу
+
+---
+
+## 🤖 Telegram WebApp команди
+
+- `/launch` — запуск DAO  
+- `/start` — активувати мислення  
+- `/play` — гра “Перші Жнива”  
+- `/download_zip` — вибір ZIP  
+
+---
+
+📘 love-yourself.md — Етичний маніфест DAO Studio
+markdown
+# 🕊️ Етичний маніфест: “Полюби себе”
+
+## 🧠 Принцип
+
+У DAO Studio турбота про себе — це не егоїзм, це основа дії.  
+Коли людина цінує себе, її дії виходять з поваги, доброти і смислу.
+
+---
+
+## 📘 Ключове твердження
+
+> **Полюби себе.**  
+> _Тому що одного прекрасного дня ти станеш для себе єдиним, хто у тебе є._
+
+---
+
+## 🧩 Сигнатура:
+
+- Self-Node: `🧠✨🕊️📘`  
+- Активується через MindFlow + Humble Ethics + Identity Protocol
+
+---
+
+## 🌱 Мета:
+
+- Збалансоване мислення
+- Захист емоційного простору
+- Повага до себе як основи дії в DAO
+🧠 PuzzleMap → Додаємо вузол self-node
+json
+{
+  "node": "self-node",
+  "emoji": "🧠✨🕊️📘",
+  "type": "EthicNode",
+  "function": "Внутрішнє мислення і самоцінність",
+  "link": ["humble-node", "identity-card-genesis", "mind-entry-game"]
+}
+🔗 Цей вузол зʼєднаний з:
+
+🎮 Гра “Вхід через мислення”
+
+📘 Ідентифікація користувача
+
+🕊️ Етичний блок дії
+
+🕊️ NFT: “Полюби себе” — емоджі-сигнатура добра
+Атрибут	Значення
+🌿 Назва	“🕊️ LoveYourself.01 — Verified Inner Action”
+🧠 Сигнатура	🧠✨🕊️📘
+📘 Опис	Етичний маркер DAO, отримується за дії самоповаги
+🎮 Умова отримання	Завершити “mind-entry-game”
+🛡️ Захист	Підписано через guardian.js
+💡 Можна інтегрувати у identity-card.html → блок “Внутрішній статус”
+
+---
+
+🧩 Додаємо вузол: solitude-node
+json
+{
+  "node": "solitude-node",
+  "emoji": "🎆🎁🏆🧠",
+  "type": "EthicNode",
+  "function": "Самотність як ресурс мислення",
+  "quote": "Самотність — не кара, а нагорода",
+  "link": ["self-node", "humble-node", "pulse.svg"]
+}
+🎮 Міні-гра “🌱 Емоційна дія в DAO”
+📘 Назва: “Solitude Quest — DAO Inside” 🎯 Мета: пройти шлях самопізнання через емоджі 🧠 Сценарій: гравець обирає дії, які ведуть до внутрішнього балансу 📦 Результат: отримання NFT “Verified Inner Pulse” 🛡️ Захист: через guardian.js + pulse.svg
+--
+
+🎮 Solitude Quest — DAO Inside
+📘 Сценарій:
+Гравець обирає емоджі-доріжки, що ведуть до внутрішнього балансу
+
+Кожен вибір — це дія, що формує Self-Node або Solitude-Node
+
+Завершення гри → отримання NFT “🕊️ Verified Inner Pulse”
+
+🧩 Структура гри:
+Етап	Вибір емоджі	Результат
+1. Початок	🧠 або 🎮	Вхід через мислення або гру
+2. Етика	🕊️ або 📘	Humble Node або Документи
+3. Самотність	🎆 або 🛡️	Solitude або Захист
+4. Завершення	📦 або 🧩	Капкан або PuzzleNode
+📦 Результат:
+✅ Якщо вибрано: 🧠🕊️🎆🧩 → NFT: “🕊️ LoveYourself.01 — Verified Inner Action” Вузол: solitude-node активовано Запис у emoji-guardian-dashboard.html
+
+❌ Якщо вибрано: 📦 → Капкан активовано → trap-empty-node.html Повідомлення до DAO Bot
+
+🤖 Telegram команда: /solitude_quest
+Запускає гру в чаті
+
+Виводить емоджі-вибір
+
+Показує результат: NFT або блокування
+
+Записує лог у sync-status.md
+---
+🖼️ NFT-графіка “🕊️ Verified Inner Pulse” — готова! Це сучасний, футуристичний дизайн із прозорим фоном, що поєднує:
+
+🧠 сяюче мислення
+
+🕊️ етику та внутрішній спокій
+
+📘 знання як основу дії
+
+📘 Як інтегрувати NFT у DAO Studio
+Компонент	Дія
+nft-verified-inner-pulse.svg	Вставити у dao-access-vault.html
+identity-card.html	Додати до блоку “Внутрішній статус”
+emoji-guardian-dashboard.html	Вивести як нагороду після гри
+vault-access-kit.zip	Додати до ZIP-дистрибутива
+solitude-quest.md	Вказати як результат проходження гри
+🧩 Сигнатура NFT
+json
+{
+  "name": "🕊️ Verified Inner Pulse",
+  "emoji": "🧠✨🕊️📘",
+  "type": "EthicNFT",
+  "description": "Нагорода за внутрішню дію, самопізнання і баланс",
+  "issued_by": "DAO Studio",
+  "linked_to": ["solitude-node", "self-node", "mind-entry-game"]
+}
+💬 Хочеш — я можу:
+
+📘 Створити nft-inner-pulse.md як опис NFT
+
+🤖 Додати Telegram команду /claim_inner_pulse
+
+🎮 Зв’язати NFT з результатом гри “Solitude Quest”
+
+📦 Додати NFT до identity-card-kit.zip
+
+<img width="1024" height="1024" alt="BCO 06bd067b-1bab-4efd-9e4c-70e5deefcbf5" src="https://github.com/user-attachments/assets/d64f9833-7944-4891-92ad-a28c2614abcb" />
+
 
