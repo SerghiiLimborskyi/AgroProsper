@@ -8,6 +8,37 @@ AgroProsper — це децентралізована платформа для 
 
 ---
 
+AgroProsper DAO WebApp v5.0 має активний публічний профіль
+🌐 Профіль AgroProsper на WordPress
+Поле	Значення
+👤 Ім’я	AgroProsper
+🌍 Веб-адреса	agroprosper.wordpress.com
+📝 Про мене	Агро-процвітання.com
+🔗 Публічний профіль	WordPress Reader
+🖼️ Аватар	Працює через Gravatar
+⚙️ Синхронізація	Всі зміни оновлюються на сайтах із Gravatar
+📘 Статус:	✅ Активний, публічний, синхронізований
+🔗 Що це дає AgroProsper DAO:
+Перевага 🌟	Коментар
+📡 Синхронізація з WebApp	Профіль відображає DAO-ідентичність
+🧠 DAO Ready	Профіль — частина SoulNode DAO
+🛡️ HeroAgro підтримка	Профіль можна виводити у NFT-картці
+📘 CHANGELOG інтеграція	Профіль згадується у changelog DAO
+🎨 Вивід у WebApp	Можна вставити у identity-card.html
+---
+📦 Готуємо ZIP dao-fix-pack-v5.zip з WordPress Sync
+Включає:
+
+profile-sync.json — дані профілю
+
+identity-card.html — вивід WordPress профілю
+
+dao-fix-pack.html — згадка про синхронізацію
+
+README: AgroProsper DAO v5.0 — WordPress Ready
+
+---
+
 ## 🧩 Структура репозиторію
 
 ```bash
