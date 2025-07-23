@@ -482,6 +482,7 @@ farmers-path-readme.md
 Дата: 2025-07-23  
 Версія: PuzzleNode v1.0
 ✅ Інтеграція:
+
 📘 Гайд: puzzlenode-readme.md
 
 🎮 Сторінка: play-puzzlenode.html
@@ -492,10 +493,44 @@ farmers-path-readme.md
 
 🤖 Команда: /play_puzzle
 
+💬...
+
 📘 Вивести гру на головній сторінці
 
 🎨 Створити карту PuzzleNode
 
 📦 Опублікувати гру на IPFS
+
+🤖 Додати команду /puzzle_status
+---
+✅ Вивід у index.html
+<section id="puzzlenode-game">
+  <h2>🧩 PuzzleNode — Архітектор Вузлів DAO</h2>
+  <p>З’єднай вузли DAO Studio у правильному порядку, активуй структуру мислення, отримай NFT “Node Architect”.</p>
+  <a href="play-puzzlenode.html" class="btn">🎮 Грати зараз</a>
+  <a href="docs/puzzlenode-readme.md" download>📘 Гайд по грі</a>
+  <img src="assets/node-architect.svg" alt="Node Architect NFT" width="300" />
+</section>
+📘 README оновлено:
+PuzzleNode згадано як третя гра
+
+Вказано гайд, сторінку, NFT, Telegram-команду
+
+Додано до ZIP dao-studio-kit.zip
+
+🤖 Telegram команда /play_puzzle активна
+Запускає гру
+
+Виводить вузли
+
+Активує NFT
+
+Записує лог
+💬...
+🎨 Створити карту PuzzleNode
+
+📦 Опублікувати гру на IPFS
+
+📘 Додати гайд до media-center.html
 
 🤖 Додати команду /puzzle_status
