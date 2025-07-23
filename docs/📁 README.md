@@ -78,3 +78,43 @@ AgroProsper DAO Studio v1.0 — структура мислення, що діє
 ## 📘 Автор: DAO Architect 🐱‍🏍  
 Дата: 2025-07-23  
 Версія: DAO Universe v1.0
+---
+
+🎮 DAO Studio Game System — інтеграція
+🔹 1. Назва гри: Solitude Quest
+Сюжет: самопізнання через вузли
+
+Вузли: emotion-node, self-node, solitude-node
+
+Ролі: 🧠 Мислитель, 🌱 Дослідник, 🛡️ Захисник
+
+Завдання: пройти етапи → отримати NFT → сертифікація
+
+🔹 2. Структура гри:
+Етап	Дія	Результат
+1️⃣ Вступ	DAO Launcher → трейлер	🎬 dao-trailer.mp4
+2️⃣ Вибір	Обрати вузол	🧠 emotion-node
+3️⃣ Дія	Виконати завдання	📘 inner-pulse-token
+4️⃣ Сертифікація	Отримати NFT	🛡️ AgroShield Certified
+5️⃣ Завершення	Вивід статусу	🧩 identity-card.html
+✅ Що потрібно додати:
+📘 game-readme.md — гайд по грі
+
+🎮 play-game.html — сторінка проходження
+
+🧠 game-engine.js — логіка вузлів
+
+🛡️ game-cert.svg — бейдж проходження
+
+🎬 Вивід трейлера у грі
+
+🤖 Команда Telegram /play_quest
+
+📘 Вивід у README:
+🎮 Гра: Solitude Quest  
+DAO Studio інтегрує гру самопізнання через вузли.  
+Пройди шлях → активуй вузол → отримай NFT → сертифікуйся.
+
+📘 Гайд: game-readme.md  
+🎮 Сторінка: play-game.html  
+🤖 Команда: /play_quest
