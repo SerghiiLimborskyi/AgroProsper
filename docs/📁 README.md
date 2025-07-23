@@ -252,3 +252,63 @@ game-cert.svg
 🛡️ Shield Trials	Захист DAO від атак через емоджі	Бейдж “Guardian Verified”
 📘 Knowledge Quest	Вікторина по гідах DAO Studio	Токен “DAO Scholar”
 🎧 Pulse Rhythm	Гра на ритм пульсу DAO (MP3)	NFT “Pulse Master”
+---
+
+🎮 Нова гра: Farmer’s Path — Шлях Фермера
+🌾 Ідея:
+Симуляція фермерського вибору в екосистемі DAO. Гравець проходить етапи розвитку ферми, приймає рішення, отримує NFT-бейдж “Top Farmer” та сертифікат.
+📘 farmers-path-readme.md — Гайд по грі
+# 🎮 DAO Studio Game: Farmer’s Path
+
+## 🎯 Мета
+
+Пройти шлях фермера в DAO Studio, прийняти етичні рішення, активувати вузли, отримати NFT “Top Farmer”.
+
+---
+
+## 🧩 Структура гри
+
+| Етап        | Дія                           | Результат                  |
+|-------------|-------------------------------|----------------------------|
+| 1️⃣ Вступ    | Вибір типу ферми              | 🌾 “AgroTycoon” або “EcoGrow”  
+| 2️⃣ Вирощування | Вибір культури               | 🌻 Соняшник, 🌽 Кукурудза, 🥕 Морква  
+| 3️⃣ Етика     | Вибір дії: екологія, спільнота | 📘 “EthicToken”  
+| 4️⃣ Сертифікація | Отримання бейджа             | 🏅 “Top Farmer”  
+| 5️⃣ Завершення | Вивід статусу                 | 🧩 `identity-card.html`
+
+---
+
+## 📘 Файли гри
+
+- `play-farmers-path.html` — сторінка гри  
+- `farm-engine.js` — логіка вибору  
+- `top-farmer.svg` — NFT-бейдж  
+- `farmers-path-readme.md` — гайд  
+- `dao-intro.mp3` — голосовий вступ
+
+---
+
+## 🤖 Telegram команда: `/play_farm`
+
+- Запускає гру  
+- Виводить вибір  
+- Активує NFT  
+- Записує лог
+
+---
+
+## 📦 Додано до ZIP: `dao-studio-kit.zip`
+
+📘 Автор: DAO Architect 🐱‍🏍  
+Дата: 2025-07-23  
+Версія: Farmer’s Path v1.0
+✅ Інтеграція:
+📘 Гайд: farmers-path-readme.md
+
+🎮 Сторінка: play-farmers-path.html
+
+🏅 NFT: top-farmer.svg
+
+📦 ZIP: dao-studio-kit.zip
+
+🤖 Команда: /play_farm
