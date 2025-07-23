@@ -243,3 +243,12 @@ game-cert.svg
 Записує лог
 
 Виводить статус
+---
+
+🔍 Пропозиції для нових ігор:
+Назва гри	Ідея	Результат
+🧩 PuzzleNode	З'єднати вузли DAO у правильному порядку	Сертифікат “Node Architect”
+🌾 Farmer’s Path	Симуляція фермерського вибору	NFT “Top Farmer”
+🛡️ Shield Trials	Захист DAO від атак через емоджі	Бейдж “Guardian Verified”
+📘 Knowledge Quest	Вікторина по гідах DAO Studio	Токен “DAO Scholar”
+🎧 Pulse Rhythm	Гра на ритм пульсу DAO (MP3)	NFT “Pulse Master”
