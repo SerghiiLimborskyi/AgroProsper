@@ -552,3 +552,26 @@ PuzzleNode згадано як третя гра
 📦 Додати до ZIP
 
 🤖 Активувати /play_guardian
+---
+
+🔧 Пропозиція: DAO Studio Fix Pack
+створити набір оновлень:
+🖼️ Вставити банер dao-banner.svg
+
+🎞️ Підключити трейлер dao-trailer.mp4
+
+📄 Завантажити PDF-гайд dao-universe-readme.md
+
+🆔 Вивести NFT-картку у identity-card.html
+
+🎨 Додати стилі вузлів, карток, кнопок
+
+🌍 Активувати перемикач мов
+
+⚙️ Додати status-engine.js для статусу виконавця
+💬...
+📦 Зібрати dao-fix-pack.zip
+
+📘 Оновити README
+
+🤖 Додати Telegram-команду /dao_fix
