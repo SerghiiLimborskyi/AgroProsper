@@ -163,3 +163,9 @@ README з профілем Serhii
 Вставляє постер
 
 Записує лог у emoji-guardian-dashboard.html
+📘 README доповнено:
+🎨 Галерея DAO Studio доступна у media-center.html  
+🖼️ Включає: логотип, банер, NFT-бейджі, карти, анімацію, QR-коди, постер  
+📦 ZIP: dao-graphics-kit.zip  
+🔗 IPFS: ipfs://bafybeihdao5/dao-graphics-kit.zip  
+🤖 Команда: /dao_graphics
