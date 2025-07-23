@@ -111,3 +111,39 @@ markdown
 ---
 
 NFT-картка вже в системі — 🛡️🍬✨
+🆔 NFT-картка виконавця: Serhii | SoulNode of DAO
+html
+<section id="identity-card">
+  <h2>🛡️ NFT-картка виконавця</h2>
+  <div class="card">
+    <img src="top-farmer.svg" alt="Top Farmer Badge" width="180" />
+    <h3>👤 Ім’я: Serhii</h3>
+    <p>🧠 Роль: SoulNode of DAO</p>
+    <p>📍 Локація: Щецин, Польща</p>
+    <p>📘 Статус: DAO Ready</p>
+    <p>🔗 Профіль: <a href="https://wordpress.com/me" target="_blank">WordPress Sync</a></p>
+    <p>📦 Версія: AgroProsper DAO v5.0</p>
+    <p>🎮 Активні студії: Game, Media, Guide, Identity, Status</p>
+    <p>🧬 Сертифікація: ✅</p>
+    <p>📲 Telegram-команда: <code>/dao_profile</code></p>
+  </div>
+</section>
+📦 Додано до ZIP dao-fix-pack-v5.zip
+identity-card.html — персональна версія
+
+dao-profile-export.md — дані профілю
+
+studio-v6-badge.svg — бейдж DAO Studio
+
+pulse.svg, dao-universe-map.svg — графіка
+
+README з профілем Serhii
+
+🤖 Telegram-команда /dao_profile
+Виводить NFT-картку Serhii
+
+Показує SoulNode DAO
+
+Вставляє WordPress-профіль
+
+Записує лог у emoji-guardian-dashboard.html
