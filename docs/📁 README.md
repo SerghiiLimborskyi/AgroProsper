@@ -491,3 +491,11 @@ farmers-path-readme.md
 📦 ZIP: dao-studio-kit.zip
 
 🤖 Команда: /play_puzzle
+
+📘 Вивести гру на головній сторінці
+
+🎨 Створити карту PuzzleNode
+
+📦 Опублікувати гру на IPFS
+
+🤖 Додати команду /puzzle_status
