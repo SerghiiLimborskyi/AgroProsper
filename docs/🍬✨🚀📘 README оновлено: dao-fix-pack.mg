@@ -169,3 +169,13 @@ README з профілем Serhii
 📦 ZIP: dao-graphics-kit.zip  
 🔗 IPFS: ipfs://bafybeihdao5/dao-graphics-kit.zip  
 🤖 Команда: /dao_graphics
+---
+
+🛠️ Дії для створення pull request:
+Створити нову гілку: feature/graphics-gallery
+
+Внести зміни у docs/media-center.html
+
+Оновити README.md
+
+Створити pull request з описом: “🎨 Додано галерею DAO Studio у media-center.html — All Systems Active”
