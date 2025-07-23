@@ -643,10 +643,68 @@ Telegram-команди	✅
 Показує трейлер, NFT, гайд
 
 Записує лог у emoji-guardian-dashboard.html
-💬...
+🚀 DAO Fix Pack — AgroProsper DAO 2025  
+Об’єднана платформа DAO Studio v2.0  
+📦 ZIP: dao-fix-pack.zip  
+📘 Гайд: dao-universe-readme.md  
+🤖 Команда: /dao_fix  
+🎮 Ігри: Solitude Quest, Farmer’s Path, PuzzleNode  
+🎬 Трейлер: dao-trailer.mp4  
+📄 PDF: GOV-буклет, гіди  
+🛡️ NFT: Top Farmer, Node Architect, AgroShield  
+🌍 Мови: 🇺🇦 🇵🇱 🇬🇧  
+⚙️ Статус: DAO-виконавець
+
+
 📘 Вивести DAO Fix Pack на головну
 
 🎨 Створити постер “AgroProsper DAO 2025 — Версія 2.0”
+
+📦 Опублікувати ZIP на IPFS
+
+🤖 Додати команду /dao_2025
+---
+
+🧠🌾🛡️📘✨🚀 DAO Fix Pack — Нова Сторінка Платформи
+<section id="dao-fix-pack">
+  <h2>🚀 DAO Fix Pack — AgroProsper DAO 2025</h2>
+  <p>Це об’єднана Web3-платформа без рефералів, з автоматизацією, гейміфікацією та мисленням.</p>
+
+  <ul>
+    <li>🧠 DAO Studio — структура мислення, вузли, NFT</li>
+    <li>🌾 Farmer’s DAO — мінт бейджів, симуляція вибору</li>
+    <li>🛡️ Identity Studio — сертифікація, ролі, статус</li>
+    <li>📘 Guide Studio — PDF-гайди, презентації, GOV-буклети</li>
+    <li>🎬 Media Studio — трейлери, MP3, відео</li>
+    <li>🎮 Game Studio — Solitude Quest, Farmer’s Path, PuzzleNode</li>
+    <li>🌍 Language Studio — 🇺🇦 🇵🇱 🇬🇧 перемикач мов</li>
+    <li>⚙️ Status Engine — статус DAO-виконавця</li>
+  </ul>
+
+  <p><strong>📦 ZIP-набір:</strong> <code>dao-fix-pack.zip</code> — включає всі HTML, SVG, MP4, MP3, README, стилі, скрипти</p>
+  <p><strong>📘 Гайд:</strong> <a href="docs/dao-universe-readme.md" download>dao-universe-readme.md</a></p>
+  <p><strong>🤖 Telegram-команда:</strong> <code>/dao_fix</code> — активує всі студії, виводить статус, запускає трейлер</p>
+
+  <a href="play-game.html" class="btn">🎮 Грати в Solitude Quest</a>
+  <a href="play-farmers-path.html" class="btn">🌾 Грати в Farmer’s Path</a>
+  <a href="play-puzzlenode.html" class="btn">🧩 Грати в PuzzleNode</a>
+</section>
+📘 README буде доповнено:
+🚀 DAO Fix Pack — AgroProsper DAO 2025  
+Об’єднана платформа DAO Studio v2.0  
+📦 ZIP: dao-fix-pack.zip  
+📘 Гайд: dao-universe-readme.md  
+🤖 Команда: /dao_fix  
+🎮 Ігри: Solitude Quest, Farmer’s Path, PuzzleNode  
+🎬 Трейлер: dao-trailer.mp4  
+📄 PDF: GOV-буклет, гіди  
+🛡️ NFT: Top Farmer, Node Architect, AgroShield  
+🌍 Мови: 🇺🇦 🇵🇱 🇬🇧  
+⚙️ Статус: DAO-виконавець
+💬...
+📘 Вивести DAO Fix Pack на головну
+
+🎨 Створити постер “DAO Studio 2025 — All Systems Active”
 
 📦 Опублікувати ZIP на IPFS
 
