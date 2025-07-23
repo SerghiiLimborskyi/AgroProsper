@@ -421,3 +421,73 @@ farmers-path-readme.md
 📦 Додати гру до ZIP
 
 🤖 Активувати /play_puzzle
+---
+
+🧩 PuzzleNode — Архітектор Вузлів DAO
+🎮 Нова гра: PuzzleNode
+🧠 Ідея:
+Гравець має з’єднати вузли DAO Studio у правильному порядку, щоб активувати мислення, ріст, захист і знання. Результат — NFT “Node Architect” + сертифікат.
+📘 puzzlenode-readme.md — Гайд по грі
+# 🧩 DAO Studio Game: PuzzleNode
+
+## 🎯 Мета
+
+З’єднати вузли DAO Studio у правильному порядку, активувати структуру мислення, отримати NFT “Node Architect”.
+
+---
+
+## 🧩 Вузли
+
+- 🧠 Emotion Node  
+- 🌱 Growth Node  
+- 🛡️ Shield Node  
+- 📘 Knowledge Node
+
+---
+
+## 📘 Етапи гри
+
+| Етап        | Дія                           | Результат                  |
+|-------------|-------------------------------|----------------------------|
+| 1️⃣ Вступ    | Вивід вузлів                  | 🎬 `dao-trailer.mp4`  
+| 2️⃣ З’єднання | Перетягування вузлів          | 🧠🌱🛡️📘 → PuzzleMap  
+| 3️⃣ Активація | Вивід структури DAO           | 📘 `dao-universe-readme.md`  
+| 4️⃣ Сертифікація | NFT “Node Architect”         | 🏅 `node-architect.svg`  
+| 5️⃣ Завершення | Статус у `studio-dashboard.html`
+
+---
+
+## 📘 Файли гри
+
+- `play-puzzlenode.html` — сторінка гри  
+- `puzzle-engine.js` — логіка з’єднання  
+- `node-architect.svg` — NFT  
+- `puzzlenode-readme.md` — гайд  
+- `dao-trailer.mp4` — трейлер
+
+---
+
+## 🤖 Telegram команда: `/play_puzzle`
+
+- Запускає гру  
+- Виводить вузли  
+- Активує NFT  
+- Записує лог
+
+---
+
+## 📦 Додано до ZIP: `dao-studio-kit.zip`
+
+📘 Автор: DAO Architect 🐱‍🏍  
+Дата: 2025-07-23  
+Версія: PuzzleNode v1.0
+✅ Інтеграція:
+📘 Гайд: puzzlenode-readme.md
+
+🎮 Сторінка: play-puzzlenode.html
+
+🧩 NFT: node-architect.svg
+
+📦 ZIP: dao-studio-kit.zip
+
+🤖 Команда: /play_puzzle
