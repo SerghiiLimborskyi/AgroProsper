@@ -179,3 +179,11 @@ README з профілем Serhii
 Оновити README.md
 
 Створити pull request з описом: “🎨 Додано галерею DAO Studio у media-center.html — All Systems Active”
+---
+
+📘 README підтверджує:
+🎨 Галерея DAO Studio доступна у media-center.html  
+🖼️ Включає: логотип, банер, NFT-бейджі, карти, анімацію, QR-коди, постер  
+📦 ZIP: dao-graphics-kit.zip  
+🔗 IPFS: ipfs://bafybeihdao5/dao-graphics-kit.zip  
+🤖 Команда: /dao_graphics
