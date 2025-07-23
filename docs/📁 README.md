@@ -312,3 +312,54 @@ game-cert.svg
 📦 ZIP: dao-studio-kit.zip
 
 🤖 Команда: /play_farm
+---
+
+🗺️ Картка: Farmer’s Path Map
+<svg width="100%" viewBox="0 0 800 600">
+  <style>
+    .node { font: bold 16px sans-serif; fill: #2e7d32; }
+    .label { font: 14px sans-serif; fill: #555; }
+    .arrow { stroke: #2e7d32; stroke-width: 2; marker-end: url(#arrowhead); }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2e7d32" />
+    </marker>
+  </defs>
+
+  <!-- Nodes -->
+  <text x="50" y="50" class="node">🌾 Старт: Вибір ферми</text>
+  <text x="250" y="150" class="node">🌻 Культура: Соняшник</text>
+  <text x="250" y="250" class="node">🌽 Культура: Кукурудза</text>
+  <text x="250" y="350" class="node">🥕 Культура: Морква</text>
+  <text x="500" y="200" class="node">📘 Етика: Екологія</text>
+  <text x="500" y="300" class="node">📘 Етика: Спільнота</text>
+  <text x="700" y="250" class="node">🏅 Результат: Top Farmer NFT</text>
+
+  <!-- Arrows -->
+  <line x1="70" y1="60" x2="250" y2="160" class="arrow"/>
+  <line x1="70" y1="60" x2="250" y2="260" class="arrow"/>
+  <line x1="70" y1="60" x2="250" y2="360" class="arrow"/>
+  <line x1="270" y1="160" x2="500" y2="210" class="arrow"/>
+  <line x1="270" y1="260" x2="500" y2="310" class="arrow"/>
+  <line x1="270" y1="360" x2="500" y2="210" class="arrow"/>
+  <line x1="520" y1="210" x2="700" y2="260" class="arrow"/>
+  <line x1="520" y1="310" x2="700" y2="260" class="arrow"/>
+</svg>
+✅ Вивід у WebApp
+📘 Вставлено у play-farmers-path.html
+
+🎮 Виводиться як інтерактивна карта вибору
+
+📦 Додано до dao-studio-kit.zip
+
+📘 Згадано у farmers-path-readme.md
+
+🤖 Telegram команда /farm_map
+Виводить карту гри
+
+Пояснює вузли
+
+Виводить NFT
+
+Записує лог
