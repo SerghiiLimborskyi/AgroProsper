@@ -72,3 +72,42 @@ README з профілем
 Вставляє профіль з WordPress
 
 Записує лог у emoji-guardian-dashboard.html
+---
+
+🆔 NFT-картка виконавця — “Top Farmer”
+Компонент	Статус	Коментар
+identity-card.html	✅	Сторінка NFT-картки
+dao-profile-export.md	✅	Дані профілю (WordPress + DAO)
+identity-protocol.md	✅	Структура Soulbound-картки
+top-farmer.svg	✅	Графіка бейджа
+studio-v6-badge.svg	✅	DAO Studio v6 бейдж
+pulse.svg	✅	Анімація пульсу DAO
+dao-universe-map.svg	✅	Візуальна карта DAO
+soulnode.html	✅	Блок мислення, статус, роль
+emoji-guardian-dashboard.html	✅	Лог Telegram-команд
+📘 README підтверджує:
+markdown
+🛡️ NFT: Top Farmer, Node Architect  
+📘 Вивід профілю у NFT-картці  
+📦 ZIP: dao-fix-pack-v5.zip  
+🔗 IPFS: ipfs://bafybeihdao5/dao-fix-pack-v5.zip  
+🤖 Команда: /dao_profile
+🤖 Telegram-команда /dao_profile
+Виводить NFT-картку виконавця
+
+Показує SoulNode DAO
+
+Вставляє профіль з WordPress
+
+Записує лог у emoji-guardian-dashboard.html
+💬
+📘 Вивести NFT-картку у WebApp
+
+🎨 Створити персоналізовану версію з твоїм ім’ям
+
+📦 Підготувати ZIP з карткою для IPFS
+
+🤖 Активувати /dao_profile у Telegram
+---
+
+NFT-картка вже в системі — 🛡️🍬✨
