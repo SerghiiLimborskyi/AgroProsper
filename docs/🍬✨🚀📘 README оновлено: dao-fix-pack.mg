@@ -287,3 +287,13 @@ markdown
 📦 ZIP: `studio-kit.zip`  
 🔗 IPFS CID: `ipfs://bafybeidaostudio/studio-kit.zip`  
 🤖 Telegram: надішліть команду `/dao_graphics` боту [@AgroProsperBot](https://t.me/AgroProsperBot)
+🎬 DAO Studio — вже на сайті AgroProsper DAO!
+
+🧠 Мислить, діє, захищає та говорить голосом добра 🌍  
+📦 Завантажуй Media Kit  
+📹 Дивись трейлер DAO  
+📘 Переглядай CHANGELOG  
+🔗 IPFS CID: bafybeidaostudio  
+🤖 Telegram-команди: /dao_fix /play_farm /dao_ipfs
+
+👉 Відкрий DAO Studio: https://serghiilimborskyi.github.io/AgroProsper/dao-studio.html
