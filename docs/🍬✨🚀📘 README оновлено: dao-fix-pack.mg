@@ -59,6 +59,20 @@ dao-profile-export.md
 soulnode.html
 
 studio-v6-badge.svg
+## 🎬 DAO Studio — Візуальна платформа AgroProsper DAO
+
+DAO Studio — це візуальна оболонка мислення, що діє для добра.  
+Вона обʼєднує всі студії DAO: Game, Media, Guide, Identity, Status, Language.
+
+### 🔹 Що включає DAO Studio:
+- 🖼️ Логотипи, банери, NFT-картки
+- 📦 ZIP Media Kit для партнерів
+- 📘 CHANGELOG DAO Studio
+- 📹 Відео-трейлер DAO
+- 🔗 IPFS CID + QR-коди
+- 🤖 Telegram-команди: `/dao_fix`, `/play_farm`, `/dao_ipfs`
+
+👉 [Перейти до DAO Studio](https://serghiilimborskyi.github.io/AgroProsper/dao-studio.html)
 
 pulse.svg, dao-universe-map.svg
 
