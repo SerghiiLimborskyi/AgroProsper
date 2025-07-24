@@ -246,3 +246,16 @@ markdown
 Завантажити на IPFS
 
 Активувати Telegram-команду /dao_graphics
+## 🎨 DAO Studio 2025 — All Systems Active
+
+🗂️ Папка `studio/` містить:
+- Логотип і банер DAO
+- NFT-бейджі та сертифікати
+- Карти DAO Studio
+- Анімацію Pulse
+- QR-коди для взаємодії
+- Постер DAO Studio
+
+📦 ZIP: studio-kit.zip  
+🔗 IPFS: ipfs://bafybeidaostudio/studio-kit.zip  
+🤖 Telegram: /dao_graphics
