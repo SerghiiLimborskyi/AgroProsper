@@ -1,0 +1,21 @@
+docs/studio/
+├── logo.svg
+├── banner.svg
+├── nft/
+├── maps/
+├── qr/
+└── poster.png
+
+Файл	Куди копіювати
+media-kit/	agroprosper-logo.svg	studio/logo.svg
+assets/	dao-banner.svg	studio/banner.svg
+assets/	top-farmer.svg	studio/nft/top-farmer.svg
+assets/	node-architect.svg	studio/nft/node-architect.svg
+assets/	game-cert.svg	studio/nft/game-cert.svg
+assets/	farmers-path-map.svg	studio/maps/farmers-path-map.svg
+assets/	dao-universe-map.svg	studio/maps/dao-universe-map.svg
+assets/	pulse.svg	studio/pulse.svg
+media-kit/sbt/	QR-mint-top-farmer.png	studio/qr/mint-top-farmer.png
+assets/	qr-changelog.png	studio/qr/changelog.png
+assets/	qr-tech-spec.png	studio/qr/tech-spec.png
+assets/	poster-dao-2025.png	studio/poster.png
