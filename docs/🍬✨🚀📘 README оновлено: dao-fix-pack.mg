@@ -187,3 +187,62 @@ README з профілем Serhii
 📦 ZIP: dao-graphics-kit.zip  
 🔗 IPFS: ipfs://bafybeihdao5/dao-graphics-kit.zip  
 🤖 Команда: /dao_graphics
+---
+
+📁 Нова папка: studio/
+studio/
+├── logo.svg                        # AgroProsper Logo
+├── banner.svg                      # DAO Studio Banner
+├── nft/
+│   ├── top-farmer.svg              # NFT-бейдж “Top Farmer”
+│   ├── node-architect.svg          # NFT-бейдж “Node Architect”
+│   └── game-cert.svg               # Сертифікат Solitude Quest
+├── maps/
+│   ├── farmers-path-map.svg        # Карта гри
+│   └── dao-universe-map.svg        # Карта DAO Studio
+├── pulse.svg                       # Анімація DAO Pulse
+├── qr/
+│   ├── mint-top-farmer.png         # QR для мінтування бейджа
+│   ├── changelog.png               # QR на CHANGELOG
+│   └── tech-spec.png               # QR на технічну документацію
+└── poster.png                      # Постер DAO Studio 2025
+✅ Файли взяті з:
+/assets/
+
+/media-kit/
+
+/media-kit/sbt/
+
+/docs/media-center.html
+
+/exports/ (для PDF, ZIP, презентацій)
+
+📘 README доповнення:
+markdown
+🎨 DAO Studio 2025 — All Systems Active
+
+🗂️ Папка `studio/` містить:
+- Логотип і банер DAO
+- NFT-бейджі та сертифікати
+- Карти DAO Studio
+- Анімацію Pulse
+- QR-коди для взаємодії
+- Постер DAO Studio
+
+📦 ZIP: studio-kit.zip  
+🔗 IPFS: ipfs://bafybeidaostudio/studio-kit.zip  
+🤖 Telegram: /dao_graphics
+🔧 Наступні дії
+Створити папку studio/ у репозиторії
+
+Перемістити файли з assets/, media-kit/, media-kit/sbt/
+
+Оновити media-center.html з новими шляхами
+
+Додати README-блок
+
+Створити ZIP studio-kit.zip
+
+Завантажити на IPFS
+
+Активувати Telegram-команду /dao_graphics
