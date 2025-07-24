@@ -259,3 +259,17 @@ markdown
 📦 ZIP: studio-kit.zip  
 🔗 IPFS: ipfs://bafybeidaostudio/studio-kit.zip  
 🤖 Telegram: /dao_graphics
+🎨 DAO Studio:
+## 🎨 DAO Studio 2025 — All Systems Active
+
+🗂️ Папка `studio/` містить:
+- Логотип і банер DAO
+- NFT-бейджі: Top Farmer, Node Architect, Game Cert
+- Карти DAO Studio: Farmer’s Path, DAO Universe
+- Анімацію Pulse
+- QR-коди для взаємодії
+- Постер DAO Studio
+
+📦 ZIP: `studio-kit.zip`  
+🔗 IPFS CID: `ipfs://bafybeidaostudio/studio-kit.zip`  
+🤖 Telegram: надішліть команду `/dao_graphics` боту [@AgroProsperBot](https://t.me/AgroProsperBot)
