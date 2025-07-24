@@ -153,3 +153,6 @@ bot.sendMessage(chatId, '💚 AgroProsper – обери дію:', {
     ]
   }
 });
+if (command === "/dao_graphics") {
+  bot.sendMessage(chatId, "🎨 DAO Studio 2025 доступна:\n📦 studio-kit.zip\n🔗 IPFS: ipfs://bafybeidaostudio/studio-kit.zip");
+}
