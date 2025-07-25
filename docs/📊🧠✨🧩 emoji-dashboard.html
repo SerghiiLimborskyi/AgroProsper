@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Emoji Dashboard — DAO UX & Symbol Analytics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>📊🧠✨ Emoji Dashboard</h1>
+    <p>Інтерактивна панель для аналізу статусів, ролей та дій у DAO</p>
+  </header>
+
+  <main>
+    <!-- ✨ Emoji-фільтри -->
+    <section>
+      <h2>✨ Фільтри статусів</h2>
+      <select id="emoji-filter" onchange="filterStatus()">
+        <option value="all">🔍 Всі</option>
+        <option value="🧠">🧠 Мислитель</option>
+        <option value="🛡️">🛡️ Верифікований</option>
+        <option value="📘">📘 Сертифікований</option>
+        <option value="🧩">🧩 Модульний</option>
+        <option value="🎭">🎭 Рольовий</option>
+      </select>
+    </section>
+
+    <!-- 📊 Аналітика -->
+    <section>
+      <h2>📊 Символічна аналітика</h2>
+      <div id="analytics">
+        <p>🧠 Мислителів: <span id="thinkers">0</span></p>
+        <p>🛡️ Верифікованих: <span id="verified">0</span></p>
+        <p>📘 Сертифікатів: <span id="certified">0</span></p>
+        <p>🧩 Модулів: <span id="modules">0</span></p>
+        <p>🎭 Ролей: <span id="roles">0</span></p>
+      </div>
+    </section>
+
+    <!-- 🧩 PuzzleNode інтеграція -->
+    <section>
+      <h2>🧩 PuzzleNode Live View</h2>
+      <iframe src="fusion-preview.html" width="100%" height="400" style="border:none;"></iframe>
+    </section>
+
+    <!-- 📘 Структура логіки -->
+    <section>
+      <h2>📘 Логіка символів</h2>
+      <p><a href="✨emoji-logic.html">🔍 Переглянути логіку</a></p>
+      <p><a href="📘 emoji-struct.md">📘 Структура Emoji</a></p>
+      <p><a href="🧠📘 Emoji Logic Index.txt">🧠 Індекс логіки</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 AgroProsper DAO — Emoji UX & Analytics</p>
+  </footer>
+
+  <!-- 🔧 Скрипт логіки -->
+  <script>
+    const emojiData = [
+      { role: "🧠", name: "Мислитель" },
+      { role: "🛡️", name: "Верифікований" },
+      { role: "📘", name: "Сертифікований" },
+      { role: "🧩", name: "Модульний" },
+      { role: "🎭", name: "Рольовий" }
+    ];
+
+    function filterStatus() {
+      const selected = document.getElementById("emoji-filter").value;
+      alert("🔍 Фільтр: " + selected);
+      // Тут можна додати логіку фільтрації
+    }
+
+    function updateAnalytics() {
+      document.getElementById("thinkers").textContent = 12;
+      document.getElementById("verified").textContent = 8;
+      document.getElementById("certified").textContent = 5;
+      document.getElementById("modules").textContent = 7;
+      document.getElementById("roles").textContent = 4;
+    }
+
+    updateAnalytics();
+  </script>
+</body>
+</html>
