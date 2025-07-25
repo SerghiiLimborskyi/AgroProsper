@@ -1,20 +1,3 @@
-async function loadRepoStatus() {
-  const response = await fetch("https://api.github.com/repos/SerghiiLimborskyi/AgroProsper/contents/docs");
-  const files = await response.json();
-
-  const list = document.getElementById("status-list");
-  list.innerHTML = "";
-
-  files.forEach(file => {
-    const li = document.createElement("li");
-    li.textContent = `📄 ${file.name}`;
-    list.appendChild(li);
-  });
-
-  const updated = document.getElementById("last-updated");
-  updated.textContent = `Оновлено: ${new Date().toLocaleDateString()}`;
-}
-document.addEventListener("DOMContentLoaded", loadRepoStatus);
 document.addEventListener("DOMContentLoaded", () => {
   const elements = {
     "🌐 Головна сторінка": document.querySelector("body"),
@@ -27,13 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
     "🎨 Стилі": document.styleSheets.length > 0 ? true : null
   };
 
-  const statusContainer = document.getElementById("dao-status");
-  statusContainer.innerHTML = "<h3>📊 Статус DAO</h3>";
+  const statusList = document.getElementById("status-list");
+  statusList.innerHTML = "";
 
   Object.entries(elements).forEach(([label, el]) => {
     const status = el ? "✅" : "❌";
-    const item = document.createElement("p");
-    item.textContent = `${status} ${label}`;
-    statusContainer.appendChild(item);
+    const li = document.createElement("li");
+    li.textContent = `${status} ${label}`;
+    statusList.appendChild(li);
   });
+
+  const updated = document.getElementById("last-updated");
+  updated.textContent = `Оновлено: ${new Date().toLocaleString("uk-UA")}`;
 });
