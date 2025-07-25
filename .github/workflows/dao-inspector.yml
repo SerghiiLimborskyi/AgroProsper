@@ -1,0 +1,28 @@
+name: 🧠 DAO File Inspector
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  inspect-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Клон репозиторію
+        uses: actions/checkout@v3
+
+      - name: 🐍 Встановити Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: 📦 Встановити залежності (якщо будуть)
+        run: pip install -r requirements.txt || echo "No requirements.txt"
+
+      - name: 🧠 Запустити DAO-інспектор
+        run: python docs/dao_file_inspector.py
+
+      - name: ✅ Завершено
+        run: echo "DAO-інспекція завершена успішно!"
