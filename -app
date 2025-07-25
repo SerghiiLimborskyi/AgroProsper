@@ -1,9 +1,0 @@
-cd ~/agroprosper-app
-npm install
-node index.js
-pm2 start index.js --name agroprosper
-cd ~/agroprosper-app
-npm install
-node index.js
-pm2 start index.js --name agroprosper
-curl http://localhost:3000

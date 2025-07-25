@@ -1,5 +1,0 @@
-- name: 🧠 Автовиправлення
-  run: node admin-kit/automation/self-heal.js
-
-- name: 🔁 Перезапуск перевірки
-  run: node admin-kit/automation/sync-agent.js

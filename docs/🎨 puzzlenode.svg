@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="160" height="160">
-  <rect x="0" y="0" width="120" height="120" rx="20" ry="20" fill="#e5f6ee"/>
-  <path d="M35 40h20v-10c0-5.5 4.5-10 10-10s10 4.5 10 10v10h20a5 5 0 0 1 5 5v15h-10a10 10 0 0 0-10 10c0 5.5 4.5 10 10 10h10v15a5 5 0 0 1-5 5H75v10c0 5.5-4.5 10-10 10s-10-4.5-10-10v-10H35a5 5 0 0 1-5-5V80h10a10 10 0 0 0 10-10c0-5.5-4.5-10-10-10H30V45a5 5 0 0 1 5-5z" fill="#207744"/>
-  <text x="60" y="115" text-anchor="middle" font-family="Segoe UI, Ethics Sans, sans-serif" font-size="10" fill="#145a37">PuzzleNode of DAO</text>
-</svg>
