@@ -56,3 +56,16 @@ def inspect_file_structure():
 if __name__ == "__main__":
     print("# 🧠 DAO-інспектор звіт\n")
     print(inspect_file_structure())
+import subprocess
+
+def auto_commit_changes():
+    subprocess.run(["git", "config", "--global", "user.name", "DAO Inspector Bot"])
+    subprocess.run(["git", "config", "--global", "user.email", "dao-bot@example.com"])
+    subprocess.run(["git", "add", "."])
+    subprocess.run(["git", "commit", "-m", "🔧 DAO-інспектор: автоматичне перейменування файлів"])
+    subprocess.run(["git", "push"])
+
+if __name__ == "__main__":
+    print("# 🧠 DAO-інспектор звіт\n")
+    print(inspect_file_structure())
+    auto_commit_changes()
