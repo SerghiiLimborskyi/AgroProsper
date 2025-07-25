@@ -574,7 +574,34 @@
 <!-- 📲 QR-код для мінту бейджа -->
 <img src="assets/QR-mint-top-farmer.png" alt="QR для мінту бейджа" style="width:220px; margin-top:16px;" />
 
-
+🧩 Виправлення в index.html
+🔧 Додай id до елементів (де їх бракує):
+html
+<img id="logo" src="media-kit/agroprosper-logo.svg" alt="AgroProsper Logo" />
+<img id="banner" src="media-kit/dao-banner.jpg" alt="DAO Banner" />
+<video id="promo-video" controls width="100%">
+  <source src="assets/promo.mp4" type="video/mp4">
+  Ваш браузер не підтримує відео.
+</video>
+<a id="pdf-guide" href="assets/guide.pdf" target="_blank">📥 PDF-гайд</a>
+<div id="lang-switcher">
+  <button onclick="switchLang('uk')">🇺🇦</button>
+  <button onclick="switchLang('pl')">🇵🇱</button>
+  <button onclick="switchLang('en')">🇬🇧</button>
+</div>
+<section id="promo-page">🎬 DAO Studio</section>
+📊 Статус DAO (вже є, але треба оновити):
+html
+<section>
+  <h2>📊 Статус DAO</h2>
+  <p id="last-updated">Оновлено: ...</p>
+  <ul id="status-list">
+    <li>Завантаження статусу...</li>
+  </ul>
+</section>
+📎 Підключення скрипта (вже є, але переконайся, що шлях правильний):
+html
+<script src="assets/status.js" defe
   </footer>
 </body>
 <script src="guardian.js"></script>
