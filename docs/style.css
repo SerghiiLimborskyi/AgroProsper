@@ -144,3 +144,87 @@ a.button img:hover {
   --text: #eee;
 }
 body { background: var(--bg); color: var(--text); }
+/* 🌐 Web3-навігація + адаптивність */
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e7d32;
+  padding: 0.5rem 1rem;
+  border-bottom: 3px solid #66bb6a;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95em;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #c8e6c9;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lang-switcher button {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.lang-switcher button:hover {
+  transform: scale(1.2);
+}
+
+/* 📱 Адаптивність */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+  .nav-links li {
+    margin-bottom: 0.5rem;
+  }
+  .lang-switcher {
+    margin-top: 0.5rem;
+  }
+}
+<div class="web3-auth">
+  <button onclick="connectWallet()">🔐 Підключити гаманець</button>
+</div>
+<script>
+  async function connectWallet() {
+    if (window.ethereum) {
+      try {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        alert("✅ Підключено: " + accounts[0]);
+      } catch (err) {
+        alert("❌ Відмова: " + err.message);
+      }
+    } else {
+      alert("🦊 Встановіть MetaMask для Web3-авторизації");
+    }
+  }
+</script>
