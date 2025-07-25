@@ -26,3 +26,5 @@ jobs:
 
       - name: ✅ Завершено
         run: echo "DAO-інспекція завершена успішно!"
+permissions:
+  contents: write
