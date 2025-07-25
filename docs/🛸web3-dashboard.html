@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Web3 Dashboard — AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="media-kit/agroprosper-logo.svg" alt="AgroProsper Logo" style="height:80px;">
+    <h1>🛸 Web3 Dashboard</h1>
+    <p>DAO cockpit для фрілансерів, компаній та голосувань</p>
+  </header>
+
+  <main>
+    <!-- 🔐 Авторизація -->
+    <section>
+      <h2>🔐 Підключити гаманець</h2>
+      <button onclick="connectWallet()">Підключити MetaMask</button>
+      <p id="wallet-status">Статус: ❌ Не підключено</p>
+    </section>
+
+    <!-- 💰 Баланс -->
+    <section>
+      <h2>💰 Баланс гаманця</h2>
+      <p id="wallet-balance">Очікується підключення...</p>
+    </section>
+
+    <!-- 🆔 NFT-картка -->
+    <section>
+      <h2>🆔 Ваш NFT-бейдж</h2>
+      <img src="media-kit/sbt/QR-mint-top-farmer.png" alt="NFT QR" width="200">
+      <p><a href="mint.html">🎁 Мінт бейджа “Top Farmer”</a></p>
+    </section>
+
+    <!-- 📊 Статус голосування -->
+    <section>
+      <h2>📊 Статус голосування</h2>
+      <iframe src="vote.html" style="width:100%; height:400px; border:none;"></iframe>
+    </section>
+
+    <!-- 📘 CHANGELOG -->
+    <section>
+      <h2>📘 Оновлення DAO Studio</h2>
+      <a href="changelog.html" class="button">📘 Переглянути CHANGELOG</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 AgroProsper DAO — Web3 cockpit</p>
+  </footer>
+
+  <!-- 🔧 Web3 скрипт -->
+  <script>
+    async function connectWallet() {
+      if (window.ethereum) {
+        try {
+          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+          document.getElementById('wallet-status').textContent = "Статус: ✅ " + accounts[0];
+          const balanceWei = await ethereum.request({
+            method: 'eth_getBalance',
+            params: [accounts[0], 'latest']
+          });
+          const balanceEth = parseFloat(parseInt(balanceWei, 16) / 1e18).toFixed(4);
+          document.getElementById('wallet-balance').textContent = balanceEth + " ETH";
+        } catch (err) {
+          alert("❌ Відмова: " + err.message);
+        }
+      } else {
+        alert("🦊 Встановіть MetaMask для Web3-авторизації");
+      }
+    }
+  </script>
+</body>
+</html>
