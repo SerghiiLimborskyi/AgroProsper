@@ -78,3 +78,32 @@
   </div>
 </div>
 <a href="docs/token-holders.html" style="...">...</a>
+<script>
+  const svgTranslations = {
+    uk: {
+      title: "Фінансова підтримка фермерів",
+      subtitle: "Допомагаємо фермерам за допомогою індивідуальних фінансових рішень.",
+      button: "Почати"
+    },
+    pl: {
+      title: "Wsparcie finansowe dla rolników",
+      subtitle: "Pomagamy rolnikom poprzez indywidualne rozwiązania finansowe.",
+      button: "Rozpocznij"
+    },
+    en: {
+      title: "Financial Support for Farmers",
+      subtitle: "Helping farmers with tailored financial solutions.",
+      button: "Start"
+    }
+  };
+
+  function setLang(lang) {
+    document.getElementById("svg-title").textContent = svgTranslations[lang].title;
+    document.getElementById("svg-subtitle").textContent = svgTranslations[lang].subtitle;
+    document.getElementById("svg-button").textContent = svgTranslations[lang].button;
+    localStorage.setItem("lang", lang);
+  }
+
+  const savedLang = localStorage.getItem("lang") || navigator.language.slice(0, 2);
+  setLang(["uk", "pl", "en"].includes(savedLang) ? savedLang : "uk");
+</script>
