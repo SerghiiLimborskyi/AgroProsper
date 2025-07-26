@@ -8,42 +8,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="assets/lang.js" defer></script>
   <script src="assets/status.js" defer></script>
-  <style>
-    body { font-family: 'Roboto', sans-serif; margin: 0; background: #f9f9f9; color: #333; }
-    header, footer { background: #2e7d32; color: white; padding: 1em; text-align: center; }
-    main { padding: 1em; max-width: 960px; margin: auto; }
-    section { margin-bottom: 2em; background: white; padding: 1em; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    h2 { color: #2e7d32; }
-    a.button { display: inline-block; margin: 0.5em 0.5em 0.5em 0; padding: 0.5em 1em; background: #2e7d32; color: white; text-decoration: none; border-radius: 4px; font-size: 0.95em; }
-    ul { list-style: none; padding-left: 0; }
-    li { margin: 0.3em 0; }
-    @media (max-width: 600px) {
-      a.button { display: block; width: 100%; text-align: center; }
-    }
-  </style>
 </head>
 <body>
   <nav class="navbar">
-  <ul class="nav-links">
-    <li><a href="index.html">🏠 Головна</a></li>
-    <li><a href="dao-studio.html">🎬 DAO Studio</a></li>
-    <li><a href="vote.html">🗳️ Голосування</a></li>
-    <li><a href="card.html">🆔 NFT-картка</a></li>
-    <li><a href="mint.html">🎁 Мінт бейджа</a></li>
-    <li><a href="media-center.html">🎞️ Медіацентр</a></li>
-    <li><a href="assets/guide.pdf" target="_blank">📥 PDF-гайд</a></li>
-  </ul>
-  <div class="lang-switcher">
-    <button onclick="switchLang('uk')">🇺🇦</button>
-    <button onclick="switchLang('pl')">🇵🇱</button>
-    <button onclick="switchLang('en')">🇬🇧</button>
-  </div>
-</nav>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Головна</a></li>
+      <li><a href="dao-studio.html">🎬 DAO Studio</a></li>
+      <li><a href="vote.html">🗳️ Голосування</a></li>
+      <li><a href="card.html">🆔 NFT-картка</a></li>
+      <li><a href="mint.html">🎁 Мінт бейджа</a></li>
+      <li><a href="media-center.html">🎞️ Медіацентр</a></li>
+      <li><a href="assets/guide.pdf" target="_blank">📥 PDF-гайд</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button onclick="switchLang('uk')">🇺🇦</button>
+      <button onclick="switchLang('pl')">🇵🇱</button>
+      <button onclick="switchLang('en')">🇬🇧</button>
+    </div>
+  </nav>
 
   <header>
     <img src="media-kit/agroprosper-logo.svg" alt="AgroProsper Logo" style="height: 80px; display: block; margin: 0 auto;">
-<img src="media-kit/dao-banner.jpg" alt="DAO Banner" style="width: 100%; max-height: 300px; object-fit: cover; display: block; margin-top: 1em;">
-
+    <img src="media-kit/dao-banner.jpg" alt="DAO Banner" style="width: 100%; max-height: 300px; object-fit: cover; display: block; margin-top: 1em;">
   </header>
 
   <main>
@@ -76,42 +62,40 @@
         <li>Завантаження статусу...</li>
       </ul>
     </section>
+
+    <section>
+      <h2>🫀 Pulse платформи</h2>
+      <object data="pulse.svg" type="image/svg+xml" width="100%"></object>
+      <iframe src="dao-pulse-map.html" width="100%" height="650" style="border:none;"></iframe>
+    </section>
+
+    <section>
+      <h2>🎬 Трейлер DAO Studio</h2>
+      <video src="assets/studio-trailer.mp4" controls width="100%"></video>
+    </section>
+
+    <section>
+      <h2>🎮 DAO-ігри</h2>
+      <a class="button" href="play-game.html">🌾 Грати в жнива</a>
+      <a class="button" href="mint.html">🎁 NFT Engine</a>
+    </section>
+
+    <section>
+      <h2>🤖 Telegram DAO Bot</h2>
+      <p>Запустіть інтерактивного бота для голосування, статусу та мінту бейджів.</p>
+      <a class="button" href="https://t.me/AgroProsperBot" target="_blank">🔗 Відкрити бот</a>
+    </section>
+
+    <section>
+      <h2>🪪 Моя роль у DAO</h2>
+      <a class="button" href="identity-card.html">🔍 Перевірити роль</a>
+    </section>
+
+    <section>
+      <h2>📘 CHANGELOG DAO Studio</h2>
+      <a class="button" href="changelog.html">📘 CHANGELOG DAO Studio</a>
+    </section>
   </main>
-  <!-- 🎮 DAO-ігри -->
-<section>
-  <h2>🎮 DAO-ігри</h2>
-  <a class="button" href="play-game.html">🌾 Грати в жнива</a>
-  <a class="button" href="mint.html">🎁 NFT Engine</a>
-</section>
-
-<!-- 🤖 Telegram DAO Bot -->
-<section>
-  <h2>🤖 Telegram DAO Bot</h2>
-  <p>Запустіть інтерактивного бота для голосування, статусу та мінту бейджів.</p>
-  <a class="button" href="https://t.me/AgroProsperBot" target="_blank">🔗 Відкрити бот</a>
-</section>
-
-<!-- 🪪 Моя роль -->
-<section>
-  <h2>🪪 Моя роль у DAO</h2>
-  <a class="button" href="identity-card.html">🔍 Перевірити роль</a>
-</section>
-
-<!-- 🎬 DAO Studio Trailer -->
-<section>
-  <h2>🎬 Трейлер DAO Studio</h2>
-  <video src="assets/studio-trailer.mp4" controls width="100%"></video>
-</section>
-  <section>
-  <h2>🎮 DAO-ігри</h2>
-  <a class="button" href="play-game.html">🌾 Грати в жнива</a>
-  <a class="button" href="mint.html">🎁 NFT Engine</a>
-</section>
-<section>
-  <h2>🎬 Трейлер DAO Studio</h2>
-  <video src="assets/studio-trailer.mp4" controls width="100%"></video>
-</section>
-
 
   <footer>
     <p>© 2025 AgroProsper DAO</p>
@@ -123,408 +107,3 @@
   </footer>
 </body>
 </html>
-<h1 data-i18n="title">AgroProsper DAO</h1>
-<p data-i18n="subtitle">Автоматизована платформа для фермерів</p>
-
-<footer>
-  <button onclick="switchLang('uk')">🇺🇦 Українська</button>
-  <button onclick="switchLang('pl')">🇵🇱 Polski</button>
-  <button onclick="switchLang('en')">🇬🇧 English</button>
-</footer>
-<h1 data-i18n="title">AgroProsper DAO</h1>
-<p data-i18n="subtitle">Автоматизована платформа для фермерів</p>
-
-<h2 data-i18n="docs">📄 Документи та гіди</h2>
-<a class="button" data-i18n="pdf">📥 PDF-гайд</a>
-<a class="button" data-i18n="media">🎞️ Медіацентр</a>
-<a class="button" data-i18n="kit">📦 Media Kit ZIP</a>
-
-<h2 data-i18n="vote">🗳️ Голосування</h2>
-<a class="button" data-i18n="card">🆔 NFT-картка</a>
-<a class="button" data-i18n="mint">🎖️ Мінт бейджа</a>
-
-<h2 data-i18n="status">📊 Статус DAO</h2>
-<p id="last-updated"><span data-i18n="updated">Оновлено:</span> ...</p>
-
-<h2 data-i18n="video">🎬 Відео-презентація</h2>
-
-<footer>
-  <p data-i18n="footer">© 2025 AgroProsper DAO</p>
-  <button onclick="switchLang('uk')" data-i18n="lang_ua">🇺🇦 Українська</button>
-  <button onclick="switchLang('pl')" data-i18n="lang_pl">🇵🇱 Polski</button>
-  <button onclick="switchLang('en')" data-i18n="lang_en">🇬🇧 English</button>
-</footer>
-<section>
-  <h2 data-i18n="docs">📄 Документи та гіди</h2>
-
-  <a href="guide.pdf" class="button" data-i18n="pdf">📥 PDF-гайд</a>
-  <a href="media.html" class="button" data-i18n="media">🎞️ Медіацентр</a>
-  <a href="assets/media-kit.zip" class="button" data-i18n="kit">📦 Media Kit ZIP</a>
-  <a href="gov-booklet.html" class="button">📘 Буклет для уряду</a> <!-- 🆕 КНОПКА -->
-</section>
-<a href="gov-booklet.html" class="button gov">📘 Буклет для уряду</a>
-<script src="assets/dao-i18n.js" defer></script>
-<meta name="description" content="AgroProsper DAO — фріланс-платформа для фермерів, агро-інфраструктури, Web3 голосувань і NFT-презентацій.">
-<meta name="keywords" content="DAO, агро, фріланс, фермери, WebApp, gov презентація, NFT, PDF, Web3, голосування">
-<meta name="author" content="AgroProsper DAO">
-<meta property="og:title" content="AgroProsper DAO — Платформа фріланс-рішень">
-<meta property="og:description" content="Фермерська платформа для аналітики, голосування і PDF-презентацій через WebApp.">
-<meta property="og:image" content="assets/logo-agroprosper.png">
-<meta property="og:url" content="https://agroprosper5.wordpress.com/">
-<meta name="robots" content="index, follow">
-<meta name="language" content="uk-UA">
-<link rel="manifest" href="manifest.json">
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgroProsper DAO WebApp</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="robots" content="index, follow">
-  <meta name="google-site-verification" content="abc123xyz">
-  <script src="dao-ui.js" defer></script>
-  <script src="telegram-web-app.js"></script>
-</head>
-<body>
-
-  <header>
-    <img src="assets/logo-agroprosper.svg" alt="AgroProsper Logo" style="height:64px;">
-    <h1>AgroProsper DAO</h1>
-    <p>Сервісна DAO-платформа для допомоги покупцям і компаніям без реферальної системи.</p>
-  </header>
-
-  <section id="registration">
-    <h2>📄 Реєстрація фрілансера</h2>
-    <button onclick="mintFreelancer()">🔐 Зареєструватися як DAO-виконавець</button>
-    <script>
-      function mintFreelancer() {
-        Telegram.WebApp.sendData(JSON.stringify({ action: "mint", role: "freelancer" }));
-      }
-    </script>
-  </section>
-
-  <section id="companies">
-    <h2>🏢 Компанії, що підтримують DAO</h2>
-    <ul>
-      <li>AgriTrade Global — 15% комісія фрілансеру</li>
-      <li>GrainCorp — 10% DAO-виконавець</li>
-      <li>TerraGrow — технічна допомога + токени</li>
-    </ul>
-  </section>
-
-  <section id="dashboard">
-    <h2>📊 Статус DAO-проєкту</h2>
-    <iframe src="dashboard.html" style="width:100%; height:500px; border:none;"></iframe>
-  </section>
-
-  <section id="auth">
-    <h2>🎯 Авторизація WebApp</h2>
-    <p>Ваш статус виконавця: <span id="dao-status">Невідомо</span></p>
-    <script>
-      const userStatus = Telegram.WebApp.initDataUnsafe.user?.status || "Невідомо";
-      document.getElementById("dao-status").textContent = userStatus;
-    </script>
-  </section>
-
-  <footer>
-    <p>&copy; AgroProsper DAO 2025 — безреферальна Web3-платформа 🍬✨</p>
-  </footer>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <title>AgroProsper DAO 2.0</title>
-  <meta name="description" content="Глобальна DAO-платформа для покупців, компаній, фрілансерів та GOV-презентацій.">
-  <meta name="robots" content="index, follow">
-  <meta name="google-site-verification" content="dao-v2-google-verify-code">
-  <link rel="manifest" href="manifest.json">
-  <script src="dao-ui.js" defer></script>
-  <script src="telegram-web-app.js"></script>
-</head>
-<body>
-
-  <!-- 🔝 Заголовок -->
-  <header>
-    <img src="assets/logo-agroprosper.svg" alt="Logo" style="height:60px;">
-    <h1>AgroProsper DAO v2.0 🌱</h1>
-    <p>Платформа для автоматичного розгортання фрілансерів, допомоги покупцям і партнерам без реферальної системи.</p>
-  </header>
-
-  <!-- 📄 Реєстрація -->
-  <section>
-    <h2>📄 Зареєструватися як DAO-фрілансер</h2>
-    <button onclick="mintFreelancer()">🔐 Почати реєстрацію</button>
-    <script>
-      function mintFreelancer() {
-        Telegram.WebApp.sendData(JSON.stringify({ mint: "top-farmer", role: "freelancer" }));
-      }
-    </script>
-  </section>
-
-  <!-- 🏢 Компанії-партнери -->
-  <section>
-    <h2>🏢 Компанії з прямою оплатою DAO-виконавцям</h2>
-    <ul>
-      <li>✔️ AgriTrade Global — 15% комісія фрілансерам</li>
-      <li>✔️ GrainCorp — прямі агро-заявки</li>
-      <li>✔️ TerraGrow — аналітика та розміщення через DAO</li>
-    </ul>
-  </section>
-
-  <!-- 📊 Dashboard -->
-  <section>
-    <h2>📊 DAO Dashboard</h2>
-    <iframe src="dashboard.html" style="width:100%; height:500px;"></iframe>
-  </section>
-
-  <!-- 📘 GOV-Буклет -->
-  <section>
-    <h2>📘 GOV-презентація</h2>
-    <iframe src="gov-booklet.html" style="width:100%; height:400px;"></iframe>
-    <a href="agroprosper-presentation-full.pdf" class="button">📥 Завантажити PDF</a>
-  </section>
-
-  <!-- 🎮 DAO Ігри -->
-  <section>
-    <h2>🎮 DAO-ігри</h2>
-    <div>
-      <a href="play-game.html">🌾 AgroTycoon</a> |
-      <a href="mint.html">🎁 NFT Engine</a>
-    </div>
-  </section>
-
-  <!-- 🧠 Статус -->
-  <section>
-    <h2>🧠 Статус виконавця</h2>
-    <p>Ваш DAO-профіль: <span id="dao-status">Невизначено</span></p>
-    <script>
-      const status = Telegram.WebApp.initDataUnsafe.user?.status || "Невизначено";
-      document.getElementById("dao-status").textContent = status;
-    </script>
-  </section>
-
-  <!-- 🔚 Футер -->
-  <footer>
-    <p>&copy; AgroProsper DAO 2025 — версія 2.0 🌍 Фріланс без рефералів 🍬✨</p>
-  </footer>
-  <div class="section">
-  <h3>📘 CHANGELOG DAO Studio</h3>
-  <p>Переглянь усі оновлення DAO Studio 2025: логотипи, NFT, IPFS, Telegram-команди та CI/CD інтеграцію.</p>
-  <a class="button" href="changelog.html">Відкрити CHANGELOG</a>
-</div>
-
-
-</body>
-</html>
-<link rel="stylesheet" href="dao-fonts.css">
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <title>AgroProsper DAO Studio</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header>
-    <img src="assets/dao-banner-evolution.svg" alt="DAO Studio Banner" />
-    <h1>🧠 Структура мислення, що діє для добра 🌍</h1>
-    <nav>
-      <button onclick="location.href='identity-card.html'">🪪 Моя роль</button>
-      <button onclick="location.href='studio-dashboard.html'">📊 Статус Studio</button>
-      <button onclick="location.href='game-node-package.zip'">🎮 Грати в жнива</button>
-    </nav>
-  </header>
-  <main>
-    <section>
-      <h2>🚀 Запуск DAO Studio</h2>
-      <p>Платформа мислить, діє, захищає та говорить голосом добра.</p>
-      <button onclick="launchDAO()">Start DAO Engine 🤖</button>
-    </section>
-    <section>
-  <h2 data-i18n="changelog_title">📘 CHANGELOG DAO Studio</h2>
-  <p data-i18n="changelog_intro">Переглянь усі оновлення DAO Studio 2025: логотипи, NFT, IPFS, Telegram-команди та CI/CD інтеграцію.</p>
-  <a class="button" href="changelog.html" data-i18n="changelog_button">Відкрити CHANGELOG</a>
-</section>
-  -<a class="button" href="changelog.html">📘 CHANGELOG DAO Studio</a>
-+<a class="button" href="changelog.html" data-i18n="changelog_button">📘 CHANGELOG DAO Studio</a>
-    <section>
-  <h2>🫀 Pulse платформи</h2>
-  <iframe src="dao-pulse-map.html" width="100%" height="650" style="border:none;"></iframe>
-</section>
-
-    <section>
-      <h2>🎬 Трейлер DAO</h2>
-      <video src="studio-trailer.mp4" controls width="100%"></video>
-    </section>
-    <section>
-  <h2>🫀 Pulse платформи</h2>
-  <iframe src="dao-pulse-map.html" width="100%" height="650" style="border:none;"></iframe>
-</section>
-
-  </main>
-  <footer>
-    <p>© 2025 DAO Studio | AgroProsper</p>
-    <!-- DAO Studio Banner -->
-<div class="dao-studio-banner" style="margin-top: 40px;">
-  <a href="dao-studio.html">
-    <img src="dao-banner.svg" alt="DAO Studio Banner" style="width:100%; border-radius:12px;">
-  </a>
-</div>
-
-<!-- DAO Studio Button -->
-<div style="text-align:center; margin-top:20px;">
-  <a href="dao-studio.html" class="btn btn-primary" style="padding: 12px 24px; background-color: #1976d2; color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">🎬 Перейти до DAO Studio</a>
-</div>
-  <!-- 🔰 AgroProsper Logo -->
-<section style="text-align: center; margin-top: 40px;">
-  <img src="media-kit/agroprosper-logo.svg" alt="AgroProsper Logo" width="220" />
-</section>
-
-<!-- 🌄 DAO Banner -->
-<section style="text-align: center; margin-top: 40px;">
-  <img src="media-kit/dao-banner.jpg" alt="DAO Banner" style="max-width: 100%; border-radius: 12px;" />
-</section>
-
-<!-- ❌ Видалено недійсне відео -->
-<!-- <video src="studio-trailer.mp4" controls></video> -->
-<p>🎬 Відео DAO Studio буде додано найближчим часом</p>
-    
-  <img src="assets/cover-agroprosper.png">
-<!-- або -->
-<img src="assets/dao-banner.svg">
-<video src="assets/studio-trailer.mp4">
- <!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroProsper DAO WebApp</title>
-  <link rel="stylesheet" href="assets/styles.css" />
-</head>
-<body>
-
-  <!-- 🔰 Логотип AgroProsper DAO -->
-<div style="text-align: center; margin-top: 20px;">
-  <img src="/media-kit/agroprosper-logo.svg" alt="AgroProsper Logo" width="220" height="auto" />
-</div>
-
-<!-- 🌄 DAO Banner -->
-<div style="text-align: center; margin-top: 40px;">
-  <img src="/media-kit/dao-banner.jpg" alt="DAO Banner" style="max-width: 100%; height: auto; border-radius: 12px;" />
-</div>
-
-
-  <!-- 🌾 Обкладинка AgroProsper -->
-  <section>
-    <img src="assets/cover-agroprosper.png" alt="AgroProsper Cover" style="width:100%; max-width:600px;" />
-  </section>
-
-  <!-- 🎬 Відео трейлер DAO Studio -->
-  <section>
-    <h2>DAO Studio Trailer</h2>
-    <video src="assets/studio-trailer.mp4" controls width="600"></video>
-  </section>
-
-  <!-- 🖼️ DAO Banner -->
-  <section>
-    <img src="assets/dao-banner.svg" alt="DAO Banner" style="width:100%; max-width:600px;" />
-  </section>
-
-  <!-- 🏅 QR для мінту бейджа -->
-  <section>
-    <h2>Mint Your Top Farmer Badge</h2>
-    <img src="media-kit/sbt/QR-mint-top-farmer.png" alt="Mint Top Farmer QR" width="220" />
-  </section>
-
-  <!-- 🧠 Інтеграція з Telegram -->
-  <section>
-    <a href="https://t.me/AgroProsperBot" target="_blank">Звʼязатись через Telegram</a>
-  </section>
-
-  <!-- 📄 Документація -->
-  <footer>
-    <a href="docs/ethics.uk.md">Етика</a> |
-    <a href="docs/governance.uk.md">Управління</a> |
-    <a href="AGRO-LICENSE.uk.txt">Ліцензія</a>
-  </footer>
-  
-<script src="scripts/status.js"></script>
-
-</body>
-</html>
-  <section id="legal-info">
-  <h2>⚖️ Legal Information / Юридична інформація / Informacje prawne</h2>
-
-  <div lang="en">
-    <h3>🇬🇧 English</h3>
-    <p>
-      The logo, banners, and other media assets of AgroProsper DAO available in the 
-      <a href="https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest" target="_blank">official Media Kit ZIP</a> 
-      may be used under the terms of the <a href="https://github.com/SerghiiLimborskyi/AgroProsper/blob/main/AGRO-LICENSE.en.txt" target="_blank">AGRO-LICENSE</a>.
-    </p>
-    <ul>
-      <li>Permitted for DAO presentations, partner websites, grant applications, and educational use.</li>
-      <li>Logo modification is prohibited without written permission.</li>
-      <li>Commercial use requires attribution or author approval.</li>
-    </ul>
-    <p>© 2025 AgroProsper DAO. All rights reserved.</p>
-  </div>
-
-  <div lang="uk">
-    <h3>🇺🇦 Українська</h3>
-    <p>
-      Логотип, банери та інші медіа-матеріали AgroProsper DAO, доступні у 
-      <a href="https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest" target="_blank">офіційному Media Kit ZIP</a>, 
-      можуть використовуватись відповідно до умов 
-      <a href="https://github.com/SerghiiLimborskyi/AgroProsper/blob/main/AGRO-LICENSE.uk.txt" target="_blank">AGRO-LICENSE</a>.
-    </p>
-    <ul>
-      <li>Дозволено для DAO-презентацій, партнерських сайтів, грантів, освітніх цілей.</li>
-      <li>Заборонено змінювати логотип без письмового дозволу.</li>
-      <li>Комерційне використання потребує згадки про AgroProsper DAO або погодження з автором.</li>
-    </ul>
-    <p>© 2025 AgroProsper DAO. Усі права захищено.</p>
-  </div>
-
-  <div lang="pl">
-    <h3>🇵🇱 Polski</h3>
-    <p>
-      Logo, banery i inne materiały medialne AgroProsper DAO dostępne w 
-      <a href="https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest" target="_blank">oficjalnym Media Kit ZIP</a> 
-      mogą być używane zgodnie z warunkami 
-      <a href="https://github.com/SerghiiLimborskyi/AgroProsper/blob/main/AGRO-LICENSE.en.txt" target="_blank">AGRO-LICENSE</a>.
-    </p>
-    <ul>
-      <li>Dozwolone w prezentacjach DAO, stronach partnerskich, grantach, materiałach edukacyjnych.</li>
-      <li>Zakaz modyfikacji logo bez pisemnej zgody.</li>
-      <li>W przypadku użycia komercyjnego wymagane jest podanie źródła lub zgoda autora.</li>
-    </ul>
-    <p>© 2025 AgroProsper DAO. Wszelkie prawa zastrzeżone.</p>
-  </div>
-</section>
-
- <svg width="100%" height="300" xmlns="http://www.w3.org/2000/svg">
-  <!-- Фон -->
-  <rect width="100%" height="100%" fill="#f5f5f5" />
-
-  <!-- Логотип -->
-  <image href="assets/images/agroprosper-logo.svg" x="40" y="30" height="80" />
-
-  <!-- Динамічний текст -->
-  <foreignObject x="140" y="40" width="70%" height="200">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: sans-serif;">
-      <h1 id="svg-title" style="color: #2c3e50; font-size: 24px;">Фінансова підтримка фермерів</h1>
-      <p id="svg-subtitle" style="color: #34495e; font-size: 16px;">
-        Допомагаємо фермерам за допомогою індивідуальних фінансових рішень.
-      </p>
-      <button id="svg-button" style="padding: 0.5rem 1rem; background-color: #27ae60; color: white; border: none; border-radius: 6px;">
-        Почати
-      </button>
-    </div>
-  </foreignObject>
-</svg>
-<div id
