@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Адмін-панель</title>
+  <script>
+    // Простий захист через GitHub username
+    const allowedUsers = ["SerghiiLimborskyi"];
+    fetch("https://api.github.com/user", {
+      headers: { Authorization: GitHub Apps }
+    })
+    .then(res => res.json())
+    .then(user => {
+      if (!allowedUsers.includes(user.login)) {
+        document.body.innerHTML = "<h2>⛔ Доступ лише для адміністратора через GitHub</h2>";
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>👨‍💼 Адмін-панель AgroProsper</h1>
+  <ul>
+    <li><a href="studio-dashboard.html">Студії</a></li>
+    <li><a href="registration-log.html">Реєстрації</a></li>
+    <li><a href="visitor-counter.js">Лічильник</a></li>
+  </ul>
+</body>
+</html>
