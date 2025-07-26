@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>🌾 AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="assets/lang.js" defer></script>
+  <script src="assets/status.js" defer></script>
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Головна</a></li>
+      <li><a href="dao-studio.html">🎬 DAO Studio</a></li>
+      <li><a href="vote.html">🗳️ Голосування</a></li>
+      <li><a href="card.html">🆔 NFT-картка</a></li>
+      <li><a href="mint.html">🎁 Мінт бейджа</a></li>
+      <li><a href="media-center.html">🎞️ Медіацентр</a></li>
+      <li><a href="assets/guide.pdf" target="_blank">📥 PDF-гайд</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button onclick="switchLang('uk')">🇺🇦</button>
+      <button onclick="switchLang('pl')">🇵🇱</button>
+      <button onclick="switchLang('en')">🇬🇧</button>
+    </div>
+  </nav>
 
+  <header>
+    <img src="media-kit/agroprosper-logo.svg" alt="AgroProsper Logo" style="height: 80px; display: block; margin: 0 auto;">
+    <img src="media-kit/dao-banner.jpg" alt="DAO Banner" style="width: 100%; max-height: 300px; object-fit: cover; display: block; margin-top: 1em;">
+  </header>
+
+  <main>
+    <section>
+      <h2>📄 Документи та гіди</h2>
+      <a class="button" href="assets/guide.pdf" target="_blank">📥 PDF-гайд</a>
+      <a class="button" href="media-center.html">🎞️ Медіацентр</a>
+      <a class="button" href="https://github.com/SerghiiLimborskyi/AgroProsper/releases/latest">📦 Media Kit ZIP</a>
+    </section>
+
+    <section>
+      <h2>🗳️ DAO-функціональність</h2>
+      <a class="button" href="vote.html">🗳️ Голосування</a>
+      <a class="button" href="card.html">🆔 NFT-картка</a>
+      <a class="button" href="promo/sbt/mint.html">🎖️ Мінт бейджа “Top Farmer”</a>
+    </section>
+
+    <section>
+      <h2>🎬 Відео-презентація</h2>
+      <video controls width="100%">
+        <source src="assets/promo.mp4" type="video/mp4">
+        Ваш браузер не підтримує відео.
+      </video>
+    </section>
+
+    <section>
+      <h2>📊 Статус DAO</h2>
+      <p id="last-updated">Оновлено: ...</p>
+      <ul id="status-list">
+        <li>Завантаження статусу...</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🫀 Pulse платформи</h2>
+      <object data="pulse.svg" type="image/svg+xml" width="100%"></object>
+      <iframe src="dao-pulse-map.html" width="100%" height="650" style="border:none;"></iframe>
+    </section>
+
+    <section>
+      <h2>🎬 Трейлер DAO Studio</h2>
+      <video src="assets/studio-trailer.mp4" controls width="100%"></video>
+    </section>
+
+    <section>
+      <h2>🎮 DAO-ігри</h2>
+      <a class="button" href="play-game.html">🌾 Грати в жнива</a>
+      <a class="button" href="mint.html">🎁 NFT Engine</a>
+    </section>
+
+    <section>
+      <h2>🤖 Telegram DAO Bot</h2>
+      <p>Запустіть інтерактивного бота для голосування, статусу та мінту бейджів.</p>
+      <a class="button" href="https://t.me/AgroProsperBot" target="_blank">🔗 Відкрити бот</a>
+    </section>
+
+    <section>
+      <h2>🪪 Моя роль у DAO</h2>
+      <a class="button" href="identity-card.html">🔍 Перевірити роль</a>
+    </section>
+
+    <section>
+      <h2>📘 CHANGELOG DAO Studio</h2>
+      <a class="button" href="changelog.html">📘 CHANGELOG DAO Studio</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 AgroProsper DAO</p>
+    <p>
+      <button onclick="switchLang('uk')">🇺🇦 Українська</button>
+      <button onclick="switchLang('pl')">🇵🇱 Polski</button>
+      <button onclick="switchLang('en')">🇬🇧 English</button>
+    </p>
+  </footer>
+</body>
+</html>
