@@ -1,8 +1,8 @@
-// Лічильник проєктів
+// 🔢 Лічильник загальної кількості проєктів
 const rows = document.querySelectorAll("table tbody tr");
 document.getElementById("totalCount").textContent = rows.length;
 
-// Лічильник фізичних реєстрацій
+// ✅ Лічильник фізичних реєстрацій
 let physical = 0;
 rows.forEach(row => {
   const cell = row.cells[2].textContent.trim().toLowerCase();
@@ -10,7 +10,7 @@ rows.forEach(row => {
 });
 document.getElementById("physicalCount").textContent = physical;
 
-// Лічильник переглядів (локальний)
+// 📈 Лічильник переглядів сторінки (локальний, браузерний)
 const key = "pageViewCount";
 let count = localStorage.getItem(key) || 0;
 count++;
