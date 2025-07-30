@@ -60,6 +60,20 @@
     <iframe src="https://t.me/AgroProsperBot" width="100%" height="500" style="border: none;"></iframe>
     <p>Запусти бота в Telegram: <a href="https://t.me/AgroProsperBot" target="_blank">@AgroProsperBot</a></p>
   </section>
+  <!-- 🤖 Панель команд бота -->
+<section style="text-align: center; margin: 40px 0;">
+  <div class="dao-bot-panel fade-in">
+    <h3>🤖 Команди бота AgroProsper</h3>
+    <div class="bot-buttons">
+      <button onclick="sendBotCommand('/memory')">🧠 Пам’ять</button>
+      <button onclick="sendBotCommand('/search')">🔍 Пошук</button>
+      <button onclick="sendBotCommand('/pulse')">📊 Пульс</button>
+      <button onclick="sendBotCommand('/update')">🔄 Оновити</button>
+      <button onclick="window.location.href='vote.html'">🗳️ Голосування</button>
+      <button onclick="window.location.href='media-center.html'">🧾 Документи</button>
+    </div>
+  </div>
+</section>
 
   <!-- 📲 WhatsApp-зв’язок -->
   <section style="text-align: center; margin: 40px 0;">
@@ -71,6 +85,12 @@
   <footer style="text-align: center; padding: 20px; background: #f0f0f0;">
     <p>© 2025 AgroProsper DAO. Всі права захищені.</p>
   </footer>
+  <script>
+  function sendBotCommand(cmd) {
+    const url = `https://t.me/AgroProsperBot?start=${encodeURIComponent(cmd)}`;
+    window.open(url, '_blank');
+  }
+</script>
 
 </body>
 </html>
