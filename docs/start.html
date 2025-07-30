@@ -1,165 +1,90 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <title>AgroProsper DAO — Старт</title>
-  <link rel="stylesheet" href="style-enhanced.css">
-  <link rel="stylesheet" href="dao-fonts.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroProsper DAO – Старт</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .dao-map circle {
+      transition: r 0.3s ease;
+    }
+    .dao-map circle:hover {
+      r: 18;
+      fill: #4caf50;
+    }
+    .dao-map text {
+      font-family: sans-serif;
+      font-size: 12px;
+      pointer-events: none;
+    }
+    .dao-map line {
+      stroke: #999;
+      stroke-width: 1;
+    }
+    .dao-map .dashed {
+      stroke-dasharray: 4;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- 🔷 Логотип -->
-  <header style="text-align: center; padding: 20px;">
-    <img src="puzzlenode.svg" alt="AgroProsper DAO Logo" style="height: 100px;">
-    <!-- 🖼️ Банер AgroProsper -->
-<div style="text-align: center; margin-top: 20px;">
-  <img src="assets/banner.jpg" alt="AgroProsper Banner" style="width: 100%; max-height: 300px; object-fit: cover;">
-</div>
-    <h1>AgroProsper DAO</h1>
-    <p>Стартова сторінка платформи</p>
+  <header>
+    <h1>🧠 Карта пам’яті DAO</h1>
+    <p>Візуалізація імпульсів, зв’язків і ядер AgroProsper DAO</p>
   </header>
 
-  <!-- 🎬 Відео-презентація -->
-  <section style="text-align: center; margin: 40px 0;">
-    <h2>🎬 Відео-презентація DAO</h2>
-    <video src="studio-trailer.mp4" controls style="width: 80%; max-width: 800px;"></video>
-  </section>
-  <!-- 📚 Матеріали для студій -->
-<section style="margin: 40px 0; text-align: center;">
-  <h2>📚 Матеріали для студій</h2>
-  <p>Студії DAO створюють власні відео на основі зображень з хмари AgroProsper та відкритих джерел. Кожна студія використовує власну логіку оновлення, обираючи імпульси з <a href="#map">карти пам’яті</a> та створюючи нові версії (v1, v2...).</p>
-  
-  <a href="https://drive.google.com/your-folder" target="_blank" style="font-size: 18px;">
-    📁 Відкрити хмару AgroProsper
-  </a>
+  <main>
+    <svg class="dao-map" width="600" height="400" viewBox="0 0 600 400">
+      <!-- Ядра -->
+      <circle cx="300" cy="200" r="20" fill="#2196f3">
+        <title>Ядро v1</title>
+      </circle>
+      <text x="300" y="195" text-anchor="middle" fill="#fff">v1</text>
 
-  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-    <img src="assets/arado.jpg" alt="Arado DAO" style="width: 300px; border-radius: 8px;">
-    <img src="assets/agros-studio.jpg" alt="Agros Studio" style="width: 300px; border-radius: 8px;">
-    <img src="assets/agroforestry.jpg" alt="Agroforestry Practice" style="width: 300px; border-radius: 8px;">
-  </div>
+      <circle cx="400" cy="200" r="20" fill="#3f51b5">
+        <title>Ядро v2</title>
+      </circle>
+      <text x="400" y="195" text-anchor="middle" fill="#fff">v2</text>
 
-  <p style="margin-top: 20px; font-size: 14px; color: #555;">
-    Оновлення можна ініціювати через <a href="https://t.me/AgroProsperBot?start=/update" target="_blank">бота AgroProsper</a> або вручну, додаючи нові фрагменти до хмари.
-  </p>
-</section>
+      <!-- Імпульси -->
+      <circle cx="200" cy="100" r="15" fill="#4caf50">
+        <title>Імпульс A</title>
+      </circle>
+      <text x="200" y="95" text-anchor="middle">A</text>
 
-  <section style="margin: 40px 0; text-align: center;">
-  <!-- 🎨 Матеріали для студій -->
-<section style="text-align: center; margin: 40px 0;">
-  <h2>🎨 Матеріали для студій</h2>
-  <p>Студії DAO використовують ці приклади для створення відео, графіки та презентацій. Логотип і банер — постійні елементи, решта — змінні.</p>
+      <circle cx="150" cy="250" r="15" fill="#ff9800">
+        <title>Імпульс B</title>
+      </circle>
+      <text x="150" y="245" text-anchor="middle">B</text>
 
-  <!-- 🔗 Посилання на хмару -->
-  <a href="https://drive.google.com/your-folder" target="_blank" style="display: inline-block; margin: 20px 0; font-size: 18px; color: #2563eb;">
-    📁 Відкрити хмару AgroProsper
-  </a>
+      <circle cx="250" cy="300" r="15" fill="#f44336">
+        <title>Імпульс C</title>
+      </circle>
+      <text x="250" y="295" text-anchor="middle">C</text>
 
-  <!-- 🖼️ Приклади графіки -->
-  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-    <img src="assets/fragment-1.jpg" alt="Фрагмент 1" style="width: 30%; max-width: 300px; border-radius: 8px;">
-    <img src="assets/fragment-2.jpg" alt="Фрагмент 2" style="width: 30%; max-width: 300px; border-radius: 8px;">
-    <img src="assets/fragment-3.jpg" alt="Фрагмент 3" style="width: 30%; max-width: 300px; border-radius: 8px;">
-  </div>
+      <!-- Зовнішні вузли -->
+      <circle cx="100" cy="280" r="10" fill="#9e9e9e">
+        <title>Вузол B1</title>
+      </circle>
+      <text x="100" y="275" text-anchor="middle">B1</text>
 
-  <!-- 🎬 Приклади відео -->
-  <div style="margin-top: 40px;">
-    <h3>🎬 Приклади відео</h3>
-    <video src="assets/studio-example-1.mp4" controls style="width: 80%; max-width: 600px; margin-bottom: 20px;"></video>
-    <video src="assets/studio-example-2.mp4" controls style="width: 80%; max-width: 600px;"></video>
-  </div>
-</section>
-  
-  <h2>🧠 Карта пам’яті DAO</h2>
-  
-  <p style="margin-top: 10px; font-size: 14px; color: #555;">
-    Всього студій: 3 | Версій: 2 | Імпульсів: 3
-  </p>
-</section>
+      <circle cx="300" cy="350" r="10" fill="#9e9e9e">
+        <title>Вузол C1</title>
+      </circle>
+      <text x="300" y="345" text-anchor="middle">C1</text>
 
+      <!-- Зв’язки -->
+      <line x1="200" y1="100" x2="300" y2="200" />
+      <line x1="150" y1="250" x2="300" y2="200" />
+      <line x1="250" y1="300" x2="300" y2="200" />
+      <line x1="250" y1="300" x2="400" y2="200" class="dashed" />
+      <line x1="150" y1="250" x2="100" y2="280" />
+      <line x1="250" y1="300" x2="300" y2="350" />
+    </svg>
+  </main>
 
-  <!-- 🤖 Васар-секретар -->
-  <section style="text-align: center; margin: 40px 0;">
-    <h2>🤖 DAO-Секретар Васар</h2>
-    <iframe src="https://t.me/AgroProsperBot" width="100%" height="500" style="border: none;"></iframe>
-    <p>Запусти бота в Telegram: <a href="https://t.me/AgroProsperBot" target="_blank">@AgroProsperBot</a></p>
-  </section>
-  <!-- 🤖 Панель команд бота -->
-<section style="text-align: center; margin: 40px 0;">
-  <div class="dao-bot-panel fade-in">
-    <h3>🤖 Команди бота AgroProsper</h3>
-    <div class="bot-buttons">
-      <button onclick="sendBotCommand('/memory')">🧠 Пам’ять</button>
-      <button onclick="sendBotCommand('/search')">🔍 Пошук</button>
-      <button onclick="sendBotCommand('/pulse')">📊 Пульс</button>
-      <button onclick="sendBotCommand('/update')">🔄 Оновити</button>
-      <button onclick="window.location.href='vote.html'">🗳️ Голосування</button>
-      <button onclick="window.location.href='media-center.html'">🧾 Документи</button>
-    </div>
-  </div>
-</section>
-
-  <!-- 📲 WhatsApp-зв’язок -->
-  <section style="text-align: center; margin: 40px 0;">
-    <h2>📲 Зв’язок через WhatsApp</h2>
-    <a href="https://wa.me/+48669106746" target="_blank" style="font-size: 18px;">Написати в WhatsApp: +1 877-224-1042</a>
-  </section>
-
-  <!-- 📘 Футер -->
-  <footer style="text-align: center; padding: 20px; background: #f0f0f0;">
-    <p>© 2025 AgroProsper DAO. Всі права захищені.</p>
+  <footer>
+    <p>© 2025 AgroProsper DAO</p>
   </footer>
-  <script>
-  function sendBotCommand(cmd) {
-    const url = `https://t.me/AgroProsperBot?start=${encodeURIComponent(cmd)}`;
-    window.open(url, '_blank');
-  }
-</script>
-  
-  <script src="scripts/dao-bot-panel.js"></script><svg width="100%" height="350" viewBox="0 0 650 350">
-  <!-- Ядро v1 -->
-  <circle cx="100" cy="150" r="30" fill="#4f46e5" />
-  <text x="85" y="155" fill="#fff" font-size="14">v1</text>
-
-  <!-- Ядро v2 -->
-  <circle cx="400" cy="150" r="30" fill="#4f46e5" />
-  <text x="385" y="155" fill="#fff" font-size="14">v2</text>
-
-  <!-- Імпульс A -->
-  <circle cx="250" cy="100" r="20" fill="#10b981">
-    <title>Імпульс A — зв’язок із v1 та v2</title>
-  </circle>
-  <text x="240" y="105" fill="#fff" font-size="12">A</text>
-  <line x1="100" y1="150" x2="250" y2="100" stroke="#888" />
-  <line x1="250" y1="100" x2="400" y2="150" stroke="#aaa" />
-
-  <!-- Імпульс B -->
-  <circle cx="250" cy="200" r="20" fill="#10b981" stroke="#065f46" stroke-width="2">
-    <title>Імпульс B — зв’язок із v1, v2 та вузлом B1</title>
-  </circle>
-  <text x="240" y="205" fill="#fff" font-size="12">B</text>
-  <line x1="100" y1="150" x2="250" y2="200" stroke="#888" stroke-dasharray="4" />
-  <line x1="250" y1="200" x2="400" y2="150" stroke="#aaa" />
-  <circle cx="250" cy="250" r="12" fill="#34d399">
-    <title>Зовнішній вузол B1</title>
-  </circle>
-  <line x1="250" y1="200" x2="250" y2="250" stroke="#10b981" stroke-width="1.5" />
-
-  <!-- Імпульс C -->
-  <circle cx="550" cy="150" r="20" fill="#f59e0b" stroke="#b45309" stroke-width="2">
-    <animate attributeName="r" values="20;24;20" dur="2s" repeatCount="indefinite" />
-    <title>Імпульс C — активний зв’язок із v2 та вузлом C1</title>
-  </circle>
-  <text x="540" y="155" fill="#fff" font-size="12">C</text>
-  <line x1="400" y1="150" x2="550" y2="150" stroke="#888" stroke-width="2" stroke-dasharray="6 2" />
-  <line x1="550" y1="150" x2="580" y2="180" stroke="#f59e0b" stroke-width="1.5" />
-  <circle cx="580" cy="180" r="10" fill="#fde68a">
-    <title>Зовнішній вузол C1</title>
-  </circle>
-</svg>
-
-  
-
 </body>
 </html>
