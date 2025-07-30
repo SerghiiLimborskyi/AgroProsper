@@ -1,155 +1,0 @@
-name: Release DAO v2.2
-
-on:
-  push:
-    tags:
-      - 'v2.2.0'
-
-jobs:
-  release:
-    name: Create GitHub Release
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v2.2.0
-          name: AgroProsper DAO v2.2
-          body: |
-            ✅ Нові функції DAO-фрілансу:
-            - SBT-бейдж після задач
-            - Заявки від компаній
-            - NFT-мінт за гру
-            - Telegram інтеграція
-name: Release DAO v3.0
-
-on:
-  push:
-    tags:
-      - 'v3.0.0'
-
-jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v3.0.0
-          name: AgroProsper DAO v3.0
-          body: |
-            🚀 Автоматичне оновлення DAO
-            ✅ GOV API-звʼязок
-            ✅ SBT бейджі після задач
-            ✅ Telegram WebApp-мінт + Edge-інтеграція
-name: Release DAO v3.0
-
-on:
-  push:
-    tags:
-      - 'v3.0.0'
-
-jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v3.0.0
-          name: AgroProsper DAO v3.0
-          body: |
-            🚀 Автоматичне оновлення DAO
-            ✅ GOV API-звʼязок
-            ✅ SBT бейджі після задач
-            ✅ Telegram WebApp-мінт + Edge-інтеграція
-name: Release DAO v4.5.0
-
-on:
-  push:
-    tags:
-      - 'v4.5.0'
-
-jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⬇️ Checkout Repo
-        uses: actions/checkout@v3
-
-      - name: 📦 Build ZIP Package
-        run: zip -r agroprosper-v4.5.zip ./docs/*
-
-      - name: 🚀 Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v4.5.0
-          name: AgroProsper DAO v4.5.0
-          body: |
-            🌟 Масштабне оновлення DAO до версії 4.5
-            ✅ DAO Academy v2 з іспитами
-            ✅ Місії Поле #31–#33 з дронами та SBT
-            ✅ Grain Market AI-аналітика
-            ✅ Режим “Тиха благодійність” + підтвердження Microsoft Rewards / Банки
-            ✅ GovBook v2 презентація для державних структур
-            ✅ Telegram WebApp → AI Mission Routing
-
-      - name: 📎 Upload ZIP Asset
-        uses: softprops/action-gh-release@v1
-        with:
-          files: agroprosper-v4.5.zip
-
-      - name: 🧠 Запис у status.json
-        run: |
-          echo '{
-            "version": "v4.5.0",
-            "status": "released",
-            "date": "'$(date +%Y-%m-%d')'",
-            "components": [
-              "academy.html", "mission-31.html", "dashboard-ai.html",
-              "charity-hub.html", "govbook-v2.html", "telegram-auth.html"
-            ]
-          }' > ./docs/status.json
-# 🚜 AgroProsper DAO — CHANGELOG v5.5.0
-
-## 📅 Дата релізу: 2025-08-XX
-
-### 🌟 Основні зміни
-- ✅ Запуск Smart Mission Engine → DAO самостійно призначає місії на основі профілю фрілансера
-- ✅ Розширено DAO Academy v2 → інтегровано тести, модулі оцінки, сертифікати “AgroExporter Pro”
-- ✅ Підтвердження добродійності через QR / API від банків та Microsoft Rewards → без публічності
-- ✅ Запуск “GoodLand Impact” → NFT-місії по допомозі дітям, громадам, агро-лікування
-- ✅ Telegram WebApp — режим навчання, перевірки знань, доступу до “Полів” лише верифікованим
-
-### 📦 Місії v5.5.0
-- 🌽 `mission-30.html` → GPS-місія посадки
-- 🚁 `mission-31.html` → дрони для точкового обприскування
-- 🧠 `mission-routing.js` → AI-розподіл задач
-- 🌍 `mission-goodland.html` → добродійна локація з благодійною перевіркою
-
-### 📘 Освітні модулі
-- 🎓 `academy.html` → курси: логістика, ринок, агрополітика
-- 🧾 DAO Quiz: експорт + сертифікація через Telegram
-- 🧠 Бейдж: SBT “Smart Farmer 5.5” → за тести + місію
-
-### 💡 Інституційність
-- 📋 `govbook-v2.html` → державна презентація DAO
-- 🔐 Благодійність → `charity-verify.html` з підтвердженням акаунтів
-- 🕊️ `dao-humble-mode.html` → приватна добродійність без рейтингу
-
-### 📊 Системні компоненти
-- ✅ `status.json` → фіксує рівень фрілансера, добрі дії, місії
-- ✅ `verification.json` → перевірка акаунта перед доступом до дій
-- ✅ `impact.json` → благодійний реєстр (тільки для аналітики)
-- ✅ `deploy.yml` → тег `v5.5.0`, автоматичний реліз із ZIP-файлом
-
----
-
-## 🔮 Заплановано на `v5.6.0`
-- 🤖 DAO Simulation AI → освітні кейси по кризовому ринку
-- 🧠 BrainFarm — генерація агро-ідей через DAO WebApp
-- 📍 AgroGIS → карта полів, токенізація локацій, GPS-доступ
-

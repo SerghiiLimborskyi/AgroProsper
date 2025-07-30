@@ -1,5 +1,0 @@
-- name: 📦 Publish to GitHub Packages
-  run: npm publish
-  working-directory: nft-card-generator
-  env:
-    NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,9 +1,0 @@
-<svg width="200" height="50" xmlns="http://www.w3.org/2000/svg">
-  <polyline points="0,25 10,10 20,30 30,10 40,25 50,15 60,25 70,25 80,10 90,30 100,10 110,25 120,25" 
-    stroke="#00ff7f" stroke-width="3" fill="none">
-    <animate attributeName="points" 
-      values="0,25 10,10 20,30 30,10 40,25 50,15 60,25 70,25 80,10 90,30 100,10 110,25 120,25;
-              0,25 10,30 20,10 30,30 40,25 50,35 60,25 70,25 80,30 90,10 100,30 110,25 120,25" 
-      dur="1s" repeatCount="indefinite" />
-  </polyline>
-</svg>
