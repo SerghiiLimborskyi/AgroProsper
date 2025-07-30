@@ -29,6 +29,14 @@
   </style>
 </head>
 <body>
+ <div style="position: absolute; top: 16px; right: 16px;">
+  <label for="lang-select">🌐 Мова:</label>
+  <select id="lang-select" onchange="switchLanguage(this.value)">
+    <option value="uk">Українська</option>
+    <option value="en">English</option>
+    <option value="pl">Polski</option>
+  </select>
+</div> 
   <header>
     <h1>🧠 Карта пам’яті та логіки DAO</h1>
     <p>Візуалізація імпульсів, ядер і процесу прийняття рішень AgroProsper DAO</p>
