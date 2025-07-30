@@ -109,6 +109,23 @@
       <line x1="670" y1="210" x2="670" y2="230" />
       <line x1="600" y1="245" x2="620" y2="245" />
     </svg>
+    <script>
+  function switchLanguage(lang) {
+    const base = window.location.pathname.replace(/\/(uk|en|pl)\//, '/');
+    window.location.href = `${base}${lang}/start.html`;
+  }
+
+  // Автоматичне встановлення вибраної мови
+  const currentLang = window.location.pathname.match(/\/(uk|en|pl)\//);
+  if (currentLang) {
+    document.getElementById('lang-select').value = currentLang[1];
+  }
+</script>
+  const lang = navigator.language.slice(0, 2);
+  const target = ['en', 'pl'].includes(lang) ? lang : 'uk';
+  location.href = `./${target}/start.html`;
+</script>
+
   </main>
 
   <footer>
