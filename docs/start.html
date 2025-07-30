@@ -82,14 +82,16 @@
   <text x="385" y="155" fill="#fff" font-size="14">v2</text>
 
   <!-- Імпульс A -->
-  <circle cx="250" cy="100" r="20" fill="#10b981" />
+  <circle cx="250" cy="100" r="20" fill="#10b981">
+    <title>Імпульс A — зв’язок із v1 та v2</title>
+  </circle>
   <text x="240" y="105" fill="#fff" font-size="12">A</text>
   <line x1="100" y1="150" x2="250" y2="100" stroke="#888" />
   <line x1="250" y1="100" x2="400" y2="150" stroke="#aaa" />
 
-  <!-- Імпульс B з додатковим вузлом -->
+  <!-- Імпульс B з зовнішнім вузлом -->
   <circle cx="250" cy="200" r="20" fill="#10b981" stroke="#065f46" stroke-width="2">
-    <title>Імпульс B — зв’язок із ядром v1 та зовнішнім вузлом</title>
+    <title>Імпульс B — зв’язок із v1, v2 та вузлом B1</title>
   </circle>
   <text x="240" y="205" fill="#fff" font-size="12">B</text>
   <line x1="100" y1="150" x2="250" y2="200" stroke="#888" stroke-dasharray="4" />
@@ -102,7 +104,7 @@
   <!-- Імпульс C з анімацією -->
   <circle cx="550" cy="150" r="20" fill="#f59e0b" stroke="#b45309" stroke-width="2">
     <animate attributeName="r" values="20;24;20" dur="2s" repeatCount="indefinite" />
-    <title>Імпульс C — активний зв’язок із ядром v2</title>
+    <title>Імпульс C — активний зв’язок із v2 та вузлом C1</title>
   </circle>
   <text x="540" y="155" fill="#fff" font-size="12">C</text>
   <line x1="400" y1="150" x2="550" y2="150" stroke="#888" stroke-width="2" stroke-dasharray="6 2" />
@@ -110,6 +112,49 @@
   <circle cx="580" cy="180" r="10" fill="#fde68a">
     <title>Зовнішній вузол C1</title>
   </circle>
+<svg width="100%" height="350" viewBox="0 0 650 350">
+  <!-- Ядро v1 -->
+  <circle cx="100" cy="150" r="30" fill="#4f46e5" />
+  <text x="85" y="155" fill="#fff" font-size="14">v1</text>
+
+  <!-- Ядро v2 -->
+  <circle cx="400" cy="150" r="30" fill="#4f46e5" />
+  <text x="385" y="155" fill="#fff" font-size="14">v2</text>
+
+  <!-- Імпульс A -->
+  <circle cx="250" cy="100" r="20" fill="#10b981">
+    <title>Імпульс A — зв’язок із v1 та v2</title>
+  </circle>
+  <text x="240" y="105" fill="#fff" font-size="12">A</text>
+  <line x1="100" y1="150" x2="250" y2="100" stroke="#888" />
+  <line x1="250" y1="100" x2="400" y2="150" stroke="#aaa" />
+
+  <!-- Імпульс B з зовнішнім вузлом -->
+  <circle cx="250" cy="200" r="20" fill="#10b981" stroke="#065f46" stroke-width="2">
+    <title>Імпульс B — зв’язок із v1, v2 та вузлом B1</title>
+  </circle>
+  <text x="240" y="205" fill="#fff" font-size="12">B</text>
+  <line x1="100" y1="150" x2="250" y2="200" stroke="#888" stroke-dasharray="4" />
+  <line x1="250" y1="200" x2="400" y2="150" stroke="#aaa" />
+  <circle cx="250" cy="250" r="12" fill="#34d399">
+    <title>Зовнішній вузол B1</title>
+  </circle>
+  <line x1="250" y1="200" x2="250" y2="250" stroke="#10b981" stroke-width="1.5" />
+
+  <!-- Імпульс C з анімацією -->
+  <circle cx="550" cy="150" r="20" fill="#f59e0b" stroke="#b45309" stroke-width="2">
+    <animate attributeName="r" values="20;24;20" dur="2s" repeatCount="indefinite" />
+    <title>Імпульс C — активний зв’язок із v2 та вузлом C1</title>
+  </circle>
+  <text x="540" y="155" fill="#fff" font-size="12">C</text>
+  <line x1="400" y1="150" x2="550" y2="150" stroke="#888" stroke-width="2" stroke-dasharray="6 2" />
+  <line x1="550" y1="150" x2="580" y2="180" stroke="#f59e0b" stroke-width="1.5" />
+  <circle cx="580" cy="180" r="10" fill="#fde68a">
+    <title>Зовнішній вузол C1</title>
+  </circle>
+</svg>
+
+
 </svg>
 
   <p style="margin-top: 10px; font-size: 14px; color: #555;">
