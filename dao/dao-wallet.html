@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>DAO Wallet</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+  <h1>💼 DAO Wallet</h1>
+  <p id="balance">Баланс: ...</p>
+  <button onclick="connect()">🔗 Підключити гаманець</button>
+
+  <script>
+    async function connect() {
+      if (window.ethereum) {
+        const web3 = new Web3(window.ethereum);
+        await ethereum.request({ method: 'eth_requestAccounts' });
+        const accounts = await web3.eth.getAccounts();
+        const balance = await web3.eth.getBalance(accounts[0]);
+        document.getElementById('balance').innerText =
+          'Баланс: ' + web3.utils.fromWei(balance, 'ether') + ' ETH';
+      } else {
+        alert('Встановіть MetaMask');
+      }
+    }
+  </script>
+</body>
+</html>
