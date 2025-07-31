@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>AgroProsper DAO — start.html</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
   <style>
     body { font-family: sans-serif; background: #f0f0f0; margin: 0; padding: 20px; }
     h1 { text-align: center; }
@@ -10,13 +11,28 @@
     .node { cursor: pointer; transition: fill 0.3s; }
     .node:hover { fill: #ffcc00; }
     .label { font-size: 14px; text-anchor: middle; }
+    .banner { background: linear-gradient(to right, #e0f7e9, #fffde7); padding: 40px; text-align: center; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .banner img { margin-bottom: 20px; }
+    .banner h1 { font-size: 32px; margin: 0; color: #2e7d32; }
+    .banner p { font-size: 16px; color: #555; max-width: 600px; margin: auto; }
+    .mint-btn { margin-top: 20px; padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; border-radius: 6px; cursor: pointer; }
   </style>
 </head>
 <body>
-  <h1>🧠 Логічна карта мислення AgroProsper DAO</h1>
 
+  <!-- 🔰 Банер з логотипом -->
+  <div class="banner">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Agroprosperis_bank_logo.svg"
+         alt="AgroProsper Logo" width="160" />
+    <h1>AGROPROSPER DAO</h1>
+    <p>Financial Support for Farmers</p>
+    <p>Empowering farmers with tailored financial solutions to grow and sustain their agricultural operations.</p>
+    <button class="mint-btn" onclick="connectWallet()">🌐 Mint DAO-Card</button>
+  </div>
+
+  <!-- 🧠 Інтерактивна карта DAO -->
+  <h1>Логічна карта мислення AgroProsper DAO</h1>
   <svg viewBox="0 0 800 600">
-    <!-- Вузли -->
     <circle class="node" id="A" cx="150" cy="300" r="40" fill="#4CAF50" />
     <text class="label" x="150" y="305">A: Ідея</text>
 
@@ -35,14 +51,12 @@
     <rect class="node" id="C1" x="550" y="450" width="80" height="40" fill="#FFC107" rx="8" />
     <text class="label" x="590" y="475">C1: API</text>
 
-    <!-- Стрілки -->
     <line x1="190" y1="300" x2="310" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
     <line x1="390" y1="300" x2="510" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
     <line x1="310" y1="150" x2="310" y2="260" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
     <line x1="310" y1="340" x2="190" y2="450" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
     <line x1="550" y1="340" x2="590" y2="450" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
 
-    <!-- Маркер стрілки -->
     <defs>
       <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5"
               orient="auto-start-reverse" markerUnits="strokeWidth">
@@ -51,7 +65,21 @@
     </defs>
   </svg>
 
+  <!-- 🌐 Web3 інтеграція -->
   <script>
+    async function connectWallet() {
+      if (window.ethereum) {
+        try {
+          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+          alert(`🔐 Підключено: ${accounts[0]}`);
+        } catch (error) {
+          alert('❌ Відмова у доступі до гаманця');
+        }
+      } else {
+        alert('🦊 Встановіть MetaMask для Web3-функцій');
+      }
+    }
+
     document.querySelectorAll('.node').forEach(node => {
       node.addEventListener('click', () => {
         alert(`Ви натиснули на вузол: ${node.id}`);
