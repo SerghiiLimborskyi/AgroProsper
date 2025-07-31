@@ -1,1 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Web3 Dashboard</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+  <h1>📊 Web3 Dashboard</h1>
+  <p id="account">Обліковий запис: ...</p>
+  <p id="network">Мережа: ...</p>
+  <button onclick="loadWeb3()">🔄 Оновити</button>
 
+  <script>
+    async function loadWeb3() {
+      if (window.ethereum) {
+        const web3 = new Web3(window.ethereum);
+        await ethereum.request({ method: 'eth_requestAccounts' });
+        const accounts = await web3.eth.getAccounts();
+        const networkId = await web3.eth.net.getId();
+        document.getElementById('account').innerText = 'Обліковий запис: ' + accounts[0];
+        document.getElementById('network').innerText = 'Мережа: ' + networkId;
+      } else {
+        alert('Встановіть MetaMask');
+      }
+    }
+  </script>
+</body>
+</html>
