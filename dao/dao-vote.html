@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>DAO Голосування</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+  <h1>🗳️ Голосування DAO</h1>
+  <button onclick="vote()">✅ Проголосувати</button>
+  <p id="status">Статус: ...</p>
+
+  <script>
+    const contractAddress = '0x1234567890abcdef1234567890abcdef12345678'; // приклад
+    const abi = [
+      {
+        "constant": false,
+        "inputs": [],
+        "name": "vote",
+        "outputs": [],
+        "type": "function"
+      }
+    ];
+
+    async function vote() {
+      if (window.ethereum) {
+        const web3 = new Web3(window.ethereum);
+        await ethereum.request({ method: 'eth_requestAccounts' });
+        const contract = new web3.eth.Contract(abi, contractAddress);
+        const accounts = await web3.eth.getAccounts();
+        try {
+          await contract.methods.vote().send({ from: accounts[0] });
+          document.getElementById('status').innerText = 'Статус: Голос прийнято';
+        } catch (err) {
+          document.getElementById('status').innerText = 'Статус: Помилка голосування';
+        }
+      } else {
+        alert('Встановіть MetaMask');
+      }
+    }
+  </script>
+</body>
+</html>
