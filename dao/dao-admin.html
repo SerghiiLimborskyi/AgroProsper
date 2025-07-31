@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Адміністративна панель DAO</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+  <h1>🛠️ Адміністративна панель DAO</h1>
+  <ol>
+    <li><button onclick="checkBalance()">Перевірити баланс DAO</button></li>
+    <li><button onclick="triggerVote()">Запустити голосування</button></li>
+    <li><button onclick="mintToken()">Випустити токени</button></li>
+    <li><button onclick="addMember()">Додати учасника</button></li>
+    <li><button onclick="viewLogs()">Переглянути логи</button></li>
+    <li><button onclick="updateSettings()">Оновити параметри DAO</button></li>
+  </ol>
+  <p id="status">Статус: ...</p>
+
+  <script>
+    async function checkBalance() {
+      document.getElementById('status').innerText = 'Статус: Баланс перевірено (симуляція)';
+    }
+
+    async function triggerVote() {
+      document.getElementById('status').innerText = 'Статус: Голосування запущено (симуляція)';
+    }
+
+    async function mintToken() {
+      document.getElementById('status').innerText = 'Статус: Токени випущено (симуляція)';
+    }
+
+    async function addMember() {
+      document.getElementById('status').innerText = 'Статус: Учасника додано (симуляція)';
+    }
+
+    async function viewLogs() {
+      document.getElementById('status').innerText = 'Статус: Логи переглянуто (симуляція)';
+    }
+
+    async function updateSettings() {
+      document.getElementById('status').innerText = 'Статус: Параметри оновлено (симуляція)';
+    }
+  </script>
+</body>
+</html>
