@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>DAO Token</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+  <h1>🪙 DAO Token</h1>
+  <p id="balance">Баланс токенів: ...</p>
+  <button onclick="getTokenBalance()">🔍 Перевірити баланс</button>
+
+  <script>
+    const tokenAddress = '0xabcdefabcdefabcdefabcdefabcdefabcdefabcd'; // приклад
+    const tokenABI = [
+      {
+        "constant": true,
+        "inputs": [{ "name": "_owner", "type": "address" }],
+        "name": "balanceOf",
+        "outputs": [{ "name": "balance", "type": "uint256" }],
+        "type": "function"
+      }
+    ];
+
+    async function getTokenBalance() {
+      if (window.ethereum) {
+        const web3 = new Web3(window.ethereum);
+        await ethereum.request({ method: 'eth_requestAccounts' });
+        const accounts = await web3.eth.getAccounts();
+        const contract = new web3.eth.Contract(tokenABI, tokenAddress);
+        const balance = await contract.methods.balanceOf(accounts[0]).call();
+        document.getElementById('balance').innerText =
+          'Баланс токенів: ' + web3.utils.fromWei(balance, 'ether');
+      } else {
+        alert('Встановіть MetaMask');
+      }
+    }
+  </script>
+</body>
+</html>
