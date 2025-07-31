@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>AgroProsper DAO — start.html</title>
+  <style>
+    body { font-family: sans-serif; background: #f0f0f0; margin: 0; padding: 20px; }
+    h1 { text-align: center; }
+    svg { width: 100%; height: 600px; border: 1px solid #ccc; margin-top: 20px; }
+    .node { cursor: pointer; transition: fill 0.3s; }
+    .node:hover { fill: #ffcc00; }
+    .label { font-size: 14px; text-anchor: middle; }
+  </style>
+</head>
+<body>
+  <h1>🧠 Логічна карта мислення AgroProsper DAO</h1>
+
+  <svg viewBox="0 0 800 600">
+    <!-- Вузли -->
+    <circle class="node" id="A" cx="150" cy="300" r="40" fill="#4CAF50" />
+    <text class="label" x="150" y="305">A: Ідея</text>
+
+    <circle class="node" id="B" cx="350" cy="300" r="40" fill="#2196F3" />
+    <text class="label" x="350" y="305">B: Аналіз</text>
+
+    <circle class="node" id="C" cx="550" cy="300" r="40" fill="#FF5722" />
+    <text class="label" x="550" y="305">C: Рішення</text>
+
+    <rect class="node" id="DAOCard" x="250" y="100" width="120" height="50" fill="#9C27B0" rx="10" />
+    <text class="label" x="310" y="130">DAO-Card</text>
+
+    <rect class="node" id="B1" x="150" y="450" width="80" height="40" fill="#00BCD4" rx="8" />
+    <text class="label" x="190" y="475">B1: Web3</text>
+
+    <rect class="node" id="C1" x="550" y="450" width="80" height="40" fill="#FFC107" rx="8" />
+    <text class="label" x="590" y="475">C1: API</text>
+
+    <!-- Стрілки -->
+    <line x1="190" y1="300" x2="310" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="390" y1="300" x2="510" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="310" y1="150" x2="310" y2="260" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="310" y1="340" x2="190" y2="450" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="550" y1="340" x2="590" y2="450" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Маркер стрілки -->
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5"
+              orient="auto-start-reverse" markerUnits="strokeWidth">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#333" />
+      </marker>
+    </defs>
+  </svg>
+
+  <script>
+    document.querySelectorAll('.node').forEach(node => {
+      node.addEventListener('click', () => {
+        alert(`Ви натиснули на вузол: ${node.id}`);
+      });
+    });
+  </script>
+</body>
+</html>
