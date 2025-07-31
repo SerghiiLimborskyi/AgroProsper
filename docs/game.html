@@ -84,17 +84,32 @@
 
   // Вузли
   document.querySelectorAll('.node').forEach(node => {
-    node.addEventListener('click', () => {
-      alert(`Ви натиснули на вузол: ${node.id}`);
-    });
+  node.addEventListener('click', () => {
+    window.lastClickedNode = node.id;
+    alert(`Ви натиснули на вузол: ${node.id}`);
   });
+});
+
 
   // Голосування
-  function submitVote() {
-    const role = document.getElementById("role").value;
-    const vote = document.getElementById("voteOption").value;
-    alert(`Роль: ${role}\nГолос: ${vote}`);
+  import { handleMint } from './mint-api.js'; // якщо використовуєш модулі
+
+async function submitVote() {
+  const role = document.getElementById("role").value;
+  const vote = document.getElementById("voteOption").value;
+
+  const activeNode = window.lastClickedNode || "Unknown";
+
+  alert(`Роль: ${role}\nГолос: ${vote}\nВузол: ${activeNode}`);
+
+  try {
+    const tx = await handleMint(role, activeNode);
+    alert("✅ NFT успішно мінтовано!\nTX: " + tx.hash);
+  } catch (err) {
+    alert("❌ Помилка мінтингу: " + err.message);
   }
+}
+
 </script>
 
 </body>
