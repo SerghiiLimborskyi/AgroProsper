@@ -2,7 +2,19 @@
 import { ethers } from "ethers";
 
 const CONTRACT_ADDRESS = "0xYourContractAddress";
-const ABI = [ /* ABI твого NFT/SBT контракту */ ];
+const ABI = [
+  {
+    "inputs": [
+      { "internalType": "address", "name": "to", "type": "address" },
+      { "internalType": "string", "name": "metadata", "type": "string" }
+    ],
+    "name": "mint",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+];
+
 
 export async function connectWallet() {
   if (!window.ethereum) throw new Error("MetaMask не знайдено");
