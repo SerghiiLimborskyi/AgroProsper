@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>DAO-гра: Мислення в дії</title>
+  <style>
+    body { font-family: sans-serif; background: #fdfdfd; padding: 20px; }
+    h1, h2 { text-align: center; }
+    svg { width: 100%; height: 700px; border: 1px solid #ccc; margin-top: 20px; }
+    .node { cursor: pointer; transition: fill 0.3s; }
+    .node:hover { fill: #ffcc00; }
+    .label { font-size: 14px; text-anchor: middle; }
+    .timer { font-size: 18px; text-align: center; margin-top: 20px; }
+    .roles, .vote { margin: 20px auto; max-width: 600px; }
+    .roles select, .vote select { width: 100%; padding: 10px; font-size: 16px; }
+    .vote button { padding: 10px 20px; font-size: 16px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<h1>🎮 DAO-гра: Мислення в дії</h1>
+
+<div class="timer">⏱️ Час до завершення голосування: <span id="countdown">60</span> сек</div>
+
+<div class="roles">
+  <h2>🎭 Обери свою роль</h2>
+  <select id="role">
+    <option value="Ініціатор">Ініціатор</option>
+    <option value="Аналітик">Аналітик</option>
+    <option value="Рішальник">Рішальник</option>
+    <option value="Етичний наглядач">Етичний наглядач</option>
+    <option value="Фідбекер">Фідбекер</option>
+  </select>
+</div>
+
+<div class="vote">
+  <h2>🗳️ Голосування</h2>
+  <select id="voteOption">
+    <option value="Підтримати">Підтримати</option>
+    <option value="Відхилити">Відхилити</option>
+    <option value="Внести правки">Внести правки</option>
+  </select>
+  <button onclick="submitVote()">Проголосувати</button>
+</div>
+
+<svg viewBox="0 0 1000 700">
+  <!-- Вузли -->
+  <circle class="node" id="A" cx="150" cy="300" r="40" fill="#4CAF50" />
+  <text class="label" x="150" y="305">A: Ідея</text>
+  <circle class="node" id="B" cx="350" cy="300" r="40" fill="#2196F3" />
+  <text class="label" x="350" y="305">B: Аналіз</text>
+  <circle class="node" id="C" cx="550" cy="300" r="40" fill="#FF5722" />
+  <text class="label" x="550" y="305">C: Рішення</text>
+  <circle class="node" id="D" cx="750" cy="300" r="40" fill="#4CAF50" />
+  <text class="label" x="750" y="305">D: Дія</text>
+  <circle class="node" id="E" cx="750" cy="400" r="40" fill="#FFFFFF" stroke="#000" stroke-width="2"/>
+  <text class="label" x="750" y="405">E: Етика</text>
+  <circle class="node" id="F" cx="750" cy="500" r="40" fill="#2196F3" />
+  <text class="label" x="750" y="505">F: Фідбек</text>
+
+  <!-- Стрілки -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#333" />
+    </marker>
+  </defs>
+  <line x1="190" y1="300" x2="310" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="390" y1="300" x2="510" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="590" y1="300" x2="710" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="750" y1="340" x2="750" y2="380" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="750" y1="440" x2="750" y2="480" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="750" y1="540" x2="150" y2="340" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+</svg>
+
+<script>
+  // Таймер
+  let timeLeft = 60;
+  const countdown = document.getElementById("countdown");
+  const timer = setInterval(() => {
+    timeLeft--;
+    countdown.textContent = timeLeft;
+    if (timeLeft <= 0) clearInterval(timer);
+  }, 1000);
+
+  // Вузли
+  document.querySelectorAll('.node').forEach(node => {
+    node.addEventListener('click', () => {
+      alert(`Ви натиснули на вузол: ${node.id}`);
+    });
+  });
+
+  // Голосування
+  function submitVote() {
+    const role = document.getElementById("role").value;
+    const vote = document.getElementById("voteOption").value;
+    alert(`Роль: ${role}\nГолос: ${vote}`);
+  }
+</script>
+
+</body>
+</html>
