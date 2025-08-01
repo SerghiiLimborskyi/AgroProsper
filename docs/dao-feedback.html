@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Фідбек для AgroProsper</title>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; background: #f9f9f9; }
+    h1 { color: #2c3e50; }
+    form { margin-bottom: 2em; }
+    input, textarea, select { width: 100%; padding: 0.5em; margin: 0.5em 0; }
+    button { padding: 0.7em 1.5em; background: #27ae60; color: white; border: none; cursor: pointer; }
+    #status { margin-top: 1em; font-weight: bold; }
+    #feedback-list div { background: #fff; padding: 1em; margin-bottom: 1em; border-left: 4px solid #27ae60; }
+  </style>
+</head>
+<body>
+  <h1>Залишити фідбек</h1>
+  <form onsubmit="submitFeedback(); return false;">
+    <label for="name">Ім’я:</label>
+    <input type="text" id="name" required />
+
+    <label for="message">Повідомлення:</label>
+    <textarea id="message" rows="4" required></textarea>
+
+    <label for="rating">Оцінка (1–5):</label>
+    <select id="rating">
+      <option value="5">5 – Відмінно</option>
+      <option value="4">4 – Добре</option>
+      <option value="3">3 – Задовільно</option>
+      <option value="2">2 – Погано</option>
+      <option value="1">1 – Жахливо</option>
+    </select>
+
+    <button type="submit">Надіслати</button>
+    <div id="status"></div>
+  </form>
+
+  <h2>Останні фідбеки</h2>
+  <div id="feedback-list"></div>
+
+  <script src="feedback.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      if (typeof window.ethereum !== "undefined") {
+        fetchAllFeedbacks();
+      } else {
+        document.getElementById("status").innerText = "⚠️ MetaMask не знайдено.";
+      }
+    });
+  </script>
+</body>
+</html>
