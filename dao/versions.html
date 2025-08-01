@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Версії AgroProsper DAO</title>
+  <style>
+    body { font-family: Arial; background: #f0f0f0; padding: 20px; }
+    .version-box { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px #ccc; }
+    .countdown { font-size: 24px; color: #2c3e50; margin-bottom: 10px; }
+    .changes { margin-top: 15px; }
+    button { padding: 10px 20px; background: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #219150; }
+  </style>
+</head>
+<body>
+  <div class="version-box">
+    <h1>🆕 Нова версія DAO</h1>
+    <div class="countdown">⏳ Залишилось часу: <span id="timer">00:00:00</span></div>
+    <div class="changes">
+      <h3>📋 Зміни:</h3>
+      <ul>
+        <li>✅ Додано реєстрацію фрілансерів</li>
+        <li>🔐 Захист бізнес-плану через дозвіл</li>
+        <li>🎮 Можливість додавати власні ігри та бейджі</li>
+      </ul>
+    </div>
+    <button onclick="activateVersion()">🚀 Перейти до нової версії</button>
+    <p id="status"></p>
+  </div>
+
+  <script>
+    // Таймер на 5 хвилин
+    let countdown = 5 * 60;
+    const timerEl = document.getElementById('timer');
+
+    function updateTimer() {
+      const minutes = Math.floor(countdown / 60);
+      const seconds = countdown % 60;
+      timerEl.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+      if (countdown > 0) countdown--;
+      else clearInterval(timerInterval);
+    }
+
+    const timerInterval = setInterval(updateTimer, 1000);
+    updateTimer();
+
+    function activateVersion() {
+      document.getElementById('status').textContent = '✅ Нова версія активована!';
+      // Тут можна додати логіку оновлення або переходу
+    }
+  </script>
+</body>
+</html>
