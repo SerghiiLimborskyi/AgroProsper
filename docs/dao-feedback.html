@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
+  <meta charset="UTF-8">
   <title>AgroProsper DAO Feedback</title>
   <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 </head>
@@ -13,9 +14,37 @@
   <ul id="feedbackList"></ul>
 
   <script>
-    
-   const contractAddress = "0xD7A1FfFfFfFfFfFfFfFfFfFfFfFfFfFfF771B"; // приклад
-    const contractABI = [ /* встав ABI з Remix */ ];
+    const contractAddress = "0xD7A1FfFfFfFfFfFfFfFfFfFfFfFfFfFfF771B"; // заміни на свою адресу
+
+    const contractABI = [
+      {
+        "inputs": [
+          { "internalType": "string", "name": "_message", "type": "string" }
+        ],
+        "name": "submitFeedback",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getAllFeedbacks",
+        "outputs": [
+          {
+            "components": [
+              { "internalType": "address", "name": "user", "type": "address" },
+              { "internalType": "string", "name": "message", "type": "string" },
+              { "internalType": "uint256", "name": "timestamp", "type": "uint256" }
+            ],
+            "internalType": "struct FeedbackDAO.Feedback[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ];
 
     const web3 = new Web3(window.ethereum);
     const feedbackDAO = new web3.eth.Contract(contractABI, contractAddress);
