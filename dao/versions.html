@@ -40,6 +40,19 @@
       if (countdown > 0) countdown--;
       else clearInterval(timerInterval);
     }
+    async function loadChangelog() {
+  const contract = new web3.eth.Contract(changelogABI, changelogAddress);
+  const count = await contract.methods.totalVersions().call();
+  const container = document.getElementById("changelog");
+
+  for (let i = 0; i < count; i++) {
+    const [version, date, changes] = await contract.methods.getVersion(i).call();
+    const block = document.createElement("div");
+    block.innerHTML = `<h3>${version} (${date})</h3><ul>` +
+      changes.map(c => `<li>${c}</li>`).join("") + "</ul>";
+    container.appendChild(block);
+  }
+}
 
     const timerInterval = setInterval(updateTimer, 1000);
     updateTimer();
