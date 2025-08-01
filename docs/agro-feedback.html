@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>AgroFeedbackDAO</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+  <h2>Залишити фідбек</h2>
+  <input type="text" id="nameInput" placeholder="Ваше ім’я" />
+  <input type="number" id="voteInput" placeholder="Голос (0 або 1)" />
+  <input type="text" id="messageInput" placeholder="Повідомлення" />
+  <button onclick="submitFeedback()">Надіслати</button>
+
+  <h3>Усі фідбеки:</h3>
+  <ul id="feedbackList"></ul>
+
+  <script>
+    const contractAddress = "0xABCD1234ABCD1234ABCD1234ABCD1234ABCD1234"; // заміни на свою адресу
+
+    const contractABI = [
+      {
+        "inputs": [
+          { "internalType": "string", "name": "_name", "type": "string" },
+          { "internalType": "uint8", "name": "_vote", "type": "uint8" },
+          { "internalType": "string", "name": "_message", "type": "string" }
+        ],
+        "name": "submitFeedback",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getAllFeedbacks",
+        "outputs": [
+          {
+            "components": [
+              { "internalType": "address", "name": "user", "type": "address" },
+              { "internalType": "string", "name": "name", "type": "string" },
+              { "internalType": "uint8", "name": "vote", "type": "uint8" },
+              { "internalType": "string", "name": "message", "type": "string" },
+              { "internalType": "uint256", "name": "timestamp", "type": "uint256" }
+            ],
+            "internalType": "struct AgroFeedbackDAO.Feedback[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ];
+
+    const web3 = new Web3(window.ethereum);
+    const agroDAO = new web3.eth.Contract(contractABI, contractAddress);
+
+    async function submitFeedback() {
+      const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+      const name = document.getElementById("nameInput").value;
+      const vote = parseInt(document.getElementById("voteInput").value);
+      const message = document.getElementById("messageInput").value;
+      await agroDAO.methods.submitFeedback(name, vote, message).send({ from: accounts[0] });
+      loadFeedbacks();
+    }
+
+    async function loadFeedbacks() {
+      const feedbacks = await agroDAO.methods.getAllFeedbacks().call();
+      const list = document.getElementById("feedbackList");
+      list.innerHTML = "";
+      feedbacks.forEach(fb => {
+        const item = document.createElement("li");
+        item.textContent = `${fb.name} (${fb.vote}) — ${fb.message} [${new Date(fb.timestamp * 1000).toLocaleString()}]`;
+        list.appendChild(item);
+      });
+    }
+
+    window.onload = loadFeedbacks;
+  </script>
+</body>
+</html>
