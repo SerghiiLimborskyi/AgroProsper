@@ -1,6 +1,29 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+contract FeedbackDAO {
+    struct Feedback {
+        address user;
+        string message;
+        uint256 timestamp;
+    }
+
+    Feedback[] public feedbacks;
+
+    event FeedbackSubmitted(address indexed user, string message, uint256 timestamp);
+
+    function submitFeedback(string memory _message) public {
+        feedbacks.push(Feedback(msg.sender, _message, block.timestamp));
+        emit FeedbackSubmitted(msg.sender, _message, block.timestamp);
+    }
+
+    function getAllFeedbacks() public view returns (Feedback[] memory) {
+        return feedbacks;
+    }
+}
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
 contract AgroFeedbackDAO {
     struct Feedback {
         address sender;
