@@ -18,6 +18,33 @@ function addFeedbackToUI(user, message, timestamp) {
     entry.innerHTML = `<strong>${user}</strong>: ${message} <em>${new Date(timestamp * 1000).toLocaleString()}</em>`;
     container.prepend(entry);
 }
+function approveUpdate() {
+  const version = document.getElementById("versionInput").value.trim();
+  const changesRaw = document.getElementById("changesInput").value.trim();
+  const changes = changesRaw.split(",").map(c => c.trim()).filter(c => c.length > 0);
+
+  if (!version || changes.length === 0) {
+    document.getElementById("statusMessage").innerText = "❌ Введіть версію та список змін.";
+    return;
+  }
+
+  const changelog = JSON.parse(localStorage.getItem("changelog") || "[]");
+
+  const newEntry = {
+    version: version,
+    date: new Date().toISOString().split("T")[0],
+    approvedBy: "admin",
+    changes: changes
+  };
+
+  changelog.push(newEntry);
+  localStorage.setItem("changelog", JSON.stringify(changelog));
+
+  document.getElementById("statusMessage").innerText = `✅ Версія ${version} затверджена.`;
+  document.getElementById("versionInput").value = "";
+  document.getElementById("changesInput").value = "";
+}
+
 async function fetchAllFeedbacks() {
     const feedbacks = await contract.getAllFeedbacks();
     feedbacks.forEach(fb => {
