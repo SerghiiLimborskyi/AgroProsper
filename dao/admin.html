@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Кабінет адміністратора AgroProsper</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <style>
+    body { font-family: Arial; background: #fffbe6; padding: 20px; }
+    h1 { color: #2c3e50; }
+    button { padding: 10px 20px; margin: 10px 0; }
+    input { margin: 5px 0; padding: 8px; width: 300px; }
+    p { font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h1>🛡️ Кабінет адміністратора AgroProsper</h1>
+  <button onclick="connectWallet()">🔗 Підключити гаманець</button>
+  <p id="status">Статус: не підключено</p>
+
+  <h2>📊 Голосування</h2>
+  <button onclick="checkVotes()">Перевірити голоси</button>
+  <p id="adminStatus">Голосів: —</p>
+
+  <h2>🧹 Скидання голосів</h2>
+  <button onclick="resetVotes()">🔄 Скинути голоси</button>
+  <p id="resetStatus">Статус: —</p>
+
+  <h2>💼 Управління токенами</h2>
+  <button onclick="getBalance()">💰 Перевірити баланс</button>
+  <p id="balance">Баланс: —</p>
+  <input type="text" id="recipient" placeholder="Адреса отримувача">
+  <input type="number" id="amount" placeholder="Кількість токенів">
+  <button onclick="sendTokens()">📤 Надіслати токени</button>
+  <p id="tokenStatus">Статус: —</p>
+
+  <script>
+    let web3;
+    let account;
+
+    const votingAddress = "0xYourVotingContractAddress"; // заміни
+    const tokenAddress = "0xYourAgroTokenAddress"; // заміни
+
+    const votingABI = [
+      { "inputs": [], "name": "resetVotes", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+      { "inputs": [{ "name": "option", "type": "uint8" }], "name": "getVotes", "outputs": [{ "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
+      { "inputs": [], "name": "owner", "outputs": [{ "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }
+    ];
+
+    const tokenABI = [
+      { "constant": true, "inputs": [{ "name": "_owner", "type": "address" }], "name": "balanceOf", "outputs": [{ "name": "balance", "type": "uint256" }], "type": "function" },
+      { "constant": false, "inputs": [{ "name": "_to", "type": "address" }, { "name": "_value", "type": "uint256" }], "name": "transfer", "outputs": [{ "name": "success", "type": "bool" }], "type": "function" }
+    ];
+
+    async function connectWallet() {
+      if (window.ethereum) {
+        web3 = new Web3(window.ethereum);
+        try {
+          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+          account = accounts[0];
+          document.getElementById('status').textContent = '✅ Підключено: ' + account;
+        } catch (err) {
+          document.getElementById('status').textContent = '❌ Помилка: ' + err.message;
+        }
+      } else {
+        document.getElementById('status').textContent = '❌ MetaMask не знайдено';
+      }
+    }
+
+    async function checkVotes() {
+      const contract = new web3.eth.Contract(votingABI, votingAddress);
+      const yes = await contract.methods.getVotes(1).call();
+      const no = await contract.methods.getVotes(2).call();
+      document.getElementById('adminStatus').textContent =
+        `✅ Підтримка: ${yes} | ❌ Відхилення: ${no}`;
+    }
+
+    async function isAdmin() {
+      const contract = new web3.eth.Contract(votingABI, votingAddress);
+      const owner = await contract.methods.owner().call();
+      return owner.toLowerCase() === account.toLowerCase();
+    }
+
+    async function resetVotes() {
+      if (!(await isAdmin())) {
+        document.getElementById('resetStatus').textContent = '⛔ Ви не адміністратор';
+        return;
+      }
+      const contract = new web3.eth.Contract(votingABI, votingAddress);
+      try {
+        await contract.methods.resetVotes().send({ from: account });
+        document.getElementById('resetStatus').textContent = '✅ Голоси скинуто';
+      } catch (err) {
+        document.getElementById('resetStatus').textContent = '❌ Помилка: ' + err.message;
+      }
+    }
+
+    async function getBalance() {
+      const contract = new web3.eth.Contract(tokenABI, tokenAddress);
+      const balance = await contract.methods.balanceOf(account).call();
+      document.getElementById('balance').textContent =
+        'Баланс: ' + web3.utils.fromWei(balance, 'ether') + ' AGRO';
+    }
+
+    async function sendTokens() {
+      const to = document.getElementById('recipient').value;
+      const amount = document.getElementById('amount').value;
+      const contract = new web3.eth.Contract(tokenABI, tokenAddress);
+      try {
+        await contract.methods.transfer(to, web3.utils.toWei(amount, 'ether')).send({ from: account });
+        document.getElementById('tokenStatus').textContent = '✅ Токени надіслано';
+      } catch (err) {
+        document.getElementById('tokenStatus').textContent = '❌ Помилка: ' + err.message;
+      }
+    }
+  </script>
+
+</body>
+</html>
