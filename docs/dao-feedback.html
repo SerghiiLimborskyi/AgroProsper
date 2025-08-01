@@ -1,53 +1,43 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Фідбек для AgroProsper</title>
-  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2em; background: #f9f9f9; }
-    h1 { color: #2c3e50; }
-    form { margin-bottom: 2em; }
-    input, textarea, select { width: 100%; padding: 0.5em; margin: 0.5em 0; }
-    button { padding: 0.7em 1.5em; background: #27ae60; color: white; border: none; cursor: pointer; }
-    #status { margin-top: 1em; font-weight: bold; }
-    #feedback-list div { background: #fff; padding: 1em; margin-bottom: 1em; border-left: 4px solid #27ae60; }
-  </style>
+  <title>AgroProsper DAO Feedback</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 </head>
 <body>
-  <h1>Залишити фідбек</h1>
-  <form onsubmit="submitFeedback(); return false;">
-    <label for="name">Ім’я:</label>
-    <input type="text" id="name" required />
+  <h2>Залишити фідбек</h2>
+  <input type="text" id="feedbackInput" placeholder="Ваш фідбек..." />
+  <button onclick="submitFeedback()">Надіслати</button>
 
-    <label for="message">Повідомлення:</label>
-    <textarea id="message" rows="4" required></textarea>
+  <h3>Усі фідбеки:</h3>
+  <ul id="feedbackList"></ul>
 
-    <label for="rating">Оцінка (1–5):</label>
-    <select id="rating">
-      <option value="5">5 – Відмінно</option>
-      <option value="4">4 – Добре</option>
-      <option value="3">3 – Задовільно</option>
-      <option value="2">2 – Погано</option>
-      <option value="1">1 – Жахливо</option>
-    </select>
-
-    <button type="submit">Надіслати</button>
-    <div id="status"></div>
-  </form>
-
-  <h2>Останні фідбеки</h2>
-  <div id="feedback-list"></div>
-
-  <script src="feedback.js"></script>
   <script>
-    window.addEventListener("load", () => {
-      if (typeof window.ethereum !== "undefined") {
-        fetchAllFeedbacks();
-      } else {
-        document.getElementById("status").innerText = "⚠️ MetaMask не знайдено.";
-      }
-    });
+    const contractAddress = "0xD7A...F771B"; // заміни на повну адресу
+    const contractABI = [ /* встав ABI з Remix */ ];
+
+    const web3 = new Web3(window.ethereum);
+    const feedbackDAO = new web3.eth.Contract(contractABI, contractAddress);
+
+    async function submitFeedback() {
+      const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+      const message = document.getElementById("feedbackInput").value;
+      await feedbackDAO.methods.submitFeedback(message).send({ from: accounts[0] });
+      loadFeedbacks();
+    }
+
+    async function loadFeedbacks() {
+      const feedbacks = await feedbackDAO.methods.getAllFeedbacks().call();
+      const list = document.getElementById("feedbackList");
+      list.innerHTML = "";
+      feedbacks.forEach(fb => {
+        const item = document.createElement("li");
+        item.textContent = `${fb.user}: ${fb.message} (${new Date(fb.timestamp * 1000).toLocaleString()})`;
+        list.appendChild(item);
+      });
+    }
+
+    window.onload = loadFeedbacks;
   </script>
 </body>
 </html>
