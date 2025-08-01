@@ -2,8 +2,8 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>DAO AgroProsper</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroProsper DAO</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -38,6 +38,16 @@
     main {
       padding: 20px;
     }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+    }
+
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -52,9 +62,26 @@
   </nav>
 
   <main>
-    <h1>Ласкаво просимо до DAO AgroProsper</h1>
-    <p>Це головна сторінка DAO-модуля. Оберіть дію з меню вище.</p>
+    <h1>AgroProsper DAO</h1>
+    <p>Натисни кнопку, щоб підключити MetaMask:</p>
+    <button onclick="connectWallet()">🔗 Підключити гаманець</button>
+    <p id="status">🕓 Статус: не підключено</p>
   </main>
+
+  <script>
+    async function connectWallet() {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+          document.getElementById('status').textContent = '✅ Підключено: ' + accounts[0];
+        } catch (err) {
+          document.getElementById('status').textContent = '❌ Помилка: ' + err.message;
+        }
+      } else {
+        document.getElementById('status').textContent = '❌ MetaMask не знайдено';
+      }
+    }
+  </script>
 
 </body>
 </html>
