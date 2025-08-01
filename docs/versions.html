@@ -11,6 +11,20 @@
     .upcoming { border-left-color: #f39c12; }
     .inprogress { border-left-color: #e67e22; }
   </style>
+  <script>
+  const changelog = JSON.parse(localStorage.getItem("changelog") || "[]");
+  const container = document.createElement("div");
+
+  changelog.forEach(entry => {
+    const block = document.createElement("div");
+    block.innerHTML = `<h3>${entry.version} (${entry.date})</h3><ul>` +
+      entry.changes.map(c => `<li>${c}</li>`).join("") + "</ul>";
+    container.appendChild(block);
+  });
+
+  document.body.appendChild(container);
+</script>
+
 </head>
 <body>
   <h1>📜 Історія версій AgroProsper DAO</h1>
