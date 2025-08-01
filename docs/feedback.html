@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Відгуки | AgroProsper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <button onclick="location.href='index.html'">🏠 Головна</button>
+    <button onclick="location.href='dao-admin.html'">🏛 DAO</button>
+    <button onclick="location.href='game.html'">🎮 Гра</button>
+  </nav>
+
+  <main>
+    <h1>📬 Залишити відгук</h1>
+    <p>Ми вдячні за вашу участь у DAO AgroProsper. Поділіться думками, пропозиціями або ідеями:</p>
+
+    <form id="feedbackForm">
+      <label for="name">👤 Ім’я або псевдонім:</label><br />
+      <input type="text" id="name" name="name" required /><br /><br />
+
+      <label for="message">💬 Ваш відгук:</label><br />
+      <textarea id="message" name="message" rows="5" required></textarea><br /><br />
+
+      <label for="vote">🗳 DAO-оцінка платформи:</label><br />
+      <select id="vote" name="vote">
+        <option value="5">🌟🌟🌟🌟🌟</option>
+        <option value="4">🌟🌟🌟🌟</option>
+        <option value="3">🌟🌟🌟</option>
+        <option value="2">🌟🌟</option>
+        <option value="1">🌟</option>
+      </select><br /><br />
+
+      <button type="submit">📨 Надіслати</button>
+    </form>
+
+    <div id="response" style="margin-top:20px;"></div>
+  </main>
+
+  <script>
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const message = document.getElementById('message').value;
+      const vote = document.getElementById('vote').value;
+
+      // Тут можна додати DAO-логіку або Web3-збереження
+      document.getElementById('response').innerHTML =
+        `<p>✅ Дякуємо, ${name}! Ваш відгук збережено. DAO-оцінка: ${vote}⭐</p>`;
+      
+      this.reset();
+    });
+  </script>
+</body>
+</html>
