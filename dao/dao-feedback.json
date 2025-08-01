@@ -1,0 +1,4 @@
+[
+  { "user": "0x123...", "sentiment": "positive", "comment": "Чудовий проєкт!" },
+  { "user": "0x456...", "sentiment": "negative", "comment": "Потрібно більше прозорості." }
+]
