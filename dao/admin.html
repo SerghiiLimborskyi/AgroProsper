@@ -81,6 +81,30 @@
         document.getElementById('status').textContent = '❌ MetaMask не знайдено';
       }
     }
+const changelogAddress = "0xYourChangelogContractAddress"; // заміни
+const changelogContract = new web3.eth.Contract(changelogABI, changelogAddress);
+
+async function approveUpdate() {
+  const version = document.getElementById("versionInput").value.trim();
+  const changesRaw = document.getElementById("changesInput").value.trim();
+  const changes = changesRaw.split(",").map(c => c.trim()).filter(c => c.length > 0);
+  const date = new Date().toISOString().split("T")[0];
+
+  if (!version || changes.length === 0) {
+    document.getElementById("statusMessage").innerText = "❌ Введіть версію та зміни.";
+    return;
+  }
+
+  try {
+    await changelogContract.methods
+      .approveVersion(version, date, changes)
+      .send({ from: account });
+
+    document.getElementById("statusMessage").innerText = `✅ Версія ${version} затверджена в блокчейні.`;
+  } catch (err) {
+    document.getElementById("statusMessage").innerText = "❌ Помилка: " + err.message;
+  }
+}
 
     async function checkVotes() {
       const contract = new web3.eth.Contract(votingABI, votingAddress);
