@@ -1,6 +1,23 @@
 // feedback.js
 
-const contractAddress = "0xYourContractAddress"; // заміни на реальну адресу
+const contractAddress = "0xYourContractAddress";
+const abi = [ /* ABI з подією FeedbackSubmitted */ ];
+
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+const contract = new ethers.Contract(contractAddress, abi, provider);
+
+contract.on("FeedbackSubmitted", (user, message, timestamp) => {
+    console.log("Новий фідбек:", user, message, new Date(timestamp * 1000));
+    // Оновити DOM або викликати функцію оновлення інтерфейсу
+    addFeedbackToUI(user, message, timestamp);
+});
+
+function addFeedbackToUI(user, message, timestamp) {
+    const container = document.getElementById("feedback-list");
+    const entry = document.createElement("div");
+    entry.innerHTML = `<strong>${user}</strong>: ${message} <em>${new Date(timestamp * 1000).toLocaleString()}</em>`;
+    container.prepend(entry);
+}
 
 const contractABI = [
   {
