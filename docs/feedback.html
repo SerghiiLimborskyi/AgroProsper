@@ -37,31 +37,25 @@
     </form>
 
     <div id="response" style="margin-top:20px;"></div>
-  </main>
-
-  <script>
-    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+  <<script>
+document.getElementById('feedbackForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const name = document.getElementById('name').value;
   const message = document.getElementById('message').value;
   const vote = document.getElementById('vote').value;
 
+  // DAO/Web3 логіка
   submitFeedbackToDAO(name, message, vote);
+
+  // Вивід повідомлення
+  document.getElementById('response').innerHTML =
+    `<p>✅ Дякуємо, ${name}! Ваш відгук збережено. DAO-оцінка: ${vote}⭐</p>`;
+
   this.reset();
 });
+</script>
+/main>
 
-    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const message = document.getElementById('message').value;
-      const vote = document.getElementById('vote').value;
-
-      // Тут можна додати DAO-логіку або Web3-збереження
-      document.getElementById('response').innerHTML =
-        `<p>✅ Дякуємо, ${name}! Ваш відгук збережено. DAO-оцінка: ${vote}⭐</p>`;
-      
-      this.reset();
-    });
-  </script>
+  
 </body>
 </html>
