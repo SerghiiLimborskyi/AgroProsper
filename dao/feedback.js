@@ -18,6 +18,12 @@ function addFeedbackToUI(user, message, timestamp) {
     entry.innerHTML = `<strong>${user}</strong>: ${message} <em>${new Date(timestamp * 1000).toLocaleString()}</em>`;
     container.prepend(entry);
 }
+async function fetchAllFeedbacks() {
+    const feedbacks = await contract.getAllFeedbacks();
+    feedbacks.forEach(fb => {
+        addFeedbackToUI(fb.user, fb.message, fb.timestamp);
+    });
+}
 
 const contractABI = [
   {
