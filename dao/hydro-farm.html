@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Симулятор гідропонічної ферми</title>
+  <title>Гідропонічна ферма</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -10,61 +10,92 @@
       text-align: center;
       padding: 30px;
     }
-    h1 {
-      color: #2e7d32;
-    }
-    .farm {
-      display: grid;
-      grid-template-columns: repeat(5, 100px);
-      gap: 10px;
-      justify-content: center;
-      margin-top: 30px;
-    }
+    h1 { color: #2e7d32; }
+    select, button { margin: 10px; padding: 8px; font-size: 16px; }
+    .farm { display: grid; gap: 10px; justify-content: center; margin-top: 20px; }
     .plant {
-      width: 100px;
-      height: 100px;
+      width: 80px; height: 80px;
       background: #a5d6a7;
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      cursor: pointer;
-      transition: background 0.3s;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; cursor: pointer;
     }
-    .plant.grown {
-      background: #66bb6a;
-    }
-    #score {
-      margin-top: 20px;
-      font-size: 18px;
-      color: #388e3c;
-    }
+    .grown { background: #66bb6a; }
+    #score, #timer, #nft { margin-top: 20px; font-size: 18px; color: #388e3c; }
   </style>
 </head>
 <body>
-  <h1>🌿 Симулятор гідропонічної ферми</h1>
-  <p>Натискай на рослини, щоб виростити їх!</p>
+  <h1>🌿 Гідропонічна ферма</h1>
+  <label>Рівень: 
+    <select id="level">
+      <option value="easy">Легкий</option>
+      <option value="medium">Середній</option>
+      <option value="hard">Важкий</option>
+    </select>
+  </label>
+  <label>Рослина: 
+    <select id="plantType">
+      <option value="🥬">Салат</option>
+      <option value="🍅">Помідор</option>
+      <option value="🌿">Базилік</option>
+    </select>
+  </label>
+  <button onclick="startGame()">Старт</button>
+
+  <div id="timer">⏱ Час: 0</div>
   <div class="farm" id="farmGrid"></div>
   <div id="score">Вирощено: 0</div>
+  <div id="nft"></div>
 
   <script>
+    let score = 0, timeLeft = 0, timerId;
     const farm = document.getElementById('farmGrid');
-    let score = 0;
+    const scoreDisplay = document.getElementById('score');
+    const timerDisplay = document.getElementById('timer');
+    const nftDisplay = document.getElementById('nft');
 
-    for (let i = 0; i < 20; i++) {
-      const plant = document.createElement('div');
-      plant.className = 'plant';
-      plant.textContent = '🌱';
-      plant.onclick = () => {
-        if (!plant.classList.contains('grown')) {
-          plant.classList.add('grown');
-          plant.textContent = '🥬';
-          score++;
-          document.getElementById('score').textContent = `Вирощено: ${score}`;
+    function startGame() {
+      farm.innerHTML = '';
+      nftDisplay.innerHTML = '';
+      score = 0;
+      scoreDisplay.textContent = 'Вирощено: 0';
+
+      const level = document.getElementById('level').value;
+      const plantEmoji = document.getElementById('plantType').value;
+      let plantCount = level === 'easy' ? 10 : level === 'medium' ? 20 : 30;
+      timeLeft = level === 'easy' ? 60 : level === 'medium' ? 45 : 30;
+
+      farm.style.gridTemplateColumns = `repeat(${Math.ceil(Math.sqrt(plantCount))}, 80px)`;
+
+      for (let i = 0; i < plantCount; i++) {
+        const plant = document.createElement('div');
+        plant.className = 'plant';
+        plant.textContent = plantEmoji;
+        plant.onclick = () => {
+          if (!plant.classList.contains('grown')) {
+            plant.classList.add('grown');
+            score++;
+            scoreDisplay.textContent = `Вирощено: ${score}`;
+          }
+        };
+        farm.appendChild(plant);
+      }
+
+      timerDisplay.textContent = `⏱ Час: ${timeLeft}`;
+      clearInterval(timerId);
+      timerId = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = `⏱ Час: ${timeLeft}`;
+        if (timeLeft <= 0) {
+          clearInterval(timerId);
+          endGame();
         }
-      };
-      farm.appendChild(plant);
+      }, 1000);
+    }
+
+    function endGame() {
+      const nftCode = 'NFT-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+      nftDisplay.innerHTML = `🎉 Гру завершено! Ваш NFT-код: <strong>${nftCode}</strong>`;
     }
   </script>
 </body>
