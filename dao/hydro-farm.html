@@ -57,6 +57,19 @@
     const scoreDisplay = document.getElementById('score');
     const timerDisplay = document.getElementById('timer');
     const nftDisplay = document.getElementById('nft');
+// 🔥 Firebase конфігурація
+const firebaseConfig = {
+  apiKey: "AIzaSyD...твій ключ...",
+  authDomain: "agroprosper-1749411381988.firebaseapp.com",
+  databaseURL: "https://agroprosper-1749411381988-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "agroprosper-1749411381988",
+  storageBucket: "agroprosper-1749411381988.appspot.com",
+  messagingSenderId: "398072332519",
+  appId: "1:398072332519:web:ldgp..." // завершення appId з OAuth
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 
     function startGame() {
       farm.innerHTML = '';
