@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-signin-client_id" content="ВАШ_CLIENT_ID.apps.googleusercontent.com">
+  <meta name="google-signin-client_id" content="agroprosper-1749411381988">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
     body {
