@@ -2,157 +2,60 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Кабінет адміністратора AgroProsper</title>
-  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <title>Адмін-панель AgroProsper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial; background: #fffbe6; padding: 20px; }
-    h1 { color: #2c3e50; }
-    button { padding: 10px 20px; margin: 10px 0; }
-    input { margin: 5px 0; padding: 8px; width: 300px; }
-    p { font-weight: bold; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffffff;
+      margin: 0;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #c0392b;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .admin-section {
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .admin-section h2 {
+      color: #2c3e50;
+    }
+    .admin-section button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .admin-section button:hover {
+      background: #2471a3;
+    }
   </style>
 </head>
 <body>
+  <h1>🔧 Адмін-панель AgroProsper</h1>
 
-  <h1>🛡️ Кабінет адміністратора AgroProsper</h1>
-  <button onclick="connectWallet()">🔗 Підключити гаманець</button>
-  <p id="status">Статус: не підключено</p>
+  <div class="admin-section">
+    <h2>Керування DAO</h2>
+    <button onclick="alert('Функція додавання токенів ще не реалізована')">➕ Додати токени</button>
+    <button onclick="alert('Функція перегляду логів ще не реалізована')">📜 Переглянути логи</button>
+    <button onclick="alert('Функція оновлення версій ще не реалізована')">🔄 Оновити версію</button>
+  </div>
 
-  <h2>📊 Голосування</h2>
-  <button onclick="checkVotes()">Перевірити голоси</button>
-  <p id="adminStatus">Голосів: —</p>
-
-  <h2>🧹 Скидання голосів</h2>
-  <button onclick="resetVotes()">🔄 Скинути голоси</button>
-  <p id="resetStatus">Статус: —</p>
-
-  <h2>💼 Управління токенами</h2>
-  <button onclick="getBalance()">💰 Перевірити баланс</button>
-  <p id="balance">Баланс: —</p>
-  <input type="text" id="recipient" placeholder="Адреса отримувача">
-  <input type="number" id="amount" placeholder="Кількість токенів">
-  <button onclick="sendTokens()">📤 Надіслати токени</button>
-  <p id="tokenStatus">Статус: —</p>
-  <h2>Адміністративна панель</h2>
-
-<div>
-  <label>Номер версії:</label>
-  <input type="text" id="versionInput" placeholder="v1.2">
-</div>
-<div>
-  <label>Список змін:</label>
-  <textarea id="changesInput" placeholder="Перелік змін через кому"></textarea>
-</div>
-<button onclick="approveUpdate()">✅ Затвердити оновлення</button>
-
-<p id="statusMessage"></p>
-
-<script src="feedback.js"></script>
-
-  <script>
-    let web3;
-    let account;
-
-    const votingAddress = "0xYourVotingContractAddress"; // заміни
-    const tokenAddress = "0xYourAgroTokenAddress"; // заміни
-
-    const votingABI = [
-      { "inputs": [], "name": "resetVotes", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
-      { "inputs": [{ "name": "option", "type": "uint8" }], "name": "getVotes", "outputs": [{ "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" },
-      { "inputs": [], "name": "owner", "outputs": [{ "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }
-    ];
-
-    const tokenABI = [
-      { "constant": true, "inputs": [{ "name": "_owner", "type": "address" }], "name": "balanceOf", "outputs": [{ "name": "balance", "type": "uint256" }], "type": "function" },
-      { "constant": false, "inputs": [{ "name": "_to", "type": "address" }, { "name": "_value", "type": "uint256" }], "name": "transfer", "outputs": [{ "name": "success", "type": "bool" }], "type": "function" }
-    ];
-
-    async function connectWallet() {
-      if (window.ethereum) {
-        web3 = new Web3(window.ethereum);
-        try {
-          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-          account = accounts[0];
-          document.getElementById('status').textContent = '✅ Підключено: ' + account;
-        } catch (err) {
-          document.getElementById('status').textContent = '❌ Помилка: ' + err.message;
-        }
-      } else {
-        document.getElementById('status').textContent = '❌ MetaMask не знайдено';
-      }
-    }
-const changelogAddress = "0xd9145CCE52D386f254917e481eB44e9943F39138"; // заміни
-const changelogContract = new web3.eth.Contract(changelogABI, changelogAddress);
-
-async function approveUpdate() {
-  const version = document.getElementById("versionInput").value.trim();
-  const changesRaw = document.getElementById("changesInput").value.trim();
-  const changes = changesRaw.split(",").map(c => c.trim()).filter(c => c.length > 0);
-  const date = new Date().toISOString().split("T")[0];
-
-  if (!version || changes.length === 0) {
-    document.getElementById("statusMessage").innerText = "❌ Введіть версію та зміни.";
-    return;
-  }
-
-  try {
-    await changelogContract.methods
-      .approveVersion(version, date, changes)
-      .send({ from: account });
-
-    document.getElementById("statusMessage").innerText = `✅ Версія ${version} затверджена в блокчейні.`;
-  } catch (err) {
-    document.getElementById("statusMessage").innerText = "❌ Помилка: " + err.message;
-  }
-}
-
-    async function checkVotes() {
-      const contract = new web3.eth.Contract(votingABI, votingAddress);
-      const yes = await contract.methods.getVotes(1).call();
-      const no = await contract.methods.getVotes(2).call();
-      document.getElementById('adminStatus').textContent =
-        `✅ Підтримка: ${yes} | ❌ Відхилення: ${no}`;
-    }
-
-    async function isAdmin() {
-      const contract = new web3.eth.Contract(votingABI, votingAddress);
-      const owner = await contract.methods.owner().call();
-      return owner.toLowerCase() === account.toLowerCase();
-    }
-
-    async function resetVotes() {
-      if (!(await isAdmin())) {
-        document.getElementById('resetStatus').textContent = '⛔ Ви не адміністратор';
-        return;
-      }
-      const contract = new web3.eth.Contract(votingABI, votingAddress);
-      try {
-        await contract.methods.resetVotes().send({ from: account });
-        document.getElementById('resetStatus').textContent = '✅ Голоси скинуто';
-      } catch (err) {
-        document.getElementById('resetStatus').textContent = '❌ Помилка: ' + err.message;
-      }
-    }
-
-    async function getBalance() {
-      const contract = new web3.eth.Contract(tokenABI, tokenAddress);
-      const balance = await contract.methods.balanceOf(account).call();
-      document.getElementById('balance').textContent =
-        'Баланс: ' + web3.utils.fromWei(balance, 'ether') + ' AGRO';
-    }
-
-    async function sendTokens() {
-      const to = document.getElementById('recipient').value;
-      const amount = document.getElementById('amount').value;
-      const contract = new web3.eth.Contract(tokenABI, tokenAddress);
-      try {
-        await contract.methods.transfer(to, web3.utils.toWei(amount, 'ether')).send({ from: account });
-        document.getElementById('tokenStatus').textContent = '✅ Токени надіслано';
-      } catch (err) {
-        document.getElementById('tokenStatus').textContent = '❌ Помилка: ' + err.message;
-      }
-    }
-  </script>
-
+  <div class="admin-section">
+    <h2>Зворотній зв'язок</h2>
+    <button onclick="window.location.href='agro-feedback.html'">📝 Перейти до фідбеку</button>
+  </div>
 </body>
 </html>
