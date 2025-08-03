@@ -2,34 +2,40 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Вхід адміністратора AgroProsper</title>
+  <title>Адмін-панель AgroProsper</title>
+  <meta name="google-signin-client_id" content="398072332519-ldgpelpq0vsdq2uf09h2j9e6s54qspro.apps.googleusercontent.com">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <meta name="google-signin-client_id" content="ВАШ_CLIENT_ID.apps.googleusercontent.com">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #eef2f3;
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
       text-align: center;
-      padding: 50px;
+      padding-top: 50px;
     }
-    h2 {
-      color: #2c3e50;
-    }
-    .g_id_signin {
+    .hidden { display: none; }
+    .admin-content {
       margin-top: 30px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h2>🔐 Вхід адміністратора AgroProsper</h2>
-  <p>Увійдіть через Google, щоб отримати доступ до адмін-панелі.</p>
-
+  <h1>Вхід до адмін-панелі AgroProsper</h1>
   <div id="g_id_onload"
-       data-client_id="agroprosper-1749411381988"
-       data-auto_prompt="false"
-       data-callback="handleCredentialResponse">
+       data-client_id="398072332519-ldgpelpq0vsdq2uf09h2j9e6s54qspro.apps.googleusercontent.com"
+       data-callback="handleCredentialResponse"
+       data-auto_prompt="false">
   </div>
-
   <div class="g_id_signin"
        data-type="standard"
        data-size="large"
@@ -39,25 +45,26 @@
        data-logo_alignment="left">
   </div>
 
+  <div id="adminPanel" class="admin-content hidden">
+    <h2>Ласкаво просимо, адміністраторе!</h2>
+    <p>Ви маєте доступ до онлайн-ігор платформи:</p>
+    <iframe src="https://serghiilimborskyi.github.io/games.html"></iframe>
+  </div>
+
   <script>
-    const ADMIN_EMAIL = "agroprosper74@gmail.com";
+    const adminEmail = "serhii.limborskyi@gmail.com"; // Заміни на email адміністратора
 
     function handleCredentialResponse(response) {
-      const decoded = parseJwt(response.credential);
-      if (decoded.email === ADMIN_EMAIL) {
-        window.location.href = "dao/admin.html";
-      } else {
-        alert("⛔ Доступ дозволено лише адміністратору.");
-      }
-    }
+      const jwt = response.credential;
+      const payload = JSON.parse(atob(jwt.split('.')[1]));
+      const email = payload.email;
 
-    function parseJwt(token) {
-      const base64Url = token.split('.')[1];
-      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-      }).join(''));
-      return JSON.parse(jsonPayload);
+      if (email === adminEmail) {
+        document.querySelector('.g_id_signin').classList.add('hidden');
+        document.getElementById('adminPanel').classList.remove('hidden');
+      } else {
+        alert("Доступ дозволено лише адміністратору.");
+      }
     }
   </script>
 </body>
