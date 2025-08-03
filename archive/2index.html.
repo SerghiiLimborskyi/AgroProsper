@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #2c3e50;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2em;
+      color: #555;
+    }
+    .module-link {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 30px;
+      background: #27ae60;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 18px;
+      transition: background 0.3s ease;
+    }
+    .module-link:hover {
+      background: #219150;
+    }
+    @media (max-width: 600px) {
+      .module-link {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>AgroProsper DAO</h1>
+  <p>Оберіть модуль для взаємодії:</p>
+
+  <a class="module-link" href="start.html">🚀 Стартова сторінка</a>
+  <a class="module-link" href="dao.html">📊 DAO Панель</a>
+  <a class="module-link" href="agro-feedback.html">📝 Залишити фідбек</a>
+  <a class="module-link" href="VERSIONS.html">📁 Версії</a>
+  <a class="module-link" href="admin.html">🔧 Адмін-панель</a>
+  <a class="module-link" href="changelog.html">📜 Зміни</a>
+
+</body>
+</html>
