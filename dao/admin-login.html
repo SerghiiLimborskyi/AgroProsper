@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Вхід адміністратора AgroProsper</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <meta name="google-signin-client_id" content="ВАШ_CLIENT_ID.apps.googleusercontent.com">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #eef2f3;
+      text-align: center;
+      padding: 50px;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    .g_id_signin {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔐 Вхід адміністратора AgroProsper</h2>
+  <p>Увійдіть через Google, щоб отримати доступ до адмін-панелі.</p>
+
+  <div id="g_id_onload"
+       data-client_id="agroprosper-1749411381988"
+       data-auto_prompt="false"
+       data-callback="handleCredentialResponse">
+  </div>
+
+  <div class="g_id_signin"
+       data-type="standard"
+       data-size="large"
+       data-theme="outline"
+       data-text="sign_in_with"
+       data-shape="rectangular"
+       data-logo_alignment="left">
+  </div>
+
+  <script>
+    const ADMIN_EMAIL = "agroprosper74@gmail.com";
+
+    function handleCredentialResponse(response) {
+      const decoded = parseJwt(response.credential);
+      if (decoded.email === ADMIN_EMAIL) {
+        window.location.href = "dao/admin.html";
+      } else {
+        alert("⛔ Доступ дозволено лише адміністратору.");
+      }
+    }
+
+    function parseJwt(token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    }
+  </script>
+</body>
+</html>
