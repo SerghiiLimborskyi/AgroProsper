@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-signin-client_id" content="ВАШ_CLIENT_ID.apps.googleusercontent.com">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -47,13 +49,11 @@
 <body>
   <h1>AgroProsper DAO</h1>
   <p>Оберіть модуль для взаємодії:</p>
-
   <a class="module-link" href="start.html">🚀 Стартова сторінка</a>
   <a class="module-link" href="dao.html">📊 DAO Панель</a>
   <a class="module-link" href="agro-feedback.html">📝 Залишити фідбек</a>
   <a class="module-link" href="VERSIONS.html">📁 Версії</a>
-  <a class="module-link" href="admin.html">🔧 Адмін-панель</a>
+  <a class="module-link" href="admin-login.html">🔐 Вхід адміністратора</a>
   <a class="module-link" href="changelog.html">📜 Зміни</a>
-
 </body>
 </html>
