@@ -1,6 +1,7 @@
 // src/utils/analytics.js
 import { initializeApp } from "firebase/app";
 import { getAnalytics, logEvent } from "firebase/analytics";
+import { logAppEvent } from "../utils/analytics";
 
 const logAppEvent = (eventName, payload = {}) => {
   console.log(`[Analytics] ${eventName}`, payload);
