@@ -18,6 +18,14 @@
     </ul>
 
     <button onclick="window.location.href='start.html'">⬅ Назад до карти пам’яті</button>
-  </section>
+  <script>
+  function onTokenVote(amount) {
+    logEvent(getAnalytics(), 'agt_token_used', {
+      action: 'vote',
+      amount: amount,
+      user_id: currentUserId || 'guest'
+    });
+  }
+</script>
 </body>
 </html>
