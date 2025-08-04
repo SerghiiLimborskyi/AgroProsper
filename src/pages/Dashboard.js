@@ -19,6 +19,12 @@ const analytics = getAnalytics(app);
 
 
 const Dashboard = ({ user, onSignOut }) => {
+  useEffect(() => {
+  logEvent(analytics, 'screen_view', {
+    screen_name: 'Dashboard'
+  });
+}, []);
+
   return (
     <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
       <h1>AgroProsper 🌾</h1>
