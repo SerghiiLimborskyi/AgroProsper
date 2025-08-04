@@ -35,6 +35,12 @@ const handleModuleOpen = (moduleName) => {
     screen_name: 'Dashboard'
   });
 }, []);
+  useEffect(() => {
+  logEvent(analytics, 'language_selected', {
+    language: i18n.language || 'unknown'
+  });
+}, []);
+
 
   return (
     <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
