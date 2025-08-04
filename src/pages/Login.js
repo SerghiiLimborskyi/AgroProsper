@@ -1,16 +1,29 @@
-// src/components/Login.js
-import React from "react";
-const handleLogin = async () => {
-  await signInWithPopup(auth, provider);
-  logEvent(analytics, 'login', { method: 'Google' });
+// src/pages/Login.js
+import React, { useEffect } from "react";
+import { getAnalytics, logEvent } from "firebase/analytics";
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  // ... той самий конфіг, що й у Dashboard.js
 };
 
-const Login = ({ onSignIn }) => {
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+const Login = ({ onLogin }) => {
+  useEffect(() => {
+    logEvent(analytics, "screen_view", { screen_name: "Login" });
+  }, []);
+
+  const handleLogin = () => {
+    logEvent(analytics, "login_attempt", { method: "Google" });
+    onLogin(); // виклик функції логіну
+  };
+
   return (
-    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
-      <h1>AgroProsper 🌾</h1>
-      <p>🔐 Увійдіть, щоб отримати доступ до платформи</p>
-      <button onClick={onSignIn}>Увійти через Google</button>
+    <div style={{ padding: "2rem" }}>
+      <h1>🔐 Увійти до AgroProsper</h1>
+      <button onClick={handleLogin}>Увійти через Google</button>
     </div>
   );
 };
