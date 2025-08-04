@@ -1,5 +1,13 @@
 // src/App.js
 
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+
+<Route path="/login" element={<Login />} />
+<Route path="/signup" element={<Signup />} />
+<Route path="/dashboard" element={<Dashboard />} />
+
 import React, { useState, useEffect } from "react";
 import { auth } from "./firebaseConfig";
 import {
