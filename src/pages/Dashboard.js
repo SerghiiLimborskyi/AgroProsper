@@ -1,25 +1,20 @@
-// src/pages/Dashboard.js
-
+// src/components/Dashboard.js
 import React from "react";
-import { auth } from "../firebaseConfig";
-import { signOut } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
 
-function Dashboard() {
-  const [user, loading] = useAuthState(auth);
-
-  if (loading) return <p>Завантаження...</p>;
-  if (!user) return <p>⛔ Доступ заборонено. Увійдіть, щоб переглянути панель.</p>;
-
+const Dashboard = ({ user, onSignOut }) => {
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>📈 Панель користувача</h1>
+    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
+      <h1>AgroProsper 🌾</h1>
       <p>👋 Вітаємо, {user.displayName}</p>
       <img src={user.photoURL} alt="User avatar" width={100} />
       <br />
-      <button onClick={() => signOut(auth)}>Вийти</button>
+      <button onClick={onSignOut}>Вийти</button>
+      <div style={{ marginTop: "2rem" }}>
+        <h2>📦 Ваші дані</h2>
+        <p>Тут буде контент, доступний лише авторизованим користувачам.</p>
+      </div>
     </div>
   );
-}
+};
 
 export default Dashboard;
