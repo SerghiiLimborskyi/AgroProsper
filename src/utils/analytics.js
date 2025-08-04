@@ -2,6 +2,10 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics, logEvent } from "firebase/analytics";
 
+const logAppEvent = (eventName, payload = {}) => {
+  console.log(`[Analytics] ${eventName}`, payload);
+};
+
 const firebaseConfig = {
   apiKey: "AIzaSyCky1vtPkr0p_Mzs6bCrlLqWAT1jK6fFTg",
   authDomain: "agroprosper-1749411381988.firebaseapp.com",
