@@ -1,0 +1,9 @@
+<script>
+  const analytics = getAnalytics(); // Ініціалізуй Firebase
+  document.getElementById('promo-video').addEventListener('play', () => {
+    logEvent(analytics, 'promo_video_played', {
+      video_id: 'agt_intro',
+      language: navigator.language || 'unknown'
+    });
+  });
+</script>
