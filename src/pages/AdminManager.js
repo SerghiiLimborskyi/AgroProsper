@@ -1,55 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
+// src/pages/AdminManager.js
+import React, { useEffect } from "react";
+import { getAnalytics, logEvent } from "firebase/analytics";
+import { initializeApp } from "firebase/app";
 
-const AdminManager = () => {
-  const db = getFirestore();
-  const [email, setEmail] = useState("");
-  const [admins, setAdmins] = useState([]);
+const firebaseConfig = {
+  // ... той самий конфіг
+};
 
-  const fetchAdmins = async () => {
-    const snapshot = await getDocs(collection(db, "admins"));
-    const list = snapshot.docs.map(doc => ({
-      id: doc.id,
-      email: doc.data().email
-    }));
-    setAdmins(list);
-  };
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
-  const addAdmin = async () => {
-    if (!email) return;
-    await addDoc(collection(db, "admins"), { email });
-    setEmail("");
-    fetchAdmins();
-  };
-
-  const removeAdmin = async (id) => {
-    await deleteDoc(doc(db, "admins", id));
-    fetchAdmins();
-  };
-
+const AdminManager = ({ user }) => {
   useEffect(() => {
-    fetchAdmins();
+    logEvent(analytics, "screen_view", { screen_name: "AdminManager" });
+    logEvent(analytics, "admin_accessed", { user_id: user?.uid || "guest" });
   }, []);
+
+  const handleAction = (actionType) => {
+    logEvent(analytics, "admin_action", {
+      action: actionType,
+      user_id: user?.uid || "guest"
+    });
+  };
 
   return (
     <div style={{ padding: "2rem" }}>
-      <h2>👥 Керування адміністраторами</h2>
-      <input
-        type="email"
-        placeholder="Email нового адміна"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <button onClick={addAdmin}>➕ Додати</button>
-
-      <ul>
-        {admins.map((admin) => (
-          <li key={admin.id}>
-            {admin.email}
-            <button onClick={() => removeAdmin(admin.id)}>❌ Видалити</button>
-          </li>
-        ))}
-      </ul>
+      <h1>🛠️ Панель адміністратора</h1>
+      <button onClick={() => handleAction("approve_user")}>Схвалити користувача</button>
+      <button onClick={() => handleAction("delete_entry")}>Видалити запис</button>
     </div>
   );
 };
