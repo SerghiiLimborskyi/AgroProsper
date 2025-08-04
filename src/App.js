@@ -1,17 +1,30 @@
 // src/App.js
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth } from "./firebaseConfig";
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleSignIn = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      const result = await signInWithPopup(auth, provider);
-      setUser(result.user);
+      await signInWithPopup(auth, provider);
     } catch (error) {
       console.error("Sign-in error:", error);
     }
@@ -20,11 +33,12 @@ function App() {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      setUser(null);
     } catch (error) {
       console.error("Sign-out error:", error);
     }
   };
+
+  if (loading) return <p>Завантаження...</p>;
 
   return (
     <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
@@ -35,6 +49,12 @@ function App() {
           <img src={user.photoURL} alt="User avatar" width={100} />
           <br />
           <button onClick={handleSignOut}>Вийти</button>
+
+          {/* 🔐 Захищений контент */}
+          <div style={{ marginTop: "2rem" }}>
+            <h2>📦 Ваші дані</h2>
+            <p>Тут буде контент, доступний лише авторизованим користувачам.</p>
+          </div>
         </div>
       ) : (
         <button onClick={handleSignIn}>Увійти через Google</button>
