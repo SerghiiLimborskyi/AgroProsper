@@ -1,0 +1,36 @@
+name: Semgrep
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * 0' # щотижнева перевірка
+
+jobs:
+  semgrep:
+    name: Run Semgrep
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install Semgrep
+      run: pip install semgrep
+
+    - name: Run Semgrep scan
+      run: semgrep --config auto --error
+
+    - name: Upload Semgrep results (optional)
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: semgrep-results
+        path: semgrep.log
