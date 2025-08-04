@@ -1,5 +1,9 @@
 // src/components/Login.js
 import React from "react";
+const handleLogin = async () => {
+  await signInWithPopup(auth, provider);
+  logEvent(analytics, 'login', { method: 'Google' });
+};
 
 const Login = ({ onSignIn }) => {
   return (
