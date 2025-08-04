@@ -1,32 +1,12 @@
-// src/pages/Login.js
+// src/components/Login.js
+import React from "react";
 
-import React, { useState } from "react";
-import { auth } from "../firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const handleLogin = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate("/dashboard");
-    } catch (error) {
-      alert("❌ Помилка входу: " + error.message);
-    }
-  };
-
+const Login = ({ onSignIn }) => {
   return (
-    <div style={{ padding: "2rem" }}>
-      <h2>🔐 Вхід до AgroProsper</h2>
-      <input type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
-      <br />
-      <input type="password" placeholder="Пароль" onChange={e => setPassword(e.target.value)} />
-      <br />
-      <button onClick={handleLogin}>Увійти</button>
+    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
+      <h1>AgroProsper 🌾</h1>
+      <p>🔐 Увійдіть, щоб отримати доступ до платформи</p>
+      <button onClick={onSignIn}>Увійти через Google</button>
     </div>
   );
 };
