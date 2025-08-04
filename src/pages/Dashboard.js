@@ -1,8 +1,8 @@
-// src/components/Dashboard.js
-import React from "react";
-import { useEffect } from "react";
+// src/pages/Dashboard.js
+import React, { useEffect } from "react";
 import { getAnalytics, logEvent } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
+import i18n from "../i18n"; // імпорт i18n, якщо використовується
 
 const firebaseConfig = {
   apiKey: "AIzaSyCky1vtPkr0p_Mzs6bCrlLqWAT1jK6fFTg",
@@ -17,30 +17,25 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-
 const Dashboard = ({ user, onSignOut }) => {
   useEffect(() => {
-  logEvent(analytics, 'screen_view', { screen_name: 'Dashboard' });
-}, []);
+    logEvent(analytics, "screen_view", { screen_name: "Dashboard" });
+    logEvent(analytics, "language_selected", {
+      language: i18n?.language || navigator.language || "unknown"
+    });
+  }, []);
 
-const handleModuleOpen = (moduleName) => {
-  logEvent(analytics, 'dao_module_opened', {
-    module_name: moduleName,
-    user_id: user?.uid || 'guest'
-  });
-};
+  const handleSignOut = () => {
+    logEvent(analytics, "sign_out", { method: "manual", user_id: user?.uid || "guest" });
+    onSignOut();
+  };
 
-  useEffect(() => {
-  logEvent(analytics, 'screen_view', {
-    screen_name: 'Dashboard'
-  });
-}, []);
-  useEffect(() => {
-  logEvent(analytics, 'language_selected', {
-    language: i18n.language || 'unknown'
-  });
-}, []);
-
+  const handleModuleOpen = (moduleName) => {
+    logEvent(analytics, "dao_module_opened", {
+      module_name: moduleName,
+      user_id: user?.uid || "guest"
+    });
+  };
 
   return (
     <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
@@ -48,10 +43,12 @@ const handleModuleOpen = (moduleName) => {
       <p>👋 Вітаємо, {user.displayName}</p>
       <img src={user.photoURL} alt="User avatar" width={100} />
       <br />
-      <button onClick={onSignOut}>Вийти</button>
+      <button onClick={handleSignOut}>Вийти</button>
+
       <div style={{ marginTop: "2rem" }}>
         <h2>📦 Ваші дані</h2>
         <p>Тут буде контент, доступний лише авторизованим користувачам.</p>
+        <button onClick={() => handleModuleOpen("Finance")}>Відкрити DAO Finance</button>
       </div>
     </div>
   );
