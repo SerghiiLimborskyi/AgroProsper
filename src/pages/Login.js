@@ -1,52 +1,32 @@
-import { auth, db } from "../firebaseConfig";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+// src/pages/Login.js
+
+import React, { useState } from "react";
+import { auth } from "../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSignIn = async () => {
-    const provider = new GoogleAuthProvider();
+  const handleLogin = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-
-      const userRef = doc(db, "users", user.uid);
-      const userSnap = await getDoc(userRef);
-
-      // 🔐 Створити користувача, якщо не існує
-      if (!userSnap.exists()) {
-        await setDoc(userRef, {
-          uid: user.uid,
-          name: user.displayName,
-          email: user.email,
-          photoURL: user.photoURL,
-          role: "user", // 👈 стандартна роль
-          createdAt: new Date().toISOString()
-        });
-      }
-
-      // 🔍 Отримати роль користувача
-      const updatedSnap = await getDoc(userRef);
-      const userData = updatedSnap.data();
-
-      // 🚀 Перенаправлення за роллю
-      if (userData.role === "admin") {
-        navigate("/admin");
-      } else {
-        navigate("/dashboard");
-      }
-
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/dashboard");
     } catch (error) {
-      console.error("Sign-in error:", error);
+      alert("❌ Помилка входу: " + error.message);
     }
   };
 
   return (
     <div style={{ padding: "2rem" }}>
-      <h2>Увійдіть до AgroProsper</h2>
-      <button onClick={handleSignIn}>Увійти через Google</button>
+      <h2>🔐 Вхід до AgroProsper</h2>
+      <input type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
+      <br />
+      <input type="password" placeholder="Пароль" onChange={e => setPassword(e.target.value)} />
+      <br />
+      <button onClick={handleLogin}>Увійти</button>
     </div>
   );
 };
