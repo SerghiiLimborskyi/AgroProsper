@@ -44,6 +44,18 @@ function App() {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
+      import { useNavigate } from "react-router-dom";
+const navigate = useNavigate();
+
+const handleSignOut = async () => {
+  try {
+    await signOut(auth);
+    navigate("/login");
+  } catch (error) {
+    console.error("Sign-out error:", error);
+  }
+};
+
     } catch (error) {
       console.error("Sign-out error:", error);
     }
