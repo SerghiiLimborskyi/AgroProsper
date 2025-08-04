@@ -55,6 +55,12 @@ function App() {
             <h2>📦 Ваші дані</h2>
             <p>Тут буде контент, доступний лише авторизованим користувачам.</p>
           </div>
+        import Admin from "./pages/Admin";
+import Dashboard from "./pages/Dashboard";
+
+<Route path="/admin" element={<Admin />} />
+<Route path="/dashboard" element={<Dashboard />} />
+
         </div>
       ) : (
         <button onClick={handleSignIn}>Увійти через Google</button>
