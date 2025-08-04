@@ -1,17 +1,7 @@
 // src/App.js
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProtectedRoute from "./components/ProtectedRoute";
-
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Dashboard from "./pages/Dashboard";
-
-<Route path="/login" element={<Login />} />
-<Route path="/signup" element={<Signup />} />
-<Route path="/dashboard" element={<Dashboard />} />
-
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import { auth } from "./firebaseConfig";
 import {
   GoogleAuthProvider,
@@ -19,6 +9,12 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Dashboard from "./components/Dashboard";
+import Admin from "./components/Admin";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -44,18 +40,6 @@ function App() {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      import { useNavigate } from "react-router-dom";
-const navigate = useNavigate();
-
-const handleSignOut = async () => {
-  try {
-    await signOut(auth);
-    navigate("/login");
-  } catch (error) {
-    console.error("Sign-out error:", error);
-  }
-};
-
     } catch (error) {
       console.error("Sign-out error:", error);
     }
@@ -64,31 +48,28 @@ const handleSignOut = async () => {
   if (loading) return <p>Завантаження...</p>;
 
   return (
-    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
-      <h1>AgroProsper 🌾</h1>
-      {user ? (
-        <div>
-          <p>👋 Вітаємо, {user.displayName}</p>
-          <img src={user.photoURL} alt="User avatar" width={100} />
-          <br />
-          <button onClick={handleSignOut}>Вийти</button>
-
-          {/* 🔐 Захищений контент */}
-          <div style={{ marginTop: "2rem" }}>
-            <h2>📦 Ваші дані</h2>
-            <p>Тут буде контент, доступний лише авторизованим користувачам.</p>
-          </div>
-        import Admin from "./pages/Admin";
-import Dashboard from "./pages/Dashboard";
-
-<Route path="/admin" element={<Admin />} />
-<Route path="/dashboard" element={<Dashboard />} />
-
-        </div>
-      ) : (
-        <button onClick={handleSignIn}>Увійти через Google</button>
-      )}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login onSignIn={handleSignIn} />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute user={user}>
+              <Dashboard user={user} onSignOut={handleSignOut} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute user={user}>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
