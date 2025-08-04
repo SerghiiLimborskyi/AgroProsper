@@ -20,6 +20,17 @@ const analytics = getAnalytics(app);
 
 const Dashboard = ({ user, onSignOut }) => {
   useEffect(() => {
+  logEvent(analytics, 'screen_view', { screen_name: 'Dashboard' });
+}, []);
+
+const handleModuleOpen = (moduleName) => {
+  logEvent(analytics, 'dao_module_opened', {
+    module_name: moduleName,
+    user_id: user?.uid || 'guest'
+  });
+};
+
+  useEffect(() => {
   logEvent(analytics, 'screen_view', {
     screen_name: 'Dashboard'
   });
