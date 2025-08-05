@@ -6,7 +6,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCky1vtPkr0p_Mzs6bCrlLqWAT1jK6fFTg",
+  apiKey: "process.env.GOOGLE_API_KEY",
   authDomain: "agroprosper-1749411381988.firebaseapp.com",
   projectId: "agroprosper-1749411381988",
   storageBucket: "agroprosper-1749411381988.firebasestorage.app",
