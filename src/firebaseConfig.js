@@ -5,9 +5,8 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// Використання змінної середовища для ключа
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_GOOGLE_API_KEY, // 🔐 Безпечне підключення
+  apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
   authDomain: "agroprosper-1749411381988.firebaseapp.com",
   projectId: "agroprosper-1749411381988",
   storageBucket: "agroprosper-1749411381988.appspot.com",
