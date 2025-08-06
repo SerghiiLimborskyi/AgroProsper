@@ -1,0 +1,1 @@
+import abi from './artifacts/contracts/UserRegistry.sol/UserRegistry.json';
