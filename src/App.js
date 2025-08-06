@@ -46,6 +46,7 @@ function App() {
     }
   };
   <Routes>
+ <Route path="/register" element={<RegisterForm />} />
   <Route path="/login" element={<Login onSignIn={handleSignIn} />} />
   <Route path="/signup" element={<Signup />} />
   <Route path="/dashboard" element={
