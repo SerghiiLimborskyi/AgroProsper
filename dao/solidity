@@ -1,0 +1,21 @@
+// UserRegistry.sol
+pragma solidity ^0.8.0;
+
+contract UserRegistry {
+    struct User {
+        string name;
+        string email;
+        bool isRegistered;
+    }
+
+    mapping(address => User) public users;
+
+    function register(string memory _name, string memory _email) public {
+        require(!users[msg.sender].isRegistered, "Already registered");
+        users[msg.sender] = User(_name, _email, true);
+    }
+
+    function isUser(address _addr) public view returns (bool) {
+        return users[_addr].isRegistered;
+    }
+}
