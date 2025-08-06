@@ -45,6 +45,22 @@ function App() {
       console.error("Sign-out error:", error);
     }
   };
+  <Routes>
+  <Route path="/login" element={<Login onSignIn={handleSignIn} />} />
+  <Route path="/signup" element={<Signup />} />
+  <Route path="/dashboard" element={
+    <ProtectedRoute user={user}>
+      <Dashboard user={user} onSignOut={handleSignOut} />
+    </ProtectedRoute>
+  } />
+  <Route path="/admin" element={
+    <ProtectedRoute user={user}>
+      <Admin />
+    </ProtectedRoute>
+  } />
+  <Route path="/register" element={<RegisterForm />} /> {/* 🔥 Новий маршрут */}
+</Routes>
+
 
   if (loading) return <p>Завантаження...</p>;
 
