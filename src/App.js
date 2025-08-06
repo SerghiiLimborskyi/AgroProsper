@@ -1,5 +1,6 @@
 // src/App.js
 
+import RegisterForm from './RegisterForm';
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import { auth } from "./firebaseConfig";
