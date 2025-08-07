@@ -66,6 +66,13 @@ const bankCodeMapUA = {
   // додай інші банки за потреби
 };
 
+const bankCodeMapDE = {
+  "10010010": "Postbank",
+  "20040000": "Commerzbank",
+  "37040044": "Deutsche Bank",
+  // додай інші
+};
+
 function formatIBAN(value) {
   return value
     .replace(/\s+/g, "")
@@ -101,6 +108,12 @@ export default function RegisterForm() {
       const code = cleaned.slice(0, 2);
       const countryName = ibanCountryMap[code] || "Невідома країна";
       setCountry(countryName);
+      
+      if (code === "DE") {
+  const bankCode = cleaned.slice(4, 12); // символи 5–12
+  const bank = bankCodeMapDE[bankCode] || "Невідомий банк";
+  setBankName(bank);
+}
 
       if (!ibanLengthMap[code]) {
         setIbanError("❌ Невідома країна IBAN або не підтримується");
