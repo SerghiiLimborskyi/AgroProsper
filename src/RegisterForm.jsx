@@ -9,9 +9,20 @@ export default function RegisterForm() {
     account: "",
     wallet: ""
   });
+  const ibanCountryMap = {
+  AL: "Албанія", AT: "Австрія", BE: "Бельгія", BG: "Болгарія", CH: "Швейцарія",
+  CY: "Кіпр", CZ: "Чехія", DE: "Німеччина", DK: "Данія", EE: "Естонія",
+  ES: "Іспанія", FI: "Фінляндія", FR: "Франція", GB: "Велика Британія",
+  GR: "Греція", HR: "Хорватія", HU: "Угорщина", IE: "Ірландія", IT: "Італія",
+  LT: "Литва", LU: "Люксембург", LV: "Латвія", MT: "Мальта", NL: "Нідерланди",
+  NO: "Норвегія", PL: "Польща", PT: "Португалія", RO: "Румунія",
+  SE: "Швеція", SI: "Словенія", SK: "Словаччина", UA: "Україна"
+};
+
 
   const [errors, setErrors] = useState({});
   const [feedback, setFeedback] = useState("");
+  const [country, setCountry] = useState("");
   const [isSuccess, setIsSuccess] = useState(null);
 
   const validate = () => {
@@ -38,15 +49,17 @@ export default function RegisterForm() {
 const handleChange = (e) => {
   const { name, value } = e.target;
 
-  if (name === "account") {
-    const raw = value.replace(/\s+/g, "");
-    const formatted = formatIBAN(raw);
-    setFormData({ ...formData, account: raw });
-    e.target.value = formatted; // оновлюємо відображення
-  } else {
-    setFormData({ ...formData, [name]: value });
-  }
+ if (name === "account") {
+  const raw = value.replace(/\s+/g, "");
+  const formatted = formatIBAN(raw);
+  const countryCode = raw.slice(0, 2).toUpperCase();
+  const countryHint = ibanCountryMap[countryCode] || "";
+  setFormData({ ...formData, account: raw });
+  setCountry(countryHint);
+  e.target.value = formatted;
+}
 
+  
   setErrors({ ...errors, [name]: "" }); // очищення помилки при зміні
 };
 
