@@ -14,6 +14,35 @@ const ibanCountryMap = {
   GB: "Велика Британія",
 };
 
+const ibanCountryMap = {
+  ...,
+  NO: "Норвегія",
+  SE: "Швеція",
+  DK: "Данія",
+  FI: "Фінляндія",
+  CZ: "Чехія",
+  SK: "Словаччина",
+  HU: "Угорщина",
+  RO: "Румунія",
+  BG: "Болгарія",
+  GR: "Греція",
+};
+
+const ibanLengthMap = {
+  ...,
+  NO: 15,
+  SE: 24,
+  DK: 18,
+  FI: 18,
+  CZ: 24,
+  SK: 24,
+  HU: 28,
+  RO: 24,
+  BG: 22,
+  GR: 27,
+};
+
+
 const ibanLengthMap = {
   UA: 29,
   PL: 28,
