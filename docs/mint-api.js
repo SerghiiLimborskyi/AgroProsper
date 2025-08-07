@@ -1,42 +1,64 @@
 // mint-api.js
-import { connectWallet, mintNFT } from './web3-utils.js';
-import React, { useEffect } from "react";
-import { logAppEvent } from "../utils/analytics";
 
-const Docs = () => {
-  useEffect(() => {
-    logAppEvent("screen_view", { screen_name: "Docs" });
-  }, []);
+function isValidEmail(email) {
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return pattern.test(email);
+}
 
-  const handleDownload = (docName) => {
-    logAppEvent("document_downloaded", { name: docName });
+function isValidIBAN(iban) {
+  const CODE_LENGTHS = {
+    PL: 28, UA: 29, DE: 22, FR: 27, GB: 22, // додай інші за потреби
   };
 
-  return (
-    <div style={{ padding: "2rem" }}>
-      <h1>📄 Документи</h1>
-      <button onClick={() => handleDownload("DAO_Whitepaper")}>Завантажити Whitepaper</button>
-    </div>
-  );
-};
+  const cleanIban = iban.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const match = cleanIban.match(/^([A-Z]{2})(\d{2})([A-Z\d]+)$/);
+  if (!match || cleanIban.length !== CODE_LENGTHS[match[1]]) return false;
 
-export default Docs;
+  const rearranged = match[3] + match[1] + match[2];
+  const digits = rearranged.replace(/[A-Z]/g, ch => ch.charCodeAt(0) - 55);
 
+  let checksum = digits.slice(0, 2);
+  for (let offset = 2; offset < digits.length; offset += 7) {
+    const fragment = checksum + digits.substring(offset, offset + 7);
+    checksum = parseInt(fragment, 10) % 97;
+  }
 
-export async function handleMint(role, nodeId) {
+  return checksum === 1;
+}
+
+export async function handleMint(userData) {
+  const { name, email, account, wallet } = userData;
+
+  if (!name || !email || !account || !wallet) {
+    console.error("❌ Всі поля обов’язкові");
+    return;
+  }
+
+  if (!isValidEmail(email)) {
+    console.error("❌ Невірний формат email");
+    return;
+  }
+
+  if (!isValidIBAN(account)) {
+    console.error("❌ Невірний IBAN");
+    return;
+  }
+
   try {
-    const wallet = await connectWallet();
-    const metadata = {
-      name: `DAO Role: ${role}`,
-      description: `Виконано дію у вузлі ${nodeId}`,
-      image: `https://yourdomain.com/images/${role}.png`,
-      attributes: [{ trait_type: "Node", value: nodeId }]
-    };
-    const tx = await mintNFT(wallet.address, metadata);
-    console.log("Minted:", tx);
-    return tx;
+    const response = await fetch("http://localhost:3001/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData)
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || "Помилка реєстрації");
+    }
+
+    console.log("✅ Реєстрація успішна:", result.message);
   } catch (error) {
-    console.error("Minting failed:", error);
-    throw error;
+    console.error("❌ Помилка при реєстрації:", error.message);
   }
 }
