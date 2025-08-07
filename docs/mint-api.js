@@ -1,4 +1,5 @@
 // mint-api.js
+import { isAddress } from "ethers"; // переконайся, що встановлено: npm install ethers
 
 function isValidEmail(email) {
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -6,23 +7,17 @@ function isValidEmail(email) {
 }
 
 function isValidIBAN(iban) {
-  const CODE_LENGTHS = {
-    PL: 28, UA: 29, DE: 22, FR: 27, GB: 22, // додай інші за потреби
-  };
-
-  const cleanIban = iban.toUpperCase().replace(/[^A-Z0-9]/g, "");
-  const match = cleanIban.match(/^([A-Z]{2})(\d{2})([A-Z\d]+)$/);
-  if (!match || cleanIban.length !== CODE_LENGTHS[match[1]]) return false;
+  const CODE_LENGTHS = { PL: 28, UA: 29, DE: 22, FR: 27, GB: 22 };
+  const clean = iban.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const match = clean.match(/^([A-Z]{2})(\d{2})([A-Z\d]+)$/);
+  if (!match || clean.length !== CODE_LENGTHS[match[1]]) return false;
 
   const rearranged = match[3] + match[1] + match[2];
   const digits = rearranged.replace(/[A-Z]/g, ch => ch.charCodeAt(0) - 55);
-
   let checksum = digits.slice(0, 2);
-  for (let offset = 2; offset < digits.length; offset += 7) {
-    const fragment = checksum + digits.substring(offset, offset + 7);
-    checksum = parseInt(fragment, 10) % 97;
+  for (let i = 2; i < digits.length; i += 7) {
+    checksum = parseInt(checksum + digits.slice(i, i + 7), 10) % 97;
   }
-
   return checksum === 1;
 }
 
@@ -41,6 +36,11 @@ export async function handleMint(userData) {
 
   if (!isValidIBAN(account)) {
     console.error("❌ Невірний IBAN");
+    return;
+  }
+
+  if (!isAddress(wallet)) {
+    console.error("❌ Невірна Ethereum-адреса");
     return;
   }
 
