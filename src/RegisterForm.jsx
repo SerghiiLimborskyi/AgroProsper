@@ -1,49 +1,14 @@
-<form id="registerForm" onSubmit={handleFormSubmit}>
-  <label>Ім’я:</label><input type="text" name="name" required />
-  <label>Email:</label><input type="email" name="email" required />
-  <label>Рахунок (IBAN або крипто):</label><input type="text" name="account" />
-  <button type="submit">Зареєструватися</button>
-</form>
-<script>
-document.getElementById('registerForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const data = new FormData(this);
-  const userData = Object.fromEntries(data);
-  console.log("Реєстрація:", userData);
-  alert("Реєстрація успішна!");
-});
- const handleFormSubmit = async (e) => {
-  e.preventDefault();
-  const data = new FormData(e.target);
-  const userData = Object.fromEntries(data);
-
-  try {
-    const res = await fetch("http://localhost:3001/api/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    });
-
-    const result = await res.json();
-    alert(result.message);
-  } catch (err) {
-    console.error("Помилка надсилання:", err);
-    alert("❌ Не вдалося зареєструватися");
-  }
-};
- 
-</script>
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import registryAbi from "../artifacts/contracts/UserRegistry.sol/UserRegistry.json";
 
-const registryAddress = "0xYourUserRegistryAddress"; // ← заміни
+const registryAddress = "0xYourUserRegistryAddress"; // ← заміни на актуальну адресу
 
 export default function RegisterForm() {
   const [status, setStatus] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [userAddress, setUserAddress] = useState("");
+  const [formData, setFormData] = useState({ name: "", email: "", account: "" });
 
   useEffect(() => {
     const checkUser = async () => {
@@ -56,12 +21,16 @@ export default function RegisterForm() {
       const contract = new ethers.Contract(registryAddress, registryAbi.abi, provider);
       const registered = await contract.isUser(address);
       setIsRegistered(registered);
-      setIsLoading(false);
     };
     checkUser();
   }, []);
 
-  const handleRegister = async () => {
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (!window.ethereum) return alert("Install MetaMask");
 
     const provider = new ethers.BrowserProvider(window.ethereum);
@@ -79,8 +48,18 @@ export default function RegisterForm() {
     try {
       const tx = await contract.register();
       await tx.wait();
-      setStatus("✅ Реєстрація успішна!");
+      setStatus("✅ Реєстрація в смартконтракті успішна!");
       setIsRegistered(true);
+
+      // Надсилання на бекенд
+      const res = await fetch("http://localhost:3001/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, wallet: address }),
+      });
+
+      const result = await res.json();
+      console.log("Бекенд відповів:", result);
     } catch (err) {
       console.error(err);
       setStatus("❌ Помилка реєстрації");
@@ -90,15 +69,18 @@ export default function RegisterForm() {
   return (
     <div>
       <h2>Реєстрація користувача</h2>
-      {isLoading ? (
-        <p>⏳ Перевірка статусу...</p>
-      ) : isRegistered ? (
+      {isRegistered ? (
         <p>🔒 Ви вже зареєстровані як <strong>{userAddress}</strong></p>
       ) : (
-        <>
-          <p>👤 Адреса: <strong>{userAddress}</strong></p>
-          <button onClick={handleRegister}>Зареєструватися</button>
-        </>
+        <form onSubmit={handleSubmit}>
+          <label>Ім’я:</label>
+          <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+          <label>Email:</label>
+          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+          <label>Рахунок (IBAN або крипто):</label>
+          <input type="text" name="account" value={formData.account} onChange={handleChange} />
+          <button type="submit">Зареєструватися</button>
+        </form>
       )}
       <p>{status}</p>
     </div>
