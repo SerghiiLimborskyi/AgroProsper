@@ -5,57 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AgroPromo Презентація</title>
   <style>
-    body { font-family: sans-serif; background: #f9f9f9; margin: 0; padding: 20px; }
-    h1 { color: #2e7d32; }
-    .video-block { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
-    video { width: 100%; max-width: 800px; border: 2px solid #ccc; border-radius: 8px; }
-    .transcript, .dao { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px #ddd; }
-    .dao button { background: #2e7d32; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-    .dao button:hover { background: #1b5e20; }
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+    header, section { padding: 20px; }
+    h1, h2 { color: #2c3e50; }
+    iframe { border: none; }
+    .video-block { margin-bottom: 20px; }
+    .dao-buttons a {
+      display: inline-block;
+      margin: 10px 10px 0 0;
+      padding: 10px 15px;
+      background: #27ae60;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .dao-buttons a:hover { background: #219150; }
   </style>
 </head>
 <body>
-  <h1>🌾 AgroPromo: Презентація методу</h1>
+  <header>
+    <h1>🌾 AgroPromo: Презентація методу</h1>
+  </header>
 
-  <div class="video-block">
+  <section class="video-block">
     <h2>🎥 Відео 1: Інкубатор</h2>
-    <video id="promo-video" controls>
-      <source src="../promo/video/incubator.mp4" type="video/mp4" />
-      Ваш браузер не підтримує відео.
-    </video>
+    <video src="video/incubator.mp4" controls width="100%"></video>
+  </section>
 
+  <section class="video-block">
     <h2>🐥 Відео 2: Добові курчата</h2>
-    <video controls>
-      <source src="../promo/video/chicks.mp4" type="video/mp4" />
-      Ваш браузер не підтримує відео.
-    </video>
-  </div>
+    <video src="video/chicks.mp4" controls width="100%"></video>
+  </section>
 
   <section id="transcript">
-  <h2>📝 Сценарій 🇺🇦</h2>
-  <p><strong>0:00</strong> — В інкубаторі починається процес вилуплення. Температура стабільна, вологість контрольована.</p>
-  <p><strong>0:30</strong> — Перші писки. Курчата пробивають шкаралупу, з’являються перші рухи.</p>
-  <p><strong>1:00</strong> — Добові курчата переміщаються до брудеру. Встановлено освітлення, подано воду та стартовий корм.</p>
-  <p><strong>1:30</strong> — Візуальний огляд: активність, чистота, реакція на звук. Всі параметри в нормі.</p>
-  <p><strong>2:00</strong> — Метод завершено. DAO може голосувати за ефективність або запропонувати покращення.</p>
-</section>
+    <h2>📝 Сценарій</h2>
+    <iframe src="transcript.html" width="100%" height="400"></iframe>
+  </section>
 
-  <div class="dao">
+  <section class="dao-buttons">
     <h2>🪙 DAO-взаємодія</h2>
-    <p>Підтримай метод або запропонуй покращення через DAO:</p>
-    <button onclick="alert('Дякуємо за підтримку!')">Підтримати метод</button>
-    <button onclick="alert('Надішліть пропозицію на GitHub або Telegram')">Запропонувати покращення</button>
-  </div>
-
-  <!-- Firebase аналітика -->
-  <script>
-    const analytics = getAnalytics(); // Ініціалізуй Firebase
-    document.getElementById('promo-video').addEventListener('play', () => {
-      logEvent(analytics, 'promo_video_played', {
-        video_id: 'agt_intro',
-        language: navigator.language || 'unknown'
-      });
-    });
-  </script>
+    <a href="#">Підтримати метод</a>
+    <a href="#">Запропонувати покращення</a>
+  </section>
 </body>
 </html>
