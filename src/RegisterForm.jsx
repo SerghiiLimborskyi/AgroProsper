@@ -27,9 +27,29 @@ export default function RegisterForm() {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" }); // очищення помилки при зміні
-  };
+    const formatIBAN = (value) => {
+  return value
+    .replace(/[^A-Z0-9]/gi, "") // видаляємо все, крім літер і цифр
+    .toUpperCase()
+    .match(/.{1,4}/g) // групуємо по 4 символи
+    ?.join(" ") || "";
+};
+
+const handleChange = (e) => {
+  const { name, value } = e.target;
+
+  if (name === "account") {
+    const raw = value.replace(/\s+/g, "");
+    const formatted = formatIBAN(raw);
+    setFormData({ ...formData, account: raw });
+    e.target.value = formatted; // оновлюємо відображення
+  } else {
+    setFormData({ ...formData, [name]: value });
+  }
+
+  setErrors({ ...errors, [name]: "" }); // очищення помилки при зміні
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
