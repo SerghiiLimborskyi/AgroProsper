@@ -14,3 +14,37 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
   alert("Реєстрація успішна!");
 });
 </script>
+import { useState } from "react";
+import { ethers } from "ethers";
+import registryAbi from "../artifacts/contracts/UserRegistry.sol/UserRegistry.json";
+
+const registryAddress = "0xYourUserRegistryAddress"; // ← заміни
+
+export default function RegisterForm() {
+  const [status, setStatus] = useState("");
+
+  const handleRegister = async () => {
+    if (!window.ethereum) return alert("Install MetaMask");
+
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
+    const contract = new ethers.Contract(registryAddress, registryAbi.abi, signer);
+
+    try {
+      const tx = await contract.register();
+      await tx.wait();
+      setStatus("✅ Реєстрація успішна!");
+    } catch (err) {
+      console.error(err);
+      setStatus("❌ Помилка реєстрації");
+    }
+  };
+
+  return (
+    <div>
+      <h2>Реєстрація користувача</h2>
+      <button onClick={handleRegister}>Зареєструватися</button>
+      <p>{status}</p>
+    </div>
+  );
+}
