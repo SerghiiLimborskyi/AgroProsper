@@ -1,10 +1,9 @@
-<form id="registerForm">
-  <label>Ім’я:</label><input type="text" name="name" required>
-  <label>Email:</label><input type="email" name="email" required>
-  <label>Рахунок (IBAN або крипто):</label><input type="text" name="account">
+<form id="registerForm" onSubmit={handleFormSubmit}>
+  <label>Ім’я:</label><input type="text" name="name" required />
+  <label>Email:</label><input type="email" name="email" required />
+  <label>Рахунок (IBAN або крипто):</label><input type="text" name="account" />
   <button type="submit">Зареєструватися</button>
 </form>
-
 <script>
 document.getElementById('registerForm').addEventListener('submit', function(e) {
   e.preventDefault();
