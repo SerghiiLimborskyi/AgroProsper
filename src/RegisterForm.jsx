@@ -13,6 +13,26 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
   console.log("Реєстрація:", userData);
   alert("Реєстрація успішна!");
 });
+ const handleFormSubmit = async (e) => {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  const userData = Object.fromEntries(data);
+
+  try {
+    const res = await fetch("http://localhost:3001/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
+
+    const result = await res.json();
+    alert(result.message);
+  } catch (err) {
+    console.error("Помилка надсилання:", err);
+    alert("❌ Не вдалося зареєструватися");
+  }
+};
+ 
 </script>
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
