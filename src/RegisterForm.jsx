@@ -12,10 +12,6 @@ const ibanCountryMap = {
   AT: "Австрія",
   CH: "Швейцарія",
   GB: "Велика Британія",
-};
-
-const ibanCountryMap = {
-  ...,
   NO: "Норвегія",
   SE: "Швеція",
   DK: "Данія",
@@ -29,7 +25,17 @@ const ibanCountryMap = {
 };
 
 const ibanLengthMap = {
-  ...,
+  UA: 29,
+  PL: 28,
+  DE: 22,
+  FR: 27,
+  IT: 27,
+  ES: 24,
+  NL: 18,
+  BE: 16,
+  AT: 20,
+  CH: 21,
+  GB: 22,
   NO: 15,
   SE: 24,
   DK: 18,
@@ -42,35 +48,18 @@ const ibanLengthMap = {
   GR: 27,
 };
 
-
-const ibanLengthMap = {
-  UA: 29,
-  PL: 28,
-  DE: 22,
-  FR: 27,
-  IT: 27,
-  ES: 24,
-  NL: 18,
-  BE: 16,
-  AT: 20,
-  CH: 21,
-  GB: 22,
-};
-
 const bankCodeMapUA = {
   "300001": "ПриватБанк",
   "322001": "Ощадбанк",
   "305299": "Укргазбанк",
   "320478": "Райффайзен Банк",
   "380775": "Монобанк",
-  // додай інші банки за потреби
 };
 
 const bankCodeMapDE = {
   "10010010": "Postbank",
   "20040000": "Commerzbank",
   "37040044": "Deutsche Bank",
-  // додай інші
 };
 
 function formatIBAN(value) {
@@ -86,6 +75,18 @@ function isValidIBAN(iban, countryCode) {
   const regex = /^[A-Z]{2}[0-9]{2}[A-Z0-9]{1,30}$/;
   const expectedLength = ibanLengthMap[countryCode];
   return regex.test(cleaned) && cleaned.length === expectedLength;
+}
+
+function getBankNameByCountry(code, cleanedIBAN) {
+  if (code === "UA") {
+    const bankCode = cleanedIBAN.slice(4, 10);
+    return bankCodeMapUA[bankCode] || "Невідомий банк";
+  }
+  if (code === "DE") {
+    const bankCode = cleanedIBAN.slice(4, 12);
+    return bankCodeMapDE[bankCode] || "Невідомий банк";
+  }
+  return "Автозаповнення недоступне";
 }
 
 export default function RegisterForm() {
@@ -108,12 +109,6 @@ export default function RegisterForm() {
       const code = cleaned.slice(0, 2);
       const countryName = ibanCountryMap[code] || "Невідома країна";
       setCountry(countryName);
-      
-      if (code === "DE") {
-  const bankCode = cleaned.slice(4, 12); // символи 5–12
-  const bank = bankCodeMapDE[bankCode] || "Невідомий банк";
-  setBankName(bank);
-}
 
       if (!ibanLengthMap[code]) {
         setIbanError("❌ Невідома країна IBAN або не підтримується");
@@ -125,14 +120,7 @@ export default function RegisterForm() {
         setBankName("");
       } else {
         setIbanError("");
-
-        if (code === "UA") {
-          const bankCode = cleaned.slice(4, 10);
-          const bank = bankCodeMapUA[bankCode] || "Невідомий банк";
-          setBankName(bank);
-        } else {
-          setBankName("Автозаповнення недоступне");
-        }
+        setBankName(getBankNameByCountry(code, cleaned));
       }
 
       setFormData((prev) => ({
