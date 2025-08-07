@@ -23,25 +23,39 @@ const registryAddress = "0xYourUserRegistryAddress"; // ← заміни
 export default function RegisterForm() {
   const [status, setStatus] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [userAddress, setUserAddress] = useState("");
 
   useEffect(() => {
     const checkUser = async () => {
       if (!window.ethereum) return;
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-      const contract = new ethers.Contract(registryAddress, registryAbi.abi, provider);
       const address = await signer.getAddress();
+      setUserAddress(address);
+
+      const contract = new ethers.Contract(registryAddress, registryAbi.abi, provider);
       const registered = await contract.isUser(address);
       setIsRegistered(registered);
+      setIsLoading(false);
     };
     checkUser();
   }, []);
 
   const handleRegister = async () => {
     if (!window.ethereum) return alert("Install MetaMask");
+
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
+    const address = await signer.getAddress();
+
     const contract = new ethers.Contract(registryAddress, registryAbi.abi, signer);
+    const alreadyRegistered = await contract.isUser(address);
+    if (alreadyRegistered) {
+      setStatus("⚠️ Ви вже зареєстровані");
+      setIsRegistered(true);
+      return;
+    }
 
     try {
       const tx = await contract.register();
@@ -57,13 +71,17 @@ export default function RegisterForm() {
   return (
     <div>
       <h2>Реєстрація користувача</h2>
-      {isRegistered ? (
-        <p>🔒 Ви вже зареєстровані</p>
+      {isLoading ? (
+        <p>⏳ Перевірка статусу...</p>
+      ) : isRegistered ? (
+        <p>🔒 Ви вже зареєстровані як <strong>{userAddress}</strong></p>
       ) : (
-        <button onClick={handleRegister}>Зареєструватися</button>
+        <>
+          <p>👤 Адреса: <strong>{userAddress}</strong></p>
+          <button onClick={handleRegister}>Зареєструватися</button>
+        </>
       )}
       <p>{status}</p>
     </div>
   );
 }
-
