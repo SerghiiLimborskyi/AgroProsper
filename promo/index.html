@@ -1,9 +1,59 @@
-<script>
-  const analytics = getAnalytics(); // Ініціалізуй Firebase
-  document.getElementById('promo-video').addEventListener('play', () => {
-    logEvent(analytics, 'promo_video_played', {
-      video_id: 'agt_intro',
-      language: navigator.language || 'unknown'
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroPromo Презентація</title>
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; margin: 0; padding: 20px; }
+    h1 { color: #2e7d32; }
+    .video-block { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
+    video { width: 100%; max-width: 800px; border: 2px solid #ccc; border-radius: 8px; }
+    .transcript, .dao { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px #ddd; }
+    .dao button { background: #2e7d32; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    .dao button:hover { background: #1b5e20; }
+  </style>
+</head>
+<body>
+  <h1>🌾 AgroPromo: Презентація методу</h1>
+
+  <div class="video-block">
+    <h2>🎥 Відео 1: Інкубатор</h2>
+    <video id="promo-video" controls>
+      <source src="../promo/video/incubator.mp4" type="video/mp4" />
+      Ваш браузер не підтримує відео.
+    </video>
+
+    <h2>🐥 Відео 2: Добові курчата</h2>
+    <video controls>
+      <source src="../promo/video/chicks.mp4" type="video/mp4" />
+      Ваш браузер не підтримує відео.
+    </video>
+  </div>
+
+  <div class="transcript">
+    <h2>📝 Сценарій</h2>
+    <p><strong>🇺🇦:</strong> Цей метод дозволяє автоматизувати процес вирощування курчат з моменту інкубації до першого дня життя...</p>
+    <p><strong>🇬🇧:</strong> This method automates the chick-raising process from incubation to day one...</p>
+    <p><strong>🇵🇱:</strong> Ta metoda automatyzuje proces hodowli kurcząt od inkubacji do pierwszego dnia życia...</p>
+  </div>
+
+  <div class="dao">
+    <h2>🪙 DAO-взаємодія</h2>
+    <p>Підтримай метод або запропонуй покращення через DAO:</p>
+    <button onclick="alert('Дякуємо за підтримку!')">Підтримати метод</button>
+    <button onclick="alert('Надішліть пропозицію на GitHub або Telegram')">Запропонувати покращення</button>
+  </div>
+
+  <!-- Firebase аналітика -->
+  <script>
+    const analytics = getAnalytics(); // Ініціалізуй Firebase
+    document.getElementById('promo-video').addEventListener('play', () => {
+      logEvent(analytics, 'promo_video_played', {
+        video_id: 'agt_intro',
+        language: navigator.language || 'unknown'
+      });
     });
-  });
-</script>
+  </script>
+</body>
+</html>
