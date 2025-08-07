@@ -110,7 +110,7 @@ const handleChange = (e) => {
         onChange={handleChange}
         style={inputStyle("account")}
       />
-      {errors.account && <p style={{ color: "red" }}>{errors.account}</p>}
+      {errors.account && <p style={{ color: "red" }}>{errors.account}</p>}{country && <p style={{ color: "gray" }}>Країна IBAN: {country}</p>}
 
       <input
         type="text"
