@@ -1,62 +1,83 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>AgroProsper DAO</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="lang.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e0ffe0, #f0fff0);
+      text-align: center;
+      padding: 50px;
+    }
+    #qr {
+      margin: 20px auto;
+    }
+    #timer {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+    #musicToggle {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>AgroProsper DAO</h1>
-    <nav>
-      <a href="gov-booklet.html">📄 GOV-Буклет</a>
-      <a href="dashboard.html">📊 Панель приладів</a>
-      <a href="play-game.html">🎮 Гра AgroTycoon</a>
-      <a href="agroprosper-presentation-full.pdf" target="_blank">🧾 Презентація PDF</a>
-      <select id="lang-switcher">
-        <option value="uk">🇺🇦 Українська</option>
-        <option value="pl">🇵🇱 Polski</option>
-        <option value="en">🇬🇧 English</option>
-      </select>
-    </nav>
-  </header>
+  <h1>Ласкаво просимо до AgroProsper DAO</h1>
+  <p>Ми запускаємо нову еру аграрної децентралізації</p>
 
-  <main>
-    <section>
-      <h2>🧠 DAO-платформа</h2>
-      <p>Фріланс-модулі, GOV-партнерства, NFT WebApp, мультимовність, ігри, презентації.</p>
-      <img src="assets/dao-freelance.svg" alt="DAO Architecture" width="100%" />
-    </section>
+  <!-- QR-код -->
+  <div id="qr">
+    <img src="logo.png" alt="QR-код AgroProsper" width="200">
+    <p>Скануй для доступу з мобільного</p>
+  </div>
 
-    <section>
-      <h2>📽 Відео-трейлер</h2>
-      <video controls width="100%">
-        <source src="assets/videos/agrotycoon.mp4" type="video/mp4" />
-        Ваш браузер не підтримує відео.
-      </video>
-    </section>
+  <!-- Таймер -->
+  <div id="timer">Запуск DAO через: <span id="countdown">00:00:00</span></div>
 
-    <section>
-      <h2>💸 Кешбек</h2>
-      <p>Повертаємо частину витрат на добрива, паливо, техніку. Все автоматично через смарт-контракт.</p>
-      <button onclick="Promo.claimCashback()">Отримати кешбек</button>
-    </section>
+  <!-- Кнопка керування музикою -->
+  <button id="musicToggle">🔊 Вимкнути музику</button>
 
-    <section>
-      <h2>📬 Контакти</h2>
-      <p>Email: <a href="mailto:agroprosper74@gmail.com">agroprosper74@gmail.com</a></p>
-      <p>Telegram: <a href="https://t.me/AgroProsperBot" target="_blank">@AgroProsperBot</a></p>
-      <p>GitHub: <a href="https://github.com/SerghiiLimborskyi/AgroProsper" target="_blank">AgroProsper</a></p>
-      <a href="https://wa.me/48772241042" target="_blank">
-        <img src="whatsapp-icon.png" alt="WhatsApp" width="40" />
-      </a>
-    </section>
-  </main>
+  <!-- Аудіо -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="AgroProsper.mp3" type="audio/mpeg">
+    Ваш браузер не підтримує аудіо.
+  </audio>
 
-  <footer>
-    <p>© 2025 AgroProsper DAO — інституційна фріланс-платформа</p>
-  </footer>
+  <!-- DAO логіка (заглушка) -->
+  <script>
+    // Таймер до запуску DAO (наприклад, 1 хвилина)
+    let launchTime = new Date(Date.now() + 60000);
+    let countdownEl = document.getElementById("countdown");
+
+    setInterval(() => {
+      let now = new Date();
+      let diff = launchTime - now;
+
+      if (diff <= 0) {
+        countdownEl.textContent = "🚀 Запущено!";
+      } else {
+        let sec = Math.floor(diff / 1000) % 60;
+        let min = Math.floor(diff / (1000 * 60)) % 60;
+        let hr = Math.floor(diff / (1000 * 60 * 60));
+        countdownEl.textContent = `${hr.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+      }
+    }, 1000);
+
+    // Кнопка керування музикою
+    const music = document.getElementById("bgMusic");
+    const toggleBtn = document.getElementById("musicToggle");
+    toggleBtn.onclick = () => {
+      if (music.paused) {
+        music.play();
+        toggleBtn.textContent = "🔊 Вимкнути музику";
+      } else {
+        music.pause();
+        toggleBtn.textContent = "🔈 Увімкнути музику";
+      }
+    };
+  </script>
 </body>
 </html>
