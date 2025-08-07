@@ -14,7 +14,7 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
   alert("Реєстрація успішна!");
 });
 </script>
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import registryAbi from "../artifacts/contracts/UserRegistry.sol/UserRegistry.json";
 
@@ -22,10 +22,23 @@ const registryAddress = "0xYourUserRegistryAddress"; // ← заміни
 
 export default function RegisterForm() {
   const [status, setStatus] = useState("");
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  useEffect(() => {
+    const checkUser = async () => {
+      if (!window.ethereum) return;
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
+      const contract = new ethers.Contract(registryAddress, registryAbi.abi, provider);
+      const address = await signer.getAddress();
+      const registered = await contract.isUser(address);
+      setIsRegistered(registered);
+    };
+    checkUser();
+  }, []);
 
   const handleRegister = async () => {
     if (!window.ethereum) return alert("Install MetaMask");
-
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
     const contract = new ethers.Contract(registryAddress, registryAbi.abi, signer);
@@ -34,6 +47,7 @@ export default function RegisterForm() {
       const tx = await contract.register();
       await tx.wait();
       setStatus("✅ Реєстрація успішна!");
+      setIsRegistered(true);
     } catch (err) {
       console.error(err);
       setStatus("❌ Помилка реєстрації");
@@ -43,8 +57,13 @@ export default function RegisterForm() {
   return (
     <div>
       <h2>Реєстрація користувача</h2>
-      <button onClick={handleRegister}>Зареєструватися</button>
+      {isRegistered ? (
+        <p>🔒 Ви вже зареєстровані</p>
+      ) : (
+        <button onClick={handleRegister}>Зареєструватися</button>
+      )}
       <p>{status}</p>
     </div>
   );
 }
+
