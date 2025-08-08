@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroProsper DAO – Панель</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0fff0;
+      margin: 0;
+      padding: 20px;
+    }
+    header, section {
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌾 AgroProsper DAO</h1>
+    <p>Мобільна панель для фермерів, партнерів і бірж</p>
+  </header>
+
+  <section class="card">
+    <h2>🗳️ Голосування DAO</h2>
+    <p>Обери проєкт для підтримки:</p>
+    <select>
+      <option>Підтримка аграріїв</option>
+      <option>Інтеграція з біржею</option>
+      <option>Дитячий фонд</option>
+    </select>
+    <button>Голосувати</button>
+  </section>
+
+  <section class="card">
+    <h2>🪙 Підключити Web3-гаманець</h2>
+    <p>Для участі в DAO, отримання токенів AGT та реєстрації</p>
+    <button onclick="connectWallet()">🔗 Підключити гаманець</button>
+    <p id="walletStatus">Гаманець не підключено</p>
+    <button onclick="registerInDAO()">🪪 Зареєструватися в DAO</button>
+  </section>
+
+  <section class="card">
+    <h2>📦 Статус версій</h2>
+    <ul>
+      <li>v1.0 — ✅ Завершено</li>
+      <li>v1.1 — ✅ Додано</li>
+      <li>v1.2 — ⏳ Таймер: 12 днів</li>
+      <li>v2.0 — 🔒 Очікує</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>📬 Зв’язок</h2>
+    <p>Email: <a href="mailto:agroprosper74@gmail.com">agroprosper74@gmail.com</a></p>
+    <p>Telegram: <a href="https://t.me/AgroProsperBot">@AgroProsperBot</a></p>
+    <p>WhatsApp: <a href="https://wa.me/48669106746">+48 669 106 746</a></p>
+  </section>
+
+  <!-- Web3 інтеграція -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+  <script>
+    async function connectWallet() {
+      if (window.ethereum) {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          document.getElementById("walletStatus").textContent = "🔐 Підключено: " + accounts[0];
+        } catch (error) {
+          document.getElementById("walletStatus").textContent = "❌ Помилка підключення";
+        }
+      } else {
+        document.getElementById("walletStatus").textContent = "❌ Web3 не підтримується";
+      }
+    }
+
+   const contractAddress = "0x1234567890abcdef1234567890abcdef12345678";
+
+    const userRegistryABI = [
+      {
+        "inputs": [{"internalType": "address", "name": "user", "type": "address"}],
+        "name": "isRegistered",
+        "outputs": [{"internalType": "bool", "name": "", "type": "bool"}],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "registerUser",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ];
+
+    async function registerInDAO() {
+      if (window.ethereum) {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const userRegistry = new ethers.Contract(contractAddress, userRegistryABI, signer);
+
+        try {
+          const userAddress = await signer.getAddress();
+          const isRegistered = await userRegistry.isRegistered(userAddress);
+
+          if (!isRegistered) {
+            const tx = await userRegistry.registerUser();
+            await tx.wait();
+            alert("✅ Ви успішно зареєстровані в DAO!");
+          } else {
+            alert("🔐 Ви вже зареєстровані.");
+          }
+        } catch (err) {
+          console.error(err);
+          alert("❌ Помилка при реєстрації.");
+        }
+      } else {
+        alert("❌ Web3 не підтримується");
+      }
+    }
+  </script>
+</body>
+</html>
