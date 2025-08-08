@@ -1,14 +1,18 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
+
+const { SEPOLIA_RPC_URL, PRIVATE_KEY, ETHERSCAN_API_KEY } = process.env;
 
 module.exports = {
-  solidity: "0.8.20",
+  solidity: "0.8.18",
   networks: {
     sepolia: {
-      url: process.env.SEPOLIA_RPC_URL,
-      accounts: [process.env.PRIVATE_KEY]
-    }
+      url: SEPOLIA_RPC_URL,
+      accounts: [`0x${PRIVATE_KEY}`],
+      chainId: 11155111,
+    },
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY
-  }
+    apiKey: ETHERSCAN_API_KEY,
+  },
 };
