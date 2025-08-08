@@ -15,6 +15,11 @@ async function checkLink(url) {
 }
 
 async function scanHtml(filePath) {
+ if (!fs.existsSync(targetDir)) {
+  console.error(`❌ Папка ${targetDir} не існує. Створи її або зміни шлях.`);
+  return;
+}
+ 
   const content = fs.readFileSync(filePath, "utf8");
   const $ = cheerio.load(content);
   const links = $("a[href]").map((i, el) => $(el).attr("href")).get();
