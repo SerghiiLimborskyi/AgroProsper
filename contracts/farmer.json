@@ -1,0 +1,9 @@
+{
+  "name": "Farmer Badge",
+  "description": "Бейдж для агровиробників у DAO",
+  "image": "ipfs://QmFarmerImageHash",
+  "attributes": [
+    { "trait_type": "Level", "value": "Farmer" },
+    { "trait_type": "DAO Role", "value": "Producer" }
+  ]
+}
