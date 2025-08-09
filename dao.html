@@ -11,6 +11,35 @@
     <h1>🌾 AgroProsper DAO</h1>
     <p>Інтерактивний хаб для фермерських модулів</p>
   </header>
+  
+<script>
+  const translations = {
+    ua: {
+      title: "AgroProsper DAO",
+      description: "Інтерактивний хаб для фермерів",
+      buttons: ["AI-бот", "Фінанси", "Продажі", "Промо", "Гейміфікація", "Мови"]
+    },
+    en: {
+      title: "AgroProsper DAO",
+      description: "Interactive hub for farmers",
+      buttons: ["AI Bot", "Finance", "Sales", "Promo", "Gamification", "Languages"]
+    },
+    pl: {
+      title: "AgroProsper DAO",
+      description: "Interaktywny hub dla rolników",
+      buttons: ["Bot AI", "Finanse", "Sprzedaż", "Promocja", "Gamifikacja", "Języki"]
+    }
+  };
+
+  function switchLanguage(lang) {
+    const t = translations[lang];
+    document.querySelector("header h1").textContent = t.title;
+    document.querySelector("header p").textContent = t.description;
+    document.querySelectorAll(".dao-buttons button").forEach((btn, i) => {
+      btn.textContent = t.buttons[i];
+    });
+  }
+</script>
 
   <section class="dao-buttons">
    <div class="language-switcher">
