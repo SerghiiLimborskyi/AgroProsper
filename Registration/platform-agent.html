@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroProsper — DAO Агент на біржі</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      padding: 2rem;
+    }
+    .agent-form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .agent-form h2 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 1.5rem;
+    }
+    .agent-form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .agent-form input,
+    .agent-form select,
+    .agent-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .agent-form button {
+      margin-top: 1.5rem;
+      background-color: #2e7d32;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .agent-form button:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <section class="agent-form">
+    <h2>📦 Реєстрація AgroProsper як DAO Агент</h2>
+    <form id="agentRegistration">
+      <label for="platform">🌐 Платформа або біржа:</label>
+      <input type="text" id="platform" name="platform" placeholder="Upwork, Fiverr, Amazon, OLX..." required />
+
+      <label for="profileName">👤 Назва профілю:</label>
+      <input type="text" id="profileName" name="profileName" value="AgroProsper DAO Agent" required />
+
+      <label for="accountType">🔖 Тип акаунта:</label>
+      <select id="accountType" name="accountType">
+        <option value="freelancer">Фрілансер</option>
+        <option value="agent">Рекламний агент</option>
+        <option value="dao">DAO-представник</option>
+      </select>
+
+      <label for="referralLink">🔗 Рекламне посилання на сайт AgroProsper:</label>
+      <input type="url" id="referralLink" name="referralLink" value="https://serghiilimborskyi.github.io/AgroProsper/" required />
+
+      <label for="dealType">📄 Тип угоди:</label>
+      <select id="dealType" name="dealType">
+        <option value="referral">Рекламна угода (10% з продажу)</option>
+        <option value="contract">Контракт між продавцем і покупцем</option>
+      </select>
+
+      <label for="notes">🧾 Коментар / умови / номер рахунку:</label>
+      <textarea id="notes" name="notes" rows="4" placeholder="Номер рахунку для підтримки аграрія, або залишити порожнім для благодійності"></textarea>
+
+      <button type="submit">🚀 Зареєструвати DAO Агент</button>
+    </form>
+  </section>
+</body>
+</html>
