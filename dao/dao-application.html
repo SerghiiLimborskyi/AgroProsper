@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroProsper DAO — Заявка</title>
+  <link rel="stylesheet" href="../styles/dao.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 2rem;
+    }
+    .dao-form {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .dao-form h2 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 1.5rem;
+    }
+    .dao-form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .dao-form input,
+    .dao-form select,
+    .dao-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .dao-form button {
+      margin-top: 1.5rem;
+      background-color: #2e7d32;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .dao-form button:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <section class="dao-form">
+    <h2>🌾 AgroProsper DAO — Заявка на участь</h2>
+    <form id="daoApplication">
+      <label for="name">👤 Ім’я та прізвище:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">📧 Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="wallet">🪙 AGT-гаманець (ERC-20):</label>
+      <input type="text" id="wallet" name="wallet" placeholder="0x..." required />
+
+      <label for="module">🧠 Обраний модуль DAO:</label>
+      <select id="module" name="module">
+        <option value="ai-bot">🤖 AI-бот</option>
+        <option value="finance">💰 Фінанси</option>
+        <option value="sales">📈 Продажі</option>
+        <option value="promo">📣 Промо</option>
+        <option value="gamification">🎮 Гейміфікація</option>
+        <option value="multilang">🌍 Multilang</option>
+      </select>
+
+      <label for="message">📄 Коментар або ідея:</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+
+      <button type="submit">🚀 Надіслати заявку</button>
+    </form>
+  </section>
+</body>
+</html>
