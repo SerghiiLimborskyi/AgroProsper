@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #2e7d32;
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.dao-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.dao-buttons button {
+  background-color: #ffffff;
+  border: 2px solid #2e7d32;
+  color: #2e7d32;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.dao-buttons button {
+  /* ...поточні стилі... */
+  position: relative;
+  overflow: hidden;
+}
+
+.dao-buttons button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  transition: left 0.4s ease;
+}
+
+.dao-buttons button:hover::before {
+  left: 0;
+}
+
+.dao-buttons button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.dao-buttons button:hover {
+  background-color: #2e7d32;
+  color: white;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #e0e0e0;
+  font-size: 0.9rem;
+}
+
+/* 📱 Мобільна адаптація */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .dao-buttons {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .dao-buttons button {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+}
