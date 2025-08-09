@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>AgroProsper DAO Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🌾 AgroProsper DAO</h1>
+    <p>Інтерактивний хаб для фермерських модулів</p>
+  </header>
+
+  <section class="dao-buttons">
+   <div class="language-switcher">
+  <label for="lang">🌐 Мова:</label>
+  <select id="lang" onchange="switchLanguage(this.value)">
+    <option value="ua">Українська</option>
+    <option value="en">English</option>
+    <option value="pl">Polski</option>
+  </select>
+</div>
+ 
+    <button onclick="navigate('dao-wallet.html')">🔐 Підключити гаманець</button>
+    <button onclick="navigate('dao-token.html')">🪙 Токени AGT</button>
+    <button onclick="navigate('dao-vote.html')">🗳️ Голосування DAO</button>
+    <button onclick="navigate('dao-admin.html')">🛠️ Адмін-панель</button>
+    <button onclick="navigate('emoji-dashboard.html')">📊 Фідбек-панель</button>
+    <button onclick="navigate('web3-dashboard.html')">🌐 Web3 Dashboard</button>
+    <button onclick="navigate('../registration/index.html')">📝 Реєстрація</button>
+    <button onclick="navigate('../promo/index.html')">📣 Промо-модуль</button>
+    <button onclick="navigate('../platform-agent.html')">🤖 AI-бот</button>
+  </section>
+
+  <footer>
+    <p>© 2025 AgroProsper DAO | Підтримка 🇺🇦 🇬🇧 🇵🇱</p>
+  </footer>
+
+  <script>
+    function navigate(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>
