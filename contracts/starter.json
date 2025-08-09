@@ -1,0 +1,9 @@
+{
+  "name": "Starter Badge",
+  "description": "Бейдж для нових учасників DAO",
+  "image": "ipfs://QmStarterImageHash",
+  "attributes": [
+    { "trait_type": "Level", "value": "Starter" },
+    { "trait_type": "DAO Role", "value": "Member" }
+  ]
+}
