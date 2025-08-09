@@ -1,0 +1,9 @@
+{
+  "name": "Trader Badge",
+  "description": "Бейдж для трейдерів у DAO",
+  "image": "ipfs://QmTraderImageHash",
+  "attributes": [
+    { "trait_type": "Level", "value": "Trader" },
+    { "trait_type": "DAO Role", "value": "Distributor" }
+  ]
+}
