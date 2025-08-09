@@ -2,10 +2,25 @@
 pragma solidity ^0.8.0;
 
 contract UserRegistry {
-    mapping(address => bool) public isRegistered;
+    enum Role { Farmer, Advertiser, Analyst, Donor }
 
-    function registerUser() external {
-        require(!isRegistered[msg.sender], "Already registered");
-        isRegistered[msg.sender] = true;
+    struct User {
+        address wallet;
+        Role role;
+        bool registered;
+    }
+
+    mapping(address => User) public users;
+
+    event UserRegistered(address indexed wallet, Role role);
+
+    function registerUser(Role _role) external {
+        require(!users[msg.sender].registered, "Already registered");
+        users[msg.sender] = User(msg.sender, _role, true);
+        emit UserRegistered(msg.sender, _role);
+    }
+
+    function getUser(address _wallet) external view returns (User memory) {
+        return users[_wallet];
     }
 }
