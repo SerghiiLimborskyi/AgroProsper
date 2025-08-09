@@ -56,4 +56,5 @@ async function main() {
   }
 }
 
-main();
+module.exports = { run: main };
+
