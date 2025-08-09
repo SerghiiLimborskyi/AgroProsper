@@ -11,8 +11,7 @@
     <h1>🌾 AgroProsper DAO</h1>
     <p>Інтерактивний хаб для фермерських модулів</p>
   </header>
-  
-<script>
+  <script>
   const translations = {
     ua: {
       title: "AgroProsper DAO",
@@ -30,6 +29,25 @@
       buttons: ["Bot AI", "Finanse", "Sprzedaż", "Promocja", "Gamifikacja", "Języki"]
     }
   };
+
+  function switchLanguage(lang) {
+    localStorage.setItem("preferredLang", lang);
+    const t = translations[lang];
+    document.querySelector("header h1").textContent = t.title;
+    document.querySelector("header p").textContent = t.description;
+    document.querySelectorAll(".dao-buttons button").forEach((btn, i) => {
+      btn.textContent = t.buttons[i];
+    });
+    document.getElementById("lang").value = lang;
+  }
+
+  // 🚀 Автоматичне застосування мови при завантаженні
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedLang = localStorage.getItem("preferredLang") || "ua";
+    switchLanguage(savedLang);
+  });
+</script>
+
 
   function switchLanguage(lang) {
     const t = translations[lang];
