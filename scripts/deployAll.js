@@ -2,35 +2,36 @@ const hre = require("hardhat");
 const fs = require("fs");
 const path = require("path");
 
-async function main() {
-  console.log("🚀 Починаємо деплоймент...");
+// 🔍 Додано: запуск перевірки посилань
+async function runLinkCheck() {
+  const checkLinks = require("./checkLinks");
+  await checkLinks.run();
+}
 
-  // Деплой UserRegistry
+async function main() {
+  console.log("🔍 Перевірка посилань перед деплойментом...");
+  await runLinkCheck();
+
+  console.log("🚀 Деплой UserRegistry...");
   const UserRegistry = await hre.ethers.getContractFactory("UserRegistry");
   const userRegistry = await UserRegistry.deploy();
   await userRegistry.deployed();
-  console.log(`✅ UserRegistry задеплоєно за адресою: ${userRegistry.address}`);
 
-  // Деплой AgroToken
+  console.log("🚀 Деплой AgroToken...");
   const AgroToken = await hre.ethers.getContractFactory("AgroToken");
-  const agt = await AgroToken.deploy();
-  await agt.deployed();
-  console.log(`✅ AgroToken задеплоєно за адресою: ${agt.address}`);
+  const agroToken = await AgroToken.deploy();
+  await agroToken.deployed();
 
-  // Збереження адрес у contractAddress.json
-  const data = {
-    userRegistry: userRegistry.address,
-    agtToken: agt.address
+  const addresses = {
+    UserRegistry: userRegistry.address,
+    AgroToken: agroToken.address,
   };
 
-  const filePath = path.join(__dirname, "..", "contractAddress.json");
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-  console.log("📦 Адреси збережено в contractAddress.json");
+  fs.writeFileSync("contractAddress.json", JSON.stringify(addresses, null, 2));
+  console.log("✅ Контракти задеплоєно:", addresses);
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error("❌ Помилка під час деплойменту:", error);
-    process.exit(1);
-  });
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
