@@ -2,9 +2,9 @@ struct Proposal {
     string description;
     uint256 voteCount;
     bool active;
-    mapping(address => bool) voters;
 }
 
+mapping(address => bool) voters;
 mapping(uint256 => Proposal) public proposals;
 uint256 public proposalCount;
 
