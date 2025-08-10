@@ -1,33 +1,33 @@
-struct Proposal {
-    string description;
-    uint256 voteCount;
-    bool active;
-}
+pragma solidity ^0.8.20;
 
-mapping(address => bool) voters;
-mapping(uint256 => Proposal) public proposals;
-uint256 public proposalCount;
+contract VotingDAO {
+    struct Proposal {
+        string description;
+        uint256 voteCount;
+        bool active;
+    }
 
-event ProposalCreated(uint256 indexed id, string description);
-event Voted(address indexed voter, uint256 indexed proposalId);
+    mapping(uint256 => Proposal) public proposals;
+    mapping(uint256 => mapping(address => bool)) public hasVoted;
+    uint256 public proposalCount;
 
-function createProposal(string memory description) public onlyAdmin {
-    Proposal storage p = proposals[proposalCount];
-    p.description = description;
-    p.active = true;
-    proposalCount++;
+    event ProposalCreated(uint256 indexed id, string description);
+    event Voted(address indexed voter, uint256 indexed proposalId);
 
-    emit ProposalCreated(proposalCount - 1, description);
-}
+    function createProposal(string memory description) public {
+        Proposal storage p = proposals[proposalCount];
+        p.description = description;
+        p.active = true;
+        proposalCount++;
+        emit ProposalCreated(proposalCount - 1, description);
+    }
 
-function vote(uint256 proposalId) public {
-    require(isUser(msg.sender), "Not registered");
-    Proposal storage p = proposals[proposalId];
-    require(p.active, "Proposal inactive");
-    require(!p.voters[msg.sender], "Already voted");
-
-    p.voteCount++;
-    p.voters[msg.sender] = true;
-
-    emit Voted(msg.sender, proposalId);
+    function vote(uint256 proposalId) public {
+        Proposal storage p = proposals[proposalId];
+        require(p.active, "Proposal inactive");
+        require(!hasVoted[proposalId][msg.sender], "Already voted");
+        p.voteCount++;
+        hasVoted[proposalId][msg.sender] = true;
+        emit Voted(msg.sender, proposalId);
+    }
 }
