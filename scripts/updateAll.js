@@ -11,15 +11,12 @@ const filesToUpdate = [
 
 async function uploadAndUpdate(name, path, client, contract) {
   const data = fs.readFileSync(path);
-  const files = [new File(['' + data], `${name}.json`)];
+  const files = [new File([data], `${name}.json`)];
   const cid = await client.put(files);
-
   console.log(`✅ CID for ${name}.json:`, cid);
 
-  const tx = await contract.setBadgeURI(name, cid);
-
+  const tx = await contract.setBadgeURI(name, `ipfs://${cid}`);
   await tx.wait();
-
   console.log(`🔗 Smart contract updated for ${name}`);
 }
 
