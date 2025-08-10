@@ -1,0 +1,14 @@
+AgroProsper/
+├── contracts/
+│   ├── AgroToken.sol
+│   ├── AGTToken.sol
+│   ├── VotingDAO.sol
+│   ├── UserBadgeNFT.sol
+│   ├── starter.json
+│   ├── farmer.json
+│   └── trader.json
+├── src/
+├── scripts/
+│   └── updateAll.js
+├── .env.example
+├── README.md
