@@ -18,6 +18,10 @@ contract UserBadgeNFT is ERC721URIStorage, Ownable {
         badgeURIs["Trader"] = "ipfs://Qm...trader";
     }
 
+    function updateCID(string memory newURI) public onlyOwner {
+    badgeURIs["Starter"] = newURI;
+}
+
     function mintBadge(address to, string memory badgeType) external onlyOwner {
         require(bytes(badgeURIs[badgeType]).length > 0, "Invalid badge type");
 
