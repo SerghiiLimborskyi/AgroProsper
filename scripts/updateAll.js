@@ -16,7 +16,8 @@ async function uploadAndUpdate(name, path, client, contract) {
 
   console.log(`✅ CID for ${name}.json:`, cid);
 
-  const tx = await contract.updateCID(name, cid);
+  const tx = await contract.setBadgeURI(name, cid);
+
   await tx.wait();
 
   console.log(`🔗 Smart contract updated for ${name}`);
