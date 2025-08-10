@@ -1,18 +1,12 @@
-require("@nomiclabs/hardhat-ethers");
-require("@nomiclabs/hardhat-waffle"); // якщо використовуєш chai
-
+require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
-const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
-
 module.exports = {
-  solidity: "0.8.18",
+  solidity: "0.8.20",
   networks: {
     sepolia: {
-      url: SEPOLIA_RPC_URL,
-      accounts: [PRIVATE_KEY],
-      chainId: 11155111
+      url: "https://sepolia.infura.io/v3/YOUR_INFURA_PROJECT_ID",
+      accounts: [process.env.PRIVATE_KEY]
     }
   }
 };
