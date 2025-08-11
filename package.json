@@ -1,11 +1,14 @@
 {
   "name": "agroprosper",
   "version": "1.0.0",
-  "description": "AgroProsper DAO",
+  "description": "AgroProsper DAO — AI-платформа для агробізнесу",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "npx hardhat test"
+    "test": "npx hardhat test",
+    "backend": "node backend/server.js",
+    "vote": "node dao/voteHandler.js --proposal=dao/proposals/001.json",
+    "update-cid": "node scripts/updateAll.js"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
@@ -17,18 +20,8 @@
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^6.1.0",
-    "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
-    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.14",
-    "@nomicfoundation/hardhat-network-helpers": "^1.1.0",
-    "@nomicfoundation/hardhat-verify": "^2.1.0",
-    "@typechain/ethers-v6": "^0.5.0",
-    "@typechain/hardhat": "^9.0.0",
-    "@types/chai": "^4.2.0",
-    "@types/mocha": "^10.0.0",
-    "chai": "^4.3.7",
-    "hardhat-gas-reporter": "^2.3.0",
     "solidity-coverage": "^0.8.1",
-    "ts-node": "^10.9.1",
-    "typechain": "^8.3.0"
+    "chai": "^4.3.7",
+    "ts-node": "^10.9.1"
   }
 }
