@@ -1,7 +1,7 @@
 {
   "name": "Starter Badge",
   "description": "Футуристичний бейдж для нових учасників DAO AgroProsper",
-  "image": "ipfs://QmNewImageCID", 
+  "image": "ipfs://QmZfYw7X7gk8uJrPqv9Lz8vXKX9g1d3aYz3r9h2ZfYw7X7g",
   "external_url": "https://agroprosper.io/badges/starter",
   "attributes": [
     { "trait_type": "Level", "value": "Starter" },
