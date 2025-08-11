@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Web3 from "web3";
 import contractABI from "../contracts/UserRegistry.json";
+import VotingPanel from "./components/VotingPanel";
+...
+<VotingPanel />
 
 const web3 = new Web3(process.env.REACT_APP_SEPOLIA_RPC_URL);
 const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
