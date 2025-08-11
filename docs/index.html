@@ -1,88 +1,63 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <title>AgroProsper DAO</title>
-  
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #e0ffe0, #f0fff0);
-      text-align: center;
-      padding: 50px;
-    }
-    #qr {
-      margin: 20px auto;
-    }
-    #timer {
-      font-size: 2em;
-      margin-top: 20px;
-    }
-    #musicToggle {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 1em;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌾 AgroProsper DAO | AgroProsper</title>
+  <link rel="stylesheet" href="public/style.css" />
 </head>
 <body>
-  <h1>Ласкаво просимо до AgroProsper DAO</h1>
-  <p>Ми запускаємо нову еру аграрної децентралізації</p>
-  <a href="Registration/dashboard.html" style="font-size: 1.2em; color: #2e7d32; text-decoration: none;">
-    🔐 Перейти до реєстрації користувача
-  </a>
-</p>
+  <h1>🌾 AgroProsper DAO</h1>
+  <p>AgroProsper — це автоматизована AI-платформа для агробізнесу, побудована на DAO-архітектурі з підтримкою NFT, AI, мультимовності, гейміфікації та інтерактивних презентацій.</p>
 
-  <!-- QR-код -->
-  <div id="qr">
-    <img src="logo.png" alt="QR-код AgroProsper" width="200">
-    <p>Скануй для доступу з мобільного</p>
-  </div>
+  <!-- 🔐 Посилання на реєстрацію -->
+  <p style="margin-top: 20px;">
+    <a href="Registration/dashboard.html" style="font-size: 1.2em; color: #2e7d32; text-decoration: none;">
+      🔐 Перейти до реєстрації користувача
+    </a>
+  </p>
 
-  <!-- Таймер -->
-  <div id="timer">Запуск DAO через: <span id="countdown">00:00:00</span></div>
+  <h2>🌐 Мовні версії</h2>
+  <ul>
+    <li>🇺🇦 Українська</li>
+    <li>🇬🇧 English</li>
+    <li>🇵🇱 Polski</li>
+  </ul>
 
-  <!-- Кнопка керування музикою -->
-  <button id="musicToggle">🔊 Вимкнути музику</button>
+  <h2>🧠 Основні модулі</h2>
+  <ul>
+    <li>🤖 АІ-бот — Чат-бот для консультацій, продажів і підтримки</li>
+    <li>💰 Фінанси — Моніторинг фінансів, токенізація, DAO-платежі</li>
+    <li>📈 Продажі — Автоматизовані DAO-панелі для фермерів</li>
+    <li>📣 Промо — Відеопрезентації, субтитри, QR-коди</li>
+    <li>🎮 Гейміфікація — DAO-ігри, NFT-мотивація</li>
+    <li>🌍 Багатомовність — Підтримка 🇺🇦 🇬🇧 🇵🇱 мов</li>
+  </ul>
 
-  <!-- Аудіо -->
-  <audio id="bgMusic" autoplay loop>
-    <source src="AgroProsper.mp3" type="audio/mpeg">
-    Ваш браузер не підтримує аудіо.
-  </audio>
+  <h2>🪙 АгроТокен (AGT)</h2>
+  <ul>
+    <li>Тип: ERC-20</li>
+    <li>Початкова емісія: 1,000,000 AGT</li>
+    <li>Призначення: DAO-голосування, оплата послуг, бонуси</li>
+    <li>Контракт: 0x... (буде додано після деплойменту)</li>
+  </ul>
 
-  <!-- DAO логіка (заглушка) -->
-  <script>
-    // Таймер до запуску DAO (наприклад, 1 хвилина)
-    let launchTime = new Date(Date.now() + 60000);
-    let countdownEl = document.getElementById("countdown");
+  <h2>🔄 CID-оновлення NFT-бейджів</h2>
+  <ul>
+    <li>Скрипт <code>updateAll.js</code> автоматично оновлює метадані NFT (starter.json, farmer.json, trader.json)</li>
+    <li>Структура:
+      <ul>
+        <li><code>scripts/updateAll.js</code> — оновлює всі CID-и</li>
+        <li><code>.env</code> — зберігає <code>WEB3STORAGE_TOKEN</code></li>
+        <li><code>UserBadgeNFT.sol</code> — має функцію <code>updateCID(badgeType, cid)</code></li>
+      </ul>
+    </li>
+  </ul>
 
-    setInterval(() => {
-      let now = new Date();
-      let diff = launchTime - now;
-
-      if (diff <= 0) {
-        countdownEl.textContent = "🚀 Запущено!";
-      } else {
-        let sec = Math.floor(diff / 1000) % 60;
-        let min = Math.floor(diff / (1000 * 60)) % 60;
-        let hr = Math.floor(diff / (1000 * 60 * 60));
-        countdownEl.textContent = `${hr.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
-      }
-    }, 1000);
-
-    // Кнопка керування музикою
-    const music = document.getElementById("bgMusic");
-    const toggleBtn = document.getElementById("musicToggle");
-    toggleBtn.onclick = () => {
-      if (music.paused) {
-        music.play();
-        toggleBtn.textContent = "🔊 Вимкнути музику";
-      } else {
-        music.pause();
-        toggleBtn.textContent = "🔈 Увімкнути музику";
-      }
-    };
-  </script>
+  <h2>🎨 Оформлення інтерфейсу</h2>
+  <ul>
+    <li>Додано файл <code>public/style.css</code> для централізованого стилювання HTML-сторінок</li>
+    <li>Стилі перенесено з <code>dashboard.html</code> до окремого CSS-файлу</li>
+  </ul>
 </body>
 </html>
