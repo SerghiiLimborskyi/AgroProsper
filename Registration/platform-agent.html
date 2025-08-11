@@ -68,7 +68,42 @@
         <option value="freelancer">Фрілансер</option>
         <option value="agent">Рекламний агент</option>
         <option value="dao">DAO-представник</option>
+        <h2>Реєстрація користувача</h2>
+<select id="role">
+  <option value="starter">Starter</option>
+  <option value="farmer">Farmer</option>
+  <option value="trader">Trader</option>
+</select>
+<button onclick="registerUser(document.getElementById('role').value)">Зареєструватися</button>
+
       </select>
+      <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+<script>
+  
+  const userRegistryAddress = "0x..."; // заміни на свою адресу контракту
+  const userRegistryABI = [ /* встав сюди ABI з UserRegistry.sol */ ];
+
+  async function registerUser(role) {
+    if (!window.ethereum) {
+      alert("Будь ласка, встанови Metamask");
+      return;
+    }
+
+    await ethereum.request({ method: "eth_requestAccounts" });
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(userRegistryAddress, userRegistryABI, signer);
+
+    try {
+      const tx = await contract.registerUser(role); // або твоя функція
+      await tx.wait();
+      alert("Реєстрація успішна!");
+    } catch (err) {
+      console.error("Помилка:", err);
+      alert("Не вдалося зареєструватися");
+    }
+  }
+</script>
 
       <label for="referralLink">🔗 Рекламне посилання на сайт AgroProsper:</label>
       <input type="url" id="referralLink" name="referralLink" value="https://serghiilimborskyi.github.io/AgroProsper/" required />
