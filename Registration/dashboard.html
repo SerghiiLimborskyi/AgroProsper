@@ -6,7 +6,7 @@
   <title>AgroProsper — Панель користувача</title>
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../public/style.css" />
-<style>
+  <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f0f4f8;
@@ -50,56 +50,29 @@
   </style>
 </head>
 <body>
-  <div <h2>👤 Реєстрація та бейдж</h2>
-<input type="text" id="name" placeholder="Ім’я">
-<input type="email" id="email" placeholder="Email">
-<select id="role">
-  <option value="Starter">Starter</option>
-  <option value="Farmer">Farmer</option>
-  <option value="Trader">Trader</option>
-</select>
-<button onclick="registerAndMint()">Зареєструватися та отримати бейдж</button>
-    
+  <div class="dashboard">
+    <h2>👤 Реєстрація та бейдж</h2>
+    <input type="text" id="name" placeholder="Ім’я">
+    <input type="email" id="email" placeholder="Email">
+    <select id="role">
+      <option value="Starter">Starter</option>
+      <option value="Farmer">Farmer</option>
+      <option value="Trader">Trader</option>
+    </select>
+    <button onclick="registerAndMint()">Зареєструватися та отримати бейдж</button>
+
     <h2>💰 Отримати токени</h2>
     <button onclick="rewardUser()">Нарахувати токени</button>
 
     <h2>📊 Перевірити баланс</h2>
     <button onclick="getBalance()">Показати баланс токенів</button>
+
+    <h2>🚀 Повна реєстрація з балансом</h2>
+    <button onclick="fullRegistration()">Зареєструватися, отримати бейдж, токени і показати баланс</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
   <script>
-    async function registerAndMint() {
-  const signer = await getSigner();
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const role = document.getElementById("role").value;
-
-  if (!name || !email || !role) {
-    alert("❗ Будь ласка, заповніть усі поля.");
-    return;
-  }
-
-  try {
-    // Реєстрація
-    const registry = new ethers.Contract(registryAddress, registryABI, signer);
-    const tx1 = await registry.register(name, email);
-    await tx1.wait();
-    console.log("✅ Реєстрація успішна");
-
-    // Видача бейджа
-    const badge = new ethers.Contract(badgeAddress, badgeABI, signer);
-    const userAddress = await signer.getAddress();
-    const tx2 = await badge.mintBadge(userAddress, role);
-    await tx2.wait();
-    console.log("🏅 Бейдж видано");
-
-    alert(`🎉 Користувач ${name} зареєстрований як ${role} і отримав бейдж!`);
-  } catch (err) {
-    alert("❌ Помилка: " + err.message);
-  }
-}
-
     const registryAddress = "0x..."; // заміни на адресу UserRegistry
     const badgeAddress = "0x...";    // заміни на адресу UserBadgeNFT
     const tokenAddress = "0x...";    // заміни на адресу токена
@@ -127,13 +100,9 @@
       const contract = new ethers.Contract(registryAddress, registryABI, signer);
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
-      try {
-        const tx = await contract.register(name, email);
-        await tx.wait();
-        alert("✅ Реєстрація успішна!");
-      } catch (err) {
-        alert("❌ Помилка реєстрації: " + err.message);
-      }
+      const tx = await contract.register(name, email);
+      await tx.wait();
+      alert("✅ Реєстрація успішна!");
     }
 
     async function mintBadge() {
@@ -141,26 +110,18 @@
       const contract = new ethers.Contract(badgeAddress, badgeABI, signer);
       const userAddress = await signer.getAddress();
       const role = document.getElementById("role").value;
-      try {
-        const tx = await contract.mintBadge(userAddress, role);
-        await tx.wait();
-        alert("🏅 Бейдж видано!");
-      } catch (err) {
-        alert("❌ Помилка видачі бейджу: " + err.message);
-      }
+      const tx = await contract.mintBadge(userAddress, role);
+      await tx.wait();
+      alert("🏅 Бейдж видано!");
     }
 
     async function rewardUser() {
       const signer = await getSigner();
       const contract = new ethers.Contract(registryAddress, registryABI, signer);
       const userAddress = await signer.getAddress();
-      try {
-        const tx = await contract.rewardUser(userAddress);
-        await tx.wait();
-        alert("💰 Токени нараховано!");
-      } catch (err) {
-        alert("❌ Помилка нарахування токенів: " + err.message);
-      }
+      const tx = await contract.rewardUser(userAddress);
+      await tx.wait();
+      alert("💰 Токени нараховано!");
     }
 
     async function getBalance() {
@@ -170,6 +131,46 @@
       const token = new ethers.Contract(tokenAddress, tokenABI, provider);
       const balance = await token.balanceOf(userAddress);
       alert(`💰 Баланс: ${ethers.utils.formatEther(balance)} токенів`);
+    }
+
+    async function registerAndMint() {
+      const signer = await getSigner();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const role = document.getElementById("role").value;
+      if (!name || !email || !role) {
+        alert("❗ Будь ласка, заповніть усі поля.");
+        return;
+      }
+      const registry = new ethers.Contract(registryAddress, registryABI, signer);
+      const tx1 = await registry.register(name, email);
+      await tx1.wait();
+      const badge = new ethers.Contract(badgeAddress, badgeABI, signer);
+      const userAddress = await signer.getAddress();
+      const tx2 = await badge.mintBadge(userAddress, role);
+      await tx2.wait();
+      alert(`🎉 Користувач ${name} зареєстрований як ${role} і отримав бейдж!`);
+    }
+
+    async function fullRegistration() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const role = document.getElementById("role").value;
+
+      if (!name || !email || !role) {
+        alert("❗ Будь ласка, заповніть усі поля.");
+        return;
+      }
+
+      try {
+        await registerUser();
+        await mintBadge();
+        await rewardUser();
+        await getBalance();
+        alert(`🎉 ${name} зареєстрований як ${role}, бейдж видано, токени нараховано і баланс показано!`);
+      } catch (err) {
+        alert("❌ Помилка: " + err.message);
+      }
     }
   </script>
 </body>
