@@ -4,14 +4,12 @@ const fs = require('fs');
 const hre = require('hardhat');
 const path = require('path');
 
-// 🧩 Файли для оновлення
 const filesToUpdate = [
   { name: 'starter', path: 'scripts/starter.json' },
   { name: 'farmer', path: 'scripts/farmer.json' },
   { name: 'trader', path: 'scripts/trader.json' }
 ];
 
-// 📦 Завантаження на IPFS і оновлення контракту
 async function uploadAndUpdate(name, filePath, client, contract) {
   if (!fs.existsSync(filePath)) {
     console.error(`❌ File not found: ${filePath}`);
@@ -34,7 +32,6 @@ async function uploadAndUpdate(name, filePath, client, contract) {
   }
 }
 
-// 🚀 Основна функція
 async function main() {
   const token = process.env.WEB3STORAGE_TOKEN;
   if (!token) {
