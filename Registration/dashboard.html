@@ -50,20 +50,17 @@
   </style>
 </head>
 <body>
-  <div class="dashboard">
-    <h2>👤 Реєстрація користувача</h2>
-    <input type="text" id="name" placeholder="Ім’я">
-    <input type="email" id="email" placeholder="Email">
-    <button onclick="registerUser()">Зареєструватися</button>
-
-    <h2>🧪 Отримати бейдж</h2>
-    <select id="role">
-      <option value="Starter">Starter</option>
-      <option value="Farmer">Farmer</option>
-      <option value="Trader">Trader</option>
-    </select>
-    <button onclick="mintBadge()">Отримати бейдж</button>
-
+  <div <h2>👤 Реєстрація та бейдж</h2>
+<input type="text" id="name" placeholder="Ім’я">
+<input type="email" id="email" placeholder="Email">
+<select id="role">
+  <option value="Starter">Starter</option>
+  <option value="Farmer">Farmer</option>
+  <option value="Trader">Trader</option>
+</select>
+<button onclick="registerAndMint()">Зареєструватися та отримати бейдж</button>
+class="dashboard">
+    
     <h2>💰 Отримати токени</h2>
     <button onclick="rewardUser()">Нарахувати токени</button>
 
@@ -73,6 +70,37 @@
 
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
   <script>
+    async function registerAndMint() {
+  const signer = await getSigner();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const role = document.getElementById("role").value;
+
+  if (!name || !email || !role) {
+    alert("❗ Будь ласка, заповніть усі поля.");
+    return;
+  }
+
+  try {
+    // Реєстрація
+    const registry = new ethers.Contract(registryAddress, registryABI, signer);
+    const tx1 = await registry.register(name, email);
+    await tx1.wait();
+    console.log("✅ Реєстрація успішна");
+
+    // Видача бейджа
+    const badge = new ethers.Contract(badgeAddress, badgeABI, signer);
+    const userAddress = await signer.getAddress();
+    const tx2 = await badge.mintBadge(userAddress, role);
+    await tx2.wait();
+    console.log("🏅 Бейдж видано");
+
+    alert(`🎉 Користувач ${name} зареєстрований як ${role} і отримав бейдж!`);
+  } catch (err) {
+    alert("❌ Помилка: " + err.message);
+  }
+}
+
     const registryAddress = "0x..."; // заміни на адресу UserRegistry
     const badgeAddress = "0x...";    // заміни на адресу UserBadgeNFT
     const tokenAddress = "0x...";    // заміни на адресу токена
