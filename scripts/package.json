@@ -1,3 +1,0 @@
-"scripts": {
-  "register": "node scripts/registerUsers.js"
-}
