@@ -1,9 +1,11 @@
 {
   "name": "Starter Badge",
-  "description": "Бейдж для нових учасників DAO",
-  "image": "ipfs://QmStarterImageHash",
+  "description": "Футуристичний бейдж для нових учасників DAO AgroProsper",
+  "image": "ipfs://QmNewImageCID", // заміни на реальний CID
+  "external_url": "https://agroprosper.io/badges/starter",
   "attributes": [
     { "trait_type": "Level", "value": "Starter" },
-    { "trait_type": "DAO Role", "value": "Member" }
+    { "trait_type": "DAO Role", "value": "Member" },
+    { "trait_type": "Badge Type", "value": "starter" }
   ]
 }
