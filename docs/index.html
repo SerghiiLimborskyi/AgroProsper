@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="uk">
-<head> 
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🌾 AgroProsper DAO | AgroProsper</title>
   <link rel="stylesheet" href="public/style.css" />
+  <script>
+    const lang = navigator.language || navigator.userLanguage;
+    if (lang.startsWith("pl")) window.location.href = "../README.pl.md";
+    else if (lang.startsWith("en")) window.location.href = "../README.en.md";
+    else if (lang.startsWith("uk") || lang.startsWith("ru")) window.location.href = "../README.uk.md";
+  </script>
 </head>
 <body>
   <h1>🌾 AgroProsper DAO</h1>
   <p>AgroProsper — це автоматизована AI-платформа для агробізнесу, побудована на DAO-архітектурі з підтримкою NFT, AI, мультимовності, гейміфікації та інтерактивних презентацій.</p>
 
-  <!-- 🔐 Посилання на реєстрацію -->
   <p style="margin-top: 20px;">
     <a href="Registration/dashboard.html" style="font-size: 1.2em; color: #2e7d32; text-decoration: none;">
       🔐 Перейти до реєстрації користувача
@@ -19,9 +24,9 @@
 
   <h2>🌐 Мовні версії</h2>
   <ul>
-    <li>🇺🇦 Українська</li>
-    <li>🇬🇧 English</li>
-    <li>🇵🇱 Polski</li>
+    <li><a href="../README.uk.md">🇺🇦 Українська</a></li>
+    <li><a href="../README.en.md">🇬🇧 English</a></li>
+    <li><a href="../README.pl.md">🇵🇱 Polski</a></li>
   </ul>
 
   <h2>🧠 Основні модулі</h2>
@@ -59,5 +64,11 @@
     <li>Додано файл <code>public/style.css</code> для централізованого стилювання HTML-сторінок</li>
     <li>Стилі перенесено з <code>dashboard.html</code> до окремого CSS-файлу</li>
   </ul>
+
+  <h2>📬 Контакт</h2>
+  <p>
+    📧 agroprosper74@gmail.com<br>
+    📱 WhatsApp: +48 669 106 746
+  </p>
 </body>
 </html>
