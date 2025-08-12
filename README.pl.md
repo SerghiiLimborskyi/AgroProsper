@@ -1,43 +1,95 @@
 
 ---
 
-## 🇵🇱 README.pl.md — Polska wersja
+## 🇵🇱 Polska wersja (`README.pl.md`)
 
 ```markdown
 # 🌾 AgroProsper DAO
 
-**AgroProsper** to zautomatyzowana platforma AI dla agrobiznesu, oparta na architekturze DAO z obsługą NFT, AI, wielu języków, grywalizacji i interaktywnych prezentacji.
+**AgroProsper** to zautomatyzowana platforma AI dla agrobiznesu, oparta na architekturze DAO z obsługą NFT, AI, wielojęzyczności, grywalizacji i interaktywnych prezentacji.
 
-## 🧠 Główne moduły
+---
 
-| Moduł         | Opis                                               |
-|---------------|----------------------------------------------------|
-| 🤖 Bot AI      | Chatbot do konsultacji, sprzedaży i wsparcia       |
-| 💰 Finanse     | Monitorowanie finansów, tokenizacja, płatności DAO |
-| 📈 Sprzedaż    | Zautomatyzowane panele DAO dla rolników            |
-| 📣 Promocja    | Prezentacje wideo, napisy, kody QR                 |
-| 🎮 Grywalizacja| Gry DAO, motywacja przez NFT                       |
-| 🌍 Multilang   | Obsługa 🇺🇦 🇬🇧 🇵🇱 języków                           |
+## ✨ Funkcje
 
-## 🪙 AgroToken (AGT)
+- 🤖 Asystent AI do wsparcia i konsultacji  
+- 💰 Finanse DAO z tokenem AGT (ERC-20)  
+- 📈 Zautomatyzowane panele sprzedaży  
+- 🏅 NFT odznaki z aktualizacją CID  
+- 🎮 Gry DAO i grywalizacja  
+- 🌍 Obsługa wielu języków: 🇺🇦 🇬🇧 🇵🇱  
 
-- Typ: ERC-20  
-- Początkowa emisja: 1,000,000 AGT  
-- Przeznaczenie: głosowanie DAO, płatności, bonusy  
-- Kontrakt: `0x...` (dodany po wdrożeniu)
+---
 
-## 🔄 Aktualizacja CID dla NFT
+## 🚀 Ostatnie wersje
 
-Skrypt `updateAll.js` automatycznie aktualizuje metadane NFT (`starter.json`, `farmer.json`, `trader.json`) przez Web3.Storage.
+| Wersja       | Opis                                                             |
+|--------------|------------------------------------------------------------------|
+| `v4.0-promo` | Interaktywna prezentacja: HTML5 quest, kody QR, czat DAO         |
+| `v3.0-NFT`   | Motywacja NFT: aktualizacje CID, odznaki, osiągnięcia            |
+| `v2.0-DAO`   | Logika DAO: token AGT, głosowanie, nagrody                       |
+| `v1.1-studio`| Projekt studyjny: style CSS, dashboard                           |
 
-**Struktura:**
-- `scripts/updateAll.js` — aktualizuje wszystkie CID
-- `.env` — przechowuje `WEB3STORAGE_TOKEN`
-- `UserBadgeNFT.sol` — zawiera funkcję `updateCID(badgeType, cid)`
+---
 
-## 🎨 Stylizacja interfejsu
+## 📂 Struktura repozytorium
 
-- Style przeniesione do `public/style.css`
-- Podłączone przez:
-  ```html
-  <link rel="stylesheet" href="public/style.css">
+| Folder       | Opis                                              |
+|--------------|---------------------------------------------------|
+| `docs/`      | Strony HTML dla GitHub Pages                      |
+| `scripts/`   | Aktualizacje CID dla NFT przez Web3.Storage       |
+| `contracts/` | Kontrakty Solidity (AGT, NFT, DAO)                |
+| `public/`    | Style i multimedia                                |
+| `test/`      | Testy mechanizmów DAO                             |
+
+---
+
+## ⚙️ Instalacja
+
+```bash
+# Klonowanie repozytorium
+git clone https://github.com/SerghiiLimborskyi/AgroProsper.git
+cd AgroProsper
+
+# Instalacja zależności (jeśli potrzebne)
+npm install
+
+# Uruchomienie lokalnego serwera (opcjonalnie)
+node server.js
+
+---
+
+🤝 Współpraca
+Jesteśmy otwarci na propozycje! Otwórz issue lub stwórz pull request:
+
+💡 Nowe pomysły
+
+🐞 Poprawki błędów
+
+🌐 Tłumaczenia
+
+📦 Nowe moduły
+
+📬 Kontakt
+📧 agroprosper74@gmail.com 📱 WhatsApp: +48 669 106 746
+
+AgroProsper to nie tylko platforma. To żywy system z sercem DAO.
+
+
+---
+
+🤝 Współpraca
+Jesteśmy otwarci na propozycje! Otwórz issue lub stwórz pull request:
+
+💡 Nowe pomysły
+
+🐞 Poprawki błędów
+
+🌐 Tłumaczenia
+
+📦 Nowe moduły
+
+---
+
+📬 Kontakt
+📧 agroprosper74@gmail.com 📱 WhatsApp: +48 669 106 746
