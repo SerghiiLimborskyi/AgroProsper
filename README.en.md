@@ -51,6 +51,8 @@ npm install
 # Run local server (optional)
 node server.js
 
+---
+
 🤝 Contribution
 We welcome suggestions! Feel free to open an issue or submit a pull request:
 
@@ -61,6 +63,8 @@ We welcome suggestions! Feel free to open an issue or submit a pull request:
 🌐 Translations
 
 📦 New modules
+
+---
 
 📬 Contact
 📧 agroprosper74@gmail.com 📱 WhatsApp: +48 669 106 746
