@@ -1,105 +1,66 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgroProsper</title>
-  <link rel="stylesheet" href="../public/style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 2rem;
-      text-align: center;
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark {
-      background: #121212;
-      color: #eee;
-    }
-    h1 {
-      color: #2e7d32;
-    }
-    .lang-buttons a {
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #1565c0;
-    }
-    .register-btn {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 1rem 2rem;
-      background-color: #43a047;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.2rem;
-      text-decoration: none;
-    }
-    .register-btn:hover {
-      background-color: #388e3c;
-    }
-    .theme-toggle {
-      margin-top: 1rem;
-      cursor: pointer;
-      font-size: 1rem;
-      color: #555;
-    }
-    #chatbot {
-      margin-top: 3rem;
-      border: 1px solid #ccc;
-      padding: 1rem;
-      width: 80%;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      background: #fff;
-      border-radius: 8px;
-    }
-    #marketCanvas {
-      margin-top: 3rem;
-      width: 80%;
-      height: 300px;
-      background: #e0e0e0;
-      border-radius: 8px;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroProsper DAO</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>🌾 AgroProsper</h1>
-  <p>Автоматизована AI-платформа для агробізнесу</p>
+  <header>
+    <h1>🌾 AgroProsper</h1>
+    <p>Автоматизована AI-платформа для агробізнесу</p>
+    <div class="lang-switch">
+      <button>🇺🇦 Українська</button>
+      <button>🇬🇧 English</button>
+      <button>🇵🇱 Polski</button>
+    </div>
+    <div class="theme-toggle">
+      <button>🔄 Змінити тему</button>
+    </div>
+    <div class="auth">
+      <a href="Registration/dashboard.html">🔐 Реєстрація користувача</a>
+    </div>
+  </header>
 
-  <div class="lang-buttons">
-    <a href="uk.md">🇺🇦 Українська</a>
-    <a href="en.md">🇬🇧 English</a>
-    <a href="pl.md">🇵🇱 Polski</a>
-  </div>
+  <main>
+    <section class="chatbot">
+      <h2>🧠 AI-чат-бот</h2>
+      <p>Привіт! Я бот AgroProsper. Чим можу допомогти?</p>
+      <input type="text" placeholder="Напишіть запит..." />
+    </section>
 
-  <a class="register-btn" href="Registration/dashboard.html">🔐 Реєстрація користувача</a>
+    <section class="dao">
+      <h2>🗳️ DAO-голосування</h2>
+      <button>Проголосувати за нову функцію</button>
+      <button>Переглянути результати</button>
+    </section>
 
-  <div class="theme-toggle" onclick="toggleTheme()">🔄 Перемикач теми</div>
+    <section class="balance">
+      <h2>💰 Ваш баланс AGT</h2>
+      <p>AGT: <span id="agt-balance">0</span></p>
+    </section>
 
-  <div id="chatbot">
-    <h3>🧠 AI-чат-бот</h3>
-    <p>Привіт! Я бот AgroProsper. Чим можу допомогти?</p>
-    <input type="text" placeholder="Напишіть запит..." style="width: 80%; padding: 0.5rem;">
-  </div>
+    <section class="nft">
+      <h2>🎨 Створити NFT для агропродукту</h2>
+      <canvas id="nft-canvas" width="300" height="300"></canvas>
+      <button>Зберегти NFT</button>
+    </section>
 
-  <canvas id="marketCanvas"></canvas>
+    <section class="market">
+      <h2>📈 Ринок агропродукції</h2>
+      <ul>
+        <li>Пшениця — $250/т</li>
+        <li>Кукурудза — $220/т</li>
+        <li>Соняшник — $300/т</li>
+      </ul>
+    </section>
+  </main>
 
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle('dark');
-    }
+  <footer>
+    <p>© 2025 AgroProsper DAO</p>
+  </footer>
 
-    // Заглушка для canvas
-    const canvas = document.getElementById('marketCanvas');
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#43a047';
-    ctx.font = '20px Arial';
-    ctx.fillText('📊 Візуалізація ринку / NFT-бейджів', 50, 150);
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
