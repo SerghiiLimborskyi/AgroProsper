@@ -1,22 +1,21 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from datetime import datetime
 import json
 
 app = Flask(__name__)
+CORS(app)
+
 DATA_FILE = 'referral_log.json'
 
 @app.route('/api/referral-transition', methods=['POST'])
 def referral_transition():
     data = request.get_json()
-
-    # Валідація
     if not data or 'referral_tag' not in data:
         return jsonify({'status': 'error', 'message': 'Invalid data'}), 400
 
-    # Додавання часу сервера
     data['server_received'] = datetime.utcnow().isoformat()
 
-    # Збереження у файл
     try:
         with open(DATA_FILE, 'a') as f:
             f.write(json.dumps(data) + '\n')
