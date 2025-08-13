@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Referral Test</title></head>
+<body>
+  <h1>Send Referral Tag</h1>
+  <button onclick="sendReferral()">Send</button>
+
+  <script>
+    function sendReferral() {
+      fetch('http://localhost:5000/api/referral-transition', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ referral_tag: 'partner_123' })
+      })
+      .then(response => response.json())
+      .then(data => console.log('Response:', data))
+      .catch(error => console.error('Error:', error));
+    }
+  </script>
+</body>
+</html>
