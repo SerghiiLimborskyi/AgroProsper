@@ -4,47 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AgroProsper DAO</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../public/style.css" />
 </head>
 <body>
   <header>
     <h1>🌾 AgroProsper</h1>
     <p>Автоматизована AI-платформа для агробізнесу</p>
+
     <div class="lang-switch">
       <button>🇺🇦 Українська</button>
       <button>🇬🇧 English</button>
       <button>🇵🇱 Polski</button>
     </div>
+
     <div class="theme-toggle">
-      <button>🔄 Змінити тему</button>
+      <button onclick="toggleTheme()">🔄 Змінити тему</button>
     </div>
+
     <div class="auth">
-      <a href="Registration/dashboard.html">🔐 Реєстрація користувача</a>
+      <a href="Registration/dashboard.html" class="register-btn">🔐 Реєстрація користувача</a>
     </div>
   </header>
 
   <main>
     <section class="chatbot">
       <h2>🧠 AI-чат-бот</h2>
-      <p>Привіт! Я бот AgroProsper. Чим можу допомогти?</p>
-      <input type="text" placeholder="Напишіть запит..." />
+      <input type="text" id="chat-input" placeholder="Напишіть запит..." />
+      <button id="chat-send">Надіслати</button>
     </section>
 
     <section class="dao">
       <h2>🗳️ DAO-голосування</h2>
-      <button>Проголосувати за нову функцію</button>
-      <button>Переглянути результати</button>
+      <button id="vote-btn">Проголосувати за нову функцію</button>
+      <button id="results-btn">Переглянути результати</button>
     </section>
 
     <section class="balance">
       <h2>💰 Ваш баланс AGT</h2>
-      <p>AGT: <span id="agt-balance">0</span></p>
+      <p id="agt-balance">AGT: 0</p>
     </section>
 
     <section class="nft">
       <h2>🎨 Створити NFT для агропродукту</h2>
       <canvas id="nft-canvas" width="300" height="300"></canvas>
-      <button>Зберегти NFT</button>
+      <button id="save-nft">Зберегти NFT</button>
     </section>
 
     <section class="market">
@@ -61,7 +64,6 @@
     <p>© 2025 AgroProsper DAO</p>
   </footer>
 
-  <script src="script.js"></script>
   <script src="../src/scripts/script.js"></script>
 </body>
 </html>
