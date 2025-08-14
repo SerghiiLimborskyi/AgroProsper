@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><title>Referral Test</title></head>
+<head>
+  <title>Referral Test</title>
+</head>
 <body>
-  <h1>Send Referral Tag</h1>
+  <h1>Send Referral</h1>
+  <input type="text" id="referralTag" placeholder="Enter referral tag">
   <button onclick="sendReferral()">Send</button>
 
   <script>
-    function sendReferral() {
-      fetch('http://localhost:5000/api/referral-transition', {
+    async function sendReferral() {
+      const tag = document.getElementById('referralTag').value;
+      const response = await fetch('https://yourname.repl.co/api/referral-transition', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ referral_tag: 'partner_123' })
-      })
-      .then(response => response.json())
-      .then(data => console.log('Response:', data))
-      .catch(error => console.error('Error:', error));
+        body: JSON.stringify({ referral_tag: tag })
+      });
+      const result = await response.json();
+      alert(JSON.stringify(result));
     }
   </script>
 </body>
