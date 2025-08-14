@@ -43,3 +43,54 @@ button {
 button:hover {
   background-color: #1b5e20;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+
+header {
+  background: #2e7d32;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+.banner {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+main {
+  padding: 20px;
+}
+
+.feature {
+  background: white;
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+button {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+footer {
+  background: #ddd;
+  text-align: center;
+  padding: 10px;
+}
