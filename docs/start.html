@@ -1,96 +1,56 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <title>AgroProsper DAO — start.html</title>
-  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <meta charset="UTF-8">
+  <title>AgroProsper</title>
+  <link rel="stylesheet" href="../public/style.css">
   <style>
-    body { font-family: sans-serif; background: #f0f0f0; margin: 0; padding: 20px; }
-    h1 { text-align: center; }
-    svg { width: 100%; height: 600px; border: 1px solid #ccc; margin-top: 20px; }
-    .node { cursor: pointer; transition: fill 0.3s; }
-    .node:hover { fill: #ffcc00; }
-    .label { font-size: 14px; text-anchor: middle; }
-    .banner { background: linear-gradient(to right, #e0f7e9, #fffde7); padding: 40px; text-align: center; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .banner img { margin-bottom: 20px; }
-    .banner h1 { font-size: 32px; margin: 0; color: #2e7d32; }
-    .banner p { font-size: 16px; color: #555; max-width: 600px; margin: auto; }
-    .mint-btn { margin-top: 20px; padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+    header {
+      background: #2e7d32;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .banner h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    .banner p {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+    }
+    .content {
+      padding: 20px;
+    }
   </style>
 </head>
 <body>
+  <header>
+    <img src="../public/logo.png" alt="AgroProsper Logo" style="height: 80px;">
+    <div class="banner">
+      <h1>AgroProsper — AI для фермерів</h1>
+      <p>DAO, NFT, токени, аналітика, гейміфікація</p>
+    </div>
+  </header>
 
-  <!-- 🔰 Банер з логотипом -->
-  <div class="banner">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Agroprosperis_bank_logo.svg"
-         alt="AgroProsper Logo" width="160" />
-    <h1>AGROPROSPER DAO</h1>
-    <p>Financial Support for Farmers</p>
-    <p>Empowering farmers with tailored financial solutions to grow and sustain their agricultural operations.</p>
-    <button class="mint-btn" onclick="connectWallet()">🌐 Mint DAO-Card</button>
+  <div class="content">
+    <h2>Що це?</h2>
+    <p>AgroProsper — це автоматизована платформа для агробізнесу з AI, DAO, NFT, токенами та інтерактивними інструментами.</p>
+
+    <h2>Можливості:</h2>
+    <ul>
+      <li>🤖 AI-бот для консультацій</li>
+      <li>💰 DAO-фінанси з AGT-токеном</li>
+      <li>📈 Панелі продажів</li>
+      <li>🏅 NFT-бейджі</li>
+      <li>🎮 Гейміфікація</li>
+      <li>🌍 🇺🇦 🇬🇧 🇵🇱 мультимовність</li>
+    </ul>
   </div>
-
-  <!-- 🧠 Інтерактивна карта DAO -->
-  <h1>Логічна карта мислення AgroProsper DAO</h1>
-  <svg viewBox="0 0 800 600">
-    <circle class="node" id="A" cx="150" cy="300" r="40" fill="#4CAF50" />
-    <text class="label" x="150" y="305">A: Ідея</text>
-
-    <circle class="node" id="B" cx="350" cy="300" r="40" fill="#2196F3" />
-    <text class="label" x="350" y="305">B: Аналіз</text>
-
-    <circle class="node" id="C" cx="550" cy="300" r="40" fill="#FF5722" />
-    <text class="label" x="550" y="305">C: Рішення</text>
-    
-    <a xlink:href="dao/dao-insight.html" target="_blank">
-  <circle cx="400" cy="300" r="40" fill="#00bcd4" />
-  <text x="400" y="305" text-anchor="middle" fill="#fff" font-size="16">D</text>
-</a>
-
-    <rect class="node" id="DAOCard" x="250" y="100" width="120" height="50" fill="#9C27B0" rx="10" />
-    <text class="label" x="310" y="130">DAO-Card</text>
-
-    <rect class="node" id="B1" x="150" y="450" width="80" height="40" fill="#00BCD4" rx="8" />
-    <text class="label" x="190" y="475">B1: Web3</text>
-
-    <rect class="node" id="C1" x="550" y="450" width="80" height="40" fill="#FFC107" rx="8" />
-    <text class="label" x="590" y="475">C1: API</text>
-
-    <line x1="190" y1="300" x2="310" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
-    <line x1="350" y1="300" x2="400" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
-    <line x1="400" y1="300" x2="550" y2="300" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
-    <line x1="310" y1="150" x2="310" y2="260" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
-    <line x1="310" y1="340" x2="190" y2="450" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
-    <line x1="550" y1="340" x2="590" y2="450" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
-
-    <defs>
-      <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5"
-              orient="auto-start-reverse" markerUnits="strokeWidth">
-        <path d="M0,0 L10,5 L0,10 Z" fill="#333" />
-      </marker>
-    </defs>
-  </svg>
-
-  <!-- 🌐 Web3 інтеграція -->
-  <script>
-    async function connectWallet() {
-      if (window.ethereum) {
-        try {
-          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-          alert(`🔐 Підключено: ${accounts[0]}`);
-        } catch (error) {
-          alert('❌ Відмова у доступі до гаманця');
-        }
-      } else {
-        alert('🦊 Встановіть MetaMask для Web3-функцій');
-      }
-    }
-
-    document.querySelectorAll('.node').forEach(node => {
-      node.addEventListener('click', () => {
-        alert(`Ви натиснули на вузол: ${node.id}`);
-      });
-    });
-  </script>
 </body>
 </html>
