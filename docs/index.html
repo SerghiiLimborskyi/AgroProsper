@@ -1,123 +1,107 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AgroProsper DAO</title>
-  <link rel="stylesheet" href="../public/style.css">
-  <a href="Registration/dashboard.html" class="link-button">Реєстрація</a>
   <style>
     body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f9f9f9;
+      padding: 0;
       color: #333;
     }
     header {
-      background: linear-gradient(90deg, #388e3c, #66bb6a);
+      background-color: #2e7d32;
       color: white;
       padding: 20px;
       text-align: center;
     }
-    header img {
-      height: 80px;
-      margin-bottom: 10px;
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
     }
-    .banner h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-    .banner p {
-      margin: 5px 0 0;
-      font-size: 1.2em;
-    }
-    .dao-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+    .section {
       padding: 30px;
-    }
-    .dao-card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      width: 280px;
       text-align: center;
-      transition: transform 0.3s ease;
     }
-    .dao-card:hover {
-      transform: scale(1.05);
-    }
-    .dao-card h3 {
-      margin-top: 0;
-      color: #2e7d32;
-    }
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #4CAF50;
+    .link-button {
+      display: inline-block;
+      background-color: #2e7d32;
       color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
     }
-    button:hover {
+    .link-button:hover {
       background-color: #388e3c;
     }
-    footer {
-      text-align: center;
+    .card {
+      background-color: white;
+      margin: 20px auto;
       padding: 20px;
-      background: #eee;
-      font-size: 0.9em;
+      border-radius: 8px;
+      max-width: 500px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    footer {
+      background-color: #e0e0e0;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <img src="../public/logo.png" alt="AgroProsper Logo">
-    <div class="banner">
-      <h1>AgroProsper DAO</h1>
-      <p>Автоматизована AI-платформа для агробізнесу</p>
-    </div>
+    <div class="logo">🌾 AgroProsper DAO</div>
+    <p>Автоматизована AI-платформа для агробізнесу</p>
   </header>
 
-  <section>
-  <h2>Увійти в DAO</h2>
-  <p>Перейдіть до панелі керування, щоб зареєструватися та взаємодіяти з платформою.</p>
-  <a href="Registration/dashboard.html" class="link-button">Реєстрація</a>
-</section>
+  <div class="section">
+    <h2>Увійти в DAO</h2>
+    <p>Перейдіть до панелі керування, щоб зареєструватися та взаємодіяти з платформою.</p>
+    <a href="Registration/dashboard.html" class="link-button">Реєстрація</a>
+  </div>
 
+  <div class="card">
+    <h3>🧠 AI-чат-бот</h3>
+    <p>Отримайте миттєву консультацію з аграрних питань</p>
+    <a href="#" class="link-button">Написати запит</a>
+  </div>
 
-  <section class="dao-section">
-    <div class="dao-card">
-      <h3>🧠 AI-чат-бот</h3>
-      <p>Отримайте миттєву консультацію з аграрних питань</p>
-      <button>Написати запит</button>
-    </div>
-    <div class="dao-card">
-      <h3>🗳️ DAO-голосування</h3>
-      <p>Проголосуйте за нові функції платформи</p>
-      <button>Проголосувати</button>
-    </div>
-    <div class="dao-card">
-      <h3>💰 Баланс AGT</h3>
-      <p>Ваш токеновий баланс: <strong>AGT: 0</strong></p>
-    </div>
-    <div class="dao-card">
-      <h3>🎨 Створити NFT</h3>
-      <p>Оцифруйте свій агропродукт у вигляді NFT</p>
-      <button>Створити NFT</button>
-    </div>
-    <div class="dao-card">
-      <h3>🛒 Купити продукцію</h3>
-      <p>Підтримайте аграріїв через DAO-біржу</p>
-      <button>Перейти на біржу</button>
-    </div>
-  </section>
+  <div class="card">
+    <h3>🗳️ DAO-голосування</h3>
+    <p>Проголосуйте за нові функції платформи</p>
+    <a href="#" class="link-button">Проголосувати</a>
+  </div>
+
+  <div class="card">
+    <h3>💰 Баланс AGT</h3>
+    <p>Ваш токеновий баланс: <strong>AGT: 0</strong></p>
+  </div>
+
+  <div class="card">
+    <h3>🎨 Створити NFT</h3>
+    <p>Оцифруйте свій агропродукт у вигляді NFT</p>
+    <a href="#" class="link-button">Створити NFT</a>
+  </div>
+
+  <div class="card">
+    <h3>🛒 Купити продукцію</h3>
+    <p>Підтримайте аграріїв через DAO-біржу</p>
+    <a href="#" class="link-button">Перейти на біржу</a>
+  </div>
 
   <footer>
     © 2025 AgroProsper DAO | 🤝 Партнерство
   </footer>
+
 </body>
 </html>
