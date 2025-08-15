@@ -45,27 +45,28 @@ button:hover {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  background: #f4f4f4;
 }
-
-header {
-  background: #2e7d32;
+.logo {
+  width: 120px;
+  margin: 20px;
+}
+.banner {
+  background-color: #4CAF50;
   color: white;
   padding: 20px;
   text-align: center;
 }
-
-.logo {
-  width: 80px;
-  height: auto;
+.banner h1 {
+  margin: 0;
+  font-size: 2em;
 }
-
-.banner {
+.banner p {
+  margin: 5px 0 0;
   font-size: 1.2em;
-  margin-top: 10px;
 }
 
 main {
@@ -119,9 +120,9 @@ footer {
   input, select {
     font-size: 0.9rem;
   }
-
   .logo {
-    width: 60px;
+  width: 120px;
+  margin: 20px;
   }
 }
 
