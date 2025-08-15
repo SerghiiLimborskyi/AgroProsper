@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".link-button");
 
+  function startNow() {
+  window.location.href = "start.html"; // або будь-яка сторінка, яку ти хочеш
+}
+
   buttons.forEach(btn => {
     btn.addEventListener("click", (e) => {
       const label = btn.textContent.trim();
