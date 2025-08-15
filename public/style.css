@@ -39,7 +39,9 @@ button {
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
-
+ button:hover {
+  transform: scale(1.05);
+}
 .link-button {
   display: inline-block;
   background-color: #2e7d32;
