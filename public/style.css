@@ -100,3 +100,27 @@ footer {
     transform: scale(1.01);
     transition: 0.3s ease;
 }
+
+@media (max-width: 768px) {
+  .dashboard, main, .feature {
+    padding: 1rem;
+    margin: 10px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  input, select {
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    width: 60px;
+  }
+}
