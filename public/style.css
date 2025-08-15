@@ -124,3 +124,29 @@ footer {
     width: 60px;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  .dashboard, .feature {
+    background-color: #1e1e1e;
+    box-shadow: 0 0 10px rgba(255,255,255,0.05);
+  }
+
+  header, footer {
+    background-color: #2e7d32;
+    color: #fff;
+  }
+
+  button {
+    background-color: #388e3c;
+    color: white;
+  }
+
+  button:hover {
+    background-color: #1b5e20;
+  }
+}
