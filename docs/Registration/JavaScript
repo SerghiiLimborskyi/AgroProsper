@@ -1,0 +1,3 @@
+function startNow() {
+  window.location.href = "docs/Registration/dashboard.html";
+}
