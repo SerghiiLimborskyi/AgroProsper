@@ -40,6 +40,22 @@ button {
   transition: background-color 0.3s ease;
 }
 
+.link-button {
+  display: inline-block;
+  background-color: #2e7d32;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.link-button:hover {
+  background-color: #388e3c;
+}
+
 button:hover {
   background-color: #1b5e20;
 }
