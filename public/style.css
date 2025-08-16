@@ -39,9 +39,12 @@ button {
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
- button:hover {
+
+button:hover {
   transform: scale(1.05);
+  background-color: #1b5e20;
 }
+
 .link-button {
   display: inline-block;
   background-color: #2e7d32;
@@ -58,20 +61,18 @@ button {
   background-color: #388e3c;
 }
 
-button:hover {
-  background-color: #1b5e20;
-}
-
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
 }
+
 .logo {
   width: 120px;
   margin: 20px;
 }
+
 .banner-container {
   position: relative;
   overflow: hidden;
@@ -79,13 +80,21 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .banner h1 {
   margin: 0;
   font-size: 2em;
 }
+
 .banner p {
   margin: 5px 0 0;
   font-size: 1.2em;
@@ -103,25 +112,16 @@ main {
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
-button {
-  background: #2e7d32;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+.feature:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transform: scale(1.01);
+  transition: 0.3s ease;
 }
 
 footer {
   background: #ddd;
   text-align: center;
   padding: 10px;
-}
-
-.feature:hover {
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    transform: scale(1.01);
-    transition: 0.3s ease;
 }
 
 @media (max-width: 768px) {
@@ -142,9 +142,10 @@ footer {
   input, select {
     font-size: 0.9rem;
   }
+
   .logo {
-  width: 120px;
-  margin: 20px;
+    width: 120px;
+    margin: 20px;
   }
 }
 
