@@ -4,6 +4,61 @@ body {
   padding: 2rem;
 }
 
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #2e7d32;
+  color: white;
+}
+
+.nav {
+  position: relative;
+}
+
+.nav-toggle {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #2e7d32;
+    flex-direction: column;
+    display: none;
+    padding: 1rem;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+}
+
 .dashboard {
   background: #fff;
   padding: 2rem;
