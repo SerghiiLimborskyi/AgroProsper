@@ -22,10 +22,49 @@
     .logo-img {
       max-width: 150px;
     }
-    .banner {
+    .banner-container {
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .banner-img {
       width: 100%;
-      max-height: 300px;
+      height: auto;
       object-fit: cover;
+      filter: brightness(0.75);
+    }
+    .banner-overlay {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      text-align: center;
+    }
+    .banner-overlay h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    .banner-overlay p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .banner-overlay button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .banner-overlay button:hover {
+      transform: scale(1.05);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .link-button {
       display: inline-block;
@@ -64,32 +103,25 @@
 </head>
 <body>
   <header>
-    <img src="https://serghiilimborskyi.github.io/AgroProsper/public/logo.png" alt="AgroProsper Logo" class="logo-img" />
+    <img src="logo.png" alt="AgroProsper Logo" class="logo-img" />
     <h1>🌾 AgroProsper DAO</h1>
     <p>Автоматизована AI-платформа для агробізнесу</p>
   </header>
-  <div class="banner-container">
-  <img src="futuristic-agro-banner.png" alt="Future of Agriculture" class="banner-img">
-  <div class="banner-overlay">
-    <h2>AgroProsper: Майбутнє агробізнесу</h2>
-    <p>Інновації, автоматизація, сталий розвиток</p>
-    <button onclick="startNow()">Почати</button>
-  </div>
-</div>
 
-  <div style="text-align: center; margin-top: -100px; position: relative;">
-  <button onclick="startNow()" style="
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-  ">Get Started</button>
-</div>
+  <div class="banner-container">
+    <img src="banner.jpg" alt="AgroProsper Banner" class="banner-img" />
+    <div class="banner-overlay">
+      <h2>AgroProsper: Майбутнє агробізнесу</h2>
+      <p>Інтелект. Досвідченість. Прозорість.</p>
+      <button onclick="startNow()">Почати</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Увійти в DAO</h2>
+    <p>Перейдіть до панелі керування, щоб зареєструватися та взаємодіяти з платформою.</p>
+    <a href="docs/Registration/dashboard.html" class="link-button" id="registerBtn">Реєстрація</a>
+  </div>
 
   <div class="card">
     <h3>🧠 AI-чат-бот</h3>
@@ -120,6 +152,10 @@
   </footer>
 
   <script>
+    function startNow() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       const isRegistered = localStorage.getItem("isRegistered") === "true";
 
@@ -146,3 +182,4 @@
   </script>
 </body>
 </html>
+index.htm
