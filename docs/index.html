@@ -1,81 +1,51 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <title>AgroProsper DAO</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroProsper — Головна</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="public/style.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background-color: #2e7d32;
-      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eef2f5;
       text-align: center;
-      color: white;
+      padding: 2rem;
     }
-    header img {
-      height: 60px;
+    .logo {
+      width: 120px;
+      margin-bottom: 1rem;
     }
     .banner {
       width: 100%;
-      height: 300px;
-      background: url('images/banner.jpg') center/cover no-repeat;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .content {
-      padding: 20px;
-      text-align: center;
-    }
-    .btn {
-      display: inline-block;
-      background-color: #4CAF50;
+    .cta-button {
+      margin-top: 2rem;
+      background-color: #2e7d32;
       color: white;
-      padding: 12px 24px;
-      margin: 10px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
+      padding: 0.8rem 1.6rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
     }
-    .section {
-      margin: 30px 0;
-    }
-    footer {
-      background-color: #eee;
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
+    .cta-button:hover {
+      background-color: #1b5e20;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <img src="images/logo.png" alt="AgroProsper Logo">
-    <h1>AgroProsper DAO</h1>
-    <p>Автоматизована AI-платформа для агробізнесу</p>
-  </header>
-
-  <div class="banner"></div>
-
-  <div class="content">
-    <h2>AgroProsper: Майбутнє агробізнесу</h2>
-    <p>Інтелект. Досвідченість. Прозорість.</p>
-
-    <div class="section">
-      <a href="docs/Registration/dashboard.html" class="btn">Реєстрація</a>
-      <a href="#chatbot" class="btn">🧠 AI-чат-бот</a>
-      <a href="#vote" class="btn">🗳️ DAO-голосування</a>
-      <a href="#nft" class="btn">🎨 Створити NFT</a>
-      <a href="#market" class="btn">🛒 Купити продукцію</a>
-    </div>
-  </div>
-
-  <footer>
-    © 2025 AgroProsper DAO | 🤝 Партнерство
-  </footer>
-
+  <img src="public/logo.png" alt="AgroProsper Logo" class="logo" />
+  <h1>AgroProsper DAO</h1>
+  <p>Інноваційна платформа для аграріїв, трейдерів і стартапів</p>
+  <img src="public/banner.jpg" alt="AgroProsper Banner" class="banner" />
+  <br>
+  <a href="docs/Registration/dashboard.html">
+    <button class="cta-button">Реєстрація</button>
+  </a>
 </body>
 </html>
