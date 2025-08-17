@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Про AgroProsper</title>
+  <link rel="stylesheet" href="../public/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
+    <nav class="nav">
+      <button class="nav-toggle" aria-label="Меню">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="Registration/dashboard.html">Реєстрація</a></li>
+        <li><a href="contact.html">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Про AgroProsper</h1>
+    <p>AgroProsper — це автоматизована AI-платформа для агробізнесу, побудована на DAO-архітектурі з підтримкою NFT, AI, мультимовності, гейміфікації та інтерактивних презентацій.</p>
+
+    <iframe width="100%" height="400" src="https://www.youtube.com/embed/ID_ТВОГО_ВІДЕО?cc_load_policy=1" title="AgroProsper Presentation" frameborder="0" allowfullscreen></iframe>
+
+    <section class="language-switch">
+      <label for="lang">🌍 Мова:</label>
+      <select id="lang" onchange="location.href=this.value">
+        <option value="about.html">🇺🇦 Українська</option>
+        <option value="about_en.html">🇬🇧 English</option>
+        <option value="about_pl.html">🇵🇱 Polski</option>
+      </select>
+    </section>
+  </main>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('.nav-menu');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      menu.classList.toggle('active');
+    });
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('active');
+        toggle.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
