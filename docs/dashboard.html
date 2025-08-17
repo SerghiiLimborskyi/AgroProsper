@@ -49,13 +49,19 @@
       <h2>🎨 Створити NFT</h2>
       <p>Оцифруйте свій агропродукт у вигляді NFT</p>
       <button>Створити NFT</button>
-    </section>
+    </section> 
 
     <section class="feature">
       <h2>🛒 Купити продукцію</h2>
       <p>Підтримайте аграріїв через DAO-біржу</p>
       <button>Перейти на біржу</button>
     </section>
+    
+    <script>
+  const hour = new Date().getHours();
+  const theme = (hour >= 6 && hour < 18) ? 'day' : 'night';
+  document.body.classList.add(theme);
+</script>
   </main>
 
   <footer>
