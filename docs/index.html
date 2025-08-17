@@ -7,28 +7,43 @@
   <link rel="stylesheet" href="../public/style.css" />
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
-    <h1>AgroProsper DAO</h1>
-    <p>Інноваційна платформа для аграріїв, трейдерів і стартапів</p>
+    <nav class="nav">
+      <button class="nav-toggle" aria-label="Меню">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="Registration/dashboard.html">Реєстрація</a></li>
+        <li><a href="contact.html">Контакти</a></li>
+      </ul>
+    </nav>
   </header>
-  
-     <header class="site-header">
-  <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
-  <nav class="nav">
-    <button class="nav-toggle" aria-label="Відкрити меню">&#9776;</button>
-    <ul class="nav-menu">
-      <li><a href="index.html">Головна</a></li>
-      <li><a href="about.html">Про нас</a></li>
-      <li><a href="Registration/dashboard.html">Реєстрація</a></li>
-      <li><a href="contact.html">Контакти</a></li>
-    </ul>
-  </nav>
-</header>
 
   <main>
     <img src="../public/banner.jpg" alt="AgroProsper Banner" class="banner" />
     <a href="Registration/dashboard.html" class="cta-button">Реєстрація</a>
   </main>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('.nav-menu');
+
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      menu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('active');
+        toggle.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
