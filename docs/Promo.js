@@ -6,6 +6,24 @@ const logAppEvent = (eventName, payload = {}) => {
   console.log(`[Analytics] ${eventName}`, payload);
 };
 
+function sendTelegramCommand() {
+  const token = "7642561888:AAENAObdnj1fo5iu1r0-UaubNrkrpddImA4";
+  const chatId = "YOUR_CHAT_ID";
+  const message = "🔔 Нова реклама активована на сайті AgroProsper!";
+  
+  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ chat_id: chatId, text: message })
+  });
+}
+
+function launchPromo(videoUrl, companyName, category) {
+  const promoText = `🎥 ${companyName} — ${category}\nДивіться: ${videoUrl}`;
+  sendTelegramCommand(promoText);
+  document.getElementById("output").innerText = "✅ Реклама запущена!";
+}
+
 const Promo = () => {
   useEffect(() => {
     logAppEvent("screen_view", { screen_name: "Promo" });
