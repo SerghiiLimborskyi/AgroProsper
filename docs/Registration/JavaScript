@@ -3,6 +3,12 @@ function startNow() {
 }
 
 <script>
+  const hour = new Date().getHours();
+  const theme = (hour >= 6 && hour < 18) ? 'day' : 'night';
+  document.body.classList.add(theme);
+</script>
+
+<script>
   const toggle = document.querySelector('.nav-toggle');
   const menu = document.querySelector('.nav-menu');
 
