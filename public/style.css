@@ -1,7 +1,37 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f0f4f8;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.logo {
+  width: 120px;
+  margin: 1rem;
+}
+
+.banner {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+}
+
+.cta-button {
+  background-color: #2e7d32;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.cta-button:hover {
+  background-color: #1b5e20;
 }
 
 .site-header {
@@ -11,6 +41,8 @@ body {
   padding: 1rem 2rem;
   background-color: #2e7d32;
   color: white;
+  position: relative;
+  z-index: 1000;
 }
 
 .nav {
@@ -18,12 +50,34 @@ body {
 }
 
 .nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
   background: none;
   border: none;
-  font-size: 2rem;
-  color: white;
   cursor: pointer;
-  display: none;
+  padding: 0;
+  z-index: 1001;
+}
+
+.bar {
+  height: 4px;
+  width: 100%;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.nav-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.nav-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .nav-menu {
@@ -40,7 +94,7 @@ body {
 
 @media (max-width: 768px) {
   .nav-toggle {
-    display: block;
+    display: flex;
   }
 
   .nav-menu {
@@ -50,157 +104,19 @@ body {
     right: 0;
     background-color: #2e7d32;
     flex-direction: column;
-    display: none;
-    padding: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 1rem;
   }
 
   .nav-menu.active {
-    display: flex;
-  }
-}
-
-.dashboard {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 800px;
-  margin: auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-h2 {
-  color: #2e7d32;
-  margin-bottom: 1rem;
-  font-size: 1.4rem;
-}
-
-input, select {
-  width: 100%;
-  padding: 0.6rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-button {
-  background-color: #2e7d32;
-  color: white;
-  padding: 0.7rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  transform: scale(1.05);
-  background-color: #1b5e20;
-}
-
-.link-button {
-  display: inline-block;
-  background-color: #2e7d32;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 6px;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.link-button:hover {
-  background-color: #388e3c;
-}
-
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-}
-
-.logo {
-  width: 120px;
-  margin: 20px;
-}
-
-.banner-container {
-  position: relative;
-  overflow: hidden;
-  animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.banner h1 {
-  margin: 0;
-  font-size: 2em;
-}
-
-.banner p {
-  margin: 5px 0 0;
-  font-size: 1.2em;
-}
-
-main {
-  padding: 20px;
-}
-
-.feature {
-  background: white;
-  margin: 15px 0;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-.feature:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  transform: scale(1.01);
-  transition: 0.3s ease;
-}
-
-footer {
-  background: #ddd;
-  text-align: center;
-  padding: 10px;
-}
-
-@media (max-width: 768px) {
-  .dashboard, main, .feature {
+    max-height: 300px;
     padding: 1rem;
-    margin: 10px;
   }
 
-  h2 {
-    font-size: 1.2rem;
-  }
-
-  button {
-    width: 100%;
-    font-size: 1rem;
-  }
-
-  input, select {
-    font-size: 0.9rem;
-  }
-
-  .logo {
-    width: 120px;
-    margin: 20px;
+  .nav-menu li {
+    margin: 0.5rem 0;
   }
 }
 
@@ -210,22 +126,19 @@ footer {
     color: #e0e0e0;
   }
 
-  .dashboard, .feature {
-    background-color: #1e1e1e;
-    box-shadow: 0 0 10px rgba(255,255,255,0.05);
-  }
-
-  header, footer {
-    background-color: #2e7d32;
-    color: #fff;
-  }
-
-  button {
-    background-color: #388e3c;
-    color: white;
-  }
-
-  button:hover {
+  .site-header {
     background-color: #1b5e20;
+  }
+
+  .nav-menu {
+    background-color: #1b5e20;
+  }
+
+  .cta-button {
+    background-color: #388e3c;
+  }
+
+  .cta-button:hover {
+    background-color: #2e7d32;
   }
 }
