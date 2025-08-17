@@ -28,4 +28,11 @@ const changelogABI = [
     "stateMutability": "view",
     "type": "function"
   }
+   {
+  document.addEventListener("DOMContentLoaded", () => {
+  const voteBtn = document.querySelector("#vote-btn");
+  voteBtn?.addEventListener("click", () => {
+    alert("✅ Голос прийнято! Дякуємо за участь.");
+  });
+});
 ];
