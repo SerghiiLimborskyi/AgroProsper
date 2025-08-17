@@ -12,6 +12,28 @@
 }
 
 body {
+  transition: background 0.8s ease, color 0.8s ease;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body.day {
+  background: linear-gradient(135deg, #f0f9ff, #c2e9fb);
+  color: #222;
+}
+
+body.night {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #e0f7fa;
+}
+
+header, footer, nav {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
