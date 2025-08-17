@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кабінет адміністратора — AgroProsper</title>
+  <link rel="stylesheet" href="../public/style.css" />
+  <style>
+    .admin-panel {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .admin-panel h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .admin-panel p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    .admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .admin-actions a {
+      padding: 0.8rem 1.2rem;
+      background: #6B8E23;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .admin-actions a:hover {
+      background: #4e6b1a;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
+    <nav class="nav">
+      <ul class="nav-menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="Registration/dashboard.html">Реєстрація</a></li>
+        <li><a href="contact.html">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="admin-panel">
+      <h1>✅ Повідомлення надіслано!</h1>
+      <p>Дякуємо за звернення. Ваше повідомлення успішно доставлено. Нижче — панель адміністратора:</p>
+
+      <div class="admin-actions">
+        <a href="https://web.telegram.org/k/#@agroprosper_bot" target="_blank">📨 Перевірити повідомлення в Telegram</a>
+        <a href="https://github.com/SerghiiLimborskyi/AgroProsper" target="_blank">📁 Перейти до GitHub</a>
+        <a href="docs/Registration/dashboard.html">👤 Користувачі / Реєстрації</a>
+        <a href="index.html">🔙 Повернутися на головну</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
