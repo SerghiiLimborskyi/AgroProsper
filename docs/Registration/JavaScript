@@ -11,6 +11,26 @@ function startNow() {
   });
 
 <script>
+  document.querySelector('.contact-form').addEventListener('submit', function (e) {
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+
+    if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+      alert('❗ Будь ласка, заповніть всі поля.');
+      e.preventDefault();
+      return;
+    }
+
+    const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+    if (!emailPattern.test(email.value)) {
+      alert('📧 Введіть коректний email.');
+      e.preventDefault();
+    }
+  });
+</script>
+
+<script>
   const toggle = document.querySelector('.nav-toggle');
   const menu = document.querySelector('.nav-menu');
 
