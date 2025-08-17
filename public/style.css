@@ -12,6 +12,24 @@
 }
 
 body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: #e0f7fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+h1, h2, h3 {
+  text-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff;
+}
+
+body {
   font-family: var(--font);
   background-color: var(--bg-light);
   margin: 0;
