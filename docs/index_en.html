@@ -61,5 +61,10 @@
       }
     });
   </script>
+  <script>
+  const hour = new Date().getHours();
+  const theme = (hour >= 6 && hour < 18) ? 'day' : 'night';
+  document.body.classList.add(theme);
+</script>
 </body>
 </html>
