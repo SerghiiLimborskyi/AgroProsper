@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакти — AgroProsper</title>
+  <link rel="stylesheet" href="../public/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
+    <nav class="nav">
+      <button class="nav-toggle" aria-label="Меню">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="Registration/dashboard.html">Реєстрація</a></li>
+        <li><a href="contact.html" class="active">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-section">
+      <h1>📬 Зв’яжіться з нами</h1>
+      <p>Маєте запитання або пропозиції? Надішліть нам повідомлення!</p>
+
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+        <label for="name">Ім’я:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="_replyto" required />
+
+        <label for="message">Повідомлення:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Надіслати</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('.nav-menu');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      menu.classList.toggle('active');
+    });
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('active');
+        toggle.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
