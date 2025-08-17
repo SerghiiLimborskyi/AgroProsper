@@ -3,83 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Адмін-панель — AgroProsper</title>
-  <link rel="stylesheet" href="../public/style.css" />
-  <style>
-    .admin-panel { max-width: 1000px; margin: auto; padding: 2rem; }
-    .admin-panel h1 { text-align: center; margin-bottom: 1rem; }
-    .search-box { margin-bottom: 1rem; text-align: center; }
-    .search-box input { padding: 0.5rem; width: 60%; border-radius: 6px; border: 1px solid #ccc; }
-    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-    th, td { padding: 0.8rem; border: 1px solid #ddd; text-align: left; }
-    th { background-color: #2e7d32; color: white; }
-    .counter { margin-top: 1rem; font-weight: bold; }
-  </style>
+  <title>AgroProsper Admin Panel</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="Promo.js" defer></script>
+  <script src="Web3.js" defer></script>
 </head>
 <body>
-  <header class="site-header">
-    <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
-    <nav class="nav">
-      <ul class="nav-menu">
-        <li><a href="index.html">Головна</a></li>
-        <li><a href="contact.html">Контакти</a></li>
-        <li><a href="admin.html" class="active">Адмін</a></li>
-      </ul>
-    </nav>
+  <header>
+    <h1>🌿 AgroProsper DAO — Адмін-панель</h1>
   </header>
 
-  <main class="admin-panel">
-    <h1>📊 Адмін-панель AgroProsper</h1>
+  <section class="dashboard">
+    <button onclick="openStats()">📊 Статистика</button>
+    <button onclick="openVideoManager()">🎥 Відео-контент</button>
+    <button onclick="openPartnerForm()">🤝 Партнери</button>
+    <button onclick="sendTelegramCommand()">📨 Команда боту</button>
+    <button onclick="generateReport()">📁 Звіт до податкової</button>
+  </section>
 
-    <div class="search-box">
-      <input type="text" id="search" placeholder="🔍 Пошук по імені або email..." />
-    </div>
+  <section id="output"></section>
 
-    <table id="messageTable">
-      <thead>
-        <tr>
-          <th>Ім’я</th>
-          <th>Email</th>
-          <th>Повідомлення</th>
-          <th>Дата</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Дані будуть вставлені JavaScript'ом -->
-      </tbody>
-    </table>
-
-    <div class="counter">🔢 Всього повідомлень: <span id="count">0</span></div>
-  </main>
-
-  <script>
-    const messages = [
-      { name: "Іван", email: "ivan@example.com", message: "Цікавить реєстрація", date: "2025-08-17" },
-      { name: "Олена", email: "olena@example.com", message: "Хочу приєднатися до DAO", date: "2025-08-16" }
-    ];
-
-    const tbody = document.querySelector("#messageTable tbody");
-    const count = document.getElementById("count");
-    const search = document.getElementById("search");
-
-    function renderTable(data) {
-      tbody.innerHTML = "";
-      data.forEach(msg => {
-        const row = `<tr><td>${msg.name}</td><td>${msg.email}</td><td>${msg.message}</td><td>${msg.date}</td></tr>`;
-        tbody.innerHTML += row;
-      });
-      count.textContent = data.length;
-    }
-
-    search.addEventListener("input", () => {
-      const term = search.value.toLowerCase();
-      const filtered = messages.filter(m =>
-        m.name.toLowerCase().includes(term) || m.email.toLowerCase().includes(term)
-      );
-      renderTable(filtered);
-    });
-
-    renderTable(messages);
-  </script>
+  <footer>
+    <p>© 2025 AgroProsper DAO. Всі права захищено.</p>
+  </footer>
 </body>
 </html>
