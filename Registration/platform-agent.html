@@ -76,8 +76,15 @@
   <option value="trader">Trader</option>
 </select>
 <button onclick="registerUser(document.getElementById('role').value)">Зареєструватися</button>
+     </select>
 
-      </select>
+      <div id="site-header"></div>
+<script>
+  fetch('header.html')
+    .then(res => res.text())
+    .then(html => document.getElementById('site-header').innerHTML = html);
+</script>
+
       <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
 <script>
   
