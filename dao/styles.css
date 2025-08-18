@@ -1,4 +1,33 @@
 body {
+  background-image: url('public/background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.header-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.banner {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+body {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
