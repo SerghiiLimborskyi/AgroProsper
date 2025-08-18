@@ -33,6 +33,79 @@
     <p>Автоматизована AI-платформа для аграріїв, трейдерів і стартапів</p>
     <a href="Registration/dashboard.html" class="cta-button">Реєстрація</a>
 
+    <section id="agroprosper-videos">
+  <h2>🎥 Відео з AgroProsper</h2>
+  <div id="video-container"></div>
+</section>
+
+<script>
+  const apiKey = 'YOUR_API_KEY'; // 119760750420-i10c6953krooqa4nlknmleu5em14k206.apps.googleusercontent.com
+  const channelId = 'UCsN8AHUPLQp_xJlGOkwZkmw';
+  const maxResults = 4;
+
+  async function loadVideos() {
+    const response = await fetch(
+      `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}`
+    );
+    const data = await response.json();
+    const container = document.getElementById('video-container');
+    container.innerHTML = '';
+
+    data.items.forEach(item => {
+      if (item.id.kind === 'youtube#video') {
+        const videoId = item.id.videoId;
+        const title = item.snippet.title;
+        container.innerHTML += `
+          <div class="video-item">
+            <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+            <p>${title}</p>
+          </div>
+        `;
+      }
+    });
+  }
+
+  loadVideos();
+</script>
+
+<style>
+  #agroprosper-videos {
+    padding: 40px 20px;
+    background-color: #fff;
+    border-top: 2px solid #e0e0e0;
+    text-align: center;
+  }
+
+  #agroprosper-videos h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+  }
+
+  #video-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .video-item {
+    width: 300px;
+  }
+
+  .video-item iframe {
+    width: 100%;
+    height: 170px;
+    border-radius: 8px;
+  }
+
+  .video-item p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #34495e;
+  }
+</style>
+
     <section class="video-section">
       <h2>🎥 Відео-презентація</h2>
       <iframe width="100%" height="400" src="https://www.youtube.com/embed/ID_ТВОГО_ВІДЕО" title="AgroProsper Presentation" frameborder="0" allowfullscreen></iframe>
