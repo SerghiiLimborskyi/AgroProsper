@@ -1,0 +1,4 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['-m', 'cp', '-r', 'docs/public/*', 'gs://agroprosper-site']
+timeout: '600s'
