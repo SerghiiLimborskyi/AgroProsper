@@ -12,6 +12,13 @@
 }
 
 body {
+  background-image: url('public/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
