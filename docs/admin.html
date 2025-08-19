@@ -7,6 +7,29 @@
   <link rel="stylesheet" href="style.css" />
   <script src="Promo.js" defer></script>
   <script src="Web3.js" defer></script>
+  <style>
+    body.night {
+      background-image: url('admin-bg.jpg'); /* встав свою картинку */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+    }
+    .dashboard button {
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #111;
+      color: #0ff;
+      font-weight: bold;
+      box-shadow: 0 0 10px #0ff;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .dashboard button:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -26,11 +49,12 @@
   <footer>
     <p>© 2025 AgroProsper DAO. Всі права захищено.</p>
   </footer>
-  
+
   <script>
-  const hour = new Date().getHours();
-  const theme = (hour >= 6 && hour < 18) ? 'day' : 'night';
-  document.body.classList.add(theme);
-</script>
+    const hour = new Date().getHours();
+    const theme = (hour >= 6 && hour < 18) ? 'day' : 'night';
+    document.body.classList.add(theme);
+  </script>
 </body>
 </html>
+ 
