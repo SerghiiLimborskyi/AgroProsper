@@ -1,0 +1,53 @@
+{
+  "ua": {
+    "logo_alt": "Логотип AgroProsper",
+    "banner_alt": "Банер AgroProsper",
+    "music_title": "Музичний супровід",
+    "background_alt": "Фонове зображення",
+    "title": "Ласкаво просимо до AgroProsper",
+    "subtitle": "Фінансова підтримка для фермерів",
+    "about": "Про нас",
+    "services": "Послуги",
+    "contact": "Контакти",
+    "register": "Реєстрація",
+    "dao": "DAO-платформа",
+    "presentation": "Презентація",
+    "get_started": "Почати",
+    "footer_contact": "Зв'язатися з нами",
+    "footer_rights": "© 2025 AgroProsper. Всі права захищені."
+  },
+  "en": {
+    "logo_alt": "AgroProsper Logo",
+    "banner_alt": "AgroProsper Banner",
+    "music_title": "Background Music",
+    "background_alt": "Background Image",
+    "title": "Welcome to AgroProsper",
+    "subtitle": "Financial Support for Farmers",
+    "about": "About Us",
+    "services": "Services",
+    "contact": "Contact",
+    "register": "Sign Up",
+    "dao": "DAO Platform",
+    "presentation": "Presentation",
+    "get_started": "Get Started",
+    "footer_contact": "Contact Us",
+    "footer_rights": "© 2025 AgroProsper. All rights reserved."
+  },
+  "pl": {
+    "logo_alt": "Logo AgroProsper",
+    "banner_alt": "Baner AgroProsper",
+    "music_title": "Muzyka w tle",
+    "background_alt": "Obraz tła",
+    "title": "Witamy w AgroProsper",
+    "subtitle": "Wsparcie finansowe dla rolników",
+    "about": "O nas",
+    "services": "Usługi",
+    "contact": "Kontakt",
+    "register": "Rejestracja",
+    "dao": "Platforma DAO",
+    "presentation": "Prezentacja",
+    "get_started": "Rozpocznij",
+    "footer_contact": "Skontaktuj się z nami",
+    "footer_rights": "© 2025 AgroProsper. Wszelkie prawa zastrzeżone."
+  }
+}
