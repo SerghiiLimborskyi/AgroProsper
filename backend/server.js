@@ -7,20 +7,7 @@ const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
-
-// ✅ Маршрут для повного циклу
-app.get('/run/full', async (req, res) => {
-  try {
-    require('./src/generateSlides.js');
-    require('./src/renderSlides.js');
-    exec('bash src/makeVideo.sh', (err, stdout, stderr) => {
-      if (err) return res.send(`❌ ffmpeg error: ${stderr}`);
-      require('./src/bot.js');
-      res.send('✅ Повний цикл завершено: відео створено і надіслано!');
-    });
-  } catch (e) {
-    res.send(`❌ Помилка: ${e.message}`);
-  }
+ }
 });
 
 // ✅ Реєстрація
@@ -39,6 +26,19 @@ app.post("/api/register", (req, res) => {
   res.status(200).json({ message: "Реєстрація успішна" });
 });
 
+ // ✅ Маршрут для повного циклу
+app.get('/run/full', async (req, res) => {
+  try {
+    require('./src/generateSlides.js');
+    require('./src/renderSlides.js');
+ 
+exec('bash src/makeVideo.sh', (err, stdout, stderr) => {
+      if (err) return res.send(`❌ ffmpeg error: ${stderr}`);
+      require('./src/bot.js');
+      res.send('✅ Повний цикл завершено: відео створено і надіслано!');
+    });
+  } catch (e) {
+    res.send(`❌ Помилка: ${e.message}`);
 // ✅ Запуск сервера
 app.listen(PORT, () => {
   console.log(`🚀 Сервер запущено на http://localhost:${PORT}`);
