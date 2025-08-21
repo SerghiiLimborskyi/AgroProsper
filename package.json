@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
    "test": "echo \"Error: no test specified\" && exit 1",
-  "backend": "node backend/server.js"
+  "backend": "nodemon backend/server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
