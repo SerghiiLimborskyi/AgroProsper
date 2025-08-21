@@ -26,25 +26,22 @@ app.post("/api/register", (req, res) => {
 });
 
 // ✅ Маршрут для повного циклу
-app.get("/run/full", async (req, res) => {
+app.get('/run/full', async (req, res) => {
   try {
-    require("./src/generateSlides.js");
-    require("./src/renderSlides.js");
+    require('./src/generateSlides.js');
+    require('./src/renderSlides.js');
 
-    exec("bash src/makeVideo.sh", (err, stdout, stderr) => {
-      if (err) {
-        return res.send(`❌ ffmpeg error: ${stderr}`);
-      }
-
-      require("./src/bot.js");
-      res.send("✅ Повний цикл завершено: відео створено і надіслано!");
+    exec('bash src/makeVideo.sh', (err, stdout, stderr) => {
+      if (err) return res.send(`❌ ffmpeg error: ${stderr}`);
+      require('./src/bot.js');
+      res.send('✅ Повний цикл завершено: відео створено і надіслано!');
     });
   } catch (e) {
     res.send(`❌ Помилка: ${e.message}`);
   }
 });
 
-// ✅ Запуск сервера
+// ✅ Запуск сервера — має бути поза всіма маршрутами!
 app.listen(PORT, () => {
   console.log(`🚀 Сервер запущено на http://localhost:${PORT}`);
 });
