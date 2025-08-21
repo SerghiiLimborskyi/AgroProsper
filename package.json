@@ -2,6 +2,15 @@
   "name": "agroprosper",
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "backend": "nodemon backend/server.js"
+  },
+  ...
+}
+{
+  "name": "agroprosper",
+  "version": "1.0.0",
+  "type": "module",
   "description": "AgroProsper DAO — AI-платформа для агробізнесу",
   "scripts": {
   "frontend": "react-scripts start",
