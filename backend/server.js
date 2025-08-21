@@ -16,6 +16,22 @@ app.post("/api/register", (req, res) => {
   if (!name || !email || !wallet) {
     return res.status(400).json({ error: "Обов’язкові поля відсутні" });
   }
+  
+app.get('/run/full', async (req, res) => {
+  try {
+    require('./src/generateSlides.js');
+    require('./src/renderSlides.js');
+
+    const { exec } = require('child_process');
+    exec('bash src/makeVideo.sh', (err, stdout, stderr) => {
+      if (err) return res.send(`❌ ffmpeg error: ${stderr}`);
+      require('./src/bot.js');
+      res.send('✅ Повний цикл завершено: відео створено і надіслано!');
+    });
+  } catch (e) {
+    res.send(`❌ Помилка: ${e.message}`);
+  }
+});
 
   console.log("📥 Новий користувач:");
   console.log("Ім’я:", name);
