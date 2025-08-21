@@ -1,6 +1,7 @@
 {
   "name": "agroprosper",
   "version": "1.0.0",
+  "type": "module",
   "description": "AgroProsper DAO — AI-платформа для агробізнесу",
   "scripts": {
     "start": "react-scripts start",
