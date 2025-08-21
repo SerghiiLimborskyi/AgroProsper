@@ -7,6 +7,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "npx hardhat test",
+    "start": "node backend/server.js",
     "backend": "node backend/server.js",
     "vote": "node dao/voteHandler.js --proposal=dao/proposals/001.json",
     "update-cid": "node scripts/updateAll.js"
