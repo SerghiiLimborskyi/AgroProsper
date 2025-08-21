@@ -44,6 +44,7 @@
   </header>
 
   <section class="dashboard">
+    <button onclick="runFullCycle()">🔄 Повний цикл</button>
     <button onclick="openStats()">📊 Статистика</button>
     <button onclick="openVideoManager()">🎥 Відео-контент</button>
     <button onclick="openPartnerForm()">🤝 Партнери</button>
@@ -63,6 +64,18 @@
     document.body.classList.add('night');
   }
 </script>
+ <script>
+  function runFullCycle() {
+    fetch('/run/full')
+      .then(res => res.text())
+      .then(msg => {
+        document.getElementById('output').innerText = msg;
+      })
+      .catch(err => {
+        document.getElementById('output').innerText = '❌ Помилка: ' + err;
+      });
+  }
+</script> 
 </body>
 </html>
  
