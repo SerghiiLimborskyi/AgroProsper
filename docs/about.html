@@ -35,6 +35,31 @@
   </video>
 </section>
 
+    <section class="studio-block" id="questStudio">
+  <h2>DAO-квест</h2>
+  <p>Пройди інтерактивний квест. Відкрий DAO. Отримай NFT.</p>
+  <button onclick="startQuest()" class="quest-button">🔓 Почати квест</button>
+</section>
+
+    <section class="studio-block" id="nftGallery" style="display: none;">
+  <h2>🏅 NFT-бейджі</h2>
+  <p>Отримай унікальні бейджі за участь у DAO-квесті та активність на платформі.</p>
+  <div class="nft-container">
+    <div class="nft-card">
+      <img src="public/nft1.png" alt="DAO-Фермер">
+      <p>🌾 DAO-Фермер</p>
+    </div>
+    <div class="nft-card">
+      <img src="public/nft2.png" alt="AI-Агроном">
+      <p>🧠 AI-Агроном</p>
+    </div>
+    <div class="nft-card">
+      <img src="public/nft3.png" alt="Гейміфікатор">
+      <p>🚀 Гейміфікатор</p>
+    </div>
+  </div>
+</section>
+
 <section class="studio-block" id="problemStudio">
   <h2>Проблема</h2>
   <p>Фермери втрачають прибутки через нестабільний ринок, відсутність аналітики та контроль фінансів.</p>
@@ -63,6 +88,52 @@
   <button id="results-btn">Результати</button>
   <div id="dao-chat"></div>
 </section>
+
+    <section class="studio-block" id="nftGallery">
+  <h2>🏅 NFT-бейджі</h2>
+  <p>Отримай унікальні бейджі за участь у DAO-квесті та активність на платформі.</p>
+  <div class="nft-container">
+    <div class="nft-card">
+      <img src="public/nft1.png" alt="DAO-Фермер">
+      <p>🌾 DAO-Фермер</p>
+    </div>
+    <div class="nft-card">
+      <img src="public/nft2.png" alt="AI-Агроном">
+      <p>🧠 AI-Агроном</p>
+    </div>
+    <div class="nft-card">
+      <img src="public/nft3.png" alt="Гейміфікатор">
+      <p>🚀 Гейміфікатор</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nft-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .nft-card {
+    width: 160px;
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 10px;
+  }
+  .nft-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  .nft-card p {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+</style>
 
 <section class="studio-block" id="ctaStudio">
   <h2>Запусти свою цифрову ферму</h2>
