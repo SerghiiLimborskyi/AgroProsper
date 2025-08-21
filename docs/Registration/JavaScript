@@ -54,3 +54,45 @@ function startNow() {
     }
   });
 </script>
+
+<script>
+  function startQuest() {
+    alert("Квест розпочато! 🔍 DAO-код активовано.");
+    document.getElementById("nftGallery").style.display = "block";
+    localStorage.setItem("questCompleted", "true");
+  }
+
+  // Перевірка при завантаженні сторінки
+  window.onload = function() {
+    if (localStorage.getItem("questCompleted") === "true") {
+      document.getElementById("nftGallery").style.display = "block";
+    }
+  };
+</script>
+
+<script>
+  function startQuest() {
+    alert("Квест розпочато! 🔍 DAO-код активовано.");
+    const gallery = document.getElementById("nftGallery");
+    gallery.style.display = "block";
+    gallery.classList.add("fade-in-active");
+
+    const badgeCount = document.getElementById("badgeCount");
+    const totalBadges = document.querySelectorAll(".nft-card").length;
+    badgeCount.textContent = `Бейджів отримано: ${totalBadges}`;
+
+    localStorage.setItem("questCompleted", "true");
+  }
+
+  window.onload = function() {
+    if (localStorage.getItem("questCompleted") === "true") {
+      const gallery = document.getElementById("nftGallery");
+      gallery.style.display = "block";
+      gallery.classList.add("fade-in-active");
+
+      const badgeCount = document.getElementById("badgeCount");
+      const totalBadges = document.querySelectorAll(".nft-card").length;
+      badgeCount.textContent = `Бейджів отримано: ${totalBadges}`;
+    }
+  };
+</script>
