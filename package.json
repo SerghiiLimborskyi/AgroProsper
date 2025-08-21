@@ -2,33 +2,15 @@
   "name": "agroprosper",
   "version": "1.0.0",
   "type": "module",
-  "scripts": {
-   "test": "echo \"Error: no test specified\" && exit 1",
-  "backend": "node backend/server.js"
-  },
-  "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10"
-  }
-}
-
-{
-  "name": "agroprosper",
-  "version": "1.0.0",
-  "type": "module",
   "description": "AgroProsper DAO — AI-платформа для агробізнесу",
   "scripts": {
-  "frontend": "react-scripts start",
-  "backend": "nodemon backend/server.js",
-  "build": "react-scripts build",
-  "test": "npx hardhat test",
-  "vote": "node dao/voteHandler.js --proposal=dao/proposals/001.json",
-  "update-cid": "node scripts/updateAll.js"
-}
-
+    "frontend": "react-scripts start",
+    "backend": "nodemon backend/server.js",
+    "build": "react-scripts build",
+    "test": "npx hardhat test",
+    "vote": "node dao/voteHandler.js --proposal=dao/proposals/001.json",
+    "update-cid": "node scripts/updateAll.js"
+  },
   "dependencies": {
     "dotenv": "^16.3.1",
     "ethers": "^5.8.0",
@@ -41,6 +23,7 @@
     "@nomicfoundation/hardhat-toolbox": "^6.1.0",
     "solidity-coverage": "^0.8.1",
     "chai": "^4.3.7",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "nodemon": "^3.1.10"
   }
 }
