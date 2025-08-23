@@ -10,6 +10,8 @@
     "test": "npx hardhat test",
     "vote": "node dao/voteHandler.js --proposal=dao/proposals/001.json",
     "update-cid": "node scripts/updateAll.js"
+    "backend": "nodemon backend/server.js",
+  "start": "npm run backend"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
