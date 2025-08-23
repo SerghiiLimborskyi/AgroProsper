@@ -1,0 +1,7 @@
+{
+  "watch": ["backend"],
+  "ext": "js,json",
+  "ignore": ["node_modules", "frontend", "contracts", "dao"],
+  "exec": "node backend/server.js",
+  "delay": "500"
+}
