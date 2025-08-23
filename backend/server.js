@@ -42,6 +42,7 @@ app.get('/run/full', async (req, res) => {
 });
 
 // ✅ Запуск сервера — має бути поза всіма маршрутами!
-app.listen(PORT, () => {
+app.listen(PORT, "start": "npm run backend"
+) => {
   console.log(`🚀 Сервер запущено на http://localhost:${PORT}`);
 });
