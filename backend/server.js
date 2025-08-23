@@ -16,6 +16,11 @@ app.post("/api/register", (req, res) => {
     return res.status(400).json({ error: "Обов’язкові поля відсутні" });
   }
 
+  "scripts": {
+  "backend": "nodemon backend/server.js",
+  "start": "npm run backend"
+}
+
   console.log("📥 Новий користувач:");
   console.log("Ім’я:", name);
   console.log("Email:", email);
@@ -42,7 +47,6 @@ app.get('/run/full', async (req, res) => {
 });
 
 // ✅ Запуск сервера — має бути поза всіма маршрутами!
-app.listen(PORT, "start": "npm run backend"
-) => {
+app.listen(PORT,( ) => {
   console.log(`🚀 Сервер запущено на http://localhost:${PORT}`);
 });
