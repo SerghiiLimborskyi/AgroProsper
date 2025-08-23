@@ -4,13 +4,13 @@
   "type": "module",
   "description": "AgroProsper DAO — AI-платформа для агробізнесу",
   "scripts": {
-    "frontend": "react-scripts start",
-    "backend": "nodemon backend/server.js",
-    "build": "react-scripts build",
-    "test": "npx hardhat test",
-    "vote": "node dao/voteHandler.js --proposal=dao/proposals/001.json",
-    "update-cid": "node scripts/updateAll.js"
-   "start": "npm run backend"
+  "frontend": "react-scripts start",
+  "backend": "nodemon backend/server.js",
+  "build": "react-scripts build",
+  "test": "npx hardhat test",
+  "vote": "node dao/voteHandler.js --proposal=dao/proposals/001.json",
+  "update-cid": "node scripts/updateAll.js",
+  "start": "npm run backend"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
