@@ -45,3 +45,6 @@ app.get('/run/full', async (req, res) => {
 app.listen(PORT,( ) => {
   console.log(`🚀 Сервер запущено на http://localhost:${PORT}`);
 });
+process.on("uncaughtException", err => {
+  console.error("Uncaught error:", err);
+});
