@@ -3,52 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroProsper — Головна</title>
+  <title>AgroProsper</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .logo {
+      height: 60px;
+    }
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-menu li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <img src="logo.png" alt="AgroProsper Logo" class="logo">
-    <nav class="nav">
-      <button class="nav-toggle" aria-label="Меню">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-      <ul class="nav-menu">
-        <li><a href="index.html">Головна</a></li>
-        <li><a href="about.html">Про нас</a></li>
-        <li><a href="Registration/dashboard.html">Реєстрація</a></li>
-        <li><a href="contact.html">Контакти</a></li>
-      </ul>
-    </nav>
+    <img src="logo.png" alt="AgroProsper Logo" class="logo" />
+    <ul class="nav-menu">
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="about.html">Про нас</a></li>
+      <li><a href="Registration/dashboard.html">Реєстрація</a></li>
+      <li><a href="contact.html">Контакти</a></li>
+    </ul>
   </header>
 
-  <main>
-    <div class="banner">
-      <img src="banner.jpg" alt="AgroProsper Banner">
-    </div>
+  <div class="banner">
+    <img src="banner.jpg" alt="AgroProsper Banner" />
+  </div>
 
-    <section id="agroprosper-videos">
-      <h2>🎥 Відео з AgroProsper</h2>
-      <div id="video-container"></div>
-    </section>
+  <h1 id="welcome-text">Ласкаво просимо до AgroProsper</h1>
 
-    <section class="video-section">
-      <h2>🎥 Відео-презентація</h2>
-      <iframe width="100%" height="400" src="https://www.youtube.com/embed/ID_ТВОГО_ВІДЕО" title="AgroProsper Presentation" frameborder="0" allowfullscreen></iframe>
-      <p>📣 Презентуємо на <a href="https://facebook.com">Facebook</a>, <a href="https://t.me">Telegram</a> та <a href="https://youtube.com">YouTube</a></p>
-    </section>
+  <section id="agroprosper-videos">
+    <h2 id="video-title">🎥 Відео з AgroProsper</h2>
+    <div id="video-container"></div>
+  </section>
 
-    <section class="language-switch">
-      <label for="lang">🌍 Мова:</label>
-      <select id="lang" onchange="location.href=this.value">
-        <option value="index.html">🇺🇦 Українська</option>
-        <option value="en.html">🇬🇧 English</option>
-        <option value="pl.html">🇵🇱 Polski</option>
-      </select>
-    </section>
-  </main>
+  <section class="video-section" style="text-align: center; padding: 40px;">
+    <h2 id="presentation-title">🎥 Відео-презентація</h2>
+    <iframe width="100%" height="400" src="https://www.youtube.com/embed/ID_ТВОГО_ВІДЕО" title="AgroProsper Presentation" frameborder="0" allowfullscreen></iframe>
+    <p id="social-text">📣 Презентуємо на <a href="https://facebook.com">Facebook</a>, <a href="https://t.me">Telegram</a>, <a href="https://youtube.com">YouTube</a></p>
+  </section>
+
+  <script>
+    const lang = navigator.language.slice(0, 2);
+    const translations = {
+      uk: {
+        welcome: "Ласкаво просимо до AgroProsper",
+        videoTitle: "🎥 Відео з AgroProsper",
+        presentationTitle: "🎥 Відео-презентація",
+        social: "📣 Презентуємо на <a href='https://facebook.com'>Facebook</a>, <a href='https://t.me'>Telegram</a>, <a href='https://youtube.com'>YouTube</a>"
+      },
+      en: {
+        welcome: "Welcome to AgroProsper",
+        videoTitle: "🎥 Videos from AgroProsper",
+        presentationTitle: "🎥 Presentation Video",
+        social: "📣 Follow us on <a href='https://facebook.com'>Facebook</a>, <a href='https://t.me'>Telegram</a>, <a href='https://youtube.com'>YouTube</a>"
+      },
+      pl: {
+        welcome: "Witamy w AgroProsper",
+        videoTitle: "🎥 Filmy z AgroProsper",
+        presentationTitle: "🎥 Prezentacja wideo",
+        social: "📣 Śledź nas na <a href='https://facebook.com'>Facebook</a>, <a href='https://t.me'>Telegram</a>, <a href='https://youtube.com'>YouTube</a>"
+      }
+    };
+
+    const t = translations[lang] || translations.uk;
+    document.getElementById('welcome-text').textContent = t.welcome;
+    document.getElementById('video-title').textContent = t.videoTitle;
+    document.getElementById('presentation-title').textContent = t.presentationTitle;
+    document.getElementById('social-text').innerHTML = t.social;
+  </script>
 
   <script>
     const apiKey = 'YOUR_API_KEY';
@@ -68,9 +123,9 @@
           const videoId = item.id.videoId;
           const title = item.snippet.title;
           container.innerHTML += `
-            <div class="video-item">
-              <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
-              <p>${title}</p>
+            <div class="video-item" style="margin: 20px;">
+              <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen width="300" height="170"></iframe>
+              <p style="color: #fff;">${title}</p>
             </div>
           `;
         }
@@ -79,71 +134,5 @@
 
     loadVideos();
   </script>
-
-  <script>
-    const hour = new Date().getHours();
-    const theme = (hour >= 6 && hour < 18) ? 'day' : 'night';
-    document.body.classList.add(theme);
-  </script>
-
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const menu = document.querySelector('.nav-menu');
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-      menu.classList.toggle('active');
-    });
-    document.addEventListener('click', (e) => {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.classList.remove('active');
-        toggle.classList.remove('active');
-      }
-    });
-  </script>
-
-  <style>
-    .banner img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 8px;
-    }
-
-    #agroprosper-videos {
-      padding: 40px 20px;
-      background-color: #fff;
-      border-top: 2px solid #e0e0e0;
-      text-align: center;
-    }
-
-    #agroprosper-videos h2 {
-      font-size: 24px;
-      margin-bottom: 30px;
-      color: #2c3e50;
-    }
-
-    #video-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    .video-item {
-      width: 300px;
-    }
-
-    .video-item iframe {
-      width: 100%;
-      height: 170px;
-      border-radius: 8px;
-    }
-
-    .video-item p {
-      margin-top: 10px;
-      font-size: 16px;
-      color: #34495e;
-    }
-  </style>
 </body>
 </html>
