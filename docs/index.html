@@ -4,167 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AgroProsper — Головна</title>
-  <link rel="stylesheet" href="../public/style.css" />
-</head>
-<body>
-  <!-- 🎵 Музика -->
-  <audio id="bg-music" autoplay loop>
-    <source src="public/music.mp3" type="audio/mpeg">
-  </audio>
-
-  <!-- 🔘 Кнопка керування музикою -->
-  <div style="position: fixed; top: 20px; right: 20px; z-index: 999;">
-    <button id="music-toggle" style="padding: 10px 20px; font-size: 16px;">
-      🔊 Вимкнути музику
-    </button>
-  </div>
-
-  <header class="site-header">
-    <img src="../public/logo.png" alt="AgroProsper Logo" class="logo">
-    <nav class="nav">
-      <button class="nav-toggle" aria-label="Меню">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-      <ul class="nav-menu">
-        <li><a href="index.html">Головна</a></li>
-        <li><a href="about.html">Про нас</a></li>
-        <li><a href="Registration/dashboard.html">Реєстрація</a></li>
-        <li><a href="contact.html">Контакти</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <div class="banner">
-      <img src="public/banner.jpg" alt="AgroProsper Banner">
-    </div>
-
-    <section id="agroprosper-videos">
-      <h2>🎥 Відео з AgroProsper</h2>
-      <div id="video-container"></div>
-      <div id="site-header"></div>
-      <script>
-        fetch('header.html')
-          .then(res => res.text())
-          .then(html => document.getElementById('site-header').innerHTML = html);
-      </script>
-    </section>
-
-    <section class="video-section">
-      <h2>🎥 Відео-презентація</h2>
-      <iframe width="100%" height="400" src="https://www.youtube.com/embed/ID_ТВОГО_ВІДЕО" title="AgroProsper Presentation" frameborder="0" allowfullscreen></iframe>
-      <p>📣 Презентуємо на <a href="https://facebook.com">Facebook</a>, <a href="https://t.me">Telegram</a> та <a href="https://youtube.com">YouTube</a></p>
-    </section>
-
-    <section class="language-switch">
-      <label for="lang">🌍 Мова:</label>
-      <select id="lang" onchange="location.href=this.value">
-        <option value="index.html">🇺🇦 Українська</option>
-        <option value="en.html">🇬🇧 English</option>
-        <option value="pl.html">🇵🇱 Polski</option>
-      </select>
-    </section>
-  </main>
-
-  <script>
-    const hour = new Date().getHours();
-    const theme = (hour >= 6 && hour < 18) ? 'day' : 'night';
-    document.body.classList.add(theme);
-  </script>
-
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const menu = document.querySelector('.nav-menu');
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-      menu.classList.toggle('active');
-    });
-    document.addEventListener('click', (e) => {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.classList.remove('active');
-        toggle.classList.remove('active');
-      }
-    });
-  </script>
-
-  <!-- 🎵 Скрипт для керування музикою -->
-  <script>
-    const audio = document.getElementById('bg-music');
-    const toggleBtn = document.getElementById('music-toggle');
-
-    toggleBtn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-        toggleBtn.textContent = '🔊 Вимкнути музику';
-      } else {
-        audio.pause();
-        toggleBtn.textContent = '🔇 Увімкнути музику';
-      }
-    });
-  </script>
-
   <style>
-    #agroprosper-videos {
-      padding: 40px 20px;
-      background-color: #fff;
-      border-top: 2px solid #e0e0e0;
-      text-align: center;
+    body {
+      background-image: url("background.jpg");
+      background-size: cover;
+      background-position: center;
+      font-family: sans-serif;
+      color: #fff;
     }
-    #agroprosper-videos h2 {
-      font-size: 24px;
-      margin-bottom: 30px;
-      color: #2c3e50;
-    }
-    #video-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-    .video-item {
-      width: 300px;
-    }
-    .video-item iframe {
+    .banner img {
       width: 100%;
-      height: 170px;
-      border-radius: 8px;
+      max-height: 300px;
+      object-fit: cover;
     }
-    .video-item p {
-      margin-top: 10px;
-      font-size: 16px;
-      color: #34495e;
+    .music-button {
+      margin: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
   </style>
+</head>
+<body>
+  <div class="banner">
+    <img src="banner.jpg" alt="AgroProsper Banner">
+  </div>
 
-  <script>
-    const apiKey = 'YOUR_API_KEY';
-    const channelId = 'UCsN8AHUPLQp_xJlGOkwZkmw';
-    const maxResults = 4;
+  <button class="music-button" onclick="document.getElementById('bg-music').play()">🎶 Ввімкнути музику</button>
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
-    async function loadVideos() {
-      const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}`
-      );
-      const data = await response.json();
-      const container = document.getElementById('video-container');
-      container.innerHTML = '';
-      data.items.forEach(item => {
-        if (item.id.kind === 'youtube#video') {
-          const videoId = item.id.videoId;
-          const title = item.snippet.title;
-          container.innerHTML += `
-            <div class="video-item">
-              <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
-              <p>${title}</p>
-            </div>
-          `;
-        }
-      });
-    }
+  <h1>Ласкаво просимо до AgroProsper</h1>
+  <p>Сільське господарство майбутнього вже сьогодні.</p>
 
-    loadVideos();
-  </script>
+  <div class="language-switch">
+    <label for="lang">🌍 Мова:</label>
+    <select id="lang" onchange="location.href=this.value">
+      <option value="index.html">🇺🇦 Українська</option>
+      <option value="index_en.html">🇬🇧 English</option>
+      <option value="index_pl.html">🇵🇱 Polski</option>
+    </select>
+  </div>
 </body>
 </html>
