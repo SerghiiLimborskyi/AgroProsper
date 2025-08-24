@@ -1,9 +1,20 @@
 <!-- header.html -->
 <div class="site-header">
-  <img src="public/logo.png" alt="AgroProsper Logo" class="header-logo">
-  <img src="public/banner.jpg" alt="AgroProsper Banner" class="banner">
-  <audio autoplay loop>
-    <source src="public/music.mp3" type="audio/mpeg">
-    Ваш браузер не підтримує аудіо.
-  </audio>
+  <img src="/AgroProsper/public/logo.png" alt="AgroProsper Logo" class="header-logo">
+
+  <!-- Банер тільки на головній -->
+  <script>
+    if (window.location.pathname === "/AgroProsper/index.html") {
+      document.write('<img src="/AgroProsper/public/banner.jpg" alt="AgroProsper Banner" class="banner">');
+    }
+  </script>
+
+  <nav>
+    <ul class="nav-menu">
+      <li><a href="/AgroProsper/index.html">Головна</a></li>
+      <li><a href="/AgroProsper/about.html">Про нас</a></li>
+      <li><a href="/AgroProsper/Registration/dashboard.html">Реєстрація</a></li>
+      <li><a href="/AgroProsper/contact.html">Контакти</a></li>
+    </ul>
+  </nav>
 </div>
