@@ -3,66 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>АгроПроспер</title>
+  <title>AgroProsper</title>
+  <link rel="stylesheet" href="public/style.css" />
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
-      background: url('background.jpg') no-repeat center center fixed;
+      background: url('public/background.jpg') no-repeat center center fixed;
       background-size: cover;
       color: white;
-      text-align: center;
     }
-    nav {
-      background: rgba(0,0,0,0.6);
-      padding: 1em;
+    .site-header {
       display: flex;
-      justify-content: space-around;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: rgba(0,0,0,0.6);
     }
-    nav a {
+    .logo {
+      height: 60px;
+    }
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    .nav-menu li a {
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
-    .banner {
-      margin-top: 20px;
+    .banner img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
     }
     .music-button {
       margin: 20px;
       padding: 10px 20px;
       background: green;
-      border: none;
       color: white;
-      font-size: 1em;
+      border: none;
+      font-size: 16px;
       cursor: pointer;
+      border-radius: 6px;
     }
-    .language-switch {
-      margin-top: 20px;
+    h1 {
+      text-align: center;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Головна</a>
-    <a href="#about">Про нас</a>
-    <a href="#contact">Контакти</a>
-  </nav>
+  <header class="site-header">
+    <img src="public/logo.png" alt="AgroProsper Logo" class="logo">
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="about.html">Про нас</a></li>
+        <li><a href="Registration/dashboard.html">Реєстрація</a></li>
+        <li><a href="contact.html">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <div class="banner">
-    <img src="banner.jpg" alt="Банер" width="100%" />
+    <img src="public/banner.jpg" alt="AgroProsper Banner">
   </div>
 
-  <h1>Ласкаво просимо до компанії АгроПроспер</h1>
-  <p>Майбутнє сільського господарства починається вже зараз.</p>
+  <h1 id="welcome-text">Ласкаво просимо до AgroProsper</h1>
 
-  <button class="music-button" onclick="document.getElementById('bg-music').play()">🎶 Відтворювати музику</button>
-  <audio id="bg-music" src="music.mp3"></audio>
-
-  <div class="language-switch">
-    🌍 Мова:
-    <a href="index.html">🇺🇦</a>
-    <a href="index_en.html">🇬🇧</a>
-    <a href="index_pl.html">🇵🇱</a>
+  <div style="text-align: center;">
+    <button id="play-music" class="music-button">🎵 Відтворити музику</button>
+    <audio id="bg-music" src="public/music.mp3" loop></audio>
   </div>
+
+  <section id="agroprosper-videos">
+    <h2>🎥 Відео з AgroProsper</h2>
+    <div id="video-container"></div>
+  </section>
+
+  <section class="video-section" style="text-align: center; padding: 40px;">
+    <h2>🎥 Відео-презентація</h2>
+    <iframe width="100%" height="400" src="https://www.youtube.com/embed/ID_ТВОГО_ВІДЕО" title="AgroProsper Presentation" frameborder="0" allowfullscreen></iframe>
+    <p>📣 Презентуємо на <a href="https://facebook.com">Facebook</a>, <a href="https://t.me">Telegram</a>, <a href="https://youtube.com">YouTube</a></p>
+  </section>
+
+  <script>
+    // Мова браузера
+    const lang = navigator.language.slice(0, 2);
+    const messages = {
+      uk: {
+        welcome: "Ласкаво просимо до AgroProsper",
+        play: "🎵 Відтворити музику"
+      },
+      en: {
+        welcome: "Welcome to AgroProsper",
+        play: "🎵 Play Music"
+      },
+      pl: {
+        welcome: "Witamy w AgroProsper",
+        play: "🎵 Odtwórz muzykę"
+      }
+    };
+    const content = messages[lang] || messages.uk;
+    document.getElementById('welcome-text').textContent = content.welcome;
+    document.getElementById('play-music').textContent = content.play;
+
+    // Кнопка музики
+    document.getElementById('play-music').addEventListener('click', () => {
+      document.getElementById('bg-music').play();
+    });
+
+    // YouTube API
+    const apiKey = 'YOUR_API_KEY';
+    const channelId = 'UCsN8AHUPLQp_xJlGOkwZkmw';
+    const maxResults = 4;
+
+    async function loadVideos() {
+      const response = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}`
+      );
+      const data = await response.json();
+      const container = document.getElementById('video-container');
+      container.innerHTML = '';
+
+      data.items.forEach(item => {
+        if (item.id.kind === 'youtube#video') {
+          const videoId = item.id.videoId;
+          const title = item.snippet.title;
+          container.innerHTML += `
+            <div class="video-item" style="margin: 20px;">
+              <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen width="300" height="170"></iframe>
+              <p style="color: #fff;">${title}</p>
+            </div>
+          `;
+        }
+      });
+    }
+
+    loadVideos();
+  </script>
 </body>
 </html>
