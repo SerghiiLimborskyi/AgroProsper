@@ -3,52 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroProsper — Головна</title>
+  <title>АгроПроспер</title>
   <style>
     body {
-      background-image: url("background.jpg");
-      background-size: cover;
-      background-position: center;
+      margin: 0;
       font-family: sans-serif;
-      color: #fff;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
     }
-    .banner img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
+    nav {
+      background: rgba(0,0,0,0.6);
+      padding: 1em;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .banner {
+      margin-top: 20px;
     }
     .music-button {
       margin: 20px;
       padding: 10px 20px;
-      font-size: 18px;
-      background-color: #4CAF50;
-      color: white;
+      background: green;
       border: none;
-      border-radius: 8px;
+      color: white;
+      font-size: 1em;
       cursor: pointer;
+    }
+    .language-switch {
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">Головна</a>
+    <a href="#about">Про нас</a>
+    <a href="#contact">Контакти</a>
+  </nav>
+
   <div class="banner">
-    <img src="banner.jpg" alt="AgroProsper Banner">
+    <img src="banner.jpg" alt="Банер" width="100%" />
   </div>
 
-  <button class="music-button" onclick="document.getElementById('bg-music').play()">🎶 Ввімкнути музику</button>
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+  <h1>Ласкаво просимо до компанії АгроПроспер</h1>
+  <p>Майбутнє сільського господарства починається вже зараз.</p>
 
-  <h1>Ласкаво просимо до AgroProsper</h1>
-  <p>Сільське господарство майбутнього вже сьогодні.</p>
+  <button class="music-button" onclick="document.getElementById('bg-music').play()">🎶 Відтворювати музику</button>
+  <audio id="bg-music" src="music.mp3"></audio>
 
   <div class="language-switch">
-    <label for="lang">🌍 Мова:</label>
-    <select id="lang" onchange="location.href=this.value">
-      <option value="index.html">🇺🇦 Українська</option>
-      <option value="index_en.html">🇬🇧 English</option>
-      <option value="index_pl.html">🇵🇱 Polski</option>
-    </select>
+    🌍 Мова:
+    <a href="index.html">🇺🇦</a>
+    <a href="index_en.html">🇬🇧</a>
+    <a href="index_pl.html">🇵🇱</a>
   </div>
 </body>
 </html>
