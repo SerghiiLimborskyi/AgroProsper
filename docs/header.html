@@ -1,24 +1,20 @@
 <!-- header.html -->
 <div class="site-header">
-  <img src="/AgroProsper/public/logo.png" alt="AgroProsper Logo" class="header-logo">
+  <img src="logo.png" alt="AgroProsper Logo" class="header-logo">
 
   <!-- Банер тільки на головній -->
   <script>
-    if (window.location.pathname === "/AgroProsper/index.html") {
-      document.write('<img src="/AgroProsper/public/banner.jpg" alt="AgroProsper Banner" class="banner">');
+    if (window.location.pathname.endsWith("index.html")) {
+      document.write('<img src="banner.jpg" alt="AgroProsper Banner" class="banner">');
     }
   </script>
 
-  <!-- Меню-бургер -->
-  <input type="checkbox" id="menu-toggle" class="menu-toggle">
-  <label for="menu-toggle" class="menu-icon">&#9776;</label>
-
   <nav class="nav-menu">
     <ul>
-      <li><a href="/AgroProsper/index.html">Головна</a></li>
-      <li><a href="/AgroProsper/about.html">Про нас</a></li>
-      <li><a href="/AgroProsper/Registration/dashboard.html">Реєстрація</a></li>
-      <li><a href="/AgroProsper/contact.html">Контакти</a></li>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="about.html">Про нас</a></li>
+      <li><a href="Registration/dashboard.html">Реєстрація</a></li>
+      <li><a href="contact.html">Контакти</a></li>
     </ul>
   </nav>
 </div>
