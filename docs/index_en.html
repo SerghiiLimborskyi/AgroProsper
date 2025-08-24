@@ -3,52 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroProsper — Home</title>
-  <style>
-    body {
-      background-image: url("background.jpg");
-      background-size: cover;
-      background-position: center;
-      font-family: sans-serif;
-      color: #fff;
-    }
-    .banner img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-    }
-    .music-button {
-      margin: 20px;
-      padding: 10px 20px;
-      font-size: 18px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  </style>
+  <title>AgroProsper</title>
+  <style>/* same styles as above */</style>
 </head>
 <body>
+  <nav>
+    <a href="index_en.html">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <div class="banner">
-    <img src="banner.jpg" alt="AgroProsper Banner">
+    <img src="banner.jpg" alt="Banner" width="100%" />
   </div>
 
-  <button class="music-button" onclick="document.getElementById('bg-music').play()">🎶 Play Music</button>
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
-
   <h1>Welcome to AgroProsper</h1>
-  <p>The future of agriculture starts now.</p>
+  <p>The future of agriculture begins now.</p>
+
+  <button class="music-button" onclick="document.getElementById('bg-music').play()">🎶 Play Music</button>
+  <audio id="bg-music" src="music.mp3"></audio>
 
   <div class="language-switch">
-    <label for="lang">🌍 Language:</label>
-    <select id="lang" onchange="location.href=this.value">
-      <option value="index.html">🇺🇦 Українська</option>
-      <option value="index_en.html">🇬🇧 English</option>
-      <option value="index_pl.html">🇵🇱 Polski</option>
-    </select>
+    🌍 Language:
+    <a href="index.html">🇺🇦</a>
+    <a href="index_en.html">🇬🇧</a>
+    <a href="index_pl.html">🇵🇱</a>
   </div>
 </body>
 </html>
