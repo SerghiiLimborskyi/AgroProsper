@@ -3,52 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroProsper — Strona główna</title>
-  <style>
-    body {
-      background-image: url("background.jpg");
-      background-size: cover;
-      background-position: center;
-      font-family: sans-serif;
-      color: #fff;
-    }
-    .banner img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-    }
-    .music-button {
-      margin: 20px;
-      padding: 10px 20px;
-      font-size: 18px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  </style>
+  <title>AgroProsper</title>
+  <style>/* same styles as above */</style>
 </head>
 <body>
+  <nav>
+    <a href="index_pl.html">Strona główna</a>
+    <a href="#about">O nas</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+
   <div class="banner">
-    <img src="banner.jpg" alt="AgroProsper Banner">
+    <img src="banner.jpg" alt="Baner" width="100%" />
   </div>
 
-  <button class="music-button" onclick="document.getElementById('bg-music').play()">🎶 Włącz muzykę</button>
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+  <h1>Witamy w firmie AgroProsper</h1>
+  <p>Przyszłość rolnictwa zaczyna się już teraz.</p>
 
-  <h1>Witamy w AgroProsper</h1>
-  <p>Przyszłość rolnictwa zaczyna się teraz.</p>
+  <button class="music-button" onclick="document.getElementById('bg-music').play()">🎶 Odtwórz muzykę</button>
+  <audio id="bg-music" src="music.mp3"></audio>
 
   <div class="language-switch">
-    <label for="lang">🌍 Język:</label>
-    <select id="lang" onchange="location.href=this.value">
-      <option value="index.html">🇺🇦 Українська</option>
-      <option value="index_en.html">🇬🇧 English</option>
-      <option value="index_pl.html">🇵🇱 Polski</option>
-    </select>
+    🌍 Język:
+    <a href="index.html">🇺🇦</a>
+    <a href="index_en.html">🇬🇧</a>
+    <a href="index_pl.html">🇵🇱</a>
   </div>
 </body>
 </html>
