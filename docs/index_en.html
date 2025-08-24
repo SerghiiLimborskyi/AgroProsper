@@ -4,65 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AgroProsper — Home</title>
-  <link rel="stylesheet" href="../public/style.css" />
+  <style>
+    body {
+      background-image: url("background.jpg");
+      background-size: cover;
+      background-position: center;
+      font-family: sans-serif;
+      color: #fff;
+    }
+    .banner img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+    .music-button {
+      margin: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
- <audio autoplay loop>
-  <source src="public/music.mp3" type="audio/mpeg">
-</audio>
-  <header class="site-header">
-    <img src="../public/logo.png" alt="AgroProsper Logo" class="logo">
-    <nav class="nav">
-      <button class="nav-toggle" aria-label="Menu">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      </button>
-      <ul class="nav-menu">
-        <li><a href="index_en.html">Home</a></li>
-        <li><a href="about_en.html">About</a></li>
-        <li><a href="Registration/dashboard.html">Register</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main> 
-<div class="banner">
-  <img src="public/banner.jpg" alt="AgroProsper Banner">
-</div>
-    
-    <section class="video-section">
-      <h2>🎥 Presentation Video</h2>
-      <iframe width="100%" height="400" src="https://www.youtube.com/embed/ID_ТВОГО_ВІДЕО" title="AgroProsper Presentation" frameborder="0" allowfullscreen></iframe>
-      <p>📣 Presented on <a href="https://facebook.com">Facebook</a>, <a href="https://t.me">Telegram</a>, and <a href="https://youtube.com">YouTube</a></p>
-    </section>
+  <div class="banner">
+    <img src="banner.jpg" alt="AgroProsper Banner">
+  </div>
 
-    <section class="language-switch">
-      <label for="lang">🌍 Language:</label>
-      <select id="lang" onchange="location.href=this.value">
-        <option value="index.html">🇺🇦 Українська</option>
-        <option value="index_en.html" selected>🇬🇧 English</option>
-        <option value="index_pl.html">🇵🇱 Polski</option>
-      </select>
-    </section>
-  </main>
+  <button class="music-button" onclick="document.getElementById('bg-music').play()">🎶 Play Music</button>
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const menu = document.querySelector('.nav-menu');
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-      menu.classList.toggle('active');
-    });
-    document.addEventListener('click', (e) => {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.classList.remove('active');
-        toggle.classList.remove('active');
-      }
-    });
-  </script>
-  <script>
-  const hour = new Date().getHours();
-  const theme = (hour >= 6 && hour < 18) ? 'day' : 'night';
-  document.body.classList.add(theme);
-</script>
+  <h1>Welcome to AgroProsper</h1>
+  <p>The future of agriculture starts now.</p>
+
+  <div class="language-switch">
+    <label for="lang">🌍 Language:</label>
+    <select id="lang" onchange="location.href=this.value">
+      <option value="index.html">🇺🇦 Українська</option>
+      <option value="index_en.html">🇬🇧 English</option>
+      <option value="index_pl.html">🇵🇱 Polski</option>
+    </select>
+  </div>
 </body>
 </html>
