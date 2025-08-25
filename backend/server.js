@@ -41,11 +41,9 @@ app.get('/run/full', async (req, res) => {
     const apiKey = process.env.YOUTUBE_API_KEY;
     const channelId = 'UCsN8AHUPLQp_xJlGOkwZkmw';
     const maxResults = 4;
-
     const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}`;
     const response = await fetch(url);
     const data = await response.json();
-
     res.json(data);
   } catch (error) {
     console.error('❌ Помилка при запиті до YouTube API:', error);
