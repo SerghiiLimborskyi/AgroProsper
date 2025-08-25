@@ -12,6 +12,6 @@ const bot = new TelegramBot(token);
   } catch (err) {
     console.error('❌ Помилка надсилання:', err);
   } finally {
-    process.exit(); // завершити процес, щоб не зависав
+    process.exit();
   }
 })();
