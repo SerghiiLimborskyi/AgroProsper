@@ -6,6 +6,28 @@
   <title>AgroProsper v1.2 Preview</title>
   <link rel="stylesheet" href="../assets/style.css" />
   <script src="../scripts/mint-api.js"></script>
+  <script>
+  const deadline = new Date("2025-09-10T12:00:00");
+  setInterval(() => {
+    const now = new Date();
+    const diff = deadline - now;
+    const seconds = Math.floor(diff / 1000);
+    document.getElementById("timer").innerText = `⏳ Залишилось: ${seconds} сек`;
+  }, 1000);
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+<script>
+  const web3 = new Web3(Web3.givenProvider);
+  const contractAddress = "0xYourContractAddress";
+  const abi = [/* ABI контракту */];
+
+  async function vote(proposalId, choice) {
+    const accounts = await web3.eth.requestAccounts();
+    const contract = new web3.eth.Contract(abi, contractAddress);
+    await contract.methods.vote(proposalId, choice).send({ from: accounts[0] });
+    alert("✅ Голос зафіксовано");
+  }
+</script>
 </head>
 <body>
   <header>
@@ -30,6 +52,13 @@
     <button onclick="location.href='../hydro-farm.html'" class="promo-button">🌱 HydroFarm</button>
   </section>
 
+ <section>
+  <h2>🗳️ DAO-голосування</h2>
+  <p id="timer"></p>
+  <button onclick="vote('proposal-42', true)">✅ За</button>
+  <button onclick="vote('proposal-42', false)">❌ Проти</button>
+</section>
+ 
   <section>
     <h2>🪙 Токен AGT</h2>
     <p>Тип: ERC-20<br>Емісія: 1,000,000 AGT<br>Призначення: голосування, бонуси, оплата</p>
