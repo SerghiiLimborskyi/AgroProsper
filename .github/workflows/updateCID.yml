@@ -4,16 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       badge:
-        description: 'Badge name (starter, farmer, expert)'
+        description: 'Назва бейджа (starter, farmer, expert)'
         required: true
       dry_run:
-        description: 'Dry run mode'
+        description: 'Dry run режим (true/false)'
         required: false
         default: 'true'
 
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -28,4 +29,14 @@ jobs:
 
       - name: Run badgeManager.js
         run: |
-          node scripts/cid/badgeManager.js --badge=${{ github.event.inputs.badge }} --upload ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
+          node scripts/cid/badgeManager.js \
+            --badge=${{ github.event.inputs.badge }} \
+            --upload \
+            ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
+
+      - name: Upload dry-run log
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: dry-run-log
+          path: scripts/logs/dry-run.log
