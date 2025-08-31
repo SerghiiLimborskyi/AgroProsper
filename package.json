@@ -11,6 +11,7 @@
     "vote": "node dao/voteHandler.js --proposal=dao/proposals/001.json",
     "update-cid": "node scripts/updateAll.js",
     "start": "concurrently \"npm run backend\" \"npm run frontend\""
+    "upload-ipfs": "node scripts/ipfsUploader.js"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
