@@ -1,10 +1,10 @@
 // scripts/cid/badgeManager.js
 
 require('dotenv').config();
-const fs = require('fs');
-const path = require('path');
-const { Web3Storage, File } = require('web3.storage');
-const { ethers } = require('hardhat');
+const config = require('./config.json');
+const BADGES = config.badges;
+const METADATA_DIR = config.metadataDir;
+const CONTRACT_NAME = config.contractName;
 
 const BADGES = ['starter', 'farmer', 'trader'];
 const METADATA_DIR = './metadata';
@@ -18,9 +18,15 @@ function getClient() {
   return new Web3Storage({ token: getAccessToken() });
 }
 
-async function uploadBadge(badge) {
+async function uploadBadge(badge, dryRun = false) {
   const filePath = path.join(METADATA_DIR, `${badge}.json`);
   const metadata = fs.readFileSync(filePath);
+
+  if (dryRun) {
+    console.log(`🧪 [dry-run] Would upload ${badge}.json to IPFS`);
+    return 'dry-run-cid';
+  }
+
   const files = [new File([metadata], `${badge}.json`)];
   const cid = await getClient().put(files);
   console.log(`✅ ${badge} uploaded to IPFS: ${cid}`);
@@ -29,6 +35,9 @@ async function uploadBadge(badge) {
 
 async function updateContractCID(badge, cid) {
   const contract = await ethers.getContract(CONTRACT_NAME);
+  if (isDryRun) {
+  console.log(`🧪 [dry-run] Would update ${badge} CID in contract: ${cid}`);
+} else {
   const tx = await contract.updateCID(badge, cid);
   await tx.wait();
   console.log(`🔄 ${badge} CID updated in contract: ${cid}`);
@@ -46,6 +55,7 @@ async function verifyCID(badge) {
 async function main() {
   const args = process.argv.slice(2);
   const badgeArg = args.includes('--all') ? BADGES : BADGES.filter(b => args.includes(`--badge=${b}`));
+  const cid = await uploadBadge(badge, isDryRun);
 
   for (const badge of badgeArg) {
     if (args.includes('--upload')) {
@@ -61,6 +71,7 @@ async function main() {
 }
 
 main().catch(err => {
+  const isDryRun = args.includes('--dry-run');
   console.error('💥 Error:', err);
   process.exit(1);
 });
