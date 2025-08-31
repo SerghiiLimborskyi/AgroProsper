@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Кастомні стилі */
+body {
+  @apply bg-bg text-dao font-mono p-4;
+}
+
+h1, h2 {
+  @apply text-2xl font-bold mb-4;
+}
+
+button {
+  @apply bg-dao text-black px-4 py-2 rounded hover:bg-green-400;
+}
