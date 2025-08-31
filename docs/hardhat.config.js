@@ -7,6 +7,7 @@ module.exports = {
     sepolia: {
       url: "https://sepolia.infura.io/v3/YOUR_INFURA_PROJECT_ID",
       accounts: [process.env.PRIVATE_KEY]
+      import { Chart } from 'chart.js';
     }
   }
 };
