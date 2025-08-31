@@ -1,3 +1,4 @@
+import { sendLog } from './utils/sendLog.js';
 import fs from 'fs';
 import path from 'path';
 import { create } from 'ipfs-http-client';
@@ -31,6 +32,7 @@ async function updateBadgeCID(badgeName, contract) {
   const receipt = await tx.wait();
 
   console.log(`✅ ${badgeName}: CID оновлено → ${ipfsURI}`);
+  sendLog(`🧪 CID оновлено для *${badgeName}*\n🔗 ${cid}\n📦 TX: ${txHash}`);
   logTransaction(badgeName, ipfsURI, receipt.transactionHash);
 }
 
