@@ -1,0 +1,5 @@
+{
+  "badges": ["starter", "farmer", "trader"],
+  "metadataDir": "./metadata",
+  "contractName": "UserBadgeNFT"
+}
