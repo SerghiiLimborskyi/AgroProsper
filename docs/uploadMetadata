@@ -1,0 +1,14 @@
+import { uploadMetadata } from '../services/ipfs';
+
+const metadata = {
+  name: "AgroBadge #42",
+  description: "CID-бейдж учасника DAO",
+  image: "https://ipfs.io/ipfs/QmImageCID",
+  attributes: [
+    { trait_type: "Ферма", value: "Зелений луг" },
+    { trait_type: "Статус", value: "Активний" }
+  ]
+};
+
+const uri = await uploadMetadata(metadata);
+console.log("✅ IPFS URI:", uri);
