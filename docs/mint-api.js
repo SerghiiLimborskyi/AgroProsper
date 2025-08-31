@@ -50,15 +50,7 @@ export async function handleMint(userData) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData)
     });
-    
-    document.getElementById('mintForm').onsubmit = async (e) => {
-  e.preventDefault();
-  const wallet = e.target.wallet.value;
-  const res = await fetch(`/mint?wallet=${wallet}`);
-  const data = await res.json();
-  alert(`Minted: ${data.tokenId}`);
-};
-
+ 
     const result = await response.json();
 
     if (!response.ok) {
@@ -69,4 +61,12 @@ export async function handleMint(userData) {
   } catch (error) {
     console.error("❌ Помилка при реєстрації:", error.message);
   }
+     
+    document.getElementById('mintForm').onsubmit = async (e) => {
+  e.preventDefault();
+  const wallet = e.target.wallet.value;
+  const res = await fetch(`/mint?wallet=${wallet}`);
+  const data = await res.json();
+  alert(`Minted: ${data.tokenId}`);
+};
 }
