@@ -1,0 +1,12 @@
+body {
+  background-color: #1A1A1A;
+  color: #00FF66;
+  font-family: 'Share Tech Mono', monospace;
+  text-align: center;
+  padding: 2em;
+}
+video, img {
+  margin-top: 1em;
+  width: 80%;
+  max-width: 600px;
+}
