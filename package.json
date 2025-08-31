@@ -12,6 +12,7 @@
     "update-cid": "node scripts/updateAll.js",
     "start": "concurrently \"npm run backend\" \"npm run frontend\""
     "upload-ipfs": "node scripts/ipfsUploader.js"
+    "upload-local-ipfs": "node scripts/badgeManager.js --all"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
