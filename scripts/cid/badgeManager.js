@@ -16,6 +16,12 @@ function logCID(badge, cid) {
   fs.appendFileSync('cid-history.log', logEntry);
 }
 
+function logDryRun(message) {
+  const timestamp = new Date().toISOString();
+  const entry = `${timestamp} [DRY-RUN] ${message}\n`;
+  fs.appendFileSync('dry-run.log', entry);
+}
+
 function logIPFSStatus(message) {
   const timestamp = new Date().toISOString();
   const entry = `${timestamp} ${message}\n`;
