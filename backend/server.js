@@ -76,3 +76,23 @@ app.listen(PORT, () => {
 process.on("uncaughtException", err => {
   console.error("Uncaught error:", err);
 });
+import fs from "fs"; // якщо ще не імпортовано
+
+app.post("/api/log", (req, res) => {
+  const logEntry = {
+    timestamp: new Date().toISOString(),
+    ...req.body,
+  };
+
+  const logFile = "logs.json";
+  let logs = [];
+
+  if (fs.existsSync(logFile)) {
+    logs = JSON.parse(fs.readFileSync(logFile));
+  }
+
+  logs.push(logEntry);
+  fs.writeFileSync(logFile, JSON.stringify(logs, null, 2));
+  console.log("📝 Лог записано:", logEntry);
+  res.status(200).json({ message: "Лог отримано" });
+});
