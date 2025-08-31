@@ -27,3 +27,39 @@ export default function WalletPanel() {
     </div>
   );
 }
+import { useEffect, useState } from "react";
+import { ethers } from "ethers";
+
+export default function WalletPanel() {
+  const [account, setAccount] = useState(null);
+
+  const connectWallet = async () => {
+    if (window.ethereum) {
+      const [selectedAccount] = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      setAccount(selectedAccount);
+    } else {
+      alert("MetaMask не знайдено");
+    }
+  };
+
+  useEffect(() => {
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", (accounts) => {
+        setAccount(accounts[0]);
+      });
+    }
+  }, []);
+
+  return (
+    <div>
+      <h2>💼 Web3-гаманець</h2>
+      {account ? (
+        <p>🔗 Підключено: {account}</p>
+      ) : (
+        <button onClick={connectWallet}>Підключити MetaMask</button>
+      )}
+    </div>
+  );
+}
