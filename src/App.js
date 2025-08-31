@@ -1,8 +1,5 @@
-// src/App.js
-
-import RegisterForm from './RegisterForm';
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { auth } from "./firebaseConfig";
 import {
   GoogleAuthProvider,
@@ -10,15 +7,17 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import Chart from "chart.js/auto";
 
+// Компоненти
+import RegisterForm from "./RegisterForm";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Dashboard from "./components/Dashboard";
 import Admin from "./components/Admin";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
+import NFTGallery from "./components/NFTGallery";
+import WalletPanel from "./components/WalletPanel";
 
 function Home() {
   return (
@@ -31,19 +30,20 @@ function Home() {
 
 function DAOAnalytics() {
   const chartRef = useRef(null);
-
   useEffect(() => {
-    const ctx = chartRef.current.getContext('2d');
+    const ctx = chartRef.current.getContext("2d");
     new Chart(ctx, {
-      type: 'bar',
+      type: "bar",
       data: {
-        labels: ['✅ За', '❌ Проти'],
-        datasets: [{
-          label: 'Голосування #42',
-          data: [128, 34],
-          backgroundColor: ['#00FF66', '#FF4444']
-        }]
-      }
+        labels: ["✅ За", "❌ Проти"],
+        datasets: [
+          {
+            label: "Голосування #42",
+            data: [128, 34],
+            backgroundColor: ["#00FF66", "#FF4444"],
+          },
+        ],
+      },
     });
   }, []);
 
@@ -54,23 +54,6 @@ function DAOAnalytics() {
     </div>
   );
 }
-
-function App() {
-  return (
-    <Router>
-      <nav className="mb-6 space-x-4">
-        <Link to="/">Головна</Link>
-        <Link to="/dao">DAO-аналітика</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dao" element={<DAOAnalytics />} />
-      </Routes>
-    </Router>
-  );
-}
-
-export default App;
 
 function App() {
   const [user, setUser] = useState(null);
@@ -100,29 +83,26 @@ function App() {
       console.error("Sign-out error:", error);
     }
   };
-  <Routes>
- <Route path="/register" element={<RegisterForm />} />
-  <Route path="/login" element={<Login onSignIn={handleSignIn} />} />
-  <Route path="/signup" element={<Signup />} />
-  <Route path="/dashboard" element={
-    <ProtectedRoute user={user}>
-      <Dashboard user={user} onSignOut={handleSignOut} />
-    </ProtectedRoute>
-  } />
-  <Route path="/admin" element={
-    <ProtectedRoute user={user}>
-      <Admin />
-    </ProtectedRoute>
-  } />
-  <Route path="/register" element={<RegisterForm />} /> {/* 🔥 Новий маршрут */}
-</Routes>
-
 
   if (loading) return <p>Завантаження...</p>;
 
   return (
     <Router>
+      <nav className="mb-6 space-x-4">
+        <Link to="/">Головна</Link>
+        <Link to="/dao">DAO-аналітика</Link>
+        <Link to="/gallery">NFT-галерея</Link>
+        <Link to="/wallet">Гаманець</Link>
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/admin">Admin</Link>
+      </nav>
+
       <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dao" element={<DAOAnalytics />} />
+        <Route path="/gallery" element={<NFTGallery />} />
+        <Route path="/wallet" element={<WalletPanel />} />
+        <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<Login onSignIn={handleSignIn} />} />
         <Route path="/signup" element={<Signup />} />
         <Route
