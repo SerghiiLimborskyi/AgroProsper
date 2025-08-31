@@ -1,0 +1,35 @@
+name: 🔄 Update CID for NFT Badges
+
+on:
+  workflow_dispatch:  # ручний запуск з інтерфейсу GitHub
+  push:
+    paths:
+      - 'metadata/**.json'   # запуск при зміні метаданих
+      - 'scripts/cid/**.js'  # або скриптів CID
+
+jobs:
+  update-cid:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout repo
+      uses: actions/checkout@v3
+
+    - name: 🧪 Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: 📦 Install dependencies
+      run: npm install
+
+    - name: 🔐 Load secrets
+      env:
+        WEB3STORAGE_TOKEN: ${{ secrets.WEB3STORAGE_TOKEN }}
+      run: echo "Token loaded"
+
+    - name: 🚀 Run badgeManager.js
+      run: |
+        node scripts/cid/badgeManager.js --all --upload --update
+      env:
+        WEB3STORAGE_TOKEN: ${{ secrets.WEB3STORAGE_TOKEN }}
