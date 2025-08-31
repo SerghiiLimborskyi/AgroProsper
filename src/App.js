@@ -18,6 +18,11 @@ import Admin from "./components/Admin";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NFTGallery from "./components/NFTGallery";
 import WalletPanel from "./components/WalletPanel";
+import MintNFT from "./components/MintNFT";
+import DAOProposal from "./components/DAOProposal";
+
+<Route path="/mint" element={<MintNFT />} />
+<Route path="/proposal" element={<DAOProposal />} />
 
 function Home() {
   return (
@@ -95,6 +100,8 @@ function App() {
         <Link to="/wallet">Гаманець</Link>
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/admin">Admin</Link>
+        <Link to="/mint">Mint NFT</Link>
+<Link to="/proposal">DAO Пропозиції</Link>
       </nav>
 
       <Routes>
