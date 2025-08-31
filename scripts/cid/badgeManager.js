@@ -16,6 +16,27 @@ function logCID(badge, cid) {
   fs.appendFileSync('cid-history.log', logEntry);
 }
 
+function logIPFSStatus(message) {
+  const timestamp = new Date().toISOString();
+  const entry = `${timestamp} ${message}\n`;
+  fs.appendFileSync('ipfs-status.log', entry);
+}
+
+async function checkIPFSConnection() {
+  try {
+    const info = await ipfs.id();
+    const msg = `🟢 IPFS node is online: ${info.id}`;
+    console.log(msg);
+    logIPFSStatus(msg);
+    return true;
+  } catch (err) {
+    const msg = '🔴 IPFS node is unreachable. Make sure it is running on localhost:5001';
+    console.error(msg);
+    logIPFSStatus(msg);
+    return false;
+  }
+}
+
 async function uploadBadge(badge, dryRun = false) {
   const filePath = path.join(METADATA_DIR, `${badge}.json`);
   const metadata = fs.readFileSync(filePath);
@@ -53,6 +74,11 @@ async function verifyCID(badge) {
 }
 
 async function main() {
+  const isConnected = await checkIPFSConnection();
+  if (!isConnected) {
+    process.exit(1); // зупиняємо скрипт
+  }
+
   const args = process.argv.slice(2);
   const isDryRun = args.includes('--dry-run');
   const badgeArg = args.includes('--all')
