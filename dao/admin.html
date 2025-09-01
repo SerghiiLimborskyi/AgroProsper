@@ -12,6 +12,11 @@
       padding: 40px 20px;
       text-align: center;
     }
+    iframe {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-top: 10px;
+}
     h1 {
       color: #c0392b;
       font-size: 2.5em;
@@ -57,5 +62,23 @@
     <h2>Зворотній зв'язок</h2>
     <button onclick="window.location.href='agro-feedback.html'">📝 Перейти до фідбеку</button>
   </div>
+  <div id="gameStudio"></div>
+
+<script>
+  fetch('../config.json')
+    .then(res => res.json())
+    .then(cfg => {
+      const container = document.getElementById("gameStudio");
+      cfg.games.forEach(game => {
+        const section = document.createElement("section");
+        section.className = "admin-section";
+        section.innerHTML = `
+          <h2>🎮 DAO-гра: ${game.title}</h2>
+          <iframe src="${game.path}" width="100%" height="600" frameborder="0"></iframe>
+        `;
+        container.appendChild(section);
+      });
+    });
+</script>
 </body>
 </html>
