@@ -1,9 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+interface IAGTToken {
+    function getVotes(address account) external view returns (uint256);
+    function delegateVotes(address to) external;
+}
+
 contract VotingDAO {
     address public admin;
     uint public proposalCount;
+    IAGTToken public token;
 
     struct Proposal {
         string description;
@@ -12,68 +18,48 @@ contract VotingDAO {
     }
 
     mapping(uint => Proposal) public proposals;
-    mapping(address => bool) public users;
-    mapping(uint => mapping(address => bool)) public votes;
+    mapping(uint => mapping(address => bool)) public hasVoted;
+
+    event ProposalCreated(uint indexed proposalId, string description);
+    event Voted(uint indexed proposalId, address indexed voter, uint weight);
+    event ProposalClosed(uint indexed proposalId);
 
     modifier onlyAdmin() {
         require(msg.sender == admin, "Not admin");
         _;
     }
 
-    modifier onlyUser() {
-        require(users[msg.sender], "Not a DAO member");
-        _;
-    }
-
-    constructor() {
+    constructor(address tokenAddress) {
         admin = msg.sender;
-        users[msg.sender] = true;
+        token = IAGTToken(tokenAddress);
     }
 
-    function addUser(address user) public onlyAdmin {
-        users[user] = true;
-    }
-
-    function removeUser(address user) public onlyAdmin {
-        require(users[user], "User not found");
-        users[user] = false;
-    }
-
-    function changeAdmin(address newAdmin) public onlyAdmin {
-        require(newAdmin != address(0), "Invalid address");
-        admin = newAdmin;
-    }
-
-    function createProposal(string memory description) public onlyUser {
+    function createProposal(string memory description) public onlyAdmin {
         proposals[proposalCount] = Proposal(description, 0, true);
+        emit ProposalCreated(proposalCount, description);
         proposalCount++;
     }
 
-    function vote(uint proposalId) public onlyUser {
+    function vote(uint proposalId) public {
         require(proposals[proposalId].active, "Voting closed");
-        require(!votes[proposalId][msg.sender], "Already voted");
+        require(!hasVoted[proposalId][msg.sender], "Already voted");
 
-        votes[proposalId][msg.sender] = true;
-        proposals[proposalId].voteCount++;
+        uint weight = token.getVotes(msg.sender);
+        require(weight > 0, "No voting power");
+
+        proposals[proposalId].voteCount += weight;
+        hasVoted[proposalId][msg.sender] = true;
+
+        emit Voted(proposalId, msg.sender, weight);
     }
 
     function closeProposal(uint proposalId) public onlyAdmin {
         proposals[proposalId].active = false;
+        emit ProposalClosed(proposalId);
     }
 
-    function getAllProposals() public view returns (Proposal[] memory) {
-        Proposal[] memory result = new Proposal[](proposalCount);
-        for (uint i = 0; i < proposalCount; i++) {
-            result[i] = proposals[i];
-        }
-        return result;
-    }
-
-    function isVotingOpen(uint proposalId) public view returns (bool) {
-        return proposals[proposalId].active;
-    }
-
-    function getVoteCount(uint proposalId) public view returns (uint) {
-        return proposals[proposalId].voteCount;
+    function getProposal(uint proposalId) public view returns (string memory, uint, bool) {
+        Proposal memory p = proposals[proposalId];
+        return (p.description, p.voteCount, p.active);
     }
 }
