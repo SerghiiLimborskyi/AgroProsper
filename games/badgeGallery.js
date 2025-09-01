@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>${new Date(badge.timestamp).toLocaleString()}</p>
         `;
         gallery.appendChild(card);
+       import { checkQuestProgress } from "./questEngine.js";
+// після завантаження бейджів:
+checkQuestProgress(badges); 
       });
     })
     .catch(err => {
