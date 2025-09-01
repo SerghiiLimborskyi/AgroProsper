@@ -1,24 +1,15 @@
-import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";
+export function mintBadgeSelf(roleIndex) {
+  const roles = ["Starter", "Farmer", "Trader"];
+  const badge = {
+    id: `badge_${roles[roleIndex].toLowerCase()}`,
+    title: `Бейдж: ${roles[roleIndex]}`,
+    image: `badge_${roles[roleIndex].toLowerCase()}.png`,
+    timestamp: new Date().toISOString()
+  };
 
-const CONTRACT_ADDRESS = "0x..."; // твоя адреса контракту
-const ABI = [ /* ABI з UserBadgeNFT.sol */ ];
+  let badges = JSON.parse(localStorage.getItem("badges") || "[]");
+  badges.push(badge);
+  localStorage.setItem("badges", JSON.stringify(badges));
 
-export async function mintBadgeSelf(roleIndex) {
-  if (!window.ethereum) {
-    alert("🦊 Потрібен MetaMask");
-    return;
-  }
-
-  const provider = new ethers.BrowserProvider(window.ethereum);
-  const signer = await provider.getSigner();
-  const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
-
-  try {
-    const tx = await contract.mintBadgeSelf(roleIndex); // 0 = Starter, 1 = Farmer, 2 = Trader
-    await tx.wait();
-    alert("🏅 NFT-бейдж успішно видано!");
-  } catch (err) {
-    console.error("❌ Помилка:", err);
-    alert("Не вдалося видати бейдж");
-  }
+  alert(`🏅 Бейдж "${badge.title}" успішно видано!`);
 }
