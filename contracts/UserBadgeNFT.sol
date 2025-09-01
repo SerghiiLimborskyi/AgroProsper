@@ -47,4 +47,24 @@ contract UserBadgeNFT is ERC721URIStorage, Ownable {
         else if (role == Role.Farmer) return "farmer";
         else return "trader";
     }
+    function mintBadgeSelf(Role role) public {
+    require(!hasBadge[msg.sender], "User already has a badge");
+
+    string memory badgeType;
+    if (role == Role.Starter) badgeType = "starter";
+    else if (role == Role.Farmer) badgeType = "farmer";
+    else badgeType = "trader";
+
+    string memory uri = badgeURIs[badgeType];
+    require(bytes(uri).length > 0, "Badge type not set");
+
+    uint256 newTokenId = tokenCounter;
+    _safeMint(msg.sender, newTokenId);
+    _setTokenURI(newTokenId, uri);
+    tokenCounter++;
+    hasBadge[msg.sender] = true;
+    userRoles[msg.sender] = role;
+ }
 }
+
+
