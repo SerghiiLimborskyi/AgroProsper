@@ -110,4 +110,20 @@ app.get('/run/full', (req, res) => {
     console.log('✅ Повний цикл завершено');
     res.send('Відео згенеровано та надіслано в Telegram');
   });
+  
+  app.post("/api/vote", (req, res) => {
+  const { vote } = req.body;
+  const file = "data/votes.json";
+  let votes = { yes: 0, no: 0 };
+
+  if (fs.existsSync(file)) {
+    votes = JSON.parse(fs.readFileSync(file));
+  }
+
+  if (vote === "yes") votes.yes += 1;
+  else if (vote === "no") votes.no += 1;
+
+  fs.writeFileSync(file, JSON.stringify(votes, null, 2));
+  res.json(votes);
+});
 });
