@@ -126,4 +126,28 @@ app.get('/run/full', (req, res) => {
   fs.writeFileSync(file, JSON.stringify(votes, null, 2));
   res.json(votes);
 });
+  
+  app.post("/api/badge", (req, res) => {
+  const { badgeType } = req.body;
+  const badgeMap = {
+    yes: { id: "badge_yes", title: "Голос 'Так'", image: "badge_yes.png" },
+    no: { id: "badge_no", title: "Голос 'Ні'", image: "badge_no.png" }
+  };
+
+  const badge = {
+    ...badgeMap[badgeType],
+    timestamp: new Date().toISOString()
+  };
+
+  const file = "data/badges.json";
+  let badges = [];
+
+  if (fs.existsSync(file)) {
+    badges = JSON.parse(fs.readFileSync(file));
+  }
+
+  badges.push(badge);
+  fs.writeFileSync(file, JSON.stringify(badges, null, 2));
+  res.json(badge);
+});
 });
