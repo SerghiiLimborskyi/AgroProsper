@@ -10,3 +10,16 @@
   <div id="badgeGallery" class="gallery"></div>
 </section>
 <script src="badgeGallery.js"></script>
+<script type="module">
+  import { QuestStudio } from "./games/questStudio.js";
+
+  const quests = await fetch("/data/quests.json").then(r => r.json());
+  const badges = JSON.parse(localStorage.getItem("badges") || "[]");
+
+  const studio = new QuestStudio(quests, badges);
+
+  // Перевірити квест після дії
+  document.getElementById("voteBtn").addEventListener("click", () => {
+    studio.checkQuest("quest_vote");
+  });
+</script>
