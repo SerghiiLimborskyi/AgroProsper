@@ -1,0 +1,19 @@
+{
+  "games": [
+    {
+      "title": "Ферма NFT",
+      "path": "games/farm/index.html",
+      "type": "nft"
+    },
+    {
+      "title": "Квест DAO",
+      "path": "games/quest/index.html",
+      "type": "dao"
+    },
+    {
+      "title": "AI Турнір",
+      "path": "games/ai/index.html",
+      "type": "ai"
+    }
+  ]
+}
