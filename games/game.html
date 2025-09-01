@@ -23,3 +23,9 @@
     studio.checkQuest("quest_vote");
   });
 </script>
+
+<button onclick="mintBadgeSelf(1)">🎯 Отримати бейдж 'Farmer'</button>
+<script type="module">
+  import { mintBadgeSelf } from "./questNFT.js";
+  window.mintBadgeSelf = mintBadgeSelf;
+</script>
