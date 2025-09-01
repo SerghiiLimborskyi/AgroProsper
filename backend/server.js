@@ -96,3 +96,18 @@ app.post("/api/log", (req, res) => {
   console.log("📝 Лог записано:", logEntry);
   res.status(200).json({ message: "Лог отримано" });
 });
+
+const { exec } = require('child_process');
+
+app.get('/run/full', (req, res) => {
+  console.log('🚀 Запуск повного циклу DAO Studio');
+
+  exec('node generateSlides.js && node render.js && sh makeVideo.sh && node bot.js', (err, stdout, stderr) => {
+    if (err) {
+      console.error('💥 Помилка:', err.message);
+      return res.status(500).send('Помилка при запуску циклу');
+    }
+    console.log('✅ Повний цикл завершено');
+    res.send('Відео згенеровано та надіслано в Telegram');
+  });
+});
