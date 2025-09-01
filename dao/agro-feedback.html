@@ -3,32 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>AgroProsper Feedback</title>
-  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
   <style>
-    body {
-      font-family: sans-serif;
-      background: #f5f5f5;
-      padding: 20px;
-    }
-    h2 {
-      color: #2c3e50;
-    }
-    input, button {
-      padding: 10px;
-      margin: 5px 0;
-      width: 100%;
-      max-width: 400px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      background: #fff;
-      margin: 5px 0;
-      padding: 10px;
-      border-left: 4px solid #27ae60;
-    }
+    body { font-family: sans-serif; background: #f5f5f5; padding: 20px; }
+    h2 { color: #2c3e50; }
+    input, button { padding: 10px; margin: 5px 0; width: 100%; max-width: 400px; }
+    ul { list-style: none; padding: 0; }
+    li { background: #fff; margin: 5px 0; padding: 10px; border-left: 4px solid #27ae60; }
   </style>
 </head>
 <body>
@@ -40,55 +20,34 @@
   <ul id="feedbackList"></ul>
 
   <script>
-    const contractAddress = "0xD7A1FfFfFfFfFfFfFfFfFfFfFfFfFfFfF771B"; // заміни на свою адресу
-
-    const contractABI = [
-      {
-        "inputs": [
-          { "internalType": "string", "name": "_message", "type": "string" }
-        ],
-        "name": "submitFeedback",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "getAllFeedbacks",
-        "outputs": [
-          {
-            "components": [
-              { "internalType": "address", "name": "user", "type": "address" },
-              { "internalType": "string", "name": "message", "type": "string" },
-              { "internalType": "uint256", "name": "timestamp", "type": "uint256" }
-            ],
-            "internalType": "struct FeedbackDAO.Feedback[]",
-            "name": "",
-            "type": "tuple[]"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      }
-    ];
-
-    const web3 = new Web3(window.ethereum);
-    const feedbackDAO = new web3.eth.Contract(contractABI, contractAddress);
+    const FEEDBACK_FILE = 'data/feedback.json';
 
     async function submitFeedback() {
-      const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-      const message = document.getElementById("feedbackInput").value;
-      await feedbackDAO.methods.submitFeedback(message).send({ from: accounts[0] });
+      const message = document.getElementById("feedbackInput").value.trim();
+      if (!message) return;
+
+      const feedback = {
+        user: "Анонім",
+        message: message,
+        timestamp: new Date().toISOString()
+      };
+
+      // Зберігаємо локально (імітація)
+      let feedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+      feedbacks.push(feedback);
+      localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+
+      document.getElementById("feedbackInput").value = "";
       loadFeedbacks();
     }
 
-    async function loadFeedbacks() {
-      const feedbacks = await feedbackDAO.methods.getAllFeedbacks().call();
+    function loadFeedbacks() {
+      const feedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]");
       const list = document.getElementById("feedbackList");
       list.innerHTML = "";
       feedbacks.forEach(fb => {
         const item = document.createElement("li");
-        item.textContent = `${fb.user}: ${fb.message} (${new Date(fb.timestamp * 1000).toLocaleString()})`;
+        item.textContent = `${fb.user}: ${fb.message} (${new Date(fb.timestamp).toLocaleString()})`;
         list.appendChild(item);
       });
     }
