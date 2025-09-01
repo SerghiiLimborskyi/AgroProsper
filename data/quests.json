@@ -1,0 +1,15 @@
+[
+  {
+    "id": "quest_vote",
+    "title": "Проголосуй у DAO",
+    "conditions": ["badge_yes", "badge_no"],
+    "reward": "newLevel"
+  },
+  {
+    "id": "quest_ai",
+    "title": "Пройди AI-квест",
+    "conditions": ["badge_ai"],
+    "reward": "badge",
+    "badgeId": "badge_ai_master"
+  }
+]
