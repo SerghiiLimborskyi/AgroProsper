@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>AgroProsper DAO — Панель ролей</title>
+  <script type="module">
+    import { ROLE_MAP, setUserRole, removeUser } from './AgroRolesAdmin.js';
+
+    function renderTable() {
+      const tbody = document.getElementById("roles-body");
+      tbody.innerHTML = "";
+      Object.entries(ROLE_MAP).forEach(([address, role]) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${address}</td>
+          <td>${role}</td>
+          <td>
+            <select onchange="updateRole('${address}', this.value)">
+              <option value="reader" ${role === "reader" ? "selected" : ""}>Reader</option>
+              <option value="editor" ${role === "editor" ? "selected" : ""}>Editor</option>
+              <option value="admin" ${role === "admin" ? "selected" : ""}>Admin</option>
+            </select>
+          </td>
+          <td><button onclick="remove('${address}')">🗑️</button></td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    window.updateRole = (address, newRole) => {
+      setUserRole(address, newRole);
+      renderTable();
+    };
+
+    window.remove = (address) => {
+      removeUser(address);
+      renderTable();
+    };
+
+    window.onload = () => {
+      renderTable();
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      padding: 2em;
+    }
+    h1 {
+      color: #66ffcc;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+    th, td {
+      padding: 0.8em;
+      border: 1px solid #444;
+      text-align: left;
+    }
+    select, button {
+      padding: 0.4em;
+      font-size: 1em;
+    }
+    button {
+      background-color: #ff6666;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #cc3333;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔐 Панель адміністрування ролей DAO</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Адреса</th>
+        <th>Роль</th>
+        <th>Змінити роль</th>
+        <th>Видалити</th>
+      </tr>
+    </thead>
+    <tbody id="roles-body"></tbody>
+  </table>
+</body>
+</html>
