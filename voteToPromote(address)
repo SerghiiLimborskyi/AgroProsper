@@ -1,0 +1,13 @@
+function voteToPromote(address candidate) external onlyMember {
+    require(candidate != msg.sender, "Can't vote for yourself");
+    require(!hasVoted[msg.sender][candidate], "Already voted");
+
+    hasVoted[msg.sender][candidate] = true;
+    voteCount[candidate]++;
+
+    emit VotedToPromote(msg.sender, candidate);
+
+    if (voteCount[candidate] >= promotionThreshold) {
+        promoteRole(candidate);
+    }
+}
