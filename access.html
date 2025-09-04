@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>AgroProsper DAO Access</title>
+  <script type="module">
+    import { getUserRole, hasPermission } from './AgroRoles.js';
+
+    function handleAccess(action) {
+      const address = prompt("🔐 Введіть вашу DAO-адресу:");
+      if (!address) return alert("❌ Адреса не вказана.");
+
+      const role = getUserRole(address);
+      const allowed = hasPermission(role, action);
+
+      if (allowed) {
+        alert(`✅ Доступ дозволено (${role}) до дії: ${action}`);
+        // Тут можна вставити логіку відкриття файлу або редагування
+      } else {
+        alert(`⛔ Доступ заборонено (${role}) до дії: ${action}`);
+      }
+    }
+
+    window.onload = () => {
+      document.getElementById("view-btn").onclick = () => handleAccess("view");
+      document.getElementById("edit-btn").onclick = () => handleAccess("edit");
+      document.getElementById("delete-btn").onclick = () => handleAccess("delete");
+    };
+  </script>
+</head>
+<body>
+  <h1>🔐 AgroProsper DAO Access Panel</h1>
+  <button id="view-btn">📄 Переглянути файл</button>
+  <button id="edit-btn">✏️ Редагувати файл</button>
+  <button id="delete-btn">🗑️ Видалити файл</button>
+</body>
+</html>
