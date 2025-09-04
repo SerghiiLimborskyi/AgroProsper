@@ -1,4 +1,4 @@
-// CID-index.js — DAO-мапінг CID до файлів
+// CID-index.js — DAO-мапінг CID → файли
 
 export const CID_INDEX = {
   "b3f1c2a9e4d1": "MediaKit/AgroProsper.zip",
