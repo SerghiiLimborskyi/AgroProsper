@@ -1,22 +1,19 @@
-// AgroAccessLog.js — DAO-логіка перевірки та логування
+// AgroStorage.js — DAO-контроль доступу (ES6)
 
-const DAO_WHITELIST = [
-  "0xA1B2C3D4E5F6G7H8I9J0", // Serhii DAO
-  "0xF7E8D9C0B1A2D3E4F5G6", // Trusted Agent
-  "0x123456789ABCDEF00000"  // GOV Observer
-];
+import { verifyAdmin } from './AgroAccessLog.js';
+import { CID_INDEX } from './CID-index.js';
 
-// ✅ Перевірка, чи адреса є DAO-адміном
-export function verifyAdmin(address, cid) {
-  const normalized = address.trim().toUpperCase();
-  const isAllowed = DAO_WHITELIST.includes(normalized);
-  logAccessAttempt(normalized, cid, isAllowed);
-  return isAllowed;
-}
+export function requestAccess(cid) {
+  const userAddress = prompt("🔐 Введіть вашу DAO-адресу:");
+  if (!userAddress) return alert("❌ Адреса не вказана.");
 
-// 🧾 Логування запиту доступу
-function logAccessAttempt(address, cid, result) {
-  const timestamp = new Date().toISOString();
-  const status = result ? "GRANTED" : "DENIED";
-  console.log(`[${timestamp}] Access ${status} for ${address} to CID ${cid}`);
+  const accessGranted = verifyAdmin(userAddress, cid);
+  if (accessGranted) {
+    const filePath = CID_INDEX[cid];
+    window.open(filePath, '_blank');
+    console.log(`✅ Доступ надано до ${filePath}`);
+  } else {
+    alert("🚫 Доступ заборонено. Ви не є DAO-учасником.");
+    console.warn(`❌ Відмова доступу для ${userAddress} до CID ${cid}`);
+  }
 }
