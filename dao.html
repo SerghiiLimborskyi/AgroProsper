@@ -2,108 +2,42 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>AgroProsper DAO Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroProsper DAO</title>
+
+  <!-- ✅ Локальні стилі -->
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+  <!-- ❌ ВИДАЛЕНО: Web3.js -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script> -->
+
+  <!-- ✅ Локальні скрипти -->
+  <script src="AgroStorage.js" defer></script>
+  <script src="AgroRoles.js" defer></script>
+  <script src="AgroAccessLog.js" defer></script>
+  <script src="dao.js" defer></script>
 </head>
 <body>
   <header>
-    <h1>🌾 AgroProsper DAO</h1>
-    <p>Інтерактивний хаб для фермерських модулів</p>
+    <h1>AgroProsper DAO</h1>
+    <p>Децентралізоване управління без сторонніх залежностей</p>
   </header>
-  <script>
-  const translations = {
-    ua: {
-      title: "AgroProsper DAO",
-      description: "Інтерактивний хаб для фермерів",
-      buttons: ["AI-бот", "Фінанси", "Продажі", "Промо", "Гейміфікація", "Мови"]
-    },
-    en: {
-      title: "AgroProsper DAO",
-      description: "Interactive hub for farmers",
-      buttons: ["AI Bot", "Finance", "Sales", "Promo", "Gamification", "Languages"]
-    },
-    pl: {
-      title: "AgroProsper DAO",
-      description: "Interaktywny hub dla rolników",
-      buttons: ["Bot AI", "Finanse", "Sprzedaż", "Promocja", "Gamifikacja", "Języki"]
-    }
-  };
 
-  function switchLanguage(lang) {
-    localStorage.setItem("preferredLang", lang);
-    const t = translations[lang];
-    document.querySelector("header h1").textContent = t.title;
-    document.querySelector("header p").textContent = t.description;
-    document.querySelectorAll(".dao-buttons button").forEach((btn, i) => {
-      btn.textContent = t.buttons[i];
-    });
-    document.getElementById("lang").value = lang;
-  }
+  <main>
+    <section id="access-control">
+      <button onclick="requestAccess()">Запитати доступ</button>
+      <div id="access-status"></div>
+    </section>
 
-  // 🚀 Автоматичне застосування мови при завантаженні
-  window.addEventListener("DOMContentLoaded", () => {
-    const savedLang = localStorage.getItem("preferredLang") || "ua";
-    switchLanguage(savedLang);
-  });
-</script>
-
-
-  function switchLanguage(lang) {
-    const t = translations[lang];
-    document.querySelector("header h1").textContent = t.title;
-    document.querySelector("header p").textContent = t.description;
-    document.querySelectorAll(".dao-buttons button").forEach((btn, i) => {
-      btn.textContent = t.buttons[i];
-    });
-  }
-</script>
-
-  <section class="dao-buttons">
-   <div class="language-switcher">
-  <label for="lang">🌐 Мова:</label>
-  <select id="lang" onchange="switchLanguage(this.value)">
-    <option value="ua">Українська</option>
-    <option value="en">English</option>
-    <option value="pl">Polski</option>
-    <div class="banner-container">
-  <img src="banner.png" alt="AgroProsper Banner" style="width: 100%; max-height: 400px; object-fit: cover;">
-  <div style="text-align: center; margin-top: -100px; position: relative;">
-  <button onclick="startNow()" style="
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-  ">Get Started</button>
-</div>
-    </div>
-  </select>
-</div>
- 
-    <button onclick="navigate('dao-wallet.html')">🔐 Підключити гаманець</button>
-    <button onclick="navigate('dao-token.html')">🪙 Токени AGT</button>
-    <button onclick="navigate('dao-vote.html')">🗳️ Голосування DAO</button>
-    <button onclick="navigate('dao-admin.html')">🛠️ Адмін-панель</button>
-    <button onclick="navigate('emoji-dashboard.html')">📊 Фідбек-панель</button>
-    <button onclick="navigate('web3-dashboard.html')">🌐 Web3 Dashboard</button>
-    <button onclick="navigate('../registration/index.html')">📝 Реєстрація</button>
-    <button onclick="navigate('../promo/index.html')">📣 Промо-модуль</button>
-    <button onclick="navigate('../platform-agent.html')">🤖 AI-бот</button>
-  </section>
+    <section id="admin-panel" style="display: none;">
+      <h2>Панель адміністратора</h2>
+      <button onclick="verifyAdmin()">Перевірити права</button>
+      <div id="admin-status"></div>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 AgroProsper DAO | Підтримка 🇺🇦 🇬🇧 🇵🇱</p>
+    <p>&copy; 2025 AgroProsper DAO. Всі права захищені.</p>
   </footer>
-
-  <script>
-    function navigate(page) {
-      window.location.href = page;
-    }
-  </script>
 </body>
 </html>
