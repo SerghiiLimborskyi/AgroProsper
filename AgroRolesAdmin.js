@@ -1,4 +1,4 @@
-// AgroRolesAdmin.js — DAO-адміністрування ролей
+// AgroRoles.js — розмежування доступу за ролями
 
 export const ROLE_MAP = {
   "0xA1B2C3D4E5F6G7H8I9J0": "admin",
@@ -6,14 +6,16 @@ export const ROLE_MAP = {
   "0x123456789ABCDEF00000": "reader"
 };
 
-// 🔧 Змінити роль користувача
-export function setUserRole(address, role) {
+export function getUserRole(address) {
   const normalized = address.trim().toUpperCase();
-  ROLE_MAP[normalized] = role;
+  return ROLE_MAP[normalized] || "guest";
 }
 
-// 🗑️ Видалити користувача
-export function removeUser(address) {
-  const normalized = address.trim().toUpperCase();
-  delete ROLE_MAP[normalized];
+export function hasPermission(role, action) {
+  const PERMISSIONS = {
+    reader: ["view"],
+    editor: ["view", "edit"],
+    admin: ["view", "edit", "delete"]
+  };
+  return PERMISSIONS[role]?.includes(action);
 }
