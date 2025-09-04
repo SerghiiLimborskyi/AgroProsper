@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CID-механізм AgroVerse</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0d0d0d;
+      color: #e0ffe0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2em;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+      color: #66ffcc;
+    }
+    .cid-box {
+      background: rgba(102, 255, 204, 0.1);
+      border: 2px solid #66ffcc;
+      border-radius: 12px;
+      padding: 1.5em;
+      max-width: 800px;
+      margin: 2em 0;
+    }
+    .cid-box p {
+      font-size: 1.1em;
+      line-height: 1.6em;
+    }
+    .next-button {
+      margin-top: 2em;
+      padding: 0.8em 2em;
+      background-color: #66ffcc;
+      color: #0d0d0d;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .next-button:hover {
+      background-color: #33ccaa;
+    }
+  </style>
+</head>
+<body>
+  <h2>CID-механізм AgroVerse</h2>
+  <div class="cid-box">
+    <p><strong>🔐 CID (Content Identifier)</strong> — це унікальний хеш, що ідентифікує об'єкти AgroVerse без використання IPFS або Web3.</p>
+    <p>Кожен DAO-елемент (голос, бейдж, квест, агент) має власний CID, який генерується локально через `updateCID.yml`.</p>
+    <p>Це дозволяє:  
+      🔸 зберігати дані автономно  
+      🔸 уникати зовнішніх API-зв’язків  
+      🔸 забезпечити приватність до моменту активації  
+      🔸 масштабувати DAO без блокчейн-залежностей</p>
+  </div>
+  <button class="next-button" onclick="location.href='slide4.html'">Далі → NFT-бейджі</button>
+</body>
+</html>
