@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAO-архітектура AgroVerse</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2em;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+      color: #00ff99;
+    }
+    .diagram {
+      margin: 2em 0;
+      max-width: 800px;
+      border: 2px dashed #00ff99;
+      padding: 1em;
+      border-radius: 12px;
+      background: rgba(0, 255, 153, 0.05);
+    }
+    .diagram p {
+      font-size: 1.1em;
+      line-height: 1.6em;
+    }
+    .next-button {
+      margin-top: 2em;
+      padding: 0.8em 2em;
+      background-color: #00ff99;
+      color: #121212;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .next-button:hover {
+      background-color: #00cc77;
+    }
+  </style>
+</head>
+<body>
+  <h2>DAO-архітектура AgroVerse</h2>
+  <div class="diagram">
+    <p><strong>🔹 CID → DAO → NFT → Dashboard</strong></p>
+    <p>AgroVerse використовує власну CID-структуру для ідентифікації об'єктів, без IPFS-зв’язку.  
+       DAO-логіка реалізована локально, без зовнішніх смарт-контрактів.  
+       NFT-бейджі генеруються автономно, без мінтингу.  
+       Всі дії — через agentRegistry.json та verifyAdmin().</p>
+  </div>
+  <button class="next-button" onclick="location.href='slide3.html'">Далі → CID-механізм</button>
+</body>
+</html>
