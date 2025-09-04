@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>AgroProsper DAO Storage</title>
+  <script type="module" src="AgroStorage.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f2027;
+      color: #f0f0f0;
+      padding: 2em;
+    }
+    h1 {
+      color: #66ffcc;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 1em 0;
+    }
+    button {
+      background-color: #66ffcc;
+      color: #0f2027;
+      border: none;
+      padding: 0.6em 1.2em;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: #4dd88a;
+    }
+  </style>
+</head>
+<body>
+  <h1>📦 AgroProsper DAO Storage</h1>
+  <ul>
+    <li><button onclick="requestAccess('b3f1c2a9e4d1')">📁 MediaKit</button></li>
+    <li><button onclick="requestAccess('c7d8e3e2f9a0')">🧠 DAO Overview</button></li>
+    <li><button onclick="requestAccess('f1a3b7d4c6e8')">🎞️ Slide 1</button></li>
+    <li><button onclick="requestAccess('a1b2c3e9f0d2')">🎞️ Slide 2</button></li>
+    <li><button onclick="requestAccess('b7c8d9c3d4e5')">📜 Quests</button></li>
+    <li><button onclick="requestAccess('f8e7d6a2b3c4')">📊 CID Update Log</button></li>
+    <li><button onclick="requestAccess('d1e2f3e4f5a6')">🗳️ Voting Panel</button></li>
+  </ul>
+</body>
+</html>
