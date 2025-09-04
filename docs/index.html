@@ -3,142 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroProsper</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>AgroProsper V7 — DAO</title>
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
       color: white;
     }
-    .site-header {
+    header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 10px 20px;
-      background: rgba(0, 0, 0, 0.6);
+      align-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
     }
     .logo {
       height: 60px;
     }
-    .nav-menu {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-    }
-    .nav-menu li a {
+    nav a {
       color: white;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
     }
-    .banner img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 8px;
+    section {
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
     }
-    h1 {
+    h1, h2 {
       text-align: center;
-      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 24px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+      transform: scale(1.05);
+      transition: all 0.3s ease;
+    }
+    video {
+      width: 100%;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <img src="logo.png" alt="AgroProsper Logo" class="logo" />
-    <ul class="nav-menu">
-      <li><a href="index.html">Головна</a></li>
-      <li><a href="about.html">Про нас</a></li>
-      <li><a href="Registration/dashboard.html">Реєстрація</a></li>
-      <li><a href="contact.html">Контакти</a></li>
-    </ul>
-  </header>
 
-  <div class="banner">
-    <img src="banner.jpg" alt="AgroProsper Banner" />
-  </div>
+<header>
+  <img src="logo.png" alt="AgroProsper Logo" class="logo" />
+  <nav>
+    <a href="index.html">Головна</a>
+    <a href="about.html">Про нас</a>
+    <a href="Registration/dashboard.html">Реєстрація</a>
+    <a href="contact.html">Контакти</a>
+  </nav>
+</header>
 
-  <h1 id="welcome-text">Ласкаво просимо до AgroProsper</h1>
-
-  <section id="agroprosper-videos">
-    <h2 id="video-title">🎥 Відео з AgroProsper</h2>
-    <div id="video-container"></div>
-  </section>
-
-  <section class="video-section" style="text-align: center; padding: 40px;">
-    <h2 id="presentation-title">🎥 Відео-презентація</h2>
-    <iframe width="100%" height="400" src="https://www.youtube.com/embed/ID_ТВОГО_ВІДЕО" title="AgroProsper Presentation" frameborder="0" allowfullscreen></iframe>
-    <p id="social-text">📣 Презентуємо на <a href="https://facebook.com">Facebook</a>, <a href="https://t.me">Telegram</a>, <a href="https://youtube.com">YouTube</a></p>
-  </section>
-
-  <section id="cid-scene">
-  <video src="public/agronomist_tablet.mp4" autoplay muted></video>
-  <p>CID — цифрова ідентичність</p>
-  <a href="cid-badge.html"><img src="public/qr/cid.png" alt="QR"></a>
+<section id="dao-message">
+  <h2>🧠 DAO-звернення AgroProsper V7</h2>
+  <p id="dao-text">
+    AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей. CID-архітектура, NFT-бейджі без мінтингу, DAO-голосування без блокчейн-запису. Гейміфікація, інкогніто-допомога, багатомовність.
+  </p>
 </section>
 
-  <script>
-    const lang = navigator.language.slice(0, 2);
-    const translations = {
-      uk: {
-        welcome: "Ласкаво просимо до AgroProsper",
-        videoTitle: "🎥 Відео з AgroProsper",
-        presentationTitle: "🎥 Відео-презентація",
-        social: "📣 Презентуємо на <a href='https://facebook.com'>Facebook</a>, <a href='https://t.me'>Telegram</a>, <a href='https://youtube.com'>YouTube</a>"
-      },
-      en: {
-        welcome: "Welcome to AgroProsper",
-        videoTitle: "🎥 Videos from AgroProsper",
-        presentationTitle: "🎥 Presentation Video",
-        social: "📣 Follow us on <a href='https://facebook.com'>Facebook</a>, <a href='https://t.me'>Telegram</a>, <a href='https://youtube.com'>YouTube</a>"
-      },
-      pl: {
-        welcome: "Witamy w AgroProsper",
-        videoTitle: "🎥 Filmy z AgroProsper",
-        presentationTitle: "🎥 Prezentacja wideo",
-        social: "📣 Śledź nas na <a href='https://facebook.com'>Facebook</a>, <a href='https://t.me'>Telegram</a>, <a href='https://youtube.com'>YouTube</a>"
-      }
-    };
+<section id="dao-video">
+  <h2>🎬 Відео-звернення AgroProsper V7</h2>
+  <video controls autoplay muted>
+    <source src="assets/video/AgroProsperV7_Unstoppable.mp4" type="video/mp4">
+    <track src="assets/subtitles/subtitles_ua.vtt" kind="subtitles" srclang="uk" label="Українська">
+    <track src="assets/subtitles/subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+    <track src="assets/subtitles/subtitles_pl.vtt" kind="subtitles" srclang="pl" label="Polski">
+  </video>
+</section>
 
-    const t = translations[lang] || translations.uk;
-    document.getElementById('welcome-text').textContent = t.welcome;
-    document.getElementById('video-title').textContent = t.videoTitle;
-    document.getElementById('presentation-title').textContent = t.presentationTitle;
-    document.getElementById('social-text').innerHTML = t.social;
-  </script>
+<div style="text-align:center;">
+  <button onclick="alert('Голосування активовано!')">🗳️ Підтримати реліз</button>
+</div>
 
-  <script>
-    const apiKey = import.meta.env.VITE_YOUTUBE_API_KEY; 
-    const channelId = 'UCsN8AHUPLQp_xJlGOkwZkmw';
-    const maxResults = 4;
+<section id="dao-quests">
+  <h2>🎮 DAO-квести</h2>
+  <ul>
+    <li>✅ “Солодкий вибір” — обери між прибутком і етикою</li>
+    <li>🏅 Бейдж: “Цукерочка з лікером”</li>
+    <li>🧩 “Павутина добра” — реєстрація як агент DAO</li>
+  </ul>
+</section>
 
-    async function loadVideos() {
-      const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}`
-      );
-      const data = await response.json();
-      const container = document.getElementById('video-container');
-      container.innerHTML = '';
-
-      data.items.forEach(item => {
-        if (item.id.kind === 'youtube#video') {
-          const videoId = item.id.videoId;
-          const title = item.snippet.title;
-          container.innerHTML += `
-            <div class="video-item" style="margin: 20px;">
-              <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen width="300" height="170"></iframe>
-              <p style="color: #fff;">${title}</p>
-            </div>
-          `;
-        }
-      });
+<script>
+  const lang = navigator.language.slice(0, 2);
+  const translations = {
+    uk: {
+      daoText: "AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей..."
+    },
+    en: {
+      daoText: "AgroProsper V7 — autonomous DAO platform operating without Web3 dependencies..."
+    },
+    pl: {
+      daoText: "AgroProsper V7 — autonomiczna platforma DAO działająca bez zależności Web3..."
     }
+  };
+  const t = translations[lang] || translations.uk;
+  document.getElementById('dao-text').textContent = t.daoText;
+</script>
 
-    loadVideos();
-  </script>
 </body>
 </html>
