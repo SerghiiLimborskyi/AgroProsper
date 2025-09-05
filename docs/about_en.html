@@ -2,55 +2,127 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>About — AgroProsper V7</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About AgroProsper</title>
-  <link rel="stylesheet" href="../public/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.7);
+    }
+    .logo {
+      height: 60px;
+      margin-right: 20px;
+    }
+    .banner h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    main {
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    video {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    ul {
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
-    <nav class="nav">
-      <button class="nav-toggle" aria-label="Menu">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      </button>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about_en.html">About</a></li>
-        <li><a href="Registration/dashboard.html">Register</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <h1>About AgroProsper</h1>
-    <p>AgroProsper is an automated AI platform for agribusiness, built on DAO architecture with support for NFT, AI, multilingualism, gamification, and interactive presentations.</p>
+<header>
+  <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
+  <div class="banner">
+    <h1>AgroProsper V7 — About</h1>
+  </div>
+</header>
 
-    <iframe width="100%" height="400" src="https://www.youtube.com/embed/ID_ТВОГО_ВІДЕО?cc_load_policy=1" title="AgroProsper Presentation" frameborder="0" allowfullscreen></iframe>
+<main>
 
-    <section class="language-switch">
-      <label for="lang">🌍 Language:</label>
-      <select id="lang" onchange="location.href=this.value">
-        <option value="about.html">🇺🇦 Українська</option>
-        <option value="about_en.html" selected>🇬🇧 English</option>
-        <option value="about_pl.html">🇵🇱 Polski</option>
-      </select>
-    </section>
-  </main>
+  <section>
+    <h2>🧠 DAO Statement</h2>
+    <p id="dao-text">
+      AgroProsper V7 is an autonomous DAO platform operating without Web3 dependencies. CID architecture, non-minted NFT badges, voting without blockchain records. Gamification, incognito support, multilingual access.
+    </p>
+  </section>
 
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const menu = document.querySelector('.nav-menu');
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-      menu.classList.toggle('active');
-    });
-    document.addEventListener('click', (e) => {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.classList.remove('active');
-        toggle.classList.remove('active');
-      }
-    });
-  </script>
+  <section>
+    <h2>🎬 Video Presentation</h2>
+    <video controls autoplay muted>
+      <source src="../assets/video/AgroProsperV7_Unstoppable.mp4" type="video/mp4">
+      <track src="../assets/subtitles/subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+    </video>
+  </section>
+
+  <section>
+    <h2>🌱 Mission & Principles</h2>
+    <ul>
+      <li>Transparency without blockchain dependency</li>
+      <li>Support without publicity</li>
+      <li>Gamification through actions, not tokens</li>
+      <li>Incognito motivation for DAO agents</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🔐 DAO Architecture</h2>
+    <ul>
+      <li>CID identification — internal DAO identity</li>
+      <li>Voting without blockchain records</li>
+      <li>NFT badges without minting</li>
+      <li>AgroStudio DAO Bots — automated registration, analytics, outreach</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🏅 Gamification & Badges</h2>
+    <ul>
+      <li>“Liquor Candy” — for ethical choice</li>
+      <li>“Moon Botanist” — for CID-based registration</li>
+      <li>“Agent of Good” — for anonymous support actions</li>
+    </ul>
+  </section>
+
+</main>
+
+<script>
+  const lang = navigator.language.slice(0, 2);
+  const translations = {
+    en: {
+      daoText: "AgroProsper V7 — autonomous DAO platform operating without Web3 dependencies..."
+    },
+    uk: {
+      daoText: "AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей..."
+    },
+    pl: {
+      daoText: "AgroProsper V7 — autonomiczna platforma DAO działająca bez zależności Web3..."
+    }
+  };
+  const t = translations[lang] || translations.en;
+  document.getElementById('dao-text').textContent = t.daoText;
+</script>
+
 </body>
 </html>
