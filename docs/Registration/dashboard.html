@@ -2,190 +2,149 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
+  <title>AgroProsper DAO — Панель агента</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroProsper — Панель користувача</title>
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../public/style.css" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f4f8;
-      padding: 2rem;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: white;
+      margin: 0;
+      padding: 0;
     }
-    .dashboard {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      max-width: 800px;
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.7);
+    }
+    .logo {
+      height: 60px;
+      margin-right: 20px;
+    }
+    .banner h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    main {
+      padding: 40px;
+      max-width: 900px;
       margin: auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
     }
     h2 {
-      color: #2e7d32;
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
+      margin-top: 0;
     }
-    input, select {
+    input, select, textarea {
       width: 100%;
-      padding: 0.6rem;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: white;
     }
     button {
-      background-color: #2e7d32;
-      color: white;
-      padding: 0.7rem 1.2rem;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #00ffcc;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
     }
     button:hover {
-      background-color: #1b5e20;
+      background: #00cc99;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <div class="banner-container">
-  <img src="futuristic-agro-banner.png" alt="Future of Agriculture" class="banner-img">
-  <div class="banner-overlay">
-    <h2>AgroProsper: Майбутнє агробізнесу</h2>
-    <p>Інновації, автоматизація, сталий розвиток</p>
-    <button onclick="startNow()">Почати</button>
+
+<header>
+  <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
+  <div class="banner">
+    <h1>AgroProsper V7 — Панель агента DAO</h1>
   </div>
-</div>
-  <div class="dashboard">
-    <h2>👤 Реєстрація та бейдж</h2>
-    <input type="text" id="name" placeholder="Ім’я">
-    <input type="email" id="email" placeholder="Email">
-    <select id="role">
-      <option value="Starter">Starter</option>
-      <option value="Farmer">Farmer</option>
-      <option value="Trader">Trader</option>
-    </select>
-    <button onclick="registerAndMint()">Зареєструватися та отримати бейдж</button>
+</header>
 
-    <h2>💰 Отримати токени</h2>
-    <button onclick="rewardUser()">Нарахувати токени</button>
+<main>
 
-    <h2>📊 Перевірити баланс</h2>
-    <button onclick="getBalance()">Показати баланс токенів</button>
+  <section>
+    <h2>🧠 DAO-звернення</h2>
+    <p id="dao-text">
+      AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей. CID-ідентифікація, NFT-бейджі без мінтингу, голосування без блокчейн-запису.
+    </p>
+  </section>
 
-    <h2>🚀 Повна реєстрація з балансом</h2>
-    <button onclick="fullRegistration()">Зареєструватися, отримати бейдж, токени і показати баланс</button>
-  </div>
+  <section>
+    <h2>👤 Реєстрація агента</h2>
+    <form id="agentForm">
+      <input type="text" id="name" placeholder="Ім’я" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <select id="role">
+        <option value="Moon Botanist">Moon Botanist</option>
+        <option value="DAO Partner">DAO Partner</option>
+        <option value="Agent of Good">Agent of Good</option>
+      </select>
+      <input type="text" id="cid" placeholder="Ваш CID (наприклад: 0xAGRO-XXXX)" required />
+      <textarea id="message" placeholder="Повідомлення підтримки (необов’язково)"></textarea>
+      <button type="submit">🚀 Повна реєстрація</button>
+    </form>
+  </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
-  <script>
-    const registryAddress = "0x..."; // заміни на адресу UserRegistry
-    const badgeAddress = "0x...";    // заміни на адресу UserBadgeNFT
-    const tokenAddress = "0x...";    // заміни на адресу токена
+  <section>
+    <h2>🏅 Дії DAO</h2>
+    <button onclick="alert('✅ Бейдж видано!')">Отримати бейдж</button>
+    <button onclick="alert('💰 Токени нараховано!')">Нарахувати токени</button>
+    <button onclick="alert('📊 Баланс: 0 AGT')">Перевірити баланс</button>
+  </section>
 
-    const registryABI = [ /* ABI з UserRegistry.sol */ ];
-    const badgeABI = [ /* ABI з UserBadgeNFT.sol */ ];
-    const tokenABI = [
-      {
-        "constant": true,
-        "inputs": [{ "name": "account", "type": "address" }],
-        "name": "balanceOf",
-        "outputs": [{ "name": "", "type": "uint256" }],
-        "type": "function"
-      }
-    ];
+</main>
 
-    async function getSigner() {
-      await ethereum.request({ method: "eth_requestAccounts" });
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      return provider.getSigner();
+<script>
+  const lang = navigator.language.slice(0, 2);
+  const translations = {
+    uk: {
+      daoText: "AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей..."
+    },
+    en: {
+      daoText: "AgroProsper V7 — autonomous DAO platform operating without Web3 dependencies..."
+    },
+    pl: {
+      daoText: "AgroProsper V7 — autonomiczna platforma DAO działająca bez zależności Web3..."
     }
+  };
+  const t = translations[lang] || translations.uk;
+  document.getElementById('dao-text').textContent = t.daoText;
 
-    async function registerUser() {
-      const signer = await getSigner();
-      const contract = new ethers.Contract(registryAddress, registryABI, signer);
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const tx = await contract.register(name, email);
-      await tx.wait();
-      alert("✅ Реєстрація успішна!");
-    }
-
-    async function mintBadge() {
-      const signer = await getSigner();
-      const contract = new ethers.Contract(badgeAddress, badgeABI, signer);
-      const userAddress = await signer.getAddress();
-      const role = document.getElementById("role").value;
-      const tx = await contract.mintBadge(userAddress, role);
-      await tx.wait();
-      alert("🏅 Бейдж видано!");
-    }
-
-    async function rewardUser() {
-      const signer = await getSigner();
-      const contract = new ethers.Contract(registryAddress, registryABI, signer);
-      const userAddress = await signer.getAddress();
-      const tx = await contract.rewardUser(userAddress);
-      await tx.wait();
-      alert("💰 Токени нараховано!");
-    }
-
-    async function getBalance() {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const userAddress = await signer.getAddress();
-      const token = new ethers.Contract(tokenAddress, tokenABI, provider);
-      const balance = await token.balanceOf(userAddress);
-      alert(`💰 Баланс: ${ethers.utils.formatEther(balance)} токенів`);
-    }
-
-    async function registerAndMint() {
-      const signer = await getSigner();
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const role = document.getElementById("role").value;
-      if (!name || !email || !role) {
-        alert("❗ Будь ласка, заповніть усі поля.");
-        return;
-      }
-      const registry = new ethers.Contract(registryAddress, registryABI, signer);
-      const tx1 = await registry.register(name, email);
-      await tx1.wait();
-      const badge = new ethers.Contract(badgeAddress, badgeABI, signer);
-      const userAddress = await signer.getAddress();
-      const tx2 = await badge.mintBadge(userAddress, role);
-      await tx2.wait();
-      alert(`🎉 Користувач ${name} зареєстрований як ${role} і отримав бейдж!`);
-    }
-
-    async function fullRegistration() {
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const role = document.getElementById("role").value;
-
-      if (!name || !email || !role) {
-        alert("❗ Будь ласка, заповніть усі поля.");
-        return;
-      }
-
-      try {
-        await registerUser();
-        await mintBadge();
-        await rewardUser();
-        await getBalance();
-        alert(`🎉 ${name} зареєстрований як ${role}, бейдж видано, токени нараховано і баланс показано!`);
-      } catch (err) {
-        alert("❌ Помилка: " + err.message);
-      }
-    }
-  </script>
-  
-  <script>
-  const hour = new Date().getHours();
-  const theme = (hour >= 6 && hour < 18) ? 'day' : 'night';
-  document.body.classList.add(theme);
+  document.getElementById("agentForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const payload = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      role: document.getElementById("role").value,
+      cid: document.getElementById("cid").value,
+      message: document.getElementById("message").value,
+      timestamp: new Date().toISOString()
+    };
+    fetch("https://dao.agroprosper.local/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+    .then(res => res.ok ? alert("✅ Реєстрація успішна!") : alert("⚠️ Помилка реєстрації"))
+    .catch(() => alert("❌ DAO-бот недоступний"));
+  });
 </script>
+
 </body>
 </html>
