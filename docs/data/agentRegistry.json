@@ -1,0 +1,23 @@
+[
+  {
+    "cid": "0xAGRO-7F3A",
+    "role": "Moon Botanist",
+    "message": "Підтримую AgroProsper V7 за автономність і етику.",
+    "email": "botanist@example.com",
+    "timestamp": "2025-09-05T12:44:00Z"
+  },
+  {
+    "cid": "0xAGRO-2B91",
+    "role": "DAO Partner",
+    "message": "Готовий надати логістику для аграріїв.",
+    "email": "partner@logistics.pl",
+    "timestamp": "2025-09-05T12:45:12Z"
+  },
+  {
+    "cid": "0xAGRO-9C88",
+    "role": "Observer",
+    "message": "Спостерігаю за DAO-механікою. Цікаво.",
+    "email": "",
+    "timestamp": "2025-09-05T12:46:30Z"
+  }
+]
