@@ -2,59 +2,79 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
+  <title>Контакти — AgroProsper V7</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Контакти — AgroProsper</title>
-  <link rel="stylesheet" href="../public/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.7);
+    }
+    .logo {
+      height: 60px;
+      margin-right: 20px;
+    }
+    .banner h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+    }
+    a {
+      color: #00ffcc;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
-    <nav class="nav">
-      <button class="nav-toggle" aria-label="Меню">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      </button>
-      <ul class="nav-menu">
-        <li><a href="index.html">Головна</a></li>
-        <li><a href="about.html">Про нас</a></li>
-        <li><a href="Registration/dashboard.html">Реєстрація</a></li>
-        <li><a href="contact.html" class="active">Контакти</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <section class="contact-section">
-      <h1>📬 Зв’яжіться з нами</h1>
-      <p>Маєте запитання або пропозиції? Надішліть нам повідомлення!</p>
+<header>
+  <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
+  <div class="banner">
+    <h1>Контакти AgroProsper DAO</h1>
+  </div>
+</header>
 
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
-        <label for="name">Ім’я:</label>
-        <input type="text" id="name" name="name" required />
+<main>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="_replyto" required />
+  <section>
+    <h2>📧 Email</h2>
+    <p><a href="mailto:agroprosper74@gmail.com">agroprosper74@gmail.com</a></p>
+  </section>
 
-        <label for="message">Повідомлення:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+  <section>
+    <h2>📱 WhatsApp</h2>
+    <p><a href="https://wa.me/48669106746">+48 669 106 746</a></p>
+  </section>
 
-        <button type="submit">Надіслати</button>
-      </form>
-    </section>
-  </main>
+  <section>
+    <h2>🌐 DAO-панель</h2>
+    <p><a href="https://serghiilimborskyi.github.io/AgroProsper">AgroProsper V7 — DAO</a></p>
+  </section>
 
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const menu = document.querySelector('.nav-menu');
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-      menu.classList.toggle('active');
-    });
-    document.addEventListener('click', (e) => {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.classList.remove('active');
-        toggle.classList.remove('active');
-      }
-    });
-  </script>
+  <section>
+    <h2>🧩 Зареєструвати компанію</h2>
+    <p><a href="Registration/dashboard.html">Перейти до реєстрації</a></p>
+  </section>
+
+</main>
+
 </body>
 </html>
