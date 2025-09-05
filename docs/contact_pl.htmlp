@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kontakt — AgroProsper V7</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.7);
+    }
+    .logo {
+      height: 60px;
+      margin-right: 20px;
+    }
+    .banner h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+    }
+    a {
+      color: #00ffcc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
+  <div class="banner">
+    <h1>Kontakt z AgroProsper DAO</h1>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <h2>📧 Email</h2>
+    <p><a href="mailto:agroprosper74@gmail.com">agroprosper74@gmail.com</a></p>
+  </section>
+
+  <section>
+    <h2>📱 WhatsApp</h2>
+    <p><a href="https://wa.me/48669106746">+48 669 106 746</a></p>
+  </section>
+
+  <section>
+    <h2>🌐 Panel DAO</h2>
+    <p><a href="https://serghiilimborskyi.github.io/AgroProsper">AgroProsper V7 — DAO</a></p>
+  </section>
+
+  <section>
+    <h2>🧩 Zarejestruj firmę</h2>
+    <p><a href="Registration/dashboard.html">Przejdź do rejestracji</a></p>
+  </section>
+
+</main>
+
+</body>
+</html>
