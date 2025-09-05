@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Підтримка DAO — AgroProsper V7</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>/* стилі як у support.html */</style>
+</head>
+<body>
+
+  <h1>🗳️ Підтримка AgroProsper V7</h1>
+
+  <form id="supportForm">
+    <label for="cid">Ваш CID:</label>
+    <input type="text" id="cid" name="cid" placeholder="0xAGRO-XXXX" required />
+
+    <label for="role">Ваша роль:</label>
+    <select id="role" name="role">
+      <option value="agent">Агент DAO</option>
+      <option value="partner">Партнер DAO</option>
+      <option value="botanist">Moon Botanist</option>
+      <option value="observer">Спостерігач</option>
+    </select>
+
+    <label for="message">Повідомлення підтримки:</label>
+    <textarea id="message" name="message" placeholder="Чому ви підтримуєте AgroProsper V7?" required></textarea>
+
+    <label for="email">Контактний email (необов’язково):</label>
+    <input type="email" id="email" name="email" placeholder="ваш@email.com" />
+
+    <button type="submit">Підтримати DAO</button>
+  </form>
+
+  <p class="note">Ваш голос буде зафіксовано в системі DAO. Дякуємо за довіру.</p>
+
+</body>
+</html>
