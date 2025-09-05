@@ -1,12 +1,14 @@
 (function () {
   const lang = navigator.language.slice(0, 2);
-  const t = {
+  const translations = {
     uk: {
       home: "🏠 Головна",
       about: "🧠 Про нас",
       quests: "🎮 Квести",
       video: "🎬 Відео",
+      badges: "🏅 Бейджі",
       contact: "📬 Контакти",
+      support: "🤝 Підтримати",
       login: "🔐 Вхід",
       gov: "📊 GOV-слайди",
       accessDenied: "🔐 Доступ лише після реєстрації. Увійдіть через DAO-панель."
@@ -16,7 +18,9 @@
       about: "🧠 About",
       quests: "🎮 Quests",
       video: "🎬 Video",
+      badges: "🏅 Badges",
       contact: "📬 Contact",
+      support: "🤝 Support",
       login: "🔐 Login",
       gov: "📊 GOV Slides",
       accessDenied: "🔐 Access restricted. Please register via DAO panel."
@@ -26,12 +30,16 @@
       about: "🧠 O nas",
       quests: "🎮 Misje",
       video: "🎬 Wideo",
+      badges: "🏅 Odznaki",
       contact: "📬 Kontakt",
+      support: "🤝 Wsparcie",
       login: "🔐 Logowanie",
       gov: "📊 Slajdy GOV",
       accessDenied: "🔐 Dostęp tylko po rejestracji. Przejdź do panelu DAO."
     }
-  }[lang] || t.uk;
+  };
+
+  const t = translations[lang] || translations.uk;
 
   const nav = document.createElement("nav");
   nav.style = "background: rgba(0,0,0,0.8); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-family: 'Segoe UI', sans-serif;";
@@ -45,7 +53,9 @@
       <a href="../about.html" style="color:white; margin:0 10px;">${t.about}</a>
       <a href="../quests.html" style="color:white; margin:0 10px;" onclick="checkAccess(event)">${t.quests}</a>
       <a href="../video.html" style="color:white; margin:0 10px;">${t.video}</a>
+      <a href="../badges.html" style="color:white; margin:0 10px;">${t.badges}</a>
       <a href="../contact.html" style="color:white; margin:0 10px;">${t.contact}</a>
+      <a href="../support.html" style="color:white; margin:0 10px;" onclick="checkAccess(event)">${t.support}</a>
       <a href="../Registration/dashboard.html" style="color:#00ffcc; margin:0 10px;">${t.login}</a>
       <a href="../slide5.html" style="color:white; margin:0 10px;" onclick="checkAccess(event)">${t.gov}</a>
     </div>
