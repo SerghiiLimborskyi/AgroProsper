@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Галерея бейджів — AgroProsper V7</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f2027;
+      color: white;
+      margin: 0;
+      padding: 40px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+    }
+    .badge {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .badge:hover {
+      transform: scale(1.05);
+    }
+    .badge img {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+    .badge h2 {
+      margin: 10px 0;
+      color: #00ffcc;
+    }
+    .badge p {
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏅 Галерея DAO-бейджів</h1>
+
+  <div class="gallery">
+
+    <div class="badge">
+      <img src="../assets/badges/liquor_candy.svg" alt="Цукерочка з лікером" />
+      <h2>Цукерочка з лікером</h2>
+      <p>За проходження квесту “Солодкий вибір”. Символ етичного вибору.</p>
+    </div>
+
+    <div class="badge">
+      <img src="../assets/badges/moon_botanist.svg" alt="Moon Botanist" />
+      <h2>Moon Botanist</h2>
+      <p>За реєстрацію через CID. Символ автономного росту.</p>
+    </div>
+
+    <div class="badge">
+      <img src="../assets/badges/agent_of_good.svg" alt="Agent of Good" />
+      <h2>Agent of Good</h2>
+      <p>За доброчинну дію без піару. Символ дії мовчки.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
