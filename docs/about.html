@@ -2,355 +2,129 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
+  <title>Про нас — AgroProsper V7</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Про AgroProsper</title>
-  <link rel="stylesheet" href="../public/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.7);
+    }
+    .logo {
+      height: 60px;
+      margin-right: 20px;
+    }
+    .banner h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    main {
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    video {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    ul {
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
-    <nav class="nav">
-      <button class="nav-toggle" aria-label="Меню">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-      <ul class="nav-menu">
-        <li><a href="index.html">Головна</a></li>
-        <li><a href="about.html">Про нас</a></li>
-        <li><a href="Registration/dashboard.html">Реєстрація</a></li>
-        <li><a href="contact.html">Контакти</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
 
-    <section class="studio-block" id="nftGallery" style="display: none;">
-  <h2>🏅 NFT-бейджі</h2>
-  <p>Отримай унікальні бейджі за участь у DAO-квесті та активність на платформі.</p>
-  <p id="badgeCount" class="badge-count">Бейджів отримано: 0</p>
-  <div class="nft-container">
-    <div class="nft-card fade-in">
-      <img src="public/nft1.png" alt="DAO-Фермер">
-      <p>🌾 DAO-Фермер</p>
-    </div>
-    <div class="nft-card fade-in">
-      <img src="public/nft2.png" alt="AI-Агроном">
-      <p>🧠 AI-Агроном</p>
-    </div>
-    <div class="nft-card fade-in">
-      <img src="public/nft3.png" alt="Гейміфікатор">
-      <p>🚀 Гейміфікатор</p>
-    </div>
+<header>
+  <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
+  <div class="banner">
+    <h1>AgroProsper V7 — Про нас</h1>
   </div>
-</section>
+</header>
 
-    <section class="studio-block" id="introStudio">
-  <img src="public/logo.png" alt="AgroProsper Logo" class="logo">
-  <h1>AgroProsper V7</h1>
-  <p class="slogan">Інтелект. Зростання. Довіра.</p>
-  <video controls width="100%">
-    <source src="public/agrotycoon.mp4" type="video/mp4">
-    Ваш браузер не підтримує відео.
-  </video>
-</section>
+<main>
 
-    <section class="studio-block" id="questStudio">
-  <h2>DAO-квест</h2>
-  <p>Пройди інтерактивний квест. Відкрий DAO. Отримай NFT.</p>
-  <button onclick="startQuest()" class="quest-button">🔓 Почати квест</button>
-</section>
+  <section>
+    <h2>🧠 DAO-звернення</h2>
+    <p id="dao-text">
+      AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей. CID-архітектура, NFT-бейджі без мінтингу, голосування без блокчейн-запису. Гейміфікація, інкогніто-допомога, багатомовність.
+    </p>
+  </section>
 
-    <section class="studio-block" id="nftGallery" style="display: none;">
-  <h2>🏅 NFT-бейджі</h2>
-  <p>Отримай унікальні бейджі за участь у DAO-квесті та активність на платформі.</p>
-  <div class="nft-container">
-    <div class="nft-card">
-      <img src="public/nft1.png" alt="DAO-Фермер">
-      <p>🌾 DAO-Фермер</p>
-    </div>
-    <div class="nft-card">
-      <img src="public/nft2.png" alt="AI-Агроном">
-      <p>🧠 AI-Агроном</p>
-    </div>
-    <div class="nft-card">
-      <img src="public/nft3.png" alt="Гейміфікатор">
-      <p>🚀 Гейміфікатор</p>
-    </div>
-  </div>
-</section>
+  <section>
+    <h2>🎬 Відео-презентація</h2>
+    <video controls autoplay muted>
+      <source src="../assets/video/AgroProsperV7_Unstoppable.mp4" type="video/mp4">
+      <track src="../assets/subtitles/subtitles_ua.vtt" kind="subtitles" srclang="uk" label="Українська">
+      <track src="../assets/subtitles/subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+      <track src="../assets/subtitles/subtitles_pl.vtt" kind="subtitles" srclang="pl" label="Polski">
+    </video>
+  </section>
 
-<section class="studio-block" id="problemStudio">
-  <h2>Проблема</h2>
-  <p>Фермери втрачають прибутки через нестабільний ринок, відсутність аналітики та контроль фінансів.</p>
-</section>
+  <section>
+    <h2>🌱 Місія та принципи</h2>
+    <ul>
+      <li>Прозорість без блокчейн-залежності</li>
+      <li>Допомога без піару</li>
+      <li>Гейміфікація через дії, а не токени</li>
+      <li>Інкогніто-мотивація для агентів DAO</li>
+    </ul>
+  </section>
 
-<section class="studio-block" id="solutionStudio">
-  <h2>Рішення</h2>
-  <p>AgroProsper аналізує ринок, оптимізує продажі, контролює фінанси. Все — в одному місці.</p>
-</section>
+  <section>
+    <h2>🔐 Архітектура DAO</h2>
+    <ul>
+      <li>CID-ідентифікація — внутрішній DAO-ідентифікатор</li>
+      <li>Голосування без блокчейн-запису</li>
+      <li>NFT-бейджі без мінтингу</li>
+      <li>AgroStudio DAO Bots — автоматична реєстрація, реклама, аналітика</li>
+    </ul>
+  </section>
 
-<section class="studio-block" id="featuresStudio">
-  <h2>Функції платформи</h2>
-  <ul>
-    <li>🤖 AI-консультант</li>
-    <li>💰 DAO-фінанси з AGT</li>
-    <li>🏅 NFT-бейджі</li>
-    <li>🎮 Гейміфікація</li>
-    <li>🌍 Мультимовність</li>
-  </ul>
-</section>
+  <section>
+    <h2>🏅 Гейміфікація та бейджі</h2>
+    <ul>
+      <li>“Цукерочка з лікером” — за етичний вибір</li>
+      <li>“Moon Botanist” — за реєстрацію через CID</li>
+      <li>“Agent of Good” — за доброчинну дію</li>
+    </ul>
+  </section>
 
-<section class="studio-block" id="questStudio">
-  <h2>DAO-квест</h2>
-  <p>Пройди інтерактивний квест. Відкрий DAO. Отримай NFT.</p>
-  <button id="vote-btn">Голосувати</button>
-  <button id="results-btn">Результати</button>
-  <div id="dao-chat"></div>
-</section>
-
-    <section class="studio-block" id="nftGallery">
-  <h2>🏅 NFT-бейджі</h2>
-  <p>Отримай унікальні бейджі за участь у DAO-квесті та активність на платформі.</p>
-  <div class="nft-container">
-    <div class="nft-card">
-      <img src="public/nft1.png" alt="DAO-Фермер">
-      <p>🌾 DAO-Фермер</p>
-    </div>
-    <div class="nft-card">
-      <img src="public/nft2.png" alt="AI-Агроном">
-      <p>🧠 AI-Агроном</p>
-    </div>
-    <div class="nft-card">
-      <img src="public/nft3.png" alt="Гейміфікатор">
-      <p>🚀 Гейміфікатор</p>
-    </div>
-  </div>
-</section>
-
-<style>
-  .nft-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  .nft-card {
-    width: 160px;
-    background-color: #f4f4f4;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    text-align: center;
-    padding: 10px;
-  }
-  .nft-card img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 8px;
-  }
-  .nft-card p {
-    font-weight: bold;
-    color: #2c3e50;
-  }
-</style>
-
-<section class="studio-block" id="ctaStudio">
-  <h2>Запусти свою цифрову ферму</h2>
-  <p>Скануй QR-код або натисни кнопку нижче, щоб приєднатися до AgroProsper DAO.</p>
-  <img src="public/qr_agroprosper.png" alt="QR-код AgroProsper" width="180">
-  <a href="https://serghiilimborskyi.github.io/AgroProsper/" class="cta-button">Запустити платформу</a>
-</section>
-
-    <section class="business-plan">
-  <h2>📘 Бізнес-план AgroProsper V7</h2>
-  <p>AgroProsper — це інтелектуальна платформа для агробізнесу, що поєднує DAO, NFT, AI та гейміфікацію.</p>
-  <ul>
-    <li>✔ AI-аналітика для прогнозування врожаю</li>
-    <li>✔ DAO-архітектура для прозорого управління</li>
-    <li>✔ NFT для токенізації активів</li>
-    <li>✔ Мультимовність і інтерактивні презентації</li>
-  </ul>
-  <video width="100%" height="400" controls poster="../public/banner_v7.jpg">
-    <source src="../public/agroprosper_v7.mp4" type="video/mp4" />
-    Ваш браузер не підтримує відео.
-  </video>
-</section>
-
-    <section class="hero-banner">
-  <img src="../public/banner_v7.jpg" alt="AgroProsper V7 Banner" class="banner-img" />
-  <p class="banner-caption">Офіційна версія документа — підписано Сергієм Лімборським</p>
-</section>
-    
-    <video width="100%" height="400" controls poster="../public/banner_v7.jpg">
-  <source src="../public/agroprosper_v7.mp4" type="video/mp4" />
-  Ваш браузер не підтримує відео.
-</video>
-    
-<audio controls autoplay loop>
-  <source src="../public/theme.mp3" type="audio/mpeg" />
-  Ваш браузер не підтримує аудіо.
-</audio>
-
-    <h1>Про AgroProsper</h1>
-    <p>AgroProsper — це автоматизована AI-платформа для агробізнесу, побудована на DAO-архітектурі з підтримкою NFT, AI, мультимовності, гейміфікації та інтерактивних презентацій.</p>
-
-    <iframe width="100%" height="400" src="https://www.youtube.com/embed/ID_ТВОГО_ВІДЕО?cc_load_policy=1" title="AgroProsper Presentation" frameborder="0" allowfullscreen></iframe>
-
-    <section id="agroprosper-videos">
-  <h2>🎥 Відео з AgroProsper</h2>
-  <div id="video-container"></div>
-</section>
-    
-    <section class="business-plan">
-  <h2>📘 Бізнес-план AgroProsper V7</h2>
-  <p><strong>Місія:</strong> Інтеграція AI-рішень у агросектор, автоматизація процесів, точні прогнози та ефективне управління.</p>
-  <p><strong>Ціль:</strong> Створення цифрової екосистеми для фермерів, зменшення витрат, партнерство з агрокомпаніями.</p>
-
-  <h3>📊 Аналіз ринку</h3>
-  <ul>
-    <li>Глобальна вартість ринку: ~X млрд</li>
-    <li>Темпи росту: X% на рік</li>
-    <li>Основні проблеми: нестабільність погоди, високі витрати, відсутність прогнозів</li>
-  </ul>
-
-  <h3>🤖 Продукт: Супер Помічник AgroProsper</h3>
-  <ul>
-    <li>AI-аналітика для прогнозування врожаю</li>
-    <li>Інтеграція з ERP-системами</li>
-    <li>Оптимізація витрат на 15–30%</li>
-    <li>Зменшення ризиків втрат урожаю</li>
-  </ul>
-
-  <h3>💼 Бізнес-модель</h3>
-  <ul>
-    <li>SaaS-підписка ($X/місяць)</li>
-    <li>Корпоративні ліцензії ($X/рік)</li>
-    <li>Партнерство з агрохолдингами</li>
-  </ul>
-
-  <h3>📈 Очікуваний прибуток</h3>
-  <table>
-    <tr><th>Рік</th><th>Дохід ($)</th><th>Витрати ($)</th><th>Чистий прибуток ($)</th></tr>
-    <tr><td>2025</td><td>X млн</td><td>Y млн</td><td>Z млн</td></tr>
-    <tr><td>2026</td><td>X+5 млн</td><td>Y+3 млн</td><td>Z+2 млн</td></tr>
-  </table>
-
-  <h3>📣 Маркетинг і стратегія</h3>
-  <ul>
-    <li>Сайт + SEO</li>
-    <li>Соцмережі</li>
-    <li>Співпраця з інвесторами</li>
-  </ul>
-</section>
-
+</main>
 
 <script>
-  const apiKey = 'YOUR_API_KEY'; // Встав свій API-ключ тут
-  const channelId = 'UCsN8AHUPLQp_xJlGOkwZkmw';
-  const maxResults = 4;
-
-  async function loadVideos() {
-    const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}`
-    );
-    const data = await response.json();
-    const container = document.getElementById('video-container');
-    container.innerHTML = '';
-
-    data.items.forEach(item => {
-      if (item.id.kind === 'youtube#video') {
-        const videoId = item.id.videoId;
-        const title = item.snippet.title;
-        container.innerHTML += `
-          <div class="video-item">
-            <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
-            <p>${title}</p>
-          </div>
-        `;
-      }
-    });
-  }
-
-  loadVideos();
+  const lang = navigator.language.slice(0, 2);
+  const translations = {
+    uk: {
+      daoText: "AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей..."
+    },
+    en: {
+      daoText: "AgroProsper V7 — autonomous DAO platform operating without Web3 dependencies..."
+    },
+    pl: {
+      daoText: "AgroProsper V7 — autonomiczna platforma DAO działająca bez zależności Web3..."
+    }
+  };
+  const t = translations[lang] || translations.uk;
+  document.getElementById('dao-text').textContent = t.daoText;
 </script>
 
-<style>
-  .hero-banner {
-  text-align: center;
-  margin-bottom: 30px;
-}
-.banner-img {
-  width: 100%;
-  max-width: 800px;
-  border-radius: 12px;
-}
-.banner-caption {
-  font-size: 18px;
-  color: #2c3e50;
-  margin-top: 10px;
-}
-
-  #agroprosper-videos {
-    padding: 40px 20px;
-    background-color: #fff;
-    border-top: 2px solid #e0e0e0;
-    text-align: center;
-  }
-
-  #agroprosper-videos h2 {
-    font-size: 24px;
-    margin-bottom: 30px;
-    color: #2c3e50;
-  }
-
-  #video-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-  }
-
-  .video-item {
-    width: 300px;
-  }
-
-  .video-item iframe {
-    width: 100%;
-    height: 170px;
-    border-radius: 8px;
-  }
-
-  .video-item p {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #34495e;
-  }
-</style>
-
-    <section class="language-switch">
-      <label for="lang">🌍 Мова:</label>
-      <select id="lang" onchange="location.href=this.value">
-        <option value="about.html">🇺🇦 Українська</option>
-        <option value="about_en.html">🇬🇧 English</option>
-        <option value="about_pl.html">🇵🇱 Polski</option>
-      </select>
-    </section>
-  </main>
-
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const menu = document.querySelector('.nav-menu');
-    toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-      menu.classList.toggle('active');
-    });
-    document.addEventListener('click', (e) => {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.classList.remove('active');
-        toggle.classList.remove('active');
-      }
-    });
-  </script>
 </body>
 </html>
