@@ -47,7 +47,6 @@
 <body>
 
 <header>
-  <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
   <div class="banner">
     <h1>Kontakt z AgroProsper DAO</h1>
   </div>
