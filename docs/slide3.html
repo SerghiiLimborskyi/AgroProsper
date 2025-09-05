@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Слайд 3 — CID-механізм</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: white;
+      margin: 0;
+      padding: 40px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .cid-block {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+    .cid-block h2 {
+      margin-top: 0;
+      color: #00ffcc;
+    }
+    .cid-diagram {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .cid-diagram img {
+      width: 300px;
+      border-radius: 8px;
+    }
+    .note {
+      font-style: italic;
+      color: #ccc;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔗 CID-механізм AgroProsper V7</h1>
+
+  <div class="cid-block">
+    <h2>Що таке CID?</h2>
+    <p><strong>CID (Content Identifier)</strong> — це внутрішній DAO-ідентифікатор, який не залежить від IPFS, токенів чи блокчейн-записів. Він використовується для фіксації дій, ролей, бейджів та голосувань у системі AgroProsper.</p>
+  </div>
+
+  <div class="cid-block">
+    <h2>Чому це важливо?</h2>
+    <ul>
+      <li>✅ CID не потребує зовнішніх API</li>
+      <li>✅ CID не зберігається на блокчейні</li>
+      <li>✅ CID не є токеном або гаманцем</li>
+      <li>✅ CID — це автономна DAO-структура</li>
+    </ul>
+  </div>
+
+  <div class="cid-block">
+    <h2>Як працює CID?</h2>
+    <p>Кожна дія агента (реєстрація, квест, голосування) фіксується через CID. CID пов’язаний із роллю, бейджем та DAO-мотивацією. CID не розкриває особу, але дозволяє діяти в системі.</p>
+  </div>
+
+  <div class="cid-diagram">
+    <img src="../assets/qr/cid.png" alt="CID Diagram" />
+    <p class="note">CID → Роль → Бейдж → Дія → DAO</p>
+  </div>
+
+</body>
+</html>
