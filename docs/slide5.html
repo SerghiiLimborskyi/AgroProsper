@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Слайд 5 — Відео-презентація AgroProsper V7</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #1c1c1c, #2c3e50);
+      color: white;
+      margin: 0;
+      padding: 40px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+    video {
+      width: 100%;
+      max-width: 800px;
+      display: block;
+      margin: 0 auto 20px auto;
+      border-radius: 8px;
+    }
+    .cta-button {
+      display: block;
+      margin: 30px auto;
+      padding: 14px 28px;
+      background: #00ffcc;
+      color: #000;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .cta-button:hover {
+      background: #00cc99;
+      transform: scale(1.05);
+    }
+    .note {
+      text-align: center;
+      font-style: italic;
+      color: #ccc;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎬 Відео-презентація AgroProsper V7</h1>
+
+  <video controls autoplay muted>
+    <source src="../assets/video/AgroProsperV7_Unstoppable.mp4" type="video/mp4">
+    <track src="../assets/subtitles/subtitles_ua.vtt" kind="subtitles" srclang="uk" label="Українська">
+    <track src="../assets/subtitles/subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+    <track src="../assets/subtitles/subtitles_pl.vtt" kind="subtitles" srclang="pl" label="Polski">
+  </video>
+
+  <button class="cta-button" onclick="alert('Дякуємо за підтримку! Ваш голос зафіксовано.')">
+    🗳️ Підтримати реліз
+  </button>
+
+  <p class="note">AgroProsper V7 — автономна платформа, що працює. Приєднуйтесь до DAO.</p>
+
+</body>
+</html>
