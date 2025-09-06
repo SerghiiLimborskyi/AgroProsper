@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🌦️ Прогнози (мобільна версія) — AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+    }
+    main {
+      padding: 10px;
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    section {
+      background: #0a0a0a;
+      border: 1px solid #0f0;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 8px rgba(0,255,0,0.15);
+    }
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 6px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      margin-bottom: 6px;
+    }
+    .note {
+      font-size: 12px;
+      color: #9f9;
+      text-align: center;
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Спільний хедер -->
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(r => r.text())
+      .then(html => { document.getElementById("header").innerHTML = html; });
+  </script>
+
+  <main>
+    <h1>🌦️ Прогнози AgroProsper (мобільно)</h1>
+
+    <section>
+      <h2>Погода (Щецин)</h2>
+      <iframe src="https://www.msn.com/pl-pl/pogoda/prognoza/in-Szczecin,Woj-Zachodniopomorskie?loc=eyJsIjoiU3pjemVjaW4iLCJyIjoiV29qIFphY2hvZG5pb3BvbW9yc2tpZSIsImMiOiJQb2xza2EiLCJpIjoiUEwiLCJnIjoicGwtcGwiLCJ4IjoiMTQuNTU5Njk1MjQzODM1NDUiLCJ5IjoiNTMuNDY3MjM1NTY1MTg1NTUifQ%3D%3D&weadegreetype=C&content=AQICard_wxaqi"></iframe>
+    </section>
+
+    <section>
+      <h2>Курси валют (USD → PLN)</h2>
+      <iframe src="https://www.xe.com/currencycharts/?from=USD&to=PLN&view=1M"></iframe>
+    </section>
+
+    <section>
+      <h2>Прогноз цін на сировину</h2>
+      <ul>
+        <li><a href="https://finway.com.ua/zrostannya-tsin-syrovynni-resursy-2025/" target="_blank">Finway: Зростання цін у 2025</a></li>
+        <li><a href="https://ukragroconsult.com/news/svitovyj-bank-prognozuye-znyzhennya-czin-na-syrovynu-na-12-u-2025-r-ta-shhe-na-5-u-2026-r/" target="_blank">Світовий банк: Прогноз</a></li>
+        <li><a href="https://biz.liga.net/ua/all/all/novosti/fitch-perehlianuv-tsiny-na-metaly-shcho-zroste-a-shcho-vpade-u-2025-2027-rokakh" target="_blank">Fitch Ratings: Метали</a></li>
+      </ul>
+    </section>
+
+    <p class="note">Дані надаються зовнішніми сервісами. AgroProsper DAO не несе відповідальності за їх точність.</p>
+  </main>
+
+  <footer style="text-align:center; padding:15px;">
+    © 2025 AgroProsper DAO — мобільні прогнози
+  </footer>
+</body>
+</html>
