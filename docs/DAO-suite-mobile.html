@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📱 DAO Suite Mobile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="public/DAO-suite.js" defer></script>
+  <script src="public/directorBot.js" defer></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color: #0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .mobile-panel {
+      padding: 20px;
+    }
+
+    .module {
+      margin-bottom: 30px;
+      padding: 16px;
+      background: #111;
+      border-radius: 12px;
+    }
+
+    h1, h2 {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+
+    #botLog, #cidStats, #gameBadge, #quantumBox {
+      font-family: monospace;
+      font-size: 14px;
+      background: #111;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #0f0;
+    }
+  </style>
+
+  <script>
+    window.addEventListener("load", () => {
+      const hour = new Date().getHours();
+      if (hour >= 20 || hour < 6) {
+        document.body.classList.add("night");
+      }
+
+      directorBot.scanPages();
+      directorBot.suggestCleanup();
+      cidStats.scanCID();
+      gameBadge.show();
+      quantumCID.displayPrediction();
+      drawMobileChart();
+    });
+
+    function drawMobileChart() {
+      const ctx = document.getElementById("cidChart").getContext("2d");
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Гості", "Агенти", "Партнери"],
+          datasets: [{
+            label: "Кількість CID",
+            data: [cidStats.data.guests, cidStats.data.agents, cidStats.data.partners],
+            backgroundColor: ["#0f0", "#0ff", "#f0f"]
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            x: { ticks: { color: "#fff" } },
+            y: { ticks: { color: "#fff" } }
+          }
+        }
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <div class="mobile-panel">
+    <h1>📱 DAO Suite Mobile</h1>
+
+    <div class="module">
+      <h2>📊 CID-аналітика</h2>
+      <div id="cidStats"></div>
+    </div>
+
+    <div class="module">
+      <h2>🧠 Прогноз дій</h2>
+      <div id="quantumBox"></div>
+    </div>
+
+    <div class="module">
+      <h2>🎮 Бейдж у грі</h2>
+      <div id="gameBadge"></div>
+    </div>
+
+    <div class="module">
+      <h2>📈 Графік CID</h2>
+      <canvas id="cidChart"></canvas>
+    </div>
+
+    <div class="module">
+      <h2>📋 Лог дій бота</h2>
+      <div id="botLog"></div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 AgroProsper DAO — мобільна панель
+  </footer>
+</body>
+</html>
