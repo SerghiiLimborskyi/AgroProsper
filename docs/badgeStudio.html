@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎨 Студія бейджів DAO</title>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #0f0; padding: 40px; }
+    input, textarea { width: 100%; margin: 10px 0; padding: 10px; background: #222; color: #0f0; border: none; }
+    button { padding: 10px 20px; background: #0f0; color: #000; border: none; cursor: pointer; }
+    .preview { margin-top: 20px; border: 2px solid #0f0; padding: 20px; }
+  </style>
+</head>
+<body>
+  <h1>🎨 Створити DAO-бейдж</h1>
+  <input type="text" id="badgeName" placeholder="Назва бейджа" />
+  <input type="text" id="badgeRole" placeholder="Роль (guest, agent, partner)" />
+  <textarea id="badgeDesc" placeholder="Опис бейджа"></textarea>
+  <button onclick="generateBadge()">🔄 Згенерувати</button>
+
+  <div class="preview" id="badgePreview"></div>
+
+  <script>
+    function generateBadge() {
+      const name = document.getElementById("badgeName").value;
+      const role = document.getElementById("badgeRole").value;
+      const desc = document.getElementById("badgeDesc").value;
+
+      document.getElementById("badgePreview").innerHTML = `
+        <h2>${name}</h2>
+        <p>Роль: ${role}</p>
+        <p>${desc}</p>
+        <p>🟢 Бейдж готовий до DAO-погодження</p>
+      `;
+    }
+  </script>
+</body>
+</html>
