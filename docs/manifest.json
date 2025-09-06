@@ -1,0 +1,23 @@
+{
+  "name": "AgroProsper DAO",
+  "short_name": "AgroDAO",
+  "start_url": "/DAO-suite-mobile.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00ff00",
+  "description": "DAO-панель AgroProsper V7 для CID-аналітики, гейміфікації та автономного управління.",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "uk",
+  "orientation": "portrait"
+}
