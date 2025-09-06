@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroProsper — Вхід як гість</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body.night {
+      background: linear-gradient(to bottom right, #003300, #001133);
+      color: #fff;
+    }
+    .container {
+      text-align: center;
+      padding: 40px;
+    }
+    .qr {
+      margin: 20px auto;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #0f0;
+    }
+    button:hover {
+      background-color: #0c0;
+    }
+  </style>
+
+  <script>
+    function enterAsGuest() {
+      const guestCID = "0xGUEST-" + Date.now();
+      localStorage.setItem("cid", guestCID);
+      alert("👋 Вітаємо! Вам присвоєно гостьовий CID: " + guestCID);
+      window.location.href = "dashboard.html";
+    }
+
+    window.addEventListener("load", () => {
+      const hour = new Date().getHours();
+      if (hour >= 20 || hour < 6) {
+        document.body.classList.add("night");
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🎫 Вхід як гість</h1>
+    <p>Ця сторінка дозволяє вам миттєво увійти на платформу AgroProsper V7 без реєстрації.</p>
+    <p>Ви отримаєте тимчасовий CID, який дозволяє переглядати контент, брати участь у презентаціях та досліджувати DAO.</p>
+
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fserghiilimborskyi.github.io%2FAgroProsper%2Fdashboard.html" alt="QR для входу на DAO" />
+      <p>📲 Скануйте QR-код, щоб увійти як гість</p>
+    </div>
+
+    <button onclick="enterAsGuest()">🚪 Увійти як гість</button>
+  </div>
+</body>
+</html>
