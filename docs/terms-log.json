@@ -1,0 +1,18 @@
+[
+  {
+    "cid": "0xGUEST-1694000000000",
+    "userName": "Serhii",
+    "agreedAt": "2025-09-06T18:49:00+02:00",
+    "language": "uk",
+    "ip": "193.0.0.1",
+    "version": "Microsoft Services Agreement v2025.09"
+  },
+  {
+    "cid": "0xPARTNER-1694001234567",
+    "userName": "GreenFarm Ltd",
+    "agreedAt": "2025-09-06T17:42:00+02:00",
+    "language": "en",
+    "ip": "193.0.0.2",
+    "version": "Microsoft Services Agreement v2025.09"
+  }
+]
