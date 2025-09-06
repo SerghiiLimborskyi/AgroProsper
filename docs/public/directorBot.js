@@ -1,6 +1,5 @@
 const directorBot = {
   approvedCID: ["0xAGRO-7F3A", "0xAGRO-9C88"],
-  document.getElementById("botLog").innerHTML += `✅ Сценарій запущено<br>`;
 
   scanPages: function () {
     const pages = [
