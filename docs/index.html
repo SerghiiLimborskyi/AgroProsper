@@ -37,6 +37,16 @@
       text-align: center;
       margin-bottom: 20px;
     }
+    <button onclick="enterAsGuest()">🚪 Увійти як гість</button>
+
+<script>
+function enterAsGuest() {
+  const guestCID = "0xGUEST-" + Date.now();
+  localStorage.setItem("cid", guestCID);
+  window.location.href = "dashboard.html";
+}
+</script>
+
     button {
       padding: 12px 24px;
       background: #28a745;
