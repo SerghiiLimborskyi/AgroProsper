@@ -15,6 +15,33 @@
     </div>
   </div>
 </section>
+  <section id="badge-gallery">
+  <h2>🏅 Галерея DAO-бейджів</h2>
+  <div class="filter-buttons">
+    <button onclick="filterBadges('all')">Всі</button>
+    <button onclick="filterBadges('guest')">Гості</button>
+    <button onclick="filterBadges('agent')">Агенти</button>
+    <button onclick="filterBadges('partner')">Партнери</button>
+  </div>
+
+  <div class="badge-grid">
+    <div class="badge-card" data-role="guest">
+      <img src="badges/guest.svg" alt="Гість DAO" />
+      <h3>Гість DAO</h3>
+      <p>Ознайомлення з платформою</p>
+    </div>
+    <div class="badge-card" data-role="agent">
+      <img src="badges/agent.svg" alt="Агент DAO" />
+      <h3>Агент DAO</h3>
+      <p>Доступ до голосування та квестів</p>
+    </div>
+    <div class="badge-card" data-role="partner">
+      <img src="badges/partner.svg" alt="Бізнес-Партнер" />
+      <h3>Бізнес-Партнер</h3>
+      <p>Керування студіями та сценаріями</p>
+    </div>
+  </div>
+</section>
   <style>
     body {
       .badge-grid {
