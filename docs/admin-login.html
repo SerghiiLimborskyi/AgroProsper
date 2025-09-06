@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🔐 Вхід адміністратора — AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    input, button {
+      padding: 12px;
+      margin: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    input {
+      width: 80%;
+      max-width: 300px;
+    }
+    button {
+      background: #0f0;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 0 0 10px #0f0;
+      animation: pulse 2s infinite;
+      cursor: pointer;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 5px #0f0; }
+      50% { transform: scale(1.05); box-shadow: 0 0 15px #0f0; }
+      100% { transform: scale(1); box-shadow: 0 0 5px #0f0; }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🔐 Вхід адміністратора DAO</h1>
+  <p>Введіть email адміністратора для доступу до панелі керування:</p>
+
+  <input type="email" id="adminEmail" placeholder="admin@example.com" />
+  <button onclick="loginAdmin()">✅ Увійти</button>
+
+  <div id="loginStatus" style="margin-top:20px;"></div>
+
+  <script>
+    const allowedAdmins = [
+      "agroprosper74@gmail.com",
+      "serhiilimborskyi@gmail.com",
+      "lymborsky@gmail.com"
+    ];
+
+    function loginAdmin() {
+      const email = document.getElementById("adminEmail").value.trim().toLowerCase();
+      if (allowedAdmins.includes(email)) {
+        localStorage.setItem("adminEmail", email);
+        localStorage.setItem("cid", "0xAGRO-7F3A");
+        document.getElementById("loginStatus").innerHTML = "✅ Вхід успішний. Перенаправлення...";
+        setTimeout(() => window.location.href = "admin.html", 1500);
+      } else {
+        document.getElementById("loginStatus").innerHTML = "⛔ Невірний email. Доступ заборонено.";
+      }
+    }
+  </script>
+</body>
+</html>
