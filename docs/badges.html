@@ -44,6 +44,58 @@
 </section>
   <style>
     body {
+      #badge-gallery {
+  padding: 40px;
+  text-align: center;
+}
+
+.filter-buttons {
+  margin-bottom: 20px;
+}
+
+.filter-buttons button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #0f0;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 8px #0f0;
+}
+
+.badge-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.badge-card {
+  background: #111;
+  border: 2px solid #0f0;
+  border-radius: 12px;
+  padding: 20px;
+  width: 220px;
+  box-shadow: 0 0 12px #0f0;
+  transition: transform 0.3s ease;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.badge-card:hover {
+  transform: scale(1.05);
+}
+
+.badge-card img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
       .badge-grid {
   display: flex;
   flex-wrap: wrap;
@@ -124,8 +176,21 @@
       <img src="../assets/badges/agent_of_good.svg" alt="Agent of Good" />
       <h2>Agent of Good</h2>
       <p>За доброчинну дію без піару. Символ дії мовчки.</p>
-    </div>
+      <script>
+function filterBadges(role) {
+  const cards = document.querySelectorAll('.badge-card');
+  cards.forEach(card => {
+    if (role === 'all' || card.dataset.role === role) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
 
+    </div>
+   
   </div>
 
 </body>
