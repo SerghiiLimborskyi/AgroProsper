@@ -1,13 +1,32 @@
 <!-- header.html -->
 <div class="site-header">
-  <img src="logo.png" alt="AgroProsper Logo" class="header-logo">
+ <header style="background:#000; padding:10px; display:flex; align-items:center; justify-content:space-between;">
+  <img src="logo.png" alt="AgroProsper" style="height:60px;" />
+  <select id="pageMenu" onchange="navigatePage(this.value)" style="padding:10px; background:#0f0; color:#000; font-weight:bold;">
+    <option value="">📂 Обрати сторінку</option>
+    <option value="index.html">🏠 Головна</option>
+    <option value="play-game.html">🎮 Гра</option>
+    <option value="forecast.html">🌦️ Прогнози</option>
+    <option value="dashboard.html">📊 Дашборд</option>
+    <option value="guestBadge.html">🏅 Бейдж</option>
+    <option value="business-register.html">🤝 Бізнес-партнерство</option>
+    <option value="DAO-suite.html">🧠 DAO Suite</option>
+  </select>
+  <input type="text" id="userName" placeholder="Ваше ім’я" style="padding:10px; margin-left:10px;" />
+</header>
 
-  <!-- Банер тільки на головній -->
-  <script>
-    if (window.location.pathname.endsWith("index.html")) {
-      document.write('<img src="banner.jpg" alt="AgroProsper Banner" class="banner">');
-    }
-  </script>
+<script>
+  function navigatePage(url) {
+    if (url) window.location.href = url;
+  }
+  window.addEventListener("load", () => {
+    const name = localStorage.getItem("userName");
+    if (name) document.getElementById("userName").value = name;
+    document.getElementById("userName").addEventListener("change", e => {
+      localStorage.setItem("userName", e.target.value);
+    });
+  });
+</script>
 
   <nav class="nav-menu">
     <ul>
