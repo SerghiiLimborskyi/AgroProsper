@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🤝 Реєстрація Бізнес-Партнера</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("header").innerHTML = html);
+  </script>
+
+  <section style="padding:40px;">
+    <h2>📄 Таємниця Бізнесу</h2>
+    <p>AgroProsper діє як рекламодавець на біржах, платформах, інтернет-магазинах. Якщо автоматична реєстрація неможлива — адміністратор додає компанію вручну. Угода між продавцем і покупцем оформлюється напряму. AgroProsper отримує 10% за рекламне залучення. 50% — на підтримку агро-галузі або дитячі фонди, 50% — на розвиток DAO.</p>
+    <label><input type="checkbox" id="agreeConfidential" /> Я погоджуюсь з умовами “Таємниці Бізнесу”</label>
+  </section>
+
+  <section style="padding:40px;">
+    <h2>📋 Реєстрація компанії</h2>
+    <input type="text" id="companyName" placeholder="Назва компанії" />
+    <input type="email" id="contactEmail" placeholder="Email для зв’язку" />
+    <input type="url" id="platformLink" placeholder="Посилання на платформу / біржу" />
+    <select id="adminAddedBy">
+      <option value="">Хто вас додав</option>
+      <option value="agroprosper74@gmail.com">agroprosper74@gmail.com</option>
+      <option value="serhiilimborskyi@gmail.com">serhiilimborskyi@gmail.com</option>
+      <option value="lymborsky@gmail.com">lymborsky@gmail.com</option>
+    </select>
+    <textarea id="businessNote" placeholder="Коротко про співпрацю, умови, тип товару"></textarea>
+    <button onclick="registerBusiness()">✅ Зареєструватися</button>
+    <div id="result" style="margin-top:20px;"></div>
+  </section>
+
+  <script>
+    function registerBusiness() {
+      if (!document.getElementById("agreeConfidential").checked) {
+        alert("❗ Ви повинні погодитись з умовами 'Таємниці Бізнесу'");
+        return;
+      }
+
+      const name = document.getElementById("companyName").value;
+      const email = document.getElementById("contactEmail").value;
+      const link = document.getElementById("platformLink").value;
+      const admin = document.getElementById("adminAddedBy").value;
+      const note = document.getElementById("businessNote").value;
+
+      const cid = "0xPARTNER-" + Date.now();
+      const data = { cid, name, email, link, admin, note, timestamp: new Date().toISOString() };
+
+      localStorage.setItem("businessCID", cid);
+      localStorage.setItem("businessData", JSON.stringify(data));
+
+      document.getElementById("result").innerHTML = `
+        ✅ Зареєстровано як <strong>${name}</strong><br>
+        CID: <code>${cid}</code><br>
+        Додано адміністратором: ${admin}<br>
+        <a href="mailto:${email}">📨 Зв’язатися</a>
+      `;
+    }
+  </script>
+</body>
+</html>
