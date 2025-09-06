@@ -1,5 +1,6 @@
 const directorBot = {
   approvedCID: ["0xAGRO-7F3A", "0xAGRO-9C88"],
+  document.getElementById("botLog").innerHTML += `✅ Сценарій запущено<br>`;
 
   scanPages: function () {
     const pages = [
@@ -11,6 +12,7 @@ const directorBot = {
       fetch(page)
         .then(res => {
           if (!res.ok) console.warn(`❌ ${page} — не знайдено`);
+            if (!this.checkCID()) return;
           else console.log(`✅ ${page} — доступна`);
         })
         .catch(() => console.error(`⚠️ ${page} — помилка завантаження`));
@@ -67,7 +69,9 @@ const directorBot = {
     alert("🎬 Сценарій гри активовано.");
   }
 };
-
+directorBot.syncFromCloud = function () {
+  cloudSync.syncAll();
+};
 // Автоматичний запуск при вході
 window.addEventListener("load", () => {
   directorBot.scanPages();
