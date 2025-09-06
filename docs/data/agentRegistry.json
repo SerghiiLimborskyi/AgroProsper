@@ -7,6 +7,11 @@
     "timestamp": "2025-09-05T12:44:00Z"
   },
   {
+  "cid": "0xGUEST-ABCD1234",
+  "role": "guest",
+  "access": ["view", "explore"]
+},
+  {
     "cid": "0xAGRO-2B91",
     "role": "DAO Partner",
     "message": "Готовий надати логістику для аграріїв.",
