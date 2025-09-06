@@ -162,6 +162,20 @@
   alert("👋 Вітаємо! Вам присвоєно гостьовий CID: " + guestCID);
 }
 </script>
+  
+ <p>🔐 Хочеш стати агентом DAO?</p>
+<button onclick="upgradeCID()">🧩 Зареєструватися</button>
+
+<script>
+function upgradeCID() {
+  const cid = localStorage.getItem("cid");
+  if (cid.startsWith("0xGUEST")) {
+    const newCID = "0xAGRO-" + Date.now();
+    localStorage.setItem("cid", newCID);
+    alert("✅ CID оновлено: " + newCID);
+  }
+}
+</script>
 
 </body>
 </html>
