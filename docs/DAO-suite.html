@@ -6,6 +6,7 @@
   <title>DAO Suite — Тестова панель</title>
   <link rel="stylesheet" href="style.css" />
   <script src="public/DAO-suite.js" defer></script>
+<script src="public/badgeMint.js" defer></script>
 
   <style>
     body.night {
@@ -65,7 +66,15 @@
     <button onclick="badgeStudio.generate()">🔄 Згенерувати бейдж</button>
     <div id="badgePreview" style="margin-top:20px;"></div>
   </div>
-
+  
+<section class="module">
+  <h2>🎨 Створити DAO-бейдж</h2>
+  <input type="text" id="badgeName" placeholder="Назва бейджа" />
+  <select id="badgeRoleSelect"></select>
+  <textarea id="badgeDesc" placeholder="Опис бейджа"></textarea>
+  <button onclick="badgeMint.generate()">🔄 Згенерувати бейдж</button>
+  <div id="badgePreview" style="margin-top:20px;"></div>
+</section>
   <footer>
     <p style="text-align:center;">© 2025 AgroProsper DAO — Тестова зона</p>
   </footer>
