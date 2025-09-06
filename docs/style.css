@@ -1,0 +1,145 @@
+/* 🌌 Базові стилі */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #000;
+  color: #0f0;
+  overflow-x: hidden;
+}
+
+body.night {
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+/* 🧠 Заголовки */
+h1, h2, h3 {
+  text-align: center;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 32px;
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 20px;
+}
+
+/* 📦 Контейнери */
+.container {
+  max-width: 960px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+section {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+}
+
+/* 🎛️ Кнопки */
+button {
+  padding: 12px 24px;
+  margin: 10px;
+  background-color: #0f0;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #0f0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0c0;
+  transform: scale(1.05);
+}
+
+/* 🧩 Візуальні логи */
+#botLog, #syncLog, #cidStats, #gameBadge, #quantumBox {
+  background: #111;
+  color: #0f0;
+  padding: 10px;
+  margin: 20px auto;
+  font-family: monospace;
+  border-radius: 8px;
+  max-width: 900px;
+}
+
+/* 🏅 Галерея бейджів */
+.badge-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.badge-card {
+  background: #111;
+  border: 2px solid #0f0;
+  border-radius: 12px;
+  padding: 20px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 0 12px #0f0;
+  transition: transform 0.3s ease;
+}
+
+.badge-card:hover {
+  transform: scale(1.05);
+}
+
+.badge-card img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+/* 🎨 Студія бейджів */
+input, textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  background: #222;
+  color: #0f0;
+  border: none;
+  border-radius: 6px;
+}
+
+#badgePreview {
+  background: #111;
+  padding: 20px;
+  border: 2px solid #0f0;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* 🎬 Відео */
+video {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* 📲 QR-код */
+.qr img {
+  display: block;
+  margin: 20px auto;
+  width: 240px;
+}
+
+/* 📋 Футер */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #000;
+  color: #0f0;
+  font-size: 14px;
+}
