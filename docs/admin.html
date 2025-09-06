@@ -5,19 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AgroProsper Admin Panel</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="public/cloudSync.js" defer></script>
-  <script src="Promo.js" defer></script>
- <script src="public/directorBot.js" defer></script>
+
+  <!-- Скрипти студій -->
   <script src="studio/introStudio.js" defer></script>
-<script src="studio/problemStudio.js" defer></script>
-<script src="studio/solutionStudio.js" defer></script>
-<script src="studio/featuresStudio.js" defer></script>
-<script src="studio/questStudio.js" defer></script>
-<script src="studio/ctaStudio.js" defer>
-</script>
+  <script src="studio/problemStudio.js" defer></script>
+  <script src="studio/solutionStudio.js" defer></script>
+  <script src="studio/featuresStudio.js" defer></script>
+  <script src="studio/questStudio.js" defer></script>
+  <script src="studio/ctaStudio.js" defer></script>
+
+  <!-- DAO-боти -->
+  <script src="public/directorBot.js" defer></script>
+  <script src="public/cloudSync.js" defer></script>
+
+  <!-- CID-контроль -->
+  <script>
+    window.addEventListener("load", () => {
+      const cid = localStorage.getItem("cid");
+      if (!cid || cid !== "0xAGRO-7F3A") {
+        alert("⛔ Доступ лише для Бізнес-Партнера DAO.");
+        document.body.innerHTML = "<h1>🔐 Доступ заборонено</h1>";
+      } else {
+        console.log("✅ CID підтверджено:", cid);
+        cloudSync.syncAll();
+      }
+    });
+  </script>
+
+  <!-- Нічний режим -->
   <style>
     body.night {
-      background-image: url('admin-bg.jpg'); /* встав свою картинку */
+      background-image: url('admin-bg.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -37,47 +55,56 @@
     .dashboard button:hover {
       transform: scale(1.05);
     }
+    #syncLog {
+      background: #111;
+      color: #0f0;
+      padding: 10px;
+      margin: 20px;
+      font-family: monospace;
+    }
   </style>
 </head>
+
 <body>
   <header>
     <h1>🌿 AgroProsper DAO — Адмін-панель</h1>
   </header>
 
-  <section class="dashboard"> 
-    <button onclick="cloudSync.syncAll()">☁️ Синхронізувати DAO-файли</button>
+  <section class="dashboard">
     <button onclick="runFullCycle()">🔄 Повний цикл</button>
     <button onclick="openStats()">📊 Статистика</button>
     <button onclick="openVideoManager()">🎥 Відео-контент</button>
     <button onclick="openPartnerForm()">🤝 Партнери</button>
     <button onclick="sendTelegramCommand()">📨 Команда боту</button>
     <button onclick="generateReport()">📁 Звіт до податкової</button>
+    <button onclick="cloudSync.syncAll()">☁️ Синхронізувати DAO-файли</button>
+    <button onclick="directorBot.runScenario()">🎮 Запустити сценарій гри</button>
+    <button onclick="directorBot.suggestCleanup()">🧹 Перевірити пам’ять</button>
   </section>
 
   <section id="output"></section>
+  <div id="syncLog">📋 Лог синхронізації DAO-файлів:</div>
 
   <footer>
     <p>© 2025 AgroProsper DAO. Всі права захищено.</p>
   </footer>
 
- <script>
-  const hour = new Date().getHours();
-  if (hour >= 20 || hour < 6) {
-    document.body.classList.add('night');
-  }
-</script>
- <script>
-  function runFullCycle() {
-    fetch('/run/full')
-      .then(res => res.text())
-      .then(msg => {
-        document.getElementById('output').innerText = msg;
-      })
-      .catch(err => {
-        document.getElementById('output').innerText = '❌ Помилка: ' + err;
-      });
-  }
-</script> 
+  <script>
+    const hour = new Date().getHours();
+    if (hour >= 20 || hour < 6) {
+      document.body.classList.add('night');
+    }
+
+    function runFullCycle() {
+      fetch('/run/full')
+        .then(res => res.text())
+        .then(msg => {
+          document.getElementById('output').innerText = msg;
+        })
+        .catch(err => {
+          document.getElementById('output').innerText = '❌ Помилка: ' + err;
+        });
+    }
+  </script>
 </body>
 </html>
- 
