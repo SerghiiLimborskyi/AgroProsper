@@ -1,19 +1,29 @@
-<!-- header.html -->
-<div class="site-header">
- <header style="background:#000; padding:10px; display:flex; align-items:center; justify-content:space-between;">
-  <img src="logo.png" alt="AgroProsper" style="height:60px;" />
- <select id="pageMenu" onchange="navigatePage(this.value)">
-  <option value="">📂 Обрати сторінку</option>
-  <option value="index.html">🏠 Головна</option>
-  <option value="guestBadge.html">🎫 Гість</option>
-  <option value="play-game.html">🎮 Гра</option>
-  <option value="dashboard.html">📝 Блогер</option>
-  <option value="business-register.html">🤝 Бізнес</option>
-  <option value="forecast.html">🌦️ Прогнози</option>
-  <option value="DAO-suite.html">🧠 DAO Suite</option>
-  <option value="video.html">🎥 Відео</option>
-</select>
+<header style="background:#000; padding:10px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+  <!-- Логотип -->
+  <div style="display:flex; align-items:center;">
+    <img src="logo.png" alt="AgroProsper" style="height:60px; margin-right:10px;" />
+    <span style="color:#0f0; font-size:20px; font-weight:bold;">AgroProsper DAO</span>
+  </div>
 
+  <!-- Меню -->
+  <nav>
+    <select id="pageMenu" onchange="navigatePage(this.value)" style="padding:10px; background:#0f0; color:#000; font-weight:bold;">
+      <option value="">📂 Обрати сторінку</option>
+      <option value="index.html">🏠 Головна</option>
+      <option value="guestBadge.html">🎫 Гість</option>
+      <option value="play-game.html">🎮 Гра</option>
+      <option value="dashboard.html">📝 Блогер</option>
+      <option value="business-register.html">🤝 Бізнес</option>
+      <option value="forecast.html">🌦️ Прогнози</option>
+      <option value="DAO-suite.html">🧠 DAO Suite</option>
+      <option value="video.html">🎥 Відео</option>
+      <option value="terms.html">📄 Умови Microsoft</option>
+      <option value="admin-login.html">🔐 Вхід адміністратора</option>
+      <option value="admin-dashboard.html">🧠 Панель адміністратора</option>
+    </select>
+  </nav>
+
+  <!-- Ім'я користувача -->
   <input type="text" id="userName" placeholder="Ваше ім’я" style="padding:10px; margin-left:10px;" />
 </header>
 
@@ -29,13 +39,3 @@
     });
   });
 </script>
-
-  <nav class="nav-menu">
-    <ul>
-      <li><a href="index.html">Головна</a></li>
-      <li><a href="about.html">Про нас</a></li>
-      <li><a href="Registration/dashboard.html">Реєстрація</a></li>
-      <li><a href="contact.html">Контакти</a></li>
-    </ul>
-  </nav>
-</div>
