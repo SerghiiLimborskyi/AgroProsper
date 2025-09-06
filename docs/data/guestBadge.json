@@ -1,0 +1,14 @@
+[
+  {
+    "cid": "0xGUEST-1693990000000",
+    "enteredOn": "2025-09-06T10:45:00Z",
+    "status": "active",
+    "badge": "guest"
+  },
+  {
+    "cid": "0xGUEST-1693989000000",
+    "enteredOn": "2025-09-06T10:30:00Z",
+    "status": "expired",
+    "badge": "guest"
+  }
+]
