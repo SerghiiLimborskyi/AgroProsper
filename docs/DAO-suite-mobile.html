@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="public/DAO-suite.js" defer></script>
   <script src="public/directorBot.js" defer></script>
+  <script src="public/DAO-suite-app.js" defer></script>
 
   <style>
     body {
@@ -17,6 +18,34 @@
       color: #0f0;
       margin: 0;
       padding: 0;
+    }
+
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      color: #0f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease;
+    }
+
+    #splash img {
+      width: 100px;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     .mobile-panel {
@@ -51,6 +80,19 @@
       border-radius: 8px;
     }
 
+    #installApp {
+      display: none;
+      margin: 20px auto;
+      padding: 12px 24px;
+      background-color: #0f0;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 0 10px #0f0;
+      cursor: pointer;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -72,6 +114,17 @@
       gameBadge.show();
       quantumCID.displayPrediction();
       drawMobileChart();
+
+      const audio = document.getElementById("splashAudio");
+      if (audio) {
+        audio.play().catch(err => console.warn("🔇 Звук не програно:", err));
+      }
+
+      setTimeout(() => {
+        const splash = document.getElementById("splash");
+        if (splash) splash.style.opacity = "0";
+        setTimeout(() => splash?.remove(), 800);
+      }, 1200);
     });
 
     function drawMobileChart() {
@@ -102,6 +155,14 @@
 </head>
 
 <body>
+  <audio id="splashAudio" src="public/sounds/splashSound.mp3" preload="auto"></audio>
+  <div id="splash">
+    <img src="icons/icon-192.png" alt="AgroDAO" />
+    <h2>AgroProsper V7</h2>
+  </div>
+
+  <button id="installApp" onclick="installDAOApp()">📲 Встановити DAO App</button>
+
   <div class="mobile-panel">
     <h1>📱 DAO Suite Mobile</h1>
 
@@ -130,11 +191,7 @@
       <div id="botLog"></div>
     </div>
   </div>
-  
-<button id="installApp" onclick="installDAOApp()" style="display:none;">
-  📲 Встановити DAO App
-</button>
-<script src="public/DAO-suite-app.js" defer></script>
+
   <footer>
     © 2025 AgroProsper DAO — мобільна панель
   </footer>
