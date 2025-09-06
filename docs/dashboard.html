@@ -160,6 +160,11 @@
   const guestCID = "0xGUEST-" + Math.random().toString(36).substring(2, 10).toUpperCase();
   localStorage.setItem("cid", guestCID);
   alert("👋 Вітаємо! Вам присвоєно гостьовий CID: " + guestCID);
+   <p>🔖 Ваша роль: <span id="roleDisplay"></span></p>
+
+<script>
+const cid = localStorage.getItem("cid");
+document.getElementById("roleDisplay").innerText = cid.startsWith("0xGUEST") ? "Гість" : "Агент DAO"; 
 }
 </script>
   
