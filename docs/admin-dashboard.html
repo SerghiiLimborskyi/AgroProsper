@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🧠 Панель адміністратора — AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #000;
+      color: #0f0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #0f0;
+      text-align: left;
+    }
+    th {
+      background: #0f0;
+      color: #000;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    input {
+      width: 100%;
+      max-width: 400px;
+    }
+    button {
+      background: #0f0;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 0 0 10px #0f0;
+      animation: pulse 2s infinite;
+      cursor: pointer;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 5px #0f0; }
+      50% { transform: scale(1.05); box-shadow: 0 0 15px #0f0; }
+      100% { transform: scale(1); box-shadow: 0 0 5px #0f0; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("header").innerHTML = html);
+  </script>
+
+  <h1>🧠 Панель адміністратора AgroProsper DAO</h1>
+
+  <script>
+    const allowedAdmins = [
+      "agroprosper74@gmail.com",
+      "serhiilimborskyi@gmail.com",
+      "lymborsky@gmail.com"
+    ];
+    const adminEmail = localStorage.getItem("adminEmail");
+    if (!allowedAdmins.includes(adminEmail)) {
+      document.body.innerHTML = "<h2 style='color:red; text-align:center;'>⛔ Доступ лише для адміністраторів AgroProsper</h2>";
+    }
+  </script>
+
+  <section>
+    <h2>📋 Журнал дій адміністраторів</h2>
+    <div id="adminLogTable"></div>
+    <script src="admin-logs.js"></script>
+  </section>
+
+  <section style="margin-top:40px;">
+    <h2>✅ Підтвердження згоди користувачів</h2>
+    <script src="terms-admin.js"></script>
+  </section>
+
+  <footer style="text-align:center; margin-top:40px;">
+    © 2025 AgroProsper DAO — контроль, прозорість, довіра
+  </footer>
+</body>
+</html>
