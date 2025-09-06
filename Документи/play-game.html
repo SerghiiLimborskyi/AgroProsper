@@ -1,0 +1,10 @@
+<div id="gameBadge" style="margin-top:20px;"></div>
+<script>
+  const cid = localStorage.getItem("cid");
+  if (cid && cid.startsWith("0xGUEST")) {
+    document.getElementById("gameBadge").innerHTML = `
+      <h3>🎮 Ви отримали бейдж: Гравець DAO</h3>
+      <img src="badges/player.svg" alt="Player Badge" width="80" />
+    `;
+  }
+</script>
