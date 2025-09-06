@@ -1,0 +1,23 @@
+[
+  {
+    "timestamp": "2025-09-06T20:12:00+02:00",
+    "adminEmail": "serhiilimborskyi@gmail.com",
+    "action": "Підтверджено згоду користувача",
+    "targetCID": "0xGUEST-1694000000000",
+    "details": "terms-log.json оновлено вручну через terms-admin.js"
+  },
+  {
+    "timestamp": "2025-09-06T19:45:00+02:00",
+    "adminEmail": "agroprosper74@gmail.com",
+    "action": "Додано бізнес-партнера",
+    "targetCID": "0xPARTNER-1694001234567",
+    "details": "GreenFarm Ltd зареєстровано через business-register.html"
+  },
+  {
+    "timestamp": "2025-09-06T18:30:00+02:00",
+    "adminEmail": "lymborsky@gmail.com",
+    "action": "Оновлено terms-log.json",
+    "targetCID": "0xBLOGGER-1693999999999",
+    "details": "Синхронізація через terms-sync.js"
+  }
+]
