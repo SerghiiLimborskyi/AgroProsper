@@ -2,131 +2,87 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
+  <title>AgroProsper V7 — Старт</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroProsper V7 — DAO</title>
-  <script src="../public/menu.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
+
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-      color: white;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.7);
-    }
-    .logo {
-      height: 60px;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      padding: 40px;
-      max-width: 900px;
-      margin: auto;
-    }
-    h1, h2 {
+      background: linear-gradient(to bottom right, #001100, #000033);
+      color: #0f0;
       text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      font-size: 28px;
       margin-bottom: 20px;
     }
-    <button onclick="enterAsGuest()">🚪 Увійти як гість</button>
-
-<script>
-function enterAsGuest() {
-  const guestCID = "0xGUEST-" + Date.now();
-  localStorage.setItem("cid", guestCID);
-  window.location.href = "dashboard.html";
-}
-</script>
-
     button {
+      display: block;
+      margin: 10px auto;
       padding: 12px 24px;
-      background: #28a745;
-      color: white;
+      background-color: #0f0;
+      color: #000;
       border: none;
-      border-radius: 5px;
-      font-size: 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      box-shadow: 0 0 10px #0f0;
       cursor: pointer;
     }
     button:hover {
-      background: #218838;
-      transform: scale(1.05);
-      transition: all 0.3s ease;
+      background-color: #0c0;
     }
-    video {
+    .forecast {
+      margin-top: 40px;
+    }
+    iframe {
       width: 100%;
+      max-width: 600px;
+      height: 300px;
+      border: none;
       border-radius: 8px;
+      margin-top: 20px;
     }
   </style>
-</head>
-<body>
 
-<header>
-  <img src="logo.png" alt="AgroProsper Logo" class="logo" />
-  <nav>
-    <a href="index.html">Головна</a>
-    <a href="about.html">Про нас</a>
-    <a href="Registration/dashboard.html">Реєстрація</a>
-    <a href="contact.html">Контакти</a>
-  </nav>
-</header>
-
-<section id="dao-message">
-  <h2>🧠 DAO-звернення AgroProsper V7</h2>
-  <p id="dao-text">
-    AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей. CID-архітектура, NFT-бейджі без мінтингу, DAO-голосування без блокчейн-запису. Гейміфікація, інкогніто-допомога, багатомовність.
-  </p>
-</section>
-
-<section id="dao-video">
-  <h2>🎬 Відео-звернення AgroProsper V7</h2>
-  <video controls autoplay muted>
-    <source src="assets/video/AgroProsperV7_Unstoppable.mp4" type="video/mp4">
-    <track src="assets/subtitles/subtitles_ua.vtt" kind="subtitles" srclang="uk" label="Українська">
-    <track src="assets/subtitles/subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
-    <track src="assets/subtitles/subtitles_pl.vtt" kind="subtitles" srclang="pl" label="Polski">
-  </video>
-</section>
-
-<div style="text-align:center;">
-  <button onclick="alert('Голосування активовано!')">🗳️ Підтримати реліз</button>
-</div>
-
-<section id="dao-quests">
-  <h2>🎮 DAO-квести</h2>
-  <ul>
-    <li>✅ “Солодкий вибір” — обери між прибутком і етикою</li>
-    <li>🏅 Бейдж: “Цукерочка з лікером”</li>
-    <li>🧩 “Павутина добра” — реєстрація як агент DAO</li>
-  </ul>
-</section>
-
-<script>
-  const lang = navigator.language.slice(0, 2);
-  const translations = {
-    uk: {
-      daoText: "AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей..."
-    },
-    en: {
-      daoText: "AgroProsper V7 — autonomous DAO platform operating without Web3 dependencies..."
-    },
-    pl: {
-      daoText: "AgroProsper V7 — autonomiczna platforma DAO działająca bez zależności Web3..."
+  <script>
+    function enterAs(role) {
+      const cid = "0x" + role.toUpperCase() + "-" + Date.now();
+      localStorage.setItem("cid", cid);
+      alert("✅ Вхід як " + role + ": " + cid);
+      if (role === "guest") window.location.href = "guestBadge.html";
+      else if (role === "player") window.location.href = "play-game.html";
+      else if (role === "blogger") window.location.href = "dashboard.html";
+      else if (role === "agent") window.location.href = "admin.html";
     }
-  };
-  const t = translations[lang] || translations.uk;
-  document.getElementById('dao-text').textContent = t.daoText;
-  <img src="public/qr_guest_dashboard.png" alt="Скануй для входу" />
-<p>📲 Скануй, щоб увійти як гість</p>
-</script>
+  </script>
+</head>
 
+<body>
+  <h1>🌿 AgroProsper V7 — Вхід до DAO</h1>
+  <p>Оберіть роль для входу без реєстрації:</p>
+
+  <button onclick="enterAs('guest')">🎫 Гість</button>
+  <button onclick="enterAs('player')">🎮 Гравець</button>
+  <button onclick="enterAs('blogger')">📝 Блогер</button>
+  <button onclick="enterAs('agent')">🔐 Агент DAO</button>
+
+  <div class="forecast">
+    <h2>🌦️ Прогноз погоди (Щецин)</h2>
+    <iframe src="https://www.msn.com/pl-pl/pogoda/prognoza/in-Szczecin,Woj-Zachodniopomorskie?loc=eyJsIjoiU3pjemVjaW4iLCJyIjoiV29qIFphY2hvZG5pb3BvbW9yc2tpZSIsImMiOiJQb2xza2EiLCJpIjoiUEwiLCJnIjoicGwtcGwiLCJ4IjoiMTQuNTU5Njk1MjQzODM1NDUiLCJ5IjoiNTMuNDY3MjM1NTY1MTg1NTUifQ%3D%3D&weadegreetype=C&content=AQICard_wxaqi"></iframe>
+
+    <h2>💱 Прогноз валют</h2>
+    <iframe src="https://www.xe.com/currencycharts/?from=USD&to=PLN&view=1M"></iframe>
+
+    <h2>🛢️ Прогноз цін на сировину</h2>
+    <p><a href="https://finway.com.ua/zrostannya-tsin-syrovynni-resursy-2025/" target="_blank">Зростання цін у 2025 — Finway</a></p>
+    <p><a href="https://ukragroconsult.com/news/svitovyj-bank-prognozuye-znyzhennya-czin-na-syrovynu-na-12-u-2025-r-ta-shhe-na-5-u-2026-r/" target="_blank">Прогноз Світового банку</a></p>
+    <p><a href="https://biz.liga.net/ua/all/all/novosti/fitch-perehlianuv-tsiny-na-metaly-shcho-zroste-a-shcho-vpade-u-2025-2027-rokakh" target="_blank">Огляд Fitch Ratings</a></p>
+  </div>
+
+  <footer>
+    <p>© 2025 AgroProsper DAO. Вхід без реєстрації. CID генерується автоматично.</p>
+  </footer>
 </body>
 </html>
