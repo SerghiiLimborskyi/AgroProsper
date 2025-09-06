@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAO Suite — Тестова панель</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="public/DAO-suite.js" defer></script>
+
+  <style>
+    body.night {
+      background: linear-gradient(to bottom right, #002200, #000033);
+      color: #0f0;
+      font-family: 'Montserrat', sans-serif;
+      padding: 40px;
+    }
+    h1, h2 { text-align: center; }
+    .module { margin: 30px 0; padding: 20px; border: 2px solid #0f0; border-radius: 12px; background: #111; }
+    input, textarea, button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      background: #222;
+      color: #0f0;
+      border: none;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #0f0;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #0f0;
+    }
+    button:hover {
+      background-color: #0c0;
+    }
+  </style>
+
+  <script>
+    window.addEventListener("load", () => {
+      const hour = new Date().getHours();
+      if (hour >= 20 || hour < 6) {
+        document.body.classList.add("night");
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <h1>🧩 DAO Suite — Тестова панель модулів</h1>
+
+  <div class="module" id="cidStats"></div>
+
+  <div class="module" id="gameBadge"></div>
+
+  <div class="module" id="quantumBox"></div>
+
+  <div class="module">
+    <h2>🎨 Студія створення бейджів</h2>
+    <input type="text" id="badgeName" placeholder="Назва бейджа" />
+    <input type="text" id="badgeRole" placeholder="Роль (guest, agent, partner)" />
+    <textarea id="badgeDesc" placeholder="Опис бейджа"></textarea>
+    <button onclick="badgeStudio.generate()">🔄 Згенерувати бейдж</button>
+    <div id="badgePreview" style="margin-top:20px;"></div>
+  </div>
+
+  <footer>
+    <p style="text-align:center;">© 2025 AgroProsper DAO — Тестова зона</p>
+  </footer>
+</body>
+</html>
