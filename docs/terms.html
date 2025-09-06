@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📄 Умови Microsoft — AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("header").innerHTML = html);
+  </script>
+
+  <main style="padding:40px; max-width:800px; margin:auto;">
+    <h1>📄 Угода про використання служб Microsoft</h1>
+    <p>AgroProsper DAO використовує продукти та сервіси Microsoft для хостингу, комунікації, зберігання даних та інтеграції з DAO-модулями. Ми дотримуємося оновленої <strong>Угоди про використання служб Microsoft</strong>, яка набуває чинності <strong>30 вересня 2025 року</strong>.</p>
+
+    <section style="margin-top:30px;">
+      <h2>🔐 Прозорість та конфіденційність</h2>
+      <ul>
+        <li>Всі дані користувачів зберігаються локально або в захищених хмарних сервісах Microsoft</li>
+        <li>AgroProsper не передає дані третім сторонам без згоди</li>
+        <li>Використання Outlook, OneDrive, GitHub, Azure — згідно з [Декларацією конфіденційності Microsoft](https://privacy.microsoft.com/uk-ua/privacystatement)</li>
+      </ul>
+    </section>
+
+    <section style="margin-top:30px;">
+      <h2>👨‍👩‍👧‍👦 Відповідальність за неповнолітніх</h2>
+      <p>AgroProsper DAO не збирає персональні дані дітей. Участь у грі, квестах або перегляді прогнозів — без реєстрації. Всі покупки або дії, що потребують облікового запису Microsoft, контролюються батьками або опікунами згідно з умовами Microsoft.</p>
+    </section>
+
+    <section style="margin-top:30px;">
+      <h2>🤝 Взаємодія з Microsoft</h2>
+      <ul>
+        <li>DAO-панель хоститься на GitHub Pages (власність Microsoft)</li>
+        <li>Рекламні кабінети можуть бути створені на платформах, що інтегруються з Microsoft Ads</li>
+        <li>Файли, презентації, відео — зберігаються в OneDrive або SharePoint</li>
+      </ul>
+    </section>
+
+    <section style="margin-top:30px;">
+      <h2>📅 Набуття чинності</h2>
+      <p>Оновлена Угода Microsoft набуває чинності <strong>30 вересня 2025 року</strong>. Користуючись DAO-платформою AgroProsper після цієї дати, ви автоматично погоджуєтесь з умовами Microsoft.</p>
+      <p>Якщо ви не погоджуєтесь — припиніть використання сервісів Microsoft або зверніться до адміністратора AgroProsper.</p>
+    </section>
+
+    <section style="margin-top:30px;">
+      <h2>📎 Посилання</h2>
+      <ul>
+        <li><a href="https://www.microsoft.com/en-us/servicesagreement" target="_blank">Угода про використання служб Microsoft</a></li>
+        <li><a href="https://privacy.microsoft.com/uk-ua/privacystatement" target="_blank">Декларація конфіденційності Microsoft</a></li>
+        <li><a href="https://support.microsoft.com/uk-ua/account-billing/microsoft-services-agreement-faq" target="_blank">Поширені запитання</a></li>
+      </ul>
+    </section>
+
+    <div id="versionTimer" style="text-align:center; margin-top:40px;"></div>
+    <script src="version-timer.js"></script>
+  </main>
+
+  <footer style="text-align:center; padding:20px;">
+    © 2025 AgroProsper DAO — прозора платформа з повагою до умов Microsoft
+  </footer>
+</body>
+</html>
