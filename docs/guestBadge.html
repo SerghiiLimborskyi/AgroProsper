@@ -7,17 +7,40 @@
   <link rel="stylesheet" href="style.css" />
 
   <style>
-    body.night {
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
       background: linear-gradient(to bottom right, #003300, #001133);
       color: #fff;
+      overflow-x: hidden;
     }
+
     .container {
       text-align: center;
       padding: 40px;
     }
-    .qr {
-      margin: 20px auto;
+
+    .badge-logo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #0f0;
+      box-shadow: 0 0 20px #0f0;
+      background-color: #000;
+      padding: 10px;
+      animation: badgePulse 3s infinite ease-in-out;
     }
+
+    @keyframes badgePulse {
+      0% { transform: scale(1); box-shadow: 0 0 10px #0f0; }
+      50% { transform: scale(1.1); box-shadow: 0 0 30px #0f0; }
+      100% { transform: scale(1); box-shadow: 0 0 10px #0f0; }
+    }
+
+    .qr {
+      margin: 30px auto;
+    }
+
     button {
       padding: 12px 24px;
       font-size: 16px;
@@ -27,9 +50,21 @@
       border-radius: 6px;
       cursor: pointer;
       box-shadow: 0 0 10px #0f0;
+      transition: transform 0.2s ease;
     }
+
     button:hover {
+      transform: scale(1.05);
       background-color: #0c0;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
   </style>
 
@@ -42,26 +77,29 @@
     }
 
     window.addEventListener("load", () => {
-      const hour = new Date().getHours();
-      if (hour >= 20 || hour < 6) {
-        document.body.classList.add("night");
-      }
+      document.querySelectorAll(".fade-in").forEach(el => {
+        el.classList.add("fade-in");
+      });
     });
   </script>
 </head>
 
 <body>
   <div class="container">
-    <h1>🎫 Вхід як гість</h1>
-    <p>Ця сторінка дозволяє вам миттєво увійти на платформу AgroProsper V7 без реєстрації.</p>
-    <p>Ви отримаєте тимчасовий CID, який дозволяє переглядати контент, брати участь у презентаціях та досліджувати DAO.</p>
-
-    <div class="qr">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fserghiilimborskyi.github.io%2FAgroProsper%2Fdashboard.html" alt="QR для входу на DAO" />
-      <p>📲 Скануйте QR-код, щоб увійти як гість</p>
+    <div class="fade-in">
+      <img src="logo.png" alt="AgroProsper DAO Badge" class="badge-logo" />
+      <h1>🎫 Вхід як гість</h1>
+      <p>Ви отримаєте тимчасовий CID для перегляду контенту, участі в презентаціях та дослідження DAO.</p>
     </div>
 
-    <button onclick="enterAsGuest()">🚪 Увійти як гість</button>
+    <div class="qr fade-in">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fserghiilimborskyi.github.io%2FAgroProsper%2Fdashboard.html" alt="QR для входу на DAO" />
+      <p>📲 Скануйте QR-код, щоб увійти без реєстрації</p>
+    </div>
+
+    <div class="fade-in">
+      <button onclick="enterAsGuest()">🚪 Увійти як гість</button>
+    </div>
   </div>
 </body>
 </html>
