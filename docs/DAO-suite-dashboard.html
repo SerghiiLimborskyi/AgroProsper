@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📊 DAO Suite Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="public/DAO-suite.js" defer></script>
+  <script src="public/directorBot.js" defer></script>
+
+  <style>
+    .dashboard {
+      max-width: 960px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    canvas {
+      background: #111;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+    .module {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+    }
+  </style>
+
+  <script>
+    window.addEventListener("load", () => {
+      const hour = new Date().getHours();
+      if (hour >= 20 || hour < 6) {
+        document.body.classList.add("night");
+      }
+
+      directorBot.scanPages();
+      directorBot.suggestCleanup();
+      cidStats.scanCID();
+      gameBadge.show();
+      quantumCID.displayPrediction();
+      drawCIDChart();
+    });
+
+    function drawCIDChart() {
+      const ctx = document.getElementById("cidChart").getContext("2d");
+      new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: ["Гості", "Агенти", "Партнери"],
+          datasets: [{
+            data: [cidStats.data.guests, cidStats.data.agents, cidStats.data.partners],
+            backgroundColor: ["#0f0", "#0ff", "#f0f"],
+            borderColor: "#000",
+            borderWidth: 2
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              labels: { color: "#fff" }
+            }
+          }
+        }
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <div class="dashboard">
+    <h1>📊 DAO Suite Dashboard</h1>
+
+    <div class="module" id="cidStats"></div>
+
+    <div class="module">
+      <h2>🧠 Прогноз дій CID</h2>
+      <div id="quantumBox"></div>
+    </div>
+
+    <div class="module">
+      <h2>🎮 Бейдж у грі</h2>
+      <div id="gameBadge"></div>
+    </div>
+
+    <div class="module">
+      <h2>📈 CID-розподіл</h2>
+      <canvas id="cidChart" width="400" height="400"></canvas>
+    </div>
+
+    <div class="module">
+      <h2>📋 Лог дій бота-директора</h2>
+      <div id="botLog"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p style="text-align:center;">© 2025 AgroProsper DAO — Жива панель</p>
+  </footer>
+</body>
+</html>
