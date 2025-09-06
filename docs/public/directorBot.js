@@ -17,6 +17,11 @@ const directorBot = {
       this.log("⛔ CID не знайдено");
       return false;
     }
+    const cid = localStorage.getItem("cid");
+if (cid.startsWith("0xGUEST")) {
+  alert("⛔ Доступ лише для агентів DAO. Зареєструйтесь для повного доступу.");
+  return;
+}
     if (!this.approvedCID.includes(cid)) {
       alert("⛔ CID не має прав Бізнес-Партнера.");
       this.log(`⛔ CID не авторизовано: ${cid}`);
