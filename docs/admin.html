@@ -82,6 +82,42 @@
     <button onclick="directorBot.suggestCleanup()">🧹 Перевірити пам’ять</button>
     <div id="botLog" style="background:#222; color:#0ff; padding:10px; margin-top:20px; font-family:monospace;">
   📋 Лог дій бота-директора:
+   const cidStats = {
+  data: {
+    guests: 0,
+    agents: 0,
+    partners: 0,
+    total: 0
+  },
+
+  scanCID: function () {
+    const cid = localStorage.getItem("cid");
+    if (!cid) return;
+
+    this.data.total++;
+    if (cid.startsWith("0xGUEST")) this.data.guests++;
+    else if (cid.startsWith("0xAGRO")) this.data.agents++;
+    else if (cid.startsWith("0xPARTNER")) this.data.partners++;
+
+    this.displayStats();
+  },
+
+  displayStats: function () {
+    const statsBox = document.getElementById("cidStats");
+    if (!statsBox) return;
+    statsBox.innerHTML = `
+      <h3>📊 CID-аналітика</h3>
+      <p>Гостей: ${this.data.guests}</p>
+      <p>Агентів: ${this.data.agents}</p>
+      <p>Партнерів: ${this.data.partners}</p>
+      <p>Всього: ${this.data.total}</p>
+    `;
+  }
+};
+
+window.addEventListener("load", () => {
+  cidStats.scanCID();
+});   
 </div>
 
   </section>
