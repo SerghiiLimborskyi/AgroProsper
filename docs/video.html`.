@@ -73,6 +73,14 @@
 
   <h2 id="video-title">🎬 Відео-презентація</h2>
 
+<main style="text-align:center; padding:20px;">
+  <h2>🎥 Презентаційне відео AgroProsper</h2>
+  <video controls width="80%">
+    <source src="media/promo.mp4" type="video/mp4">
+    Ваш браузер не підтримує відео.
+  </video>
+</main>
+
   <video controls autoplay muted>
     <source src="../assets/video/AgroProsperV7_Unstoppable.mp4" type="video/mp4">
     <track src="../assets/subtitles/subtitles_ua.vtt" kind="subtitles" srclang="uk" label="Українська">
