@@ -2,136 +2,177 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>AgroProsper V7 — DAO-звернення</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script src="public/menu.js" defer></script>
+  <title>🎥 Відео — AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://i.ytimg.com" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-      color: white;
+      background: #000;
+      color: #0f0;
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
       margin: 0;
-      padding: 40px;
     }
-    h1, h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .dao-text {
-      max-width: 800px;
-      margin: auto;
-      background: rgba(255,255,255,0.05);
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
       padding: 20px;
-      border-radius: 8px;
-      line-height: 1.6;
     }
-    video {
-      width: 100%;
-      max-width: 800px;
-      display: block;
-      margin: 30px auto;
-      border-radius: 8px;
-    }
-    .cta-button {
-      display: block;
-      margin: 30px auto;
-      padding: 14px 28px;
-      background: #00ffcc;
-      color: #000;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .cta-button:hover {
-      background: #00cc99;
-      transform: scale(1.05);
-    }
-    .note {
+
+    h1, h2, p {
       text-align: center;
-      font-style: italic;
-      color: #ccc;
-      margin-top: 10px;
+      margin: 10px 0;
+    }
+
+    /* Адаптивний контейнер для відео */
+    .video-card {
+      background: #0a0a0a;
+      border: 1px solid #0f0;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 20px auto;
+      box-shadow: 0 0 12px rgba(0,255,0,0.15);
+    }
+
+    .player {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid #093;
+    }
+
+    video, iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      background: #0f0;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 10px #0f0;
+      animation: pulse 2s infinite;
+    }
+
+    .btn.alt {
+      background: #0ff;
+      box-shadow: 0 0 10px #0ff;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 6px currentColor; }
+      50% { transform: scale(1.04); box-shadow: 0 0 16px currentColor; }
+      100% { transform: scale(1); box-shadow: 0 0 6px currentColor; }
+    }
+
+    .note {
+      font-size: 13px;
+      color: #9f9;
+      text-align: center;
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: #0f0;
+      opacity: 0.9;
     }
   </style>
 </head>
 <body>
-
-<header style="display:flex; align-items:center; padding:20px; background:rgba(0,0,0,0.7);">
-    <h1 style="margin:0; font-size:28px;">AgroProsper V7 — DAO</h1>
-    <p style="margin:0; font-size:14px; color:#ccc;">Autonomous. Ethical. Unstoppable.</p>
-  </div>
-</header>
-
-  <h1 id="title">🧠 DAO-звернення AgroProsper V7</h1>
-
-  <div class="dao-text" id="dao-text">
-    <!-- DAO-звернення буде вставлено через JS -->
-  </div>
-
-  <h2 id="video-title">🎬 Відео-презентація</h2>
-
-<main style="text-align:center; padding:20px;">
-  <h2>🎥 Презентаційне відео AgroProsper</h2>
-  <video controls width="80%">
-    <source src="media/promo.mp4" type="video/mp4">
-    Ваш браузер не підтримує відео.
-  </video>
-</main>
-
-  <video controls autoplay muted>
-    <source src="../assets/video/AgroProsperV7_Unstoppable.mp4" type="video/mp4">
-    <track src="../assets/subtitles/subtitles_ua.vtt" kind="subtitles" srclang="uk" label="Українська">
-    <track src="../assets/subtitles/subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
-    <track src="../assets/subtitles/subtitles_pl.vtt" kind="subtitles" srclang="pl" label="Polski">
-  </video>
-
-  <button class="cta-button" onclick="alert(message)">
-    🗳️ <span id="button-text">Підтримати реліз</span>
-  </button>
-
-  <p class="note" id="note-text">AgroProsper V7 — автономна платформа, що працює. Приєднуйтесь до DAO.</p>
-
+  <!-- Спільний хедер з логотипом і меню -->
+  <div id="header"></div>
   <script>
-    const lang = navigator.language.slice(0, 2);
-    const content = {
-      uk: {
-        dao: `AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей. Це не просто оновлення — це перехід до власної інфраструктури, відмова від зовнішніх API, і початок нової епохи.
-🔐 CID-архітектура, NFT-бейджі без мінтингу, голосування без блокчейн-запису. 🎮 DAO-квести, Unity/WebGL, кешбек-мотивація. 🌍 Багатомовний сайт, синхронізація з соцмережами, DAO-маркет.
-Кожна взаємодія з платформою — це крок до підтримки. Угода між продавцем і покупцем — напряму, без втручання DAO. Допомога аграріям або дітям — інкогніто, без піару.
-AgroVerse — unstoppable. Без компромісів.`,
-        button: "Підтримати реліз",
-        note: "AgroProsper V7 — автономна платформа, що працює. Приєднуйтесь до DAO.",
-        message: "Дякуємо за підтримку! Ваш голос зафіксовано."
-      },
-      en: {
-        dao: `AgroProsper V7 is an autonomous DAO platform operating without Web3 dependencies. This is not just an update — it's a transition to internal infrastructure and the beginning of a new era.
-🔐 CID architecture, non-minted NFT badges, voting without blockchain records. 🎮 DAO quests, Unity/WebGL, cashback motivation. 🌍 Multilingual site, social media sync, DAO marketplace.
-Every interaction with the platform is a step toward support. Agreements between seller and buyer are direct, without DAO interference. Aid to farmers or children is incognito, without publicity.
-AgroVerse — unstoppable. No compromises.`,
-        button: "Support the release",
-        note: "AgroProsper V7 — a platform that works. Join the DAO.",
-        message: "Thank you for your support! Your vote has been recorded."
-      },
-      pl: {
-        dao: `AgroProsper V7 to autonomiczna platforma DAO działająca bez zależności Web3. To nie tylko aktualizacja — to przejście do własnej infrastruktury i początek nowej ery.
-🔐 Architektura CID, odznaki NFT bez mintowania, głosowanie bez zapisu blockchain. 🎮 DAO-questy, Unity/WebGL, motywacja cashback. 🌍 Wielojęzyczna strona, synchronizacja z mediami społecznościowymi, rynek DAO.
-Każda interakcja z platformą to krok w stronę wsparcia. Umowy między sprzedawcą a kupującym są bezpośrednie, bez ingerencji DAO. Pomoc dla rolników lub dzieci — incognito, bez rozgłosu.
-AgroVerse — niezatrzymane. Bez kompromisów.`,
-        button: "Wesprzyj wydanie",
-        note: "AgroProsper V7 — platforma, która działa. Dołącz do DAO.",
-        message: "Dziękujemy za wsparcie! Twój głos został zapisany."
-      }
-    };
-
-    const t = content[lang] || content.uk;
-    document.getElementById("dao-text").textContent = t.dao;
-    document.getElementById("button-text").textContent = t.button;
-    document.getElementById("note-text").textContent = t.note;
-    message = t.message;
+    fetch("header.html")
+      .then(r => r.text())
+      .then(html => { document.getElementById("header").innerHTML = html; });
   </script>
 
+  <main>
+    <h1>🎥 Презентації та відео AgroProsper</h1>
+    <p>Офіційні ролики, демо квестів, анонси версій та пояснення логіки DAO.</p>
+
+    <!-- Локальний відеофайл -->
+    <section class="video-card">
+      <h2>Promo V7 — локальний плеєр</h2>
+      <div class="player">
+        <video id="promoLocal"
+               controls
+               playsinline
+               preload="metadata"
+               poster="media/promo-poster.jpg">
+          <source src="media/promo.mp4" type="video/mp4" />
+          Ваш браузер не підтримує відтворення відео. Спробуйте альтернативний плеєр нижче.
+        </video>
+      </div>
+      <div class="controls">
+        <button class="btn" onclick="document.getElementById('promoLocal').play()">▶️ Відтворити</button>
+        <button class="btn alt" onclick="document.getElementById('promoLocal').pause()">⏸️ Пауза</button>
+        <button class="btn" onclick="document.getElementById('promoLocal').currentTime = 0">⏮️ Спочатку</button>
+      </div>
+      <p class="note">Файл очікується за шляхом: docs/media/promo.mp4 та обкладинка docs/media/promo-poster.jpg</p>
+    </section>
+
+    <!-- Альтернативний вбудований плеєр (YouTube/Vimeo або власний CDN) -->
+    <section class="video-card">
+      <h2>Демо: Презентація AgroProsper (альтернативний плеєр)</h2>
+      <div class="player">
+        <!-- Заміни src на своє публічне відео або корпоративний хостинг із вбудовуванням -->
+        <iframe
+          id="promoEmbed"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="AgroProsper Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="controls">
+        <a class="btn" href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noopener">🔗 Відкрити на платформі</a>
+      </div>
+      <p class="note">За потреби заміни посилання на власний CDN або корпоративний відеосервіс.</p>
+    </section>
+
+    <!-- Додаткові матеріали -->
+    <section class="video-card">
+      <h2>Матеріали студії</h2>
+      <div class="controls">
+        <a class="btn" href="media/AgroProsper-promo-presskit.zip" download>⬇️ Завантажити прес-кит</a>
+        <a class="btn alt" href="dashboard.html">📝 До блогу/новин</a>
+        <a class="btn" href="play-game.html">🎮 До квесту</a>
+      </div>
+      <p class="note">Додай у docs/media прес-кит або онови посилання на хмару (пряме публічне посилання).</p>
+    </section>
+
+    <!-- Таймер релізу (опційно) -->
+    <div id="versionTimer" style="text-align:center; margin-top:24px;"></div>
+    <script src="version-timer.js"></script>
+  </main>
+
+  <footer>
+    © 2025 AgroProsper DAO — відео та презентації
+  </footer>
 </body>
 </html>
