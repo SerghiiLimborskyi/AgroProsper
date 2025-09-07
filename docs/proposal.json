@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Партнерська пропозиція — AgroProsper DAO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #00a859, #0077cc);
+      color: #fff;
+      padding: 40px;
+    }
+    h1 { text-align: center; }
+    form {
+      background: rgba(0,0,0,0.2);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: auto;
+    }
+    label { display: block; margin-top: 15px; }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #ffffff;
+      color: #0077cc;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Надіслати партнерську пропозицію</h1>
+  <form>
+    <label>Назва пропозиції</label>
+    <input type="text" name="title" required>
+
+    <label>Тип пропозиції</label>
+    <select name="type">
+      <option value="partner">Партнерська</option>
+      <option value="technical">Технічна</option>
+      <option value="investment">Інвестиційна</option>
+      <option value="PR">PR / медійна</option>
+    </select>
+
+    <label>Опис</label>
+    <textarea name="description" rows="4" required></textarea>
+
+    <label>Очікуваний результат</label>
+    <textarea name="outcome" rows="3"></textarea>
+
+    <label>Ethereum-адреса / DAO-ідентифікатор</label>
+    <input type="text" name="submitted_by">
+
+    <label>Рекомендований CID-рівень доступу</label>
+    <select name="access">
+      <option value="AG">Агент</option>
+      <option value="PA">Партнер</option>
+      <option value="IN">Інвестор</option>
+      <option value="GU">Гість</option>
+    </select>
+
+    <label>Контактна особа</label>
+    <input type="text" name="contact_name" placeholder="Ім’я">
+    <input type="email" name="contact_email" placeholder="Email">
+    <input type="text" name="contact_telegram" placeholder="Telegram @username">
+
+    <button type="submit">Надіслати пропозицію</button>
+  </form>
+</body>
+</html>
