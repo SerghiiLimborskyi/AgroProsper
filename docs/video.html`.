@@ -3,57 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <title>🎥 Відео — AgroProsper DAO</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="preconnect" href="https://i.ytimg.com" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
       background: #000;
       color: #0f0;
-      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
     }
-
     main {
       max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
     }
-
     h1, h2, p {
       text-align: center;
-      margin: 10px 0;
     }
-
-    /* Адаптивний контейнер для відео */
     .video-card {
       background: #0a0a0a;
       border: 1px solid #0f0;
       border-radius: 12px;
       padding: 16px;
-      margin: 20px auto;
+      margin-bottom: 20px;
       box-shadow: 0 0 12px rgba(0,255,0,0.15);
     }
-
     .player {
       position: relative;
       width: 100%;
-      max-width: 960px;
-      margin: 0 auto;
       aspect-ratio: 16 / 9;
       background: #000;
-      overflow: hidden;
       border-radius: 12px;
-      border: 1px solid #093;
+      overflow: hidden;
     }
-
     video, iframe {
       width: 100%;
       height: 100%;
-      display: block;
-      border: 0;
+      border: none;
     }
-
     .controls {
       display: flex;
       flex-wrap: wrap;
@@ -61,7 +48,6 @@
       gap: 10px;
       margin-top: 14px;
     }
-
     .btn {
       padding: 10px 16px;
       background: #0f0;
@@ -73,106 +59,52 @@
       box-shadow: 0 0 10px #0f0;
       animation: pulse 2s infinite;
     }
-
-    .btn.alt {
-      background: #0ff;
-      box-shadow: 0 0 10px #0ff;
-    }
-
     @keyframes pulse {
       0% { transform: scale(1); box-shadow: 0 0 6px currentColor; }
       50% { transform: scale(1.04); box-shadow: 0 0 16px currentColor; }
       100% { transform: scale(1); box-shadow: 0 0 6px currentColor; }
     }
-
-    .note {
-      font-size: 13px;
-      color: #9f9;
-      text-align: center;
-      opacity: 0.9;
-    }
-
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 12px;
-      color: #0f0;
-      opacity: 0.9;
+    /* 📱 Мобільна адаптація */
+    @media (max-width: 600px) {
+      main { padding: 10px; }
+      h1 { font-size: 20px; }
+      h2 { font-size: 16px; }
+      .video-card { padding: 10px; }
+      .controls { flex-direction: column; }
+      .btn { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <!-- Спільний хедер з логотипом і меню -->
   <div id="header"></div>
   <script>
-    fetch("header.html")
-      .then(r => r.text())
-      .then(html => { document.getElementById("header").innerHTML = html; });
+    fetch("header.html").then(r => r.text()).then(html => { document.getElementById("header").innerHTML = html; });
   </script>
 
   <main>
-    <h1>🎥 Презентації та відео AgroProsper</h1>
-    <p>Офіційні ролики, демо квестів, анонси версій та пояснення логіки DAO.</p>
+    <h1>🎥 Презентації AgroProsper</h1>
 
-    <!-- Локальний відеофайл -->
     <section class="video-card">
-      <h2>Promo V7 — локальний плеєр</h2>
+      <h2>Promo V7</h2>
       <div class="player">
-        <video id="promoLocal"
-               controls
-               playsinline
-               preload="metadata"
-               poster="media/promo-poster.jpg">
+        <video controls poster="media/promo-poster.jpg">
           <source src="media/promo.mp4" type="video/mp4" />
-          Ваш браузер не підтримує відтворення відео. Спробуйте альтернативний плеєр нижче.
         </video>
       </div>
       <div class="controls">
-        <button class="btn" onclick="document.getElementById('promoLocal').play()">▶️ Відтворити</button>
-        <button class="btn alt" onclick="document.getElementById('promoLocal').pause()">⏸️ Пауза</button>
-        <button class="btn" onclick="document.getElementById('promoLocal').currentTime = 0">⏮️ Спочатку</button>
+        <button class="btn" onclick="document.querySelector('video').play()">▶️ Відтворити</button>
+        <button class="btn" onclick="document.querySelector('video').pause()">⏸️ Пауза</button>
       </div>
-      <p class="note">Файл очікується за шляхом: docs/media/promo.mp4 та обкладинка docs/media/promo-poster.jpg</p>
     </section>
 
-    <!-- Альтернативний вбудований плеєр (YouTube/Vimeo або власний CDN) -->
     <section class="video-card">
-      <h2>Демо: Презентація AgroProsper (альтернативний плеєр)</h2>
+      <h2>Альтернативний плеєр</h2>
       <div class="player">
-        <!-- Заміни src на своє публічне відео або корпоративний хостинг із вбудовуванням -->
-        <iframe
-          id="promoEmbed"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          title="AgroProsper Demo"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-        </iframe>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
       </div>
-      <div class="controls">
-        <a class="btn" href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noopener">🔗 Відкрити на платформі</a>
-      </div>
-      <p class="note">За потреби заміни посилання на власний CDN або корпоративний відеосервіс.</p>
     </section>
-
-    <!-- Додаткові матеріали -->
-    <section class="video-card">
-      <h2>Матеріали студії</h2>
-      <div class="controls">
-        <a class="btn" href="media/AgroProsper-promo-presskit.zip" download>⬇️ Завантажити прес-кит</a>
-        <a class="btn alt" href="dashboard.html">📝 До блогу/новин</a>
-        <a class="btn" href="play-game.html">🎮 До квесту</a>
-      </div>
-      <p class="note">Додай у docs/media прес-кит або онови посилання на хмару (пряме публічне посилання).</p>
-    </section>
-
-    <!-- Таймер релізу (опційно) -->
-    <div id="versionTimer" style="text-align:center; margin-top:24px;"></div>
-    <script src="version-timer.js"></script>
   </main>
 
-  <footer>
-    © 2025 AgroProsper DAO — відео та презентації
-  </footer>
+  <footer style="text-align:center; padding:20px;">© 2025 AgroProsper DAO</footer>
 </body>
 </html>
