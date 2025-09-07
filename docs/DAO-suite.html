@@ -9,11 +9,19 @@
   <!-- Хедер -->
   <div id="header"></div>
   <script>
-    fetch("header.html")
-      .then(r => r.text())
-      .then(html => { document.getElementById("header").innerHTML = html; });
-  </script>
+  const cid = localStorage.getItem("userCID") || "0xAGRO-XXXX";
+  const badgeImg = document.getElementById("badgeImage");
 
+  function getBadgeByCID(cid) {
+    if (cid.includes("AN")) return "media/badge-analyst.png";
+    if (cid.includes("PA")) return "media/badge-partner.png";
+    if (cid.includes("AG")) return "media/badge-agent.png";
+    return "media/badge-nft.png"; // Starter by default
+  }
+
+  badgeImg.src = getBadgeByCID(cid);
+</script>
+  
   <main style="padding:20px; text-align:center;">
     <h1>🧩 DAO Suite</h1>
     <p>Центральна панель для взаємодії з DAO-модулями: голосування, NFT, біржа, аналітика.</p>
@@ -28,7 +36,7 @@
     <section style="margin:30px 0;">
       <h2>🎖️ NFT-бейджі</h2>
       <p>Ваш статус: <strong>AGT-Гравець</strong></p>
-      <img src="media/badge-nft.png" alt="NFT-бейдж" style="height:100px; border-radius:12px; box-shadow:0 0 10px #0f0;" />
+      <img id="badgeImage" src="media/badge-nft.png" alt="DAO-бейдж" style="height:100px; border-radius:12px;" />
     </section>
 
     <section style="margin:30px 0;">
