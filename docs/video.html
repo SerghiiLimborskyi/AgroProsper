@@ -2,123 +2,29 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>🎥 Відео — AgroProsper DAO</title>
+  <title>🎬 Відео — AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-/* Десктоп */
-.video-card { padding: 16px; }
-.player { aspect-ratio: 16 / 9; }
-
-/* Мобільна адаптація */
-@media (max-width: 600px) {
-  main { padding: 10px; }
-  h1 { font-size: 20px; }
-  h2 { font-size: 16px; }
-  .video-card { padding: 10px; }
-  .controls { flex-direction: column; }
-  .btn { width: 100%; }
-  .player { aspect-ratio: auto; height: 200px; }
-}
-    body {
-      background: #000;
-      color: #0f0;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-    }
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    h1, h2, p {
-      text-align: center;
-    }
-    .video-card {
-      background: #0a0a0a;
-      border: 1px solid #0f0;
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 12px rgba(0,255,0,0.15);
-    }
-    .player {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #000;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    video, iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .btn {
-      padding: 10px 16px;
-      background: #0f0;
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 0 10px #0f0;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 6px currentColor; }
-      50% { transform: scale(1.04); box-shadow: 0 0 16px currentColor; }
-      100% { transform: scale(1); box-shadow: 0 0 6px currentColor; }
-    }
-    /* 📱 Мобільна адаптація */
-    @media (max-width: 600px) {
-      main { padding: 10px; }
-      h1 { font-size: 20px; }
-      h2 { font-size: 16px; }
-      .video-card { padding: 10px; }
-      .controls { flex-direction: column; }
-      .btn { width: 100%; }
-    }
-  </style>
 </head>
 <body>
   <div id="header"></div>
   <script>
-    fetch("header.html").then(r => r.text()).then(html => { document.getElementById("header").innerHTML = html; });
+    fetch("header.html")
+      .then(r => r.text())
+      .then(html => { document.getElementById("header").innerHTML = html; });
   </script>
 
-  <main>
-    <h1>🎥 Презентації AgroProsper</h1>
+  <main style="padding:20px; text-align:center;">
+    <h1>🎬 Відео-презентації AgroProsper</h1>
+    <p>Ознайомтесь з DAO-моделлю, партнерськими кейсами та NFT-логікою.</p>
 
-    <section class="video-card">
-      <h2>Promo V7</h2>
-      <div class="player">
-        <video controls poster="media/promo-poster.jpg">
-          <source src="media/promo.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="controls">
-        <button class="btn" onclick="document.querySelector('video').play()">▶️ Відтворити</button>
-        <button class="btn" onclick="document.querySelector('video').pause()">⏸️ Пауза</button>
-      </div>
-    </section>
+    <video controls poster="media/promo-poster.jpg" style="width:100%; max-width:800px; border-radius:12px; box-shadow:0 0 12px #0f0;">
+      <source src="media/promo.mp4" type="video/mp4" />
+      Ваш браузер не підтримує відео.
+    </video>
 
-    <section class="video-card">
-      <h2>Альтернативний плеєр</h2>
-      <div class="player">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-      </div>
-    </section>
+    <p style="margin-top:20px;">
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" style="color:#0f0; font-weight:bold;">▶️ Переглянути на YouTube</a>
+    </p>
   </main>
-
-  <footer style="text-align:center; padding:20px;">© 2025 AgroProsper DAO</footer>
 </body>
 </html>
