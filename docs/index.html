@@ -5,7 +5,13 @@
   <title>AgroProsper DAO — Головна</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <style>
+  <div id="footer"></div>
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(html => document.getElementById('footer').innerHTML = html);
+</script>
+<style>
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
