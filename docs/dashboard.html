@@ -2,185 +2,21 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>AgroProsper DAO — Панель агента</title>
+  <title>Панель агента — AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="public/menu.js" defer></script>
-  <link rel="stylesheet" href="../public/style.css" />
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-      color: white;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.7);
-    }
-    .logo {
-      height: 60px;
-      margin-right: 20px;
-    }
-    .banner h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-    main {
-      padding: 40px;
-      max-width: 900px;
-      margin: auto;
-    }
-    section {
-      margin-bottom: 40px;
-      padding: 20px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 8px;
-    }
-    h2 {
-      margin-top: 0;
-    }
-    button {
-      padding: 10px 20px;
-      background: #28a745;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #218838;
-      transform: scale(1.05);
-      transition: all 0.3s ease;
-    }
-    input, select {
-      padding: 10px;
-      margin-top: 10px;
-      width: 100%;
-      border-radius: 5px;
-      border: none;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.6);
-    }
-  </style>
 </head>
 <body>
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(r => r.text())
+      .then(html => { document.getElementById("header").innerHTML = html; });
+  </script>
 
-  <header style="display:flex; align-items:center; padding:20px; background:rgba(0,0,0,0.7);">
-    <h1 style="margin:0; font-size:28px;">AgroProsper V7 — DAO</h1>
-    <p style="margin:0; font-size:14px; color:#ccc;">Autonomous. Ethical. Unstoppable.</p>
-  </div>
-</header>
-
-<header>
-  <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
-  <div class="banner">
-    <h1>AgroProsper DAO</h1>
-    <p>Панель агента — автономна платформа для дії</p>
-  </div>
-</header>
-
-<main>
-
-  <section>
-    <h2>🧬 CID-ідентифікація</h2>
+  <main style="padding:20px; text-align:center;">
+    <h1>🧠 Панель агента</h1>
     <p>Ваш DAO-ідентифікатор: <strong>CID: 0xAGRO-XXXX</strong></p>
-    <button>Перевірити CID</button>
-  </section>
-
-  <section>
-    <h2>🏅 Ваш DAO-бейдж</h2>
-    <p>Роль: <strong>Moon Botanist</strong></p>
-    <img src="../assets/badges/moon_botanist.svg" alt="Moon Botanist Badge" style="width:120px;" />
-  </section>
-
-  <section>
-    <h2>📊 DAO-аналітика</h2>
-    <p>Відвідувачі: <strong>1,245</strong> | Квести виконано: <strong>87</strong></p>
-    <button>Переглянути звіт</button>
-  </section>
-
-  <section>
-    <h2>🎮 Ваші DAO-квести</h2>
-    <ul>
-      <li>✅ “Солодкий вибір” — виконано</li>
-      <li>🧩 “Павутина добра” — активний</li>
-      <li>🌱 “Печера Коріння” — очікує підтвердження</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>🤖 AI-чат-бот</h2>
-    <p>Отримайте миттєву консультацію з аграрних питань</p>
-    <button>Написати запит</button>
-  </section>
-
-  <section>
-    <h2>🗳️ DAO-голосування</h2>
-    <p>Проголосуйте за нові функції платформи</p>
-    <button>Проголосувати</button>
-  </section>
-
-  <section>
-    <h2>💰 Баланс AGT</h2>
-    <p>Ваш токеновий баланс: <strong>AGT: 0</strong></p>
-  </section>
-
-  <section>
-    <h2>🎨 Створити NFT</h2>
-    <p>Оцифруйте свій агропродукт у вигляді NFT</p>
-    <form id="mintForm">
-      <input type="text" name="wallet" placeholder="Wallet address" />
-      <button type="submit">Mint NFT</button>
-    </form>
-  </section>
-
-  <section>
-    <h2>🛒 Купити продукцію</h2>
-    <p>Підтримайте аграріїв через DAO-біржу</p>
-    <button>Перейти на біржу</button>
-  </section>
-
-</main>
-
-<footer>
-  <p>© 2025 AgroProsper DAO | 🤝 Партнерство</p>
-</footer>
-
-<script>
-  const hour = new Date().getHours();
-  const theme = (hour >= 6 && hour < 18) ? 'day' : 'night';
-  document.body.classList.add(theme);
-  if (!localStorage.getItem("cid")) {
-  const guestCID = "0xGUEST-" + Math.random().toString(36).substring(2, 10).toUpperCase();
-  localStorage.setItem("cid", guestCID);
-  alert("👋 Вітаємо! Вам присвоєно гостьовий CID: " + guestCID);
-   <p>🔖 Ваша роль: <span id="roleDisplay"></span></p>
-
-<script>
-const cid = localStorage.getItem("cid");
-document.getElementById("roleDisplay").innerText = cid.startsWith("0xGUEST") ? "Гість" : "Агент DAO"; 
-}
-</script>
-  
- <p>🔐 Хочеш стати агентом DAO?</p>
-<button onclick="upgradeCID()">🧩 Зареєструватися</button>
-
-<script>
-function upgradeCID() {
-  const cid = localStorage.getItem("cid");
-  if (cid.startsWith("0xGUEST")) {
-    const newCID = "0xAGRO-" + Date.now();
-    localStorage.setItem("cid", newCID);
-    alert("✅ CID оновлено: " + newCID);
-  }
-}
-</script>
-
+    <button onclick="alert('CID перевірено')">✅ Перевірити CID</button>
+  </main>
 </body>
 </html>
