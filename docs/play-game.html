@@ -1,10 +1,22 @@
-<div id="gameBadge" style="margin-top:20px;"></div>
-<script>
-  const cid = localStorage.getItem("cid");
-  if (cid && cid.startsWith("0xGUEST")) {
-    document.getElementById("gameBadge").innerHTML = `
-      <h3>🎮 Ви отримали бейдж: Гравець DAO</h3>
-      <img src="badges/player.svg" alt="Player Badge" width="80" />
-    `;
-  }
-</script>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Квести — AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(r => r.text())
+      .then(html => { document.getElementById("header").innerHTML = html; });
+  </script>
+
+  <main style="padding:20px; text-align:center;">
+    <h1>🎮 DAO-Квести</h1>
+    <p>Виконуйте завдання, отримуйте бейджі, відкривайте нові рівні.</p>
+    <button onclick="alert('Квест розпочато')">🚀 Почати квест</button>
+  </main>
+</body>
+</html>
