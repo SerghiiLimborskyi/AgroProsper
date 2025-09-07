@@ -2,90 +2,20 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>AgroProsper V7 — Старт</title>
+  <title>AgroProsper DAO — Головна</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="admin-loginsheet"href="admin-login.html" />
-  <script src="terms-check.js"></script>
-  <script src="terms-sync.js"></script>
-
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #001100, #000033);
-      color: #0f0;
-      text-align: center;
-      padding: 40px;
-    }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-    button {
-      display: block;
-      margin: 10px auto;
-      padding: 12px 24px;
-      background-color: #0f0;
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      box-shadow: 0 0 10px #0f0;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0c0;
-    }
-    .forecast {
-      margin-top: 40px;
-    }
-    iframe {
-      width: 100%;
-      max-width: 600px;
-      height: 300px;
-      border: none;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-  </style>
-
-  <script>
-    function enterAs(role) {
-      const cid = "0x" + role.toUpperCase() + "-" + Date.now();
-      localStorage.setItem("cid", cid);
-      alert("✅ Вхід як " + role + ": " + cid);
-      if (role === "guest") window.location.href = "guestBadge.html";
-      else if (role === "player") window.location.href = "play-game.html";
-      else if (role === "blogger") window.location.href = "dashboard.html";
-      else if (role === "agent") window.location.href = "admin.html";
-    }
-  </script>
 </head>
-
 <body>
-  <h1>🌿 AgroProsper V7 — Вхід до DAO</h1>
-  <p>Оберіть роль для входу без реєстрації:</p>
+  <div id="header"></div>
+  <script>
+    fetch("header.html")
+      .then(r => r.text())
+      .then(html => { document.getElementById("header").innerHTML = html; });
+  </script>
 
-  <button onclick="enterAs('guest')">🎫 Гість</button>
-  <button onclick="enterAs('player')">🎮 Гравець</button>
-  <button onclick="enterAs('blogger')">📝 Блогер</button>
-  <button onclick="enterAs('agent')">🔐 Агент DAO</button>
-
-  <div class="forecast">
-    <h2>🌦️ Прогноз погоди (Щецин)</h2>
-    <iframe src="https://www.msn.com/pl-pl/pogoda/prognoza/in-Szczecin,Woj-Zachodniopomorskie?loc=eyJsIjoiU3pjemVjaW4iLCJyIjoiV29qIFphY2hvZG5pb3BvbW9yc2tpZSIsImMiOiJQb2xza2EiLCJpIjoiUEwiLCJnIjoicGwtcGwiLCJ4IjoiMTQuNTU5Njk1MjQzODM1NDUiLCJ5IjoiNTMuNDY3MjM1NTY1MTg1NTUifQ%3D%3D&weadegreetype=C&content=AQICard_wxaqi"></iframe>
-
-    <h2>💱 Прогноз валют</h2>
-    <iframe src="https://www.xe.com/currencycharts/?from=USD&to=PLN&view=1M"></iframe>
-
-    <h2>🛢️ Прогноз цін на сировину</h2>
-    <p><a href="https://finway.com.ua/zrostannya-tsin-syrovynni-resursy-2025/" target="_blank">Зростання цін у 2025 — Finway</a></p>
-    <p><a href="https://ukragroconsult.com/news/svitovyj-bank-prognozuye-znyzhennya-czin-na-syrovynu-na-12-u-2025-r-ta-shhe-na-5-u-2026-r/" target="_blank">Прогноз Світового банку</a></p>
-    <p><a href="https://biz.liga.net/ua/all/all/novosti/fitch-perehlianuv-tsiny-na-metaly-shcho-zroste-a-shcho-vpade-u-2025-2027-rokakh" target="_blank">Огляд Fitch Ratings</a></p>
-  </div>
-
-  <footer>
-    <p>© 2025 AgroProsper DAO. Вхід без реєстрації. CID генерується автоматично.</p>
-  </footer>
+  <main style="padding:20px; text-align:center;">
+    <h1>🏠 Ласкаво просимо до AgroProsper DAO</h1>
+    <p>Це автономна платформа для аграрних дій, прогнозів, квестів і партнерства.</p>
+  </main>
 </body>
 </html>
