@@ -7,6 +7,7 @@
       text-align: center;
       padding: 30px 20px;
       font-size: 14px;
+      position: relative;
     }
     .footer-links {
       margin-bottom: 10px;
@@ -24,13 +25,20 @@
       margin-top: 10px;
       font-size: 13px;
       color: #999;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #00ff99;
+      width: 0;
+      animation: typing 6s steps(60, end) forwards;
     }
-    @media (max-width: 600px) {
-      .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    .dao-status {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #00ff99;
     }
   </style>
 
@@ -41,7 +49,13 @@
     <a href="https://github.com/SerghiiLimborskyi/AgroProsper" target="_blank">🌐 GitHub</a>
   </div>
 
-  <div class="dao-signature">
-    AgroProsper DAO © 2025 · Версія: v7.0-Unstoppable · CID-система активна · “Unstoppable Autonomy for Smart Agriculture”
-  </div>
+  <div class="dao-status" id="daoStatus">CID-система: ⏳ Завантаження...</div>
+  <div class="dao-signature" id="daoSignature">AgroProsper DAO © 2025 · Версія: v7.0-Unstoppable · “Unstoppable Autonomy for Smart Agriculture”</div>
+
+  <script>
+    // CID інтеграція
+    const cid = localStorage.getItem('cid') || 'AG-SL-X7K9QZ-2025';
+    const status = cid ? '🟢 Активна' : '🔴 Неактивна';
+    document.getElementById('daoStatus').textContent = `CID-система: ${status} · CID: ${cid}`;
+  </script>
 </footer>
