@@ -16,74 +16,7 @@
       min-height: 100vh;
     }
 
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 60px;
-      height: 100%;
-      background-color: rgba(0,0,0,0.4);
-      transition: width 0.3s ease;
-      overflow-x: hidden;
-      z-index: 1000;
-    }
-
-    .sidebar:hover {
-      width: 220px;
-    }
-
-    .sidebar img.logo {
-      width: 40px;
-      margin: 20px;
-      transition: transform 0.3s ease;
-    }
-
-    .sidebar:hover img.logo {
-      transform: scale(1.1);
-    }
-
-    .sidebar nav {
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-    }
-
-    .sidebar nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 12px 0;
-      font-size: 16px;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .sidebar:hover nav a {
-      opacity: 1;
-    }
-
-    .cid-block {
-      margin-top: 30px;
-      padding-top: 10px;
-      border-top: 1px solid #00a859;
-      text-align: center;
-    }
-
-    .cid-block img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 2px solid #00a859;
-    }
-
-    .cid-block p {
-      font-size: 14px;
-      color: #00ff99;
-      margin-top: 8px;
-    }
-
     main {
-      margin-left: 60px;
       padding: 60px 20px;
       flex: 1;
       text-align: center;
@@ -152,55 +85,13 @@
     .dao-modules p {
       font-size: 13px;
     }
-
-    footer {
-      background-color: rgba(0,0,0,0.3);
-      color: #ccc;
-      font-size: 14px;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .footer-links a {
-      color: #00ff99;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    .footer-links a:hover {
-      color: #ffffff;
-    }
   </style>
 </head>
 <body>
+  <!-- 🔗 Автоматичне меню -->
   <div id="menu"></div>
 
-  <!-- 🔽 Тут твій контент сторінки -->
-  <main>
-    <h1>AgroProsper DAO</h1>
-    <p class="slogan">Unstoppable Autonomy for Smart Agriculture</p>
-    <a href="video.html" class="btn">🎬 Переглянути відео</a>
-    <!-- DAO Suite, інші блоки... -->
-  </main>
-  
-  <div class="sidebar">
-    <img src="media/logo-agroprosper.png" alt="AgroProsper DAO Logo" class="logo">
-    <nav>
-      <a href="index.html">🏠 Головна</a>
-      <a href="dao.html">🧠 Панель агента</a>
-      <a href="equipment.html">🚜 Техніка</a>
-      <a href="video.html">🎬 Відео</a>
-      <a href="forecast.html">🌦️ Прогнози</a>
-      <a href="business.html">🤝 Бізнес</a>
-      <a href="suite.html">🧩 DAO Suite</a>
-      <a href="support.html">🛠️ Підтримка</a>
-    </nav>
-    <div class="cid-block">
-      <img src="media/avatar.png" alt="Аватар DAO">
-      <p>CID: AG-SL-X7K9QZ-2025</p>
-    </div>
-  </div>
-
+  <!-- 🔽 Контент головної сторінки -->
   <main>
     <h1>AgroProsper DAO</h1>
     <p class="slogan">Unstoppable Autonomy for Smart Agriculture</p>
@@ -230,16 +121,8 @@
     </section>
   </main>
 
-  <footer>
-    <div class="footer-links">
-      🛠️ <a href="support.html">Підтримка</a>
-      📄 <a href="terms.html">Умови</a>
-      📬 <a href="contact.html">Зв’язок</a>
-      🌐 <a href="https://github.com/SerghiiLimborskyi/AgroProsper" target="_blank">GitHub</a>
-    </div>
-    <div>
-      AgroProsper DAO © 2025 · Версія: v7.0-Unstoppable · CID-система активна · “Unstoppable Autonomy for Smart Agriculture”
-    </div>
-  </footer>
+  <!-- 🔗 Автоматичний футер -->
+  <div id="footer"></div>
+  <script src="public/init.js"></script>
 </body>
 </html>
