@@ -7,6 +7,7 @@
       padding: 20px;
       background-color: rgba(0,0,0,0.3);
       font-family: 'Montserrat', sans-serif;
+      position: relative;
     }
     .logo {
       width: 140px;
@@ -29,6 +30,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      cursor: pointer;
     }
     .avatar-block img {
       width: 40px;
@@ -39,6 +41,29 @@
     .cid {
       font-size: 14px;
       color: #00ff99;
+    }
+
+    /* Модальне вікно */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background-color: #1a2b3c;
+      color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00ff99;
+      z-index: 999;
+      width: 260px;
+    }
+    .modal h3 {
+      margin-top: 0;
+      color: #00ff99;
+    }
+    .modal p {
+      font-size: 14px;
+      margin: 6px 0;
     }
 
     @media (max-width: 768px) {
@@ -64,6 +89,7 @@
 
   <img src="media/logo-agroprosper.png" alt="AgroProsper DAO Logo" class="logo">
   <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">☰</div>
+
   <nav>
     <a href="index.html">🏠 Головна</a>
     <a href="dao.html">🧠 Панель агента</a>
@@ -74,8 +100,19 @@
     <a href="suite.html">🧩 DAO Suite</a>
     <a href="support.html">🛠️ Підтримка</a>
   </nav>
-  <div class="avatar-block">
+
+  <div class="avatar-block" onclick="document.getElementById('cidModal').style.display='block'">
     <img src="media/avatar.png" alt="Аватар DAO">
     <div class="cid">CID: AG-SL-X7K9QZ-2025</div>
+  </div>
+
+  <div class="modal" id="cidModal">
+    <h3>👤 Профіль агента DAO</h3>
+    <p><strong>CID:</strong> AG-SL-X7K9QZ-2025</p>
+    <p><strong>Роль:</strong> DAO-оператор</p>
+    <p><strong>Статус:</strong> Активний</p>
+    <p><strong>Рівень доступу:</strong> L3</p>
+    <p><strong>Бейдж:</strong> 🌿 Smart Agriculture</p>
+    <button onclick="document.getElementById('cidModal').style.display='none'" style="margin-top:10px; padding:6px 12px; background:#00a859; border:none; border-radius:6px; color:#fff; cursor:pointer;">Закрити</button>
   </div>
 </header>
