@@ -1,0 +1,24 @@
+#badgeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+}
+
+.badge-card {
+  background-color: #0f2027;
+  border: 2px solid #00ff99;
+  border-radius: 12px;
+  padding: 12px;
+  width: 160px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0,255,153,0.3);
+}
+
+.badge-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
