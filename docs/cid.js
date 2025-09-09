@@ -3,6 +3,7 @@
 function activateCID() {
   const cidInput = document.getElementById("cidInput");
   const cid = cidInput.value.trim();
+<script src="docs/src/cid.js" defer></script>
 
   if (!cid) {
     alert("⚠️ Введіть свій CID для активації.");
