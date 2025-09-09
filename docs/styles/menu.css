@@ -1,0 +1,78 @@
+/* menu.css — стилізація головного меню AgroProsper */
+
+.sidebar {
+  background-color: #0f2027;
+  color: #00ff99;
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.3);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar nav a {
+  color: #00ff99;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar nav a:hover {
+  background-color: #203a43;
+  transform: scale(1.05);
+}
+
+.avatar-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.avatar-block img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #00ff99;
+  box-shadow: 0 0 10px #00ff99;
+}
+
+.cid-role {
+  font-size: 14px;
+  color: #00ff99;
+  animation: pulseRole 3s infinite;
+}
+
+@keyframes pulseRole {
+  0%   { color: #00ff99; }
+  50%  { color: #ffffff; }
+  100% { color: #00ff99; }
+}
+
+/* Адаптація для мобільних */
+@media (max-width: 768px) {
+  .sidebar {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .sidebar nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
