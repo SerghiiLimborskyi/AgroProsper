@@ -61,6 +61,11 @@
     </div>
   `;
   document.body.insertBefore(nav, document.body.firstChild);
+  fetch("menu.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("menu").innerHTML = html;
+  });
 
   window.checkAccess = function (e) {
     const cid = localStorage.getItem("cid");
