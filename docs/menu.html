@@ -1,61 +1,44 @@
-<div class="sidebar">
-  <style>
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 60px;
-      height: 100%;
-      background-color: rgba(0,0,0,0.4);
-      transition: width 0.3s ease;
-      overflow-x: hidden;
-      z-index: 1000;
-    }
+// menu.js — інтерактивне DAO-меню AgroProsper
 
-    .sidebar:hover {
-      width: 220px;
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = document.querySelector("nav");
+  const toggle = document.querySelector(".menu-toggle");
+  const cidBlock = document.querySelector(".cid");
 
-    .sidebar img.logo {
-      width: 40px;
-      margin: 20px;
-      transition: transform 0.3s ease;
-    }
+  // 🔁 Мобільне меню
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  }
 
-    .sidebar:hover img.logo {
-      transform: scale(1.1);
-    }
+  // 🧠 CID-інтеграція
+  const cid = localStorage.getItem("cid");
+  if (cid && cidBlock) {
+    cidBlock.textContent = `CID: ${cid}`;
+    document.body.setAttribute("data-role", getRoleFromCID(cid));
+  }
 
-    .sidebar nav {
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-    }
+  // 🎯 DAO-підсвічування активного пункту
+  const links = document.querySelectorAll("nav a");
+  const currentPage = window.location.pathname.split("/").pop();
 
-    .sidebar nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 12px 0;
-      font-size: 16px;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+  links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.style.color = "#00ff99";
+      link.style.fontWeight = "bold";
     }
+  });
+});
 
-    .sidebar:hover nav a {
-      opacity: 1;
-    }
-  </style>
-
-  <img src="media/logo-agroprosper.png" alt="AgroProsper DAO Logo" class="logo">
-  <nav>
-    <a href="index.html">🏠 Головна</a>
-    <a href="dao.html">🧠 Панель агента</a>
-    <a href="equipment.html">🚜 Техніка</a>
-    <a href="video.html">🎬 Відео</a>
-    <a href="forecast.html">🌦️ Прогнози</a>
-    <a href="business.html">🤝 Бізнес</a>
-    <a href="suite.html">🧩 DAO Suite</a>
-    <a href="support.html">🛠️ Підтримка</a>
-  </nav>
+// 🔍 Визначення ролі на основі CID
+function getRoleFromCID(cid) {
+  if (cid.startsWith("SP-")) return "Супер Партнер";
+  if (cid.startsWith("DAO-")) return "Агент DAO";
+  if (cid.startsWith("ETH-")) return "Етичний Куратор";
+  return "Гість";
+<div class="avatar-block">
+  <img src="media/avatar.png" alt="Аватар DAO">
+  <div class="cid-role" id="cidRole">CID: ...</div>
 </div>
+}
