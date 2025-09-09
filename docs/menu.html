@@ -1,44 +1,32 @@
-// menu.js — інтерактивне DAO-меню AgroProsper
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>DAO-меню AgroProsper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/menu.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>🔗 DAO-меню</h2>
+    <nav>
+      <a href="index.html">🏠 Головна</a>
+      <a href="#cid">🧠 Панель агента</a>
+      <a href="#quest">🎮 Квести</a>
+      <a href="#video">🎬 Відео</a>
+      <a href="#forecast">🌦️ Прогнози</a>
+      <a href="#business">🤝 Бізнес</a>
+      <a href="#suite">🧩 DAO Suite</a>
+      <a href="support_ua.html">📜 Про нас</a>
+    </nav>
 
-document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.querySelector("nav");
-  const toggle = document.querySelector(".menu-toggle");
-  const cidBlock = document.querySelector(".cid");
+    <div class="avatar-block">
+      <img src="media/avatar.png" alt="Аватар DAO">
+      <div class="cid-role" id="cidRole">CID: ...</div>
+    </div>
+  </div>
 
-  // 🔁 Мобільне меню
-  if (toggle && nav) {
-    toggle.addEventListener("click", () => {
-      nav.classList.toggle("active");
-    });
-  }
-
-  // 🧠 CID-інтеграція
-  const cid = localStorage.getItem("cid");
-  if (cid && cidBlock) {
-    cidBlock.textContent = `CID: ${cid}`;
-    document.body.setAttribute("data-role", getRoleFromCID(cid));
-  }
-
-  // 🎯 DAO-підсвічування активного пункту
-  const links = document.querySelectorAll("nav a");
-  const currentPage = window.location.pathname.split("/").pop();
-
-  links.forEach(link => {
-    if (link.getAttribute("href") === currentPage) {
-      link.style.color = "#00ff99";
-      link.style.fontWeight = "bold";
-    }
-  });
-});
-
-// 🔍 Визначення ролі на основі CID
-function getRoleFromCID(cid) {
-  if (cid.startsWith("SP-")) return "Супер Партнер";
-  if (cid.startsWith("DAO-")) return "Агент DAO";
-  if (cid.startsWith("ETH-")) return "Етичний Куратор";
-  return "Гість";
-<div class="avatar-block">
-  <img src="media/avatar.png" alt="Аватар DAO">
-  <div class="cid-role" id="cidRole">CID: ...</div>
-</div>
-}
+  <script src="scripts/menu.js" defer></script>
+</body>
+</html>
