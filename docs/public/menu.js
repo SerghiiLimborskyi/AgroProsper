@@ -44,6 +44,14 @@
   const nav = document.createElement("nav");
   nav.style = "background: rgba(0,0,0,0.8); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-family: 'Segoe UI', sans-serif;";
   nav.innerHTML = `
+  const toggle = document.querySelector(".menu-toggle");
+
+if (toggle && nav) {
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+}
+
     <div>
       <img src="../public/logo.png" alt="AgroProsper Logo" style="height:40px; vertical-align: middle;" />
       <span style="color:#00ffcc; font-weight:bold; margin-left:10px;">AgroProsper V7</span>
