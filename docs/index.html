@@ -2,9 +2,12 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>AgroProsper DAO — Головна</title>
+  <title>AgroProsper V7.1 — Жива DAO-платформа</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/nft.css">
+  <script src="scripts/cid.js" defer></script>
+  <script src="scripts/dao.js" defer></script>
   <style>
     body {
       margin: 0;
@@ -15,24 +18,15 @@
       flex-direction: column;
       min-height: 100vh;
     }
-
     main {
       padding: 60px 20px;
       flex: 1;
       text-align: center;
     }
-
     h1 {
-      font-size: 32px;
-      color: #00a859;
+      font-size: 36px;
+      color: #00ff99;
     }
-
-    p.slogan {
-      font-size: 16px;
-      color: #ccc;
-      margin-bottom: 40px;
-    }
-
     .btn {
       background-color: #00a859;
       color: #fff;
@@ -45,84 +39,74 @@
       box-shadow: 0 0 12px #00ff99;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
-
     .btn:hover {
       box-shadow: 0 0 20px #00ff99;
       transform: scale(1.05);
     }
-
-    .dao-suite {
-      margin-top: 60px;
-    }
-
-    .dao-suite h2 {
-      color: #00a859;
-    }
-
-    .dao-suite p {
-      color: #ccc;
-    }
-
-    .dao-modules {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .dao-modules div {
-      background-color: #1a2b3c;
+    .dao-block {
+      margin-top: 40px;
       padding: 20px;
+      background-color: #1a2b3c;
       border-radius: 12px;
-      width: 220px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    .dao-modules h3 {
-      color: #00ff99;
+    .nft-badge {
+      animation: pulseNFT 2s infinite;
     }
-
-    .dao-modules p {
-      font-size: 13px;
+    @keyframes pulseNFT {
+      0% { transform: scale(1); box-shadow: 0 0 10px #00ff99; }
+      50% { transform: scale(1.05); box-shadow: 0 0 20px #00ff99; }
+      100% { transform: scale(1); box-shadow: 0 0 10px #00ff99; }
     }
   </style>
 </head>
 <body>
-  <!-- 🔗 Автоматичне меню -->
-  <div id="menu"></div>
-
-  <!-- 🔽 Контент головної сторінки -->
   <main>
-    <h1>AgroProsper DAO</h1>
-    <p class="slogan">Unstoppable Autonomy for Smart Agriculture</p>
-    <a href="video.html" class="btn">🎬 Переглянути відео</a>
+    <h1 data-signature="CID:AGENT:CREATOR">AgroProsper V7.1 — DAO з душею</h1>
+    <p class="slogan">Жива автономна система для етичного агробізнесу</p>
 
-    <section class="dao-suite">
-      <h2>🧩 DAO Suite</h2>
-      <p>Інтерактивні модулі DAO: CID-логіка, NFT-бейджі, голосування, аналітика</p>
-      <div class="dao-modules">
-        <div>
-          <h3>CID-логіка</h3>
-          <p>Унікальні ідентифікатори для кожного агента DAO</p>
-        </div>
-        <div>
-          <h3>NFT-бейджі</h3>
-          <p>Ролі, рівні, статуси — як токени участі</p>
-        </div>
-        <div>
-          <h3>Голосування</h3>
-          <p>Пропозиції, рішення, DAO-реакції</p>
-        </div>
-        <div>
-          <h3>Аналітика</h3>
-          <p>Прогнози, дашборди, агро-дані</p>
-        </div>
-      </div>
-    </section>
+    <!-- 🎬 Відео-звернення -->
+    <div class="dao-block" data-signature="CID:AGENT:VIDEO">
+      <h2>🎬 Відео-звернення</h2>
+      <video controls width="100%" poster="assets/video-cover.jpg">
+        <source src="assets/agroprosper-v7.mp4" type="video/mp4">
+        Ваш браузер не підтримує відео.
+      </video>
+    </div>
+
+    <!-- 🧠 CID-модуль -->
+    <div class="dao-block" data-signature="CID:AGENT:CID">
+      <h2>🧠 CID-модуль</h2>
+      <p>Введіть свій DAO-паспорт для активації ролі</p>
+      <input type="text" placeholder="CID..." id="cidInput" />
+      <button class="btn" onclick="activateCID()">Активувати</button>
+    </div>
+
+    <!-- 🏅 NFT-анімація -->
+    <div class="dao-block nft-badge" data-signature="CID:AGENT:NFT">
+      <h2>🏅 NFT-бейдж “Супер Партнер”</h2>
+      <img src="assets/nft-super-partner.png" alt="NFT-бейдж" width="120" />
+      <p>Ваша роль підтверджена. DAO вас вітає!</p>
+    </div>
+
+    <!-- 🧩 DAO-квест -->
+    <div class="dao-block" data-signature="CID:AGENT:QUEST">
+      <h2>🧩 DAO-квест: “Пульс довіри”</h2>
+      <p>Виберіть етичне рішення для ситуації: фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?</p>
+      <button class="btn">✅ Підтримати його вибір</button>
+      <button class="btn">💰 Переконати продати дорожче</button>
+    </div>
+
+    <!-- 🤝 DAO-кнопки -->
+    <div class="dao-block" data-signature="CID:AGENT:ACTION">
+      <h2>🤝 Дії DAO</h2>
+      <button class="btn">📥 Підтримати реліз</button>
+      <button class="btn">🧬 Стати агентом DAO</button>
+      <button class="btn">📊 Перейти до Dashboard</button>
+    </div>
   </main>
-
-  <!-- 🔗 Автоматичний футер -->
-  <div id="footer"></div>
-  <script src="public/init.js"></script>
+  <script src="scripts/init.js"></script>
 </body>
 </html>
