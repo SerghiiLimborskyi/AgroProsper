@@ -1,0 +1,26 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #0f2027;
+  color: #ffffff;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #00ff99;
+}
+
+canvas {
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+button {
+  background-color: #00ff99;
+  color: #0f2027;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
