@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Моніторинг агентів — AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/monitor.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🕵️‍♂️ Моніторинг агентів DAO</h1>
+    <p>CID-рівні, безпека, логіка — все під контролем.</p>
+  </header>
+
+  <section>
+    <h2>📊 CID-графік</h2>
+    <canvas id="agentChart" width="400" height="200"></canvas>
+  </section>
+
+  <section>
+    <h2>📋 Список агентів</h2>
+    <select id="roleFilter">
+      <option value="all">Усі ролі</option>
+      <option value="Starter">Starter</option>
+      <option value="Farmer">Farmer</option>
+      <option value="Trader">Trader</option>
+      <option value="Partner">Partner</option>
+      <option value="Agent">Agent</option>
+    </select>
+    <ul id="agentList"></ul>
+  </section>
+
+  <section>
+    <h2>🔐 Перевірка безпеки CID</h2>
+    <div id="cidSecurity"></div>
+  </section>
+
+  <section>
+    <h2>📜 Лог останніх дій</h2>
+    <pre id="agentLogs">Завантаження...</pre>
+  </section>
+
+  <footer>
+    <p>AgroProsper DAO — прозорість, контроль, етика.</p>
+  </footer>
+
+  <script src="scripts/agentMonitor.js" defer></script>
+</body>
+</html>
