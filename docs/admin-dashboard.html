@@ -12,6 +12,12 @@
     .then(res => res.text())
     .then(html => document.getElementById("menuContainer").innerHTML = html);
 </script>
+  <div id="footerContainer"></div>
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("footerContainer").innerHTML = html);
+</script>
 </head>
 <body>
   <header>
