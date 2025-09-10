@@ -37,6 +37,24 @@
     width: 64px;
     height: 64px;
   }
+  
+  .submenu {
+  display: none;
+  position: absolute;
+  background-color: #1c1c1c;
+  padding: 10px;
+  border-radius: 6px;
+  z-index: 100;
+}
+
+.submenu.active {
+  display: block;
+}
+
+.menu-item {
+  position: relative;
+  cursor: pointer;
+}
 
   .cid-role {
     font-size: 14px;
