@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Agent Panel — AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/badge.css" />
+</head>
+<body>
+  <header>
+    <h1>🧠 Панель агента DAO</h1>
+    <p>CID: <strong id="cidDisplay">0xAGRO-XXXX</strong></p>
+  </header>
+
+  <section>
+    <h2>🏅 Ваші бейджі</h2>
+    <div id="badgeContainer"></div>
+  </section>
+
+  <section>
+    <h2>📊 Статистика</h2>
+    <p>Квестів виконано: <span id="questCount">0</span></p>
+    <p>Рівень: <span id="agentLevel">Starter</span></p>
+  </section>
+
+  <script src="scripts/badgeViewer.js" defer></script>
+  <script>
+    // CID-логіка
+    const cid = localStorage.getItem("cid") || "0xAGRO-XXXX";
+    document.getElementById("cidDisplay").textContent = cid;
+
+    // Статистика (опціонально)
+    const quests = JSON.parse(localStorage.getItem("achievements") || "[]");
+    document.getElementById("questCount").textContent = quests.length;
+    document.getElementById("agentLevel").textContent = localStorage.getItem("agentLevel") || "Starter";
+  </script>
+</body>
+</html>
