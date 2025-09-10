@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles/admin.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <div id="menuContainer"></div>
+<script>
+  fetch("menu.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("menuContainer").innerHTML = html);
+</script>
 </head>
 <body>
   <header>
