@@ -2,109 +2,46 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>🤝 Реєстрація Бізнес-Партнера — AgroProsper DAO</title>
+  <title>🧠 Адмін-Панель — AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Десктоп */
-section { padding: 16px; }
-
-/* Мобільна адаптація */
-@media (max-width: 600px) {
-  main { padding: 10px; }
-  h1 { font-size: 20px; }
-  h2 { font-size: 16px; }
-  section { padding: 10px; }
-  input, select, textarea, button { font-size: 16px; width: 100%; }
-}
-    body {
-      background: #000;
-      color: #0f0;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-    }
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    h1, h2, p {
-      text-align: center;
-    }
-    section {
-      background: #0a0a0a;
-      border: 1px solid #0f0;
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 12px rgba(0,255,0,0.15);
-    }
-    input, select, textarea, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      border: none;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-    button {
-      background: #0f0;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 10px #0f0;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 6px currentColor; }
-      50% { transform: scale(1.04); box-shadow: 0 0 16px currentColor; }
-      100% { transform: scale(1); box-shadow: 0 0 6px currentColor; }
-    }
-    /* 📱 Мобільна адаптація */
-    @media (max-width: 600px) {
-      main { padding: 10px; }
-      h1 { font-size: 20px; }
-      h2 { font-size: 16px; }
-      section { padding: 10px; }
-      input, select, textarea, button { font-size: 16px; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles/admin.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div id="header"></div>
-  <script>
-    fetch("header.html").then(r => r.text()).then(html => { document.getElementById("header").innerHTML = html; });
-  </script>
+  <header>
+    <h1>🧠 Адмін-Панель DAO</h1>
+    <p>Контроль реєстрацій, CID-рівнів, логів та безпеки</p>
+  </header>
 
-  <main>
-    <h1>🤝 Реєстрація Бізнес-Партнера</h1>
+  <section>
+    <h2>📋 Нові агенти</h2>
+    <ul id="agentList">Завантаження...</ul>
+  </section>
 
-    <section>
-      <h2>📄 Таємниця Бізнесу</h2>
-      <p>AgroProsper діє як рекламодавець на біржах, платформах, інтернет-магазинах...</p>
-      <label><input type="checkbox" id="agreeConfidential" /> Я погоджуюсь з умовами</label>
-    </section>
+  <section>
+    <h2>📊 CID-графік</h2>
+    <canvas id="agentChart" width="400" height="200"></canvas>
+  </section>
 
-    <section>
-      <h2>📋 Форма реєстрації</h2>
-      <input type="text" id="companyName" placeholder="Назва компанії" />
-      <input type="email" id="contactEmail" placeholder="Email" />
-      <input type="url" id="platformLink" placeholder="Посилання на платформу" />
-      <select id="adminAddedBy">
-        <option value="">Хто вас додав</option>
-        <option value="agroprosper74@gmail.com">agroprosper74@gmail.com</option>
-        <option value="serhiilimborskyi@gmail.com">serhiilimborskyi@gmail.com</option>
-        <option value="lymborsky@gmail.com">lymborsky@gmail.com</option>
-      </select>
-      <textarea id="businessNote" placeholder="Коротко про співпрацю"></textarea>
-      <button onclick="registerBusiness()">✅ Зареєструватися</button>
-      <div id="result" style="margin-top:10px;"></div>
-    </section>
-  </main>
+  <section>
+    <h2>📜 Логи реєстрації</h2>
+    <pre id="agentLogs">Завантаження...</pre>
+  </section>
 
-  <footer style="text-align:center; padding:20px;">© 2025 AgroProsper DAO</footer>
+  <section>
+    <h2>🔐 Перевірка згоди</h2>
+    <div id="consentCheck">Завантаження...</div>
+  </section>
 
-  <script>
-    function registerBusiness() {
-      if (!document.getElementById("agreeConfidential").checked) {
-        alert("❗ П
+  <section>
+    <h2>🕹️ Аналітика</h2>
+    <button onclick="window.open('agent-monitor.html','_blank')">📊 Відкрити моніторинг агентів</button>
+  </section>
+
+  <footer>
+    <p>© 2025 AgroProsper DAO — контроль з етикою</p>
+  </footer>
+
+  <script src="scripts/admin-dashboard.js" defer></script>
+</body>
+</html>
