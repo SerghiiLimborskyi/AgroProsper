@@ -10,7 +10,7 @@
 <body>
   <header>
     <h1>🛠️ Панель адміністратора DAO</h1>
-    <p>CID: <strong id="adminCID">0xADMIN-XXXX</strong></p>
+    <p>CID: <strong id="adminCID">Завантаження...</strong></p>
   </header>
 
   <section>
@@ -27,9 +27,60 @@
 
   <section>
     <h2>📜 Логи дій</h2>
-    <pre id="adminLogs">Завантаження...</pre>
+    <div id="adminLogTable">Завантаження логів...</div>
   </section>
 
-  <script src="scripts/admin-dashboard.js" defer></script>
+  <section>
+    <h2>🔧 Дії адміністратора</h2>
+    <button onclick="updateCID('Farmer')">🔄 Оновити CID до Farmer</button>
+    <button onclick="mintBadgeSelf(1)">🏅 Видати бейдж Farmer</button>
+  </section>
+
+  <script src="scripts/admin-logs.js" defer></script>
+  <script src="scripts/questNFT.js" defer></script>
+  <script>
+    // CID-вивід
+    const cid = localStorage.getItem("cid") || "0xADMIN-XXXX";
+    document.getElementById("adminCID").textContent = cid;
+
+    // DAO-графік токенів
+    new Chart(document.getElementById("tokenChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Фермери", "Трейдери", "Адміністратори"],
+        datasets: [{
+          data: [120, 80, 20],
+          backgroundColor: ["#00ff99", "#ffcc00", "#ff3366"]
+        }]
+      }
+    });
+
+    // DAO-графік квестів
+    new Chart(document.getElementById("questChart"), {
+      type: "bar",
+      data: {
+        labels: ["Солодкий вибір", "Печера Коріння", "Павутина добра"],
+        datasets: [{
+          label: "Виконано",
+          data: [42, 35, 27],
+          backgroundColor: "#00ff99"
+        }]
+      }
+    });
+
+    // Баланс токенів
+    document.getElementById("agtBalance").textContent = "AGT: 1000";
+
+    // Симуляція переказу
+    function simulateTransfer() {
+      alert("💸 Переказ 50 AGT успішно симульовано!");
+    }
+
+    // CID-оновлення
+    function updateCID(newRole) {
+      localStorage.setItem("agentLevel", newRole);
+      alert(`CID оновлено до: ${newRole}`);
+    }
+  </script>
 </body>
 </html>
