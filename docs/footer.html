@@ -54,8 +54,9 @@
 
   <script>
     // CID інтеграція
-    const cid = localStorage.getItem('cid') || 'AG-SL-X7K9QZ-2025';
-    const status = cid ? '🟢 Активна' : '🔴 Неактивна';
-    document.getElementById('daoStatus').textContent = `CID-система: ${status} · CID: ${cid}`;
-  </script>
+   const cid = localStorage.getItem('cid') || 'AG-SL-X7K9QZ-2025';
+const role = localStorage.getItem('agentLevel') || 'Starter';
+const status = cid ? '🟢 Активна' : '🔴 Неактивна';
+document.getElementById('daoStatus').textContent = `CID-система: ${status} · CID: ${cid} · Роль: ${role}`;
+
 </footer>
