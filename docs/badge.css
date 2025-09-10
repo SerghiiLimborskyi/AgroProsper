@@ -1,24 +1,66 @@
-#badgeContainer {
+/* Контейнер для всіх бейджів */
+#badgeContainer, #badgeGallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 24px;
+  justify-content: center;
   padding: 20px;
 }
 
+/* Картка бейджа */
 .badge-card {
   background-color: #0f2027;
   border: 2px solid #00ff99;
   border-radius: 12px;
-  padding: 12px;
-  width: 160px;
+  padding: 16px;
+  width: 200px;
   text-align: center;
-  color: #fff;
-  box-shadow: 0 0 10px rgba(0,255,153,0.3);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(0,255,153,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Анімація при наведенні */
+.badge-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,255,153,0.5);
+}
+
+/* Зображення бейджа */
 .badge-card img {
   width: 100px;
   height: 100px;
   object-fit: contain;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+/* Назва бейджа */
+.badge-card h3 {
+  margin: 8px 0;
+  color: #00ff99;
+  font-size: 1.2em;
+}
+
+/* Опис бейджа */
+.badge-card p {
+  font-size: 0.9em;
+  margin: 4px 0;
+}
+
+/* Бейджик рівня (опціонально) */
+.badge-level {
+  background-color: #00ff99;
+  color: #0f2027;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.8em;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+/* Адаптація для мобільних */
+@media (max-width: 600px) {
+  .badge-card {
+    width: 100%;
+  }
 }
