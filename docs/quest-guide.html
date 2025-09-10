@@ -27,7 +27,13 @@
       <p>🎯 Умови: пройти симуляцію фермерського ринку</p>
       <p>🏅 Бейдж: “Цукерочка з лікером”</p>
     </div>
-
+   <div id="menuContainer"></div>
+<script>
+  fetch("menu.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("menuContainer").innerHTML = html);
+</script>
+ 
     <div class="quest-card">
       <img src="media/quest-root.png" alt="Печера Коріння" />
       <h3>“Печера Коріння”</h3>
