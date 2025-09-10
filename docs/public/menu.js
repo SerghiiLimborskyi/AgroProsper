@@ -80,6 +80,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const role = localStorage.getItem("agentLevel") || "Starter";
   document.getElementById("cidRole").textContent = `CID: ${cid} (${role})`;
 });
+  
+document.addEventListener("DOMContentLoaded", () => {
+  const menuItems = document.querySelectorAll(".menu-item");
+
+  menuItems.forEach(item => {
+    const submenu = item.querySelector(".submenu");
+
+    if (submenu) {
+      // Розгортання при наведенні
+      item.addEventListener("mouseenter", () => submenu.classList.add("active"));
+      item.addEventListener("mouseleave", () => submenu.classList.remove("active"));
+
+      // Розгортання при кліку (мобільна підтримка)
+      item.addEventListener("click", () => {
+        submenu.classList.toggle("active");
+      });
+    }
+  });
+});
 
   window.checkAccess = function (e) {
     const cid = localStorage.getItem("cid");
