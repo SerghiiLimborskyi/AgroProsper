@@ -21,6 +21,12 @@
   <div id="menu"></div>
 <script src="scripts/menuLoader.js" defer></script>
 <script src="scripts/agentLevel.js" defer></script>
+<div id="menuContainer"></div>
+<script>
+  fetch("menu.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("menuContainer").innerHTML = html);
+</script>
 
   <style>
     body {
