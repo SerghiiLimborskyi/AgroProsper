@@ -27,7 +27,25 @@ document.addEventListener("DOMContentLoaded", () => {
     item.textContent = `${status} ${q.title}`;
     list.appendChild(item);
   });
+#questStats {
+  margin-top: 40px;
+  background-color: #1c1c1c;
+  border: 2px solid #00ff99;
+  border-radius: 12px;
+  padding: 16px;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(0,255,153,0.3);
+}
 
+#questStats ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#questStats li {
+  margin: 6px 0;
+  font-size: 0.95em;
+}
   statsContainer.appendChild(summary);
   statsContainer.appendChild(list);
 });
