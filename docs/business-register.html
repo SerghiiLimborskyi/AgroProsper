@@ -8,6 +8,13 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+   <div id="footerContainer"></div>
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("footerContainer").innerHTML = html);
+</script>
+  
   <header>
     <h1>🧠 Адмін-Панель DAO</h1>
     <p>Контроль реєстрацій, CID-рівнів, логів та безпеки</p>
