@@ -99,6 +99,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+  
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  // Розгортання меню
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+
+  // Автозакриття при кліку поза меню
+  document.addEventListener("click", (e) => {
+    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+      nav.classList.remove("active");
+    }
+  });
+
+  // Підменю при кліку (мобільна підтримка)
+  const items = document.querySelectorAll(".menu-item");
+  items.forEach(item => {
+    const submenu = item.querySelector(".submenu");
+    if (submenu) {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+        submenu.classList.toggle("active");
+      });
+    }
+  });
+});
 
   window.checkAccess = function (e) {
     const cid = localStorage.getItem("cid");
