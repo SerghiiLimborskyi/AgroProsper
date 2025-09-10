@@ -40,3 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function simulateTransfer() {
   alert("💸 Переказ 50 AGT успішно симульовано!");
 }
+
+function openAgentMonitor() {
+  window.open("agent-monitor.html", "_blank");
+}
