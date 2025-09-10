@@ -1,0 +1,28 @@
+<section id="registerPanel">
+  <h2>🤝 Реєстрація агента DAO</h2>
+
+  <label for="agentName">Ваше ім’я:</label>
+  <input type="text" id="agentName" placeholder="Агроном DAO" required />
+
+  <label for="agentCID">CID-ідентифікатор:</label>
+  <input type="text" id="agentCID" placeholder="0xAG-XXXX" required />
+
+  <label for="agentRole">Роль агента:</label>
+  <select id="agentRole">
+    <option value="Starter">Starter</option>
+    <option value="Farmer">Farmer</option>
+    <option value="Trader">Trader</option>
+    <option value="Partner">Partner</option>
+  </select>
+
+  <label for="agentAvatar">Аватар:</label>
+  <input type="file" id="agentAvatar" accept="image/*" />
+
+  <label>
+    <input type="checkbox" id="agreeTerms" required />
+    ✅ Я погоджуюсь з умовами DAO та Microsoft
+  </label>
+
+  <button onclick="submitAgent()">🚀 Зареєструватись</button>
+  <div id="registerResult"></div>
+</section>
