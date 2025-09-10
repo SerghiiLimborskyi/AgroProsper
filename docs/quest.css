@@ -1,0 +1,41 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #0f2027;
+  color: #ffffff;
+  padding: 20px;
+}
+
+h1, h3 {
+  color: #00ff99;
+}
+
+#questGallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.quest-card {
+  background-color: #1c1c1c;
+  border: 2px solid #00ff99;
+  border-radius: 12px;
+  padding: 16px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(0,255,153,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quest-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,255,153,0.5);
+}
+
+.quest-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
