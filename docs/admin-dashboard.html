@@ -2,45 +2,34 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>🧠 Панель адміністратора — AgroProsper DAO</title>
+  <title>Admin Dashboard — AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles/admin.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div id="header"></div>
-  <script>
-    fetch("header.html")
-      .then(res => res.text())
-      .then(html => document.getElementById("header").innerHTML = html);
-  </script>
-
-  <h1 style="text-align:center;">🧠 Панель адміністратора AgroProsper DAO</h1>
-
-  <script>
-    const allowedAdmins = [
-      "agroprosper74@gmail.com",
-      "serhiilimborskyi@gmail.com",
-      "lymborsky@gmail.com"
-    ];
-    const adminEmail = localStorage.getItem("adminEmail");
-    if (!allowedAdmins.includes(adminEmail)) {
-      document.body.innerHTML = "<h2 style='color:red; text-align:center;'>⛔ Доступ лише для адміністраторів AgroProsper</h2>";
-    }
-  </script>
+  <header>
+    <h1>🛠️ Панель адміністратора DAO</h1>
+    <p>CID: <strong id="adminCID">0xADMIN-XXXX</strong></p>
+  </header>
 
   <section>
-    <h2>📋 Журнал дій адміністраторів</h2>
-    <div id="adminLogTable"></div>
-    <script src="admin-logs.js"></script>
+    <h2>📊 DAO-графіки</h2>
+    <canvas id="tokenChart" width="400" height="200"></canvas>
+    <canvas id="questChart" width="400" height="200"></canvas>
   </section>
 
-  <section style="margin-top:40px;">
-    <h2>✅ Підтвердження згоди користувачів</h2>
-    <script src="terms-admin.js"></script>
+  <section>
+    <h2>💰 AGT-токени</h2>
+    <p>Баланс DAO: <strong id="agtBalance">AGT: 0</strong></p>
+    <button onclick="simulateTransfer()">🔄 Симулювати переказ</button>
   </section>
 
-  <footer style="text-align:center; margin-top:40px;">
-    © 2025 AgroProsper DAO — контроль, прозорість, довіра
-  </footer>
+  <section>
+    <h2>📜 Логи дій</h2>
+    <pre id="adminLogs">Завантаження...</pre>
+  </section>
+
+  <script src="scripts/admin-dashboard.js" defer></script>
 </body>
 </html>
