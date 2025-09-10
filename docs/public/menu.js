@@ -74,6 +74,12 @@ if (toggle && nav) {
   .then(html => {
     document.getElementById("menu").innerHTML = html;
   });
+  
+document.addEventListener("DOMContentLoaded", () => {
+  const cid = localStorage.getItem("cid") || "0x000";
+  const role = localStorage.getItem("agentLevel") || "Starter";
+  document.getElementById("cidRole").textContent = `CID: ${cid} (${role})`;
+});
 
   window.checkAccess = function (e) {
     const cid = localStorage.getItem("cid");
