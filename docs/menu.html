@@ -8,17 +8,17 @@
 
   <!-- 📋 Основне меню -->
   <ul class="menu-list">
-    <li><a href="index.html" id="menuHome">🏠 Головна</a></li>
+    <li><a href="index.html" id="menuHome" class="pulse-button">🏠 Головна</a></li>
     <li class="has-submenu">
-      <a href="#" id="menuSections">🧩 DAO-розділи</a>
+      <a href="#" id="menuSections" class="pulse-button">🧩 DAO-розділи</a>
       <ul class="submenu">
         <li><a href="agent.html" id="menuAgent">🧠 Панель агента</a></li>
         <li><a href="quest.html" id="menuQuest">🎮 Квести</a></li>
         <li><a href="studio.html" id="menuStudio">🎨 DAO Студія</a></li>
       </ul>
     </li>
-    <li><a href="video.html" id="menuVideo">🎬 Відео-звернення</a></li>
-    <li><a href="contact.html" id="menuContact">📬 Контакти</a></li>
+    <li><a href="video.html" id="menuVideo" class="pulse-button">🎬 Відео-звернення</a></li>
+    <li><a href="contact.html" id="menuContact" class="pulse-button">📬 Контакти</a></li>
   </ul>
 
   <!-- 🧠 CID-панель -->
@@ -32,7 +32,7 @@
   </div>
 </nav>
 
-<!-- 🌐 Автоматична мультимовність -->
+<!-- 🌐 Автоматична мультимовність + CID логіка -->
 <script>
   const lang = navigator.language.startsWith("pl") ? "pl"
               : navigator.language.startsWith("en") ? "en"
@@ -88,6 +88,14 @@
     document.getElementById("menuVideo").textContent = tr.video;
     document.getElementById("menuContact").textContent = tr.contact;
     document.getElementById("cidLabel").textContent = tr.cid;
-    document.getElementById("roleBadge").textContent = tr.role;
+
+    const cid = localStorage.getItem("cid") || "0xAGRO-AG";
+    document.getElementById("cidValue").textContent = cid;
+
+    const role = cid.includes("AN") ? "🧠 Аналітик"
+               : cid.includes("PA") ? "🤝 Партнер"
+               : cid.includes("AG") ? "🧠 Агент"
+               : "👤 Гість";
+    document.getElementById("roleBadge").textContent = role;
   });
 </script>
