@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧠 Панель агента</title>
+  <link rel="stylesheet" href="styles/menu.css" />
+  <script src="scripts/menu.js" defer></script>
+  <script>
+    fetch("components/agent-panel.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("daoContent").innerHTML = html;
+      });
+  </script>
+</head>
+<body>
+  <div id="menuContainer"></div>
+  <main id="daoContent"></main>
+</body>
+</html>
