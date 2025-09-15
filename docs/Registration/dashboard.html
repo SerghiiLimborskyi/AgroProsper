@@ -4,28 +4,8 @@
   <meta charset="UTF-8" />
   <title>AgroProsper DAO — Панель агента</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/main.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-      color: white;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.7);
-    }
-    .logo {
-      height: 60px;
-      margin-right: 20px;
-    }
-    .banner h1 {
-      margin: 0;
-      font-size: 28px;
-    }
     main {
       padding: 40px;
       max-width: 900px;
@@ -36,9 +16,6 @@
       padding: 20px;
       background: rgba(255,255,255,0.05);
       border-radius: 8px;
-    }
-    h2 {
-      margin-top: 0;
     }
     input, select, textarea {
       width: 100%;
@@ -68,91 +45,73 @@
   </style>
 </head>
 <body>
+  <div id="menuContainer"></div>
+  <main>
+    <section>
+      <h2>🧠 DAO-звернення</h2>
+      <p id="dao-text">AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей.</p>
+    </section>
 
-  <header style="display:flex; align-items:center; padding:20px; background:rgba(0,0,0,0.7);">
-  <img src="../public/logo.png" alt="AgroProsper Logo" style="height:60px; margin-right:20px;" />
-  <div>
-    <h1 style="margin:0; font-size:28px;">AgroProsper V7 — DAO</h1>
-    <p style="margin:0; font-size:14px; color:#ccc;">Autonomous. Ethical. Unstoppable.</p>
-  </div>
-</header>
+    <section>
+      <h2>👤 Реєстрація агента</h2>
+      <form id="agentForm">
+        <input type="text" id="name" placeholder="Ім’я" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <select id="role">
+          <option value="Moon Botanist">Moon Botanist</option>
+          <option value="DAO Partner">DAO Partner</option>
+          <option value="Agent of Good">Agent of Good</option>
+        </select>
+        <input type="text" id="cid" placeholder="Ваш CID (наприклад: 0xAGRO-XXXX)" required />
+        <textarea id="message" placeholder="Повідомлення підтримки (необов’язково)"></textarea>
+        <button type="submit">🚀 Повна реєстрація</button>
+      </form>
+    </section>
 
-<header>
-  <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
-  <div class="banner">
-    <h1>AgroProsper V7 — Панель агента DAO</h1>
-  </div>
-</header>
-
-<main>
-
-  <section>
-    <h2>🧠 DAO-звернення</h2>
-    <p id="dao-text">
-      AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей. CID-ідентифікація, NFT-бейджі без мінтингу, голосування без блокчейн-запису.
-    </p>
-  </section>
-
-  <section>
-    <h2>👤 Реєстрація агента</h2>
-    <form id="agentForm">
-      <input type="text" id="name" placeholder="Ім’я" required />
-      <input type="email" id="email" placeholder="Email" required />
-      <select id="role">
-        <option value="Moon Botanist">Moon Botanist</option>
-        <option value="DAO Partner">DAO Partner</option>
-        <option value="Agent of Good">Agent of Good</option>
-      </select>
-      <input type="text" id="cid" placeholder="Ваш CID (наприклад: 0xAGRO-XXXX)" required />
-      <textarea id="message" placeholder="Повідомлення підтримки (необов’язково)"></textarea>
-      <button type="submit">🚀 Повна реєстрація</button>
-    </form>
-  </section>
-
-  <section>
-    <h2>🏅 Дії DAO</h2>
-    <button onclick="alert('✅ Бейдж видано!')">Отримати бейдж</button>
-    <button onclick="alert('💰 Токени нараховано!')">Нарахувати токени</button>
-    <button onclick="alert('📊 Баланс: 0 AGT')">Перевірити баланс</button>
-  </section>
-
-</main>
-
-<script>
-  const lang = navigator.language.slice(0, 2);
-  const translations = {
-    uk: {
-      daoText: "AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей..."
-    },
-    en: {
-      daoText: "AgroProsper V7 — autonomous DAO platform operating without Web3 dependencies..."
-    },
-    pl: {
-      daoText: "AgroProsper V7 — autonomiczna platforma DAO działająca bez zależności Web3..."
-    }
-  };
-  const t = translations[lang] || translations.uk;
-  document.getElementById('dao-text').textContent = t.daoText;
-
-  document.getElementById("agentForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const payload = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      role: document.getElementById("role").value,
-      cid: document.getElementById("cid").value,
-      message: document.getElementById("message").value,
-      timestamp: new Date().toISOString()
+    <section>
+      <h2>🏅 Дії DAO</h2>
+      <button onclick="alert('✅ Бейдж видано!')">Отримати бейдж</button>
+      <button onclick="alert('💰 Токени нараховано!')">Нарахувати токени</button>
+      <button onclick="alert('📊 Баланс: 0 AGT')">Перевірити баланс</button>
+    </section>
+  </main>
+  <div id="footerContainer"></div>
+  <script src="../public/init.js"></script>
+  <script>
+    const lang = navigator.language.slice(0, 2);
+    const translations = {
+      uk: {
+        daoText: "AgroProsper V7 — автономна DAO-платформа, що працює без Web3-залежностей..."
+      },
+      en: {
+        daoText: "AgroProsper V7 — autonomous DAO platform operating without Web3 dependencies..."
+      },
+      pl: {
+        daoText: "AgroProsper V7 — autonomiczna platforma DAO działająca bez zależności Web3..."
+      }
     };
-    fetch("https://dao.agroprosper.local/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    })
-    .then(res => res.ok ? alert("✅ Реєстрація успішна!") : alert("⚠️ Помилка реєстрації"))
-    .catch(() => alert("❌ DAO-бот недоступний"));
-  });
-</script>
+    const t = translations[lang] || translations.uk;
+    document.getElementById('dao-text').textContent = t.daoText;
 
+    document.getElementById("agentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const payload = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        role: document.getElementById("role").value,
+        cid: document.getElementById("cid").value,
+        message: document.getElementById("message").value,
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem("cid", payload.cid);
+      fetch("https://dao.agroprosper.local/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.ok ? alert("✅ Реєстрація успішна!") : alert("⚠️ Помилка реєстрації"))
+      .catch(() => alert("❌ DAO-бот недоступний"));
+    });
+  </script>
 </body>
 </html>
