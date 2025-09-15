@@ -3,19 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎮 DAO Квест</title>
-  <link rel="stylesheet" href="styles/menu.css" />
-  <script src="scripts/menu.js" defer></script>
+  <title>🎮 DAO Квести</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 28px;
+      color: #00ff99;
+      margin-bottom: 20px;
+    }
+    .quest-loader {
+      font-size: 16px;
+      color: #ccc;
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="menuContainer"></div>
+  <main id="daoContent">
+    <h1 id="questTitle">🎮 DAO Квести</h1>
+    <div class="quest-loader" id="questLoader">Завантаження сцени...</div>
+  </main>
+  <div id="footerContainer"></div>
+  <script src="public/init.js"></script>
   <script>
+    const lang = navigator.language.startsWith("pl") ? "pl"
+                : navigator.language.startsWith("en") ? "en"
+                : "uk";
+
+    const t = {
+      uk: {
+        title: "🎮 DAO Квести",
+        loading: "Завантаження сцени..."
+      },
+      pl: {
+        title: "🎮 Misje DAO",
+        loading: "Ładowanie sceny..."
+      },
+      en: {
+        title: "🎮 DAO Quests",
+        loading: "Loading scene..."
+      }
+    };
+
+    const tr = t[lang];
+    document.getElementById("questTitle").textContent = tr.title;
+    document.getElementById("questLoader").textContent = tr.loading;
+
     fetch("components/quest-scene.html")
       .then(res => res.text())
       .then(html => {
         document.getElementById("daoContent").innerHTML = html;
       });
   </script>
-</head>
-<body>
-  <div id="menuContainer"></div>
-  <main id="daoContent"></main>
 </body>
 </html>
