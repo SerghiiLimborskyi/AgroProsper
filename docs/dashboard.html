@@ -2,23 +2,64 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>Панель агента — AgroProsper DAO</title>
+  <title>🧠 Панель агента — AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    main {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 28px;
+      color: #00ff99;
+    }
+    p {
+      font-size: 16px;
+      color: #ccc;
+    }
+    button {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
+  <div id="menuContainer"></div>
   <div id="badgeContainer"></div>
-<script src="scripts/badgeViewer.js" defer></script>
-  <div id="header"></div>
-  <script>
-    fetch("header.html")
-      .then(r => r.text())
-      .then(html => { document.getElementById("header").innerHTML = html; });
-  </script>
-
-  <main style="padding:20px; text-align:center;">
-    <h1>🧠 Панель агента</h1>
-    <p>Ваш DAO-ідентифікатор: <strong>CID: 0xAGRO-XXXX</strong></p>
+  <main>
+    <h1 id="agentTitle">🧠 Панель агента</h1>
+    <p id="cidText">Ваш DAO-ідентифікатор: <strong>CID: ⏳</strong></p>
     <button onclick="alert('CID перевірено')">✅ Перевірити CID</button>
   </main>
+  <div id="footerContainer"></div>
+  <script src="public/init.js"></script>
+  <script src="scripts/badgeViewer.js" defer></script>
+  <script>
+    const cid = localStorage.getItem('cid') || '0xAGRO-XXXX';
+    document.getElementById("cidText").innerHTML = `Ваш DAO-ідентифікатор: <strong>CID: ${cid}</strong>`;
+
+    const lang = navigator.language.startsWith("pl") ? "pl"
+                : navigator.language.startsWith("en") ? "en"
+                : "uk";
+
+    const t = {
+      uk: {
+        title: "🧠 Панель агента",
+        cid: "Ваш DAO-ідентифікатор"
+      },
+      pl: {
+        title: "🧠 Panel agenta",
+        cid: "Twój identyfikator DAO"
+      },
+      en: {
+        title: "🧠 Agent Panel",
+        cid: "Your DAO Identifier"
+      }
+    };
+
+    const tr = t[lang];
+    document.getElementById("agentTitle").textContent = tr.title;
+    document.getElementById("cidText").innerHTML = `${tr.cid}: <strong>CID: ${cid}</strong>`;
+  </script>
 </body>
 </html>
