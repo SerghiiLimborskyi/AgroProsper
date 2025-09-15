@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroProsper DAO</title>
+
+  <!-- DAO стилі -->
+  <link rel="stylesheet" href="styles/menu.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- DAO скрипти -->
+  <script src="scripts/menu.js" defer></script>
+  <script src="scripts/main.js" defer></script>
+</head>
+<body>
+
+  <!-- DAO-меню -->
+  <div id="menuContainer"></div>
+
+  <!-- Основний контент -->
+  <main class="dao-main">
+
+    <!-- 🎨 DAO-Studio -->
+    <section id="dao-studio" class="dao-block">
+      <h2>🎨 DAO Студія</h2>
+      <p>Тут дизайнери та відеографи створюють сцени, трейлери, бейджі.</p>
+      <button onclick="openStudioUpload()">Завантажити сцену</button>
+    </section>
+
+    <!-- 🧠 AgentPanel -->
+    <section id="agent-panel" class="dao-block">
+      <h2>🧠 Панель агента</h2>
+      <p>Ваш статус, роль, CID, NFT-бейджі та дії в DAO.</p>
+      <div class="agent-status">
+        <span>CID:</span> <span id="cidDisplay">0xA1F3...D9B</span>
+        <span>Роль:</span> <span id="roleDisplay">Агент</span>
+      </div>
+    </section>
+
+    <!-- 🎮 QuestScene -->
+    <section id="quest-scene" class="dao-block">
+      <h2>🎮 Квест: Пульс довіри</h2>
+      <p>Фермер хоче продати урожай дешевше. Що ви оберете?</p>
+      <button onclick="chooseQuest('підтримати')">✅ Підтримати</button>
+      <button onclick="chooseQuest('відмовити')">❌ Відмовити</button>
+    </section>
+
+    <!-- 🔐 CID-Login -->
+    <section id="cid-login" class="dao-block">
+      <h2>🔐 Вхід в DAO</h2>
+      <label for="cidInput">Ваш CID:</label>
+      <input type="text" id="cidInput" placeholder="0x..." />
+      <label for="roleSelect">Роль:</label>
+      <select id="roleSelect">
+        <option>Агент</option>
+        <option>Архітектор</option>
+        <option>Гравець</option>
+      </select>
+      <button onclick="saveCID()">Увійти</button>
+    </section>
+
+  </main>
+
+  <!-- DAO-футер -->
+  <footer class="dao-footer">
+    <p>© AgroProsper DAO, 2025. Всі права захищено.</p>
+  </footer>
+
+  <!-- DAO-логіка -->
+  <script>
+    function saveCID() {
+      const cid = document.getElementById("cidInput").value;
+      const role = document.getElementById("roleSelect").value;
+      localStorage.setItem("userCID", cid);
+      localStorage.setItem("userRole", role);
+      document.getElementById("cidDisplay").textContent = cid;
+      document.getElementById("roleDisplay").textContent = role;
+      alert("CID збережено. Перезавантажте сторінку.");
+    }
+
+    function chooseQuest(choice) {
+      alert(`Ви обрали: ${choice}`);
+    }
+
+    function openStudioUpload() {
+      alert("Завантаження сцени DAO Студії...");
+    }
+  </script>
+
+</body>
+</html>
