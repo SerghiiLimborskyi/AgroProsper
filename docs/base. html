@@ -6,47 +6,47 @@
   <title>AgroProsper DAO</title>
 
   <!-- DAO стилі -->
-  <link rel="stylesheet" href="styles/menu.css" />
   <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/menu.css" />
 
   <!-- DAO скрипти -->
   <script src="scripts/menu.js" defer></script>
-  <script src="scripts/main.js" defer></script>
+  <script src="scripts/init.js" defer></script>
 </head>
 <body>
-
-  <!-- DAO-меню -->
+  <!-- 🔘 Меню DAO -->
   <div id="menuContainer"></div>
 
-  <!-- Основний контент -->
+  <!-- 🧠 Основний контент -->
   <main class="dao-main">
-
-    <!-- 🎨 DAO-Studio -->
+    <!-- 🎨 DAO Студія -->
     <section id="dao-studio" class="dao-block">
       <h2>🎨 DAO Студія</h2>
       <p>Тут дизайнери та відеографи створюють сцени, трейлери, бейджі.</p>
-      <button onclick="openStudioUpload()">Завантажити сцену</button>
+      <button class="pulse-button" onclick="openStudioUpload()">Завантажити сцену</button>
     </section>
 
-    <!-- 🧠 AgentPanel -->
+    <!-- 🧠 Панель агента -->
     <section id="agent-panel" class="dao-block">
       <h2>🧠 Панель агента</h2>
       <p>Ваш статус, роль, CID, NFT-бейджі та дії в DAO.</p>
       <div class="agent-status">
-        <span>CID:</span> <span id="cidDisplay">0xA1F3...D9B</span>
-        <span>Роль:</span> <span id="roleDisplay">Агент</span>
+        <span>CID:</span>
+        <span id="cidDisplay">0xAGRO-AG</span>
+        <span>Роль:</span>
+        <span id="roleDisplay">Агент</span>
       </div>
     </section>
 
-    <!-- 🎮 QuestScene -->
+    <!-- 🎮 Квест -->
     <section id="quest-scene" class="dao-block">
       <h2>🎮 Квест: Пульс довіри</h2>
       <p>Фермер хоче продати урожай дешевше. Що ви оберете?</p>
-      <button onclick="chooseQuest('підтримати')">✅ Підтримати</button>
-      <button onclick="chooseQuest('відмовити')">❌ Відмовити</button>
+      <button class="pulse-button" onclick="chooseQuest('підтримати')">✅ Підтримати</button>
+      <button class="pulse-button" onclick="chooseQuest('відмовити')">❌ Відмовити</button>
     </section>
 
-    <!-- 🔐 CID-Login -->
+    <!-- 🔐 Вхід в DAO -->
     <section id="cid-login" class="dao-block">
       <h2>🔐 Вхід в DAO</h2>
       <label for="cidInput">Ваш CID:</label>
@@ -59,16 +59,20 @@
       </select>
       <button onclick="saveCID()">Увійти</button>
     </section>
-
   </main>
 
-  <!-- DAO-футер -->
-  <footer class="dao-footer">
-    <p>© AgroProsper DAO, 2025. Всі права захищено.</p>
-  </footer>
+  <!-- 🦶 Футер DAO -->
+  <div id="footerContainer"></div>
 
-  <!-- DAO-логіка -->
+  <!-- 🧠 DAO логіка -->
   <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const cid = localStorage.getItem("userCID") || "0xAGRO-AG";
+      const role = localStorage.getItem("userRole") || "Агент";
+      document.getElementById("cidDisplay").textContent = cid;
+      document.getElementById("roleDisplay").textContent = role;
+    });
+
     function saveCID() {
       const cid = document.getElementById("cidInput").value;
       const role = document.getElementById("roleSelect").value;
@@ -87,6 +91,5 @@
       alert("Завантаження сцени DAO Студії...");
     }
   </script>
-
 </body>
 </html>
