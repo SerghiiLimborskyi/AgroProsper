@@ -1,83 +1,49 @@
-/* 🔷 Загальне меню */
-.dao-menu {
-  background: #f8f8f8;
-  font-family: 'Montserrat', sans-serif;
-  border-bottom: 1px solid #ddd;
-}
-
-/* 🔷 Верхній блок з логотипом */
+/* 🔷 Заголовок меню */
 .menu-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5em 1em;
+  background-color: #f5f5f5;
+  padding: 0.8em 1.2em;
+  border-bottom: 1px solid #ccc;
+  font-family: 'Montserrat', sans-serif;
 }
 
+/* 🟢 Логотип DAO */
 .dao-logo {
   height: 32px;
   margin-right: 0.5em;
 }
 
+/* 🧠 Назва DAO */
 .dao-title {
   font-weight: bold;
   font-size: 1.2em;
   color: #2c3e50;
 }
 
-/* 📋 Основне меню */
-.menu-list {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  padding: 0.5em 1em;
-  flex-wrap: wrap;
+/* ☰ Кнопка меню */
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
 }
 
-.menu-list li {
-  position: relative;
-}
-
-.menu-list li a {
-  text-decoration: none;
-  color: #333;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background 0.3s;
-}
-
-.menu-list li a:hover {
-  background: #e0e0e0;
-}
-
-.submenu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  list-style: none;
-  padding: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.has-submenu:hover .submenu {
-  display: block;
-}
-
-/* 🧠 CID-панель */
+/* 🧩 CID-панель */
 .cid-panel {
   display: flex;
   align-items: center;
+  background-color: #e0f7fa;
   padding: 0.5em 1em;
-  background: #f4f4f4;
-  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #b2ebf2;
 }
 
 .cid-avatar {
   height: 32px;
   width: 32px;
   border-radius: 50%;
-  margin-right: 0.5em;
+  margin-right: 0.8em;
 }
 
 .cid-info {
@@ -86,84 +52,55 @@
 }
 
 .cid-label {
-  font-weight: bold;
   font-size: 0.9em;
+  color: #00796b;
 }
 
 .cid-value {
-  font-family: monospace;
-  font-size: 0.85em;
-  color: #555;
+  font-weight: bold;
+  color: #004d40;
 }
 
 .role-badge {
-  margin-top: 4px;
-  padding: 2px 6px;
+  font-size: 0.85em;
+  padding: 0.2em 0.5em;
   border-radius: 4px;
-  font-size: 0.8em;
-  font-weight: bold;
+  margin-top: 0.3em;
   display: inline-block;
 }
 
 .role-badge.agent {
-  background: #3498db;
-  color: white;
+  background-color: #d1c4e9;
+  color: #4a148c;
 }
 
 .role-badge.architect {
-  background: #8e44ad;
-  color: white;
+  background-color: #ffe0b2;
+  color: #e65100;
 }
 
 .role-badge.player {
-  background: #27ae60;
-  color: white;
-}
-
-/* ☰ Гамбургер */
-.menu-toggle {
-  display: none;
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
+  background-color: #c8e6c9;
+  color: #1b5e20;
 }
 
 /* 📱 Мобільна адаптація */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .menu-list {
-    display: none;
+@media (max-width: 600px) {
+  .menu-header {
     flex-direction: column;
-    gap: 10px;
-    padding: 1em;
+    align-items: flex-start;
   }
 
-  .menu-list.active {
-    display: flex;
-    animation: fadeIn 0.3s ease-in-out;
+  .menu-toggle {
+    align-self: flex-end;
   }
 
-  .submenu {
-    position: static;
-    box-shadow: none;
+  .cid-panel {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .has-submenu:hover .submenu {
-    display: none;
+  .cid-avatar {
+    margin-bottom: 0.5em;
   }
-
-  .has-submenu > a::after {
-    content: " ▼";
-    font-size: 0.8em;
-  }
-}
-
-/* ✨ Анімація */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
