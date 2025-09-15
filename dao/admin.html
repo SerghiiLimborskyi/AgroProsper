@@ -1,84 +1,116 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <title>Адмін-панель AgroProsper</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>🔧 Адмін-панель AgroProsper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/main.css" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #ffffff;
+      background: #111;
+      color: #eee;
       margin: 0;
       padding: 40px 20px;
       text-align: center;
     }
-    iframe {
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  margin-top: 10px;
-}
     h1 {
-      color: #c0392b;
-      font-size: 2.5em;
-      margin-bottom: 20px;
+      font-size: 32px;
+      color: #00ff99;
+      margin-bottom: 30px;
     }
     .admin-section {
       margin: 20px auto;
-      max-width: 600px;
+      max-width: 700px;
       padding: 20px;
-      background: #f9f9f9;
+      background: rgba(255,255,255,0.05);
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,255,153,0.2);
     }
     .admin-section h2 {
-      color: #2c3e50;
+      color: #00ccff;
     }
     .admin-section button {
-      margin-top: 15px;
+      margin: 10px;
       padding: 10px 20px;
       font-size: 16px;
-      background: #2980b9;
-      color: white;
+      background: #00ff99;
+      color: #000;
       border: none;
       border-radius: 6px;
       cursor: pointer;
     }
     .admin-section button:hover {
-      background: #2471a3;
+      background: #00cc77;
+    }
+    iframe {
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,255,153,0.3);
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>🔧 Адмін-панель AgroProsper</h1>
+  <div id="menuContainer"></div>
+  <h1 id="adminTitle">🔧 Адмін-панель AgroProsper</h1>
 
   <div class="admin-section">
-    <h2>Керування DAO</h2>
+    <h2 id="daoControl">🧩 Керування DAO</h2>
     <button onclick="alert('Функція додавання токенів ще не реалізована')">➕ Додати токени</button>
     <button onclick="alert('Функція перегляду логів ще не реалізована')">📜 Переглянути логи</button>
     <button onclick="alert('Функція оновлення версій ще не реалізована')">🔄 Оновити версію</button>
   </div>
 
   <div class="admin-section">
-    <h2>Зворотній зв'язок</h2>
+    <h2 id="feedbackLabel">📝 Зворотній зв’язок</h2>
     <button onclick="window.location.href='agro-feedback.html'">📝 Перейти до фідбеку</button>
   </div>
-  <div id="gameStudio"></div>
 
-<script>
-  fetch('../config.json')
-    .then(res => res.json())
-    .then(cfg => {
-      const container = document.getElementById("gameStudio");
-      cfg.games.forEach(game => {
-        const section = document.createElement("section");
-        section.className = "admin-section";
-        section.innerHTML = `
-          <h2>🎮 DAO-гра: ${game.title}</h2>
-          <iframe src="${game.path}" width="100%" height="600" frameborder="0"></iframe>
-        `;
-        container.appendChild(section);
+  <div id="gameStudio"></div>
+  <div id="footerContainer"></div>
+  <script src="../public/init.js"></script>
+  <script>
+    const lang = navigator.language.startsWith("pl") ? "pl"
+                : navigator.language.startsWith("en") ? "en"
+                : "uk";
+
+    const t = {
+      uk: {
+        title: "🔧 Адмін-панель AgroProsper",
+        control: "🧩 Керування DAO",
+        feedback: "📝 Зворотній зв’язок"
+      },
+      pl: {
+        title: "🔧 Panel administratora AgroProsper",
+        control: "🧩 Zarządzanie DAO",
+        feedback: "📝 Informacja zwrotna"
+      },
+      en: {
+        title: "🔧 Admin Panel AgroProsper",
+        control: "🧩 DAO Management",
+        feedback: "📝 Feedback"
+      }
+    };
+
+    const tr = t[lang];
+    document.getElementById("adminTitle").textContent = tr.title;
+    document.getElementById("daoControl").textContent = tr.control;
+    document.getElementById("feedbackLabel").textContent = tr.feedback;
+
+    fetch('../config.json')
+      .then(res => res.json())
+      .then(cfg => {
+        const container = document.getElementById("gameStudio");
+        cfg.games.forEach(game => {
+          const section = document.createElement("section");
+          section.className = "admin-section";
+          section.innerHTML = `
+            <h2>🎮 DAO-гра: ${game.title}</h2>
+            <iframe src="${game.path}" width="100%" height="600" frameborder="0"></iframe>
+          `;
+          container.appendChild(section);
+        });
       });
-    });
-</script>
+  </script>
 </body>
 </html>
