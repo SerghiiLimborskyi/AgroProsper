@@ -4,18 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🧠 Панель агента</title>
-  <link rel="stylesheet" href="styles/menu.css" />
-  <script src="scripts/menu.js" defer></script>
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 28px;
+      color: #00ff99;
+      margin-bottom: 20px;
+    }
+    .agent-loader {
+      font-size: 16px;
+      color: #ccc;
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="menuContainer"></div>
+  <main id="daoContent">
+    <h1 id="agentTitle">🧠 Панель агента</h1>
+    <div class="agent-loader" id="agentLoader">Завантаження панелі...</div>
+  </main>
+  <div id="footerContainer"></div>
+  <script src="public/init.js"></script>
   <script>
+    const lang = navigator.language.startsWith("pl") ? "pl"
+                : navigator.language.startsWith("en") ? "en"
+                : "uk";
+
+    const t = {
+      uk: {
+        title: "🧠 Панель агента",
+        loading: "Завантаження панелі..."
+      },
+      pl: {
+        title: "🧠 Panel agenta",
+        loading: "Ładowanie panelu..."
+      },
+      en: {
+        title: "🧠 Agent Panel",
+        loading: "Loading panel..."
+      }
+    };
+
+    const tr = t[lang];
+    document.getElementById("agentTitle").textContent = tr.title;
+    document.getElementById("agentLoader").textContent = tr.loading;
+
     fetch("components/agent-panel.html")
       .then(res => res.text())
       .then(html => {
         document.getElementById("daoContent").innerHTML = html;
       });
   </script>
-</head>
-<body>
-  <div id="menuContainer"></div>
-  <main id="daoContent"></main>
 </body>
 </html>
