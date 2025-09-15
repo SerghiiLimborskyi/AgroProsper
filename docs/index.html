@@ -2,16 +2,10 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>AgroProsper V7.1 — Жива DAO-платформа</title>
+  <title>AgroProsper V7.1 — DAO з душею</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/menu.css">
-  <link rel="stylesheet" href="styles/nft.css">
-  <link rel="stylesheet" href="styles/quantumCID.css">
-  <script src="scripts/cid.js" defer></script>
-  <script src="scripts/dao.js" defer></script>
-  <script src="scripts/quantumCID.js" defer></script>
-  <script src="scripts/init.js" defer></script>
 </head>
 <body>
   <!-- 🔷 Меню -->
@@ -29,45 +23,32 @@
     <p class="slogan">Жива автономна система для етичного агробізнесу</p>
 
     <!-- 🎬 Відео-звернення -->
-    <div class="dao-block">
-      <h2>🎬 Відео-звернення</h2>
-      <video controls width="100%" poster="assets/video-cover.jpg">
-        <source src="assets/agroprosper-v7.mp4" type="video/mp4">
-        Ваш браузер не підтримує відео.
-      </video>
-    </div>
+    <video controls width="100%" poster="assets/video-cover.jpg">
+      <source src="assets/agroprosper-v7.mp4" type="video/mp4">
+      Ваш браузер не підтримує відео.
+    </video>
 
     <!-- 🧠 CID-модуль -->
-    <div class="dao-block">
+    <section>
       <h2>🧠 CID-модуль</h2>
-      <p>Введіть свій DAO-паспорт для активації ролі</p>
       <input type="text" placeholder="CID..." id="cidInput" />
-      <button class="btn" onclick="activateCID()">Активувати</button>
-    </div>
+      <button onclick="activateCID()">Активувати</button>
+    </section>
 
     <!-- 🏅 NFT-бейдж -->
-    <div class="dao-block nft-badge">
+    <section>
       <h2>🏅 NFT-бейдж “Супер Партнер”</h2>
       <img src="assets/nft-super-partner.png" alt="NFT-бейдж" width="120" />
       <p>Ваша роль підтверджена. DAO вас вітає!</p>
-      <p>Рівень агента: <strong id="agentLevel">Starter</strong></p>
-    </div>
+    </section>
 
     <!-- 🧩 DAO-квест -->
-    <div class="dao-block">
+    <section>
       <h2>🧩 DAO-квест: “Пульс довіри”</h2>
       <p>Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?</p>
-      <button class="btn">✅ Підтримати його вибір</button>
-      <button class="btn">💰 Переконати продати дорожче</button>
-    </div>
-
-    <!-- 🤝 DAO-кнопки -->
-    <div class="dao-block">
-      <h2>🤝 Дії DAO</h2>
-      <button class="btn">📥 Підтримати реліз</button>
-      <button class="btn">🧬 Стати агентом DAO</button>
-      <button class="btn">📊 Перейти до Dashboard</button>
-    </div>
+      <button>✅ Підтримати його вибір</button>
+      <button>💰 Переконати продати дорожче</button>
+    </section>
   </main>
 </body>
 </html>
