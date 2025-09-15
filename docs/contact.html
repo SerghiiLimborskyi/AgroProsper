@@ -2,51 +2,12 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>Про нас — AgroProsper DAO</title>
+  <title>📬 Контакти — AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles/main.css" />
   <style>
-    body { background:#000; color:#0f0; font-family:'Segoe UI'; text-align:center; padding:40px; }
-    a { color:#0f0; text-decoration:underline; font-weight:bold; }
-  </style>
-</head>
-<body>
-  <h1>🛠️ Розділ “Про нас” оновлюється</h1>
-  <p>Цей розділ тимчасово недоступний. Ми працюємо над новою версією з DAO-логікою та CID-ідентифікацією.</p>
-  <p><a href="index.html">⬅️ Повернутись на головну</a></p>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <title>Контакти — AgroProsper V7</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="public/menu.js" defer></script>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-      color: white;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.7);
-    }
-    .logo {
-      height: 60px;
-      margin-right: 20px;
-    }
-    .banner h1 {
-      margin: 0;
-      font-size: 28px;
-    }
     main {
-      padding: 40px;
+      padding: 40px 20px;
       max-width: 800px;
       margin: auto;
     }
@@ -56,6 +17,14 @@
       background: rgba(255,255,255,0.05);
       border-radius: 8px;
     }
+    h1 {
+      font-size: 28px;
+      color: #00ff99;
+      text-align: center;
+    }
+    h2 {
+      color: #00ffcc;
+    }
     a {
       color: #00ffcc;
       text-decoration: none;
@@ -63,37 +32,67 @@
   </style>
 </head>
 <body>
+  <div id="menuContainer"></div>
+  <main>
+    <h1 id="contactTitle">📬 Контакти AgroProsper DAO</h1>
 
-<header>
-  <img src="../public/logo.png" alt="AgroProsper Logo" class="logo" />
-  <div class="banner">
-    <h1>Контакти AgroProsper DAO</h1>
-  </div>
-</header>
+    <section>
+      <h2 id="emailLabel">📧 Email</h2>
+      <p><a href="mailto:agroprosper74@gmail.com">agroprosper74@gmail.com</a></p>
+    </section>
 
-<main>
+    <section>
+      <h2 id="whatsappLabel">📱 WhatsApp</h2>
+      <p><a href="https://wa.me/48669106746">+48 669 106 746</a></p>
+    </section>
 
-  <section>
-    <h2>📧 Email</h2>
-    <p><a href="mailto:agroprosper74@gmail.com">agroprosper74@gmail.com</a></p>
-  </section>
+    <section>
+      <h2 id="panelLabel">🌐 DAO-панель</h2>
+      <p><a href="https://serghiilimborskyi.github.io/AgroProsper">AgroProsper V7 — DAO</a></p>
+    </section>
 
-  <section>
-    <h2>📱 WhatsApp</h2>
-    <p><a href="https://wa.me/48669106746">+48 669 106 746</a></p>
-  </section>
+    <section>
+      <h2 id="regLabel">🧩 Зареєструвати компанію</h2>
+      <p><a href="Registration/dashboard.html">Перейти до реєстрації</a></p>
+    </section>
+  </main>
+  <div id="footerContainer"></div>
+  <script src="public/init.js"></script>
+  <script>
+    const lang = navigator.language.startsWith("pl") ? "pl"
+                : navigator.language.startsWith("en") ? "en"
+                : "uk";
 
-  <section>
-    <h2>🌐 DAO-панель</h2>
-    <p><a href="https://serghiilimborskyi.github.io/AgroProsper">AgroProsper V7 — DAO</a></p>
-  </section>
+    const t = {
+      uk: {
+        title: "📬 Контакти AgroProsper DAO",
+        email: "📧 Email",
+        whatsapp: "📱 WhatsApp",
+        panel: "🌐 DAO-панель",
+        reg: "🧩 Зареєструвати компанію"
+      },
+      pl: {
+        title: "📬 Kontakt AgroProsper DAO",
+        email: "📧 Email",
+        whatsapp: "📱 WhatsApp",
+        panel: "🌐 Panel DAO",
+        reg: "🧩 Zarejestruj firmę"
+      },
+      en: {
+        title: "📬 Contact AgroProsper DAO",
+        email: "📧 Email",
+        whatsapp: "📱 WhatsApp",
+        panel: "🌐 DAO Panel",
+        reg: "🧩 Register Company"
+      }
+    };
 
-  <section>
-    <h2>🧩 Зареєструвати компанію</h2>
-    <p><a href="Registration/dashboard.html">Перейти до реєстрації</a></p>
-  </section>
-
-</main>
-
+    const tr = t[lang];
+    document.getElementById("contactTitle").textContent = tr.title;
+    document.getElementById("emailLabel").textContent = tr.email;
+    document.getElementById("whatsappLabel").textContent = tr.whatsapp;
+    document.getElementById("panelLabel").textContent = tr.panel;
+    document.getElementById("regLabel").textContent = tr.reg;
+  </script>
 </body>
 </html>
