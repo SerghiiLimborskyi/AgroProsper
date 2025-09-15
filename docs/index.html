@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
   <!-- 🔷 Меню -->
@@ -31,24 +32,73 @@
     <!-- 🧠 CID-модуль -->
     <section>
       <h2>🧠 CID-модуль</h2>
+      <p id="cidLabel">Введіть свій DAO-паспорт для активації ролі</p>
       <input type="text" placeholder="CID..." id="cidInput" />
-      <button onclick="activateCID()">Активувати</button>
+      <button id="activateBtn" onclick="activateCID()">Активувати</button>
     </section>
 
     <!-- 🏅 NFT-бейдж -->
     <section>
       <h2>🏅 NFT-бейдж “Супер Партнер”</h2>
       <img src="assets/nft-super-partner.png" alt="NFT-бейдж" width="120" />
-      <p>Ваша роль підтверджена. DAO вас вітає!</p>
+      <p id="badgeText">Ваша роль підтверджена. DAO вас вітає!</p>
     </section>
 
     <!-- 🧩 DAO-квест -->
     <section>
       <h2>🧩 DAO-квест: “Пульс довіри”</h2>
-      <p>Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?</p>
-      <button>✅ Підтримати його вибір</button>
-      <button>💰 Переконати продати дорожче</button>
+      <p id="questText">Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?</p>
+      <button id="choice1">✅ Підтримати його вибір</button>
+      <button id="choice2">💰 Переконати продати дорожче</button>
     </section>
   </main>
+
+  <!-- 🌐 Автоматична мультимовність -->
+  <script>
+    const lang = navigator.language.startsWith("pl") ? "pl"
+                : navigator.language.startsWith("en") ? "en"
+                : "uk";
+
+    const t = {
+      uk: {
+        slogan: "Жива автономна система для етичного агробізнесу",
+        cidLabel: "Введіть свій DAO-паспорт для активації ролі",
+        activate: "Активувати",
+        badge: "Ваша роль підтверджена. DAO вас вітає!",
+        quest: "Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?",
+        choice1: "✅ Підтримати його вибір",
+        choice2: "💰 Переконати продати дорожче"
+      },
+      pl: {
+        slogan: "Autonomiczny system dla etycznego rolnictwa",
+        cidLabel: "Wprowadź swój paszport DAO, aby aktywować rolę",
+        activate: "Aktywuj",
+        badge: "Twoja rola została potwierdzona. DAO Cię wita!",
+        quest: "Rolnik chce sprzedać plony taniej, by pomóc społeczności. Co wybierzesz?",
+        choice1: "✅ Wspieraj jego wybór",
+        choice2: "💰 Przekonaj go do wyższej ceny"
+      },
+      en: {
+        slogan: "Autonomous system for ethical agriculture",
+        cidLabel: "Enter your DAO passport to activate your role",
+        activate: "Activate",
+        badge: "Your role is confirmed. DAO welcomes you!",
+        quest: "Farmer wants to sell crops cheaper to help the community. What will you choose?",
+        choice1: "✅ Support their choice",
+        choice2: "💰 Convince to sell higher"
+      }
+    };
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const tr = t[lang];
+      document.querySelector(".slogan").textContent = tr.slogan;
+      document.getElementById("cidLabel").textContent = tr.cidLabel;
+      document.getElementById("activateBtn").textContent = tr.activate;
+      document.getElementById("badgeText").textContent = tr.badge;
+      document.getElementById("questText").textContent = tr.quest;
+      document.getElementById("choice1").textContent = tr.choice1;
+      document.getElementById("choice2").textContent = tr.choice2;
+    });
+  </script>
 </body>
 </html>
