@@ -5,14 +5,8 @@
   <title>🎬 Відео — AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css" />
   <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #0f2027;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
     main {
       padding: 40px 20px;
       text-align: center;
@@ -31,19 +25,10 @@
       border-radius: 12px;
       box-shadow: 0 0 12px #0f0;
     }
-    a.youtube {
-      display: inline-block;
-      margin-top: 20px;
-      color: #0f0;
-      font-weight: bold;
-      text-decoration: none;
-    }
   </style>
 </head>
 <body>
-  <!-- 🔗 Автоматичне меню -->
-  <div id="menu"></div>
-
+  <div id="menuContainer"></div>
   <main>
     <h1>🎬 Відео-презентації AgroProsper</h1>
     <p>Ознайомтесь з DAO-моделлю, партнерськими кейсами та NFT-логікою.</p>
@@ -51,13 +36,8 @@
       <source src="media/promo.mp4" type="video/mp4" />
       Ваш браузер не підтримує відео.
     </video>
-    <p>
-      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="youtube">▶️ Переглянути на YouTube</a>
-    </p>
   </main>
-
-  <!-- 🔗 Автоматичний футер -->
-  <div id="footer"></div>
+  <div id="footerContainer"></div>
   <script src="public/init.js"></script>
 </body>
 </html>
