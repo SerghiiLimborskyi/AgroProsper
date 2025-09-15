@@ -5,107 +5,31 @@
   <title>AgroProsper V7.1 — Жива DAO-платформа</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/nft.css">
-  <link rel="stylesheet" href="docs/src/cid.css">
-  <link rel="stylesheet" href="styles/quantumCID.css">
   <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="styles/nft.css">
+  <link rel="stylesheet" href="styles/quantumCID.css">
   <script src="scripts/cid.js" defer></script>
   <script src="scripts/dao.js" defer></script>
   <script src="scripts/quantumCID.js" defer></script>
-  <script src="scripts/menu.js" defer></script>
-  <div id="quantumBox"></div> 
-  <div id="quantumBox" data-signature="CID:AGENT:PREDICTION"></div>
-  <div id="menu"></div>
-  <div id="menu"></div>
-<script src="scripts/menu-loader.js" defer></script>
-  <div id="menu"></div>
-<script src="scripts/menuLoader.js" defer></script>
-<script src="scripts/agentLevel.js" defer></script>
-<div id="menuContainer"></div>
-<script>
-  <div id="registerContainer"></div>
-<script>
-  fetch("register-panel.html")
-    .then(res => res.text())
-    .then(html => document.getElementById("registerContainer").innerHTML = html);
-</script>
-<script src="scripts/register.js" defer></script>
-<link rel="stylesheet" href="styles/menu.css" />
-<script src="scripts/menu.js" defer></script>
-
-  fetch("menu.html")
-    .then(res => res.text())
-    .then(html => document.getElementById("menuContainer").innerHTML = html);
-</script>
-  
-  <div id="footerContainer"></div>
-<script>
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(html => document.getElementById("footerContainer").innerHTML = html);
-</script>
-  
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    main {
-      padding: 60px 20px;
-      flex: 1;
-      text-align: center;
-    }
-    h1 {
-      font-size: 36px;
-      color: #00ff99;
-    }
-    .btn {
-      background-color: #00a859;
-      color: #fff;
-      padding: 14px 28px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 0 12px #00ff99;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-    .btn:hover {
-      box-shadow: 0 0 20px #00ff99;
-      transform: scale(1.05);
-    }
-    .dao-block {
-      margin-top: 40px;
-      padding: 20px;
-      background-color: #1a2b3c;
-      border-radius: 12px;
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .nft-badge {
-      animation: pulseNFT 2s infinite;
-    }
-    @keyframes pulseNFT {
-      0% { transform: scale(1); box-shadow: 0 0 10px #00ff99; }
-      50% { transform: scale(1.05); box-shadow: 0 0 20px #00ff99; }
-      100% { transform: scale(1); box-shadow: 0 0 10px #00ff99; }
-    }
-  </style>
+  <script src="scripts/init.js" defer></script>
 </head>
 <body>
+  <!-- 🔷 Меню -->
+  <div id="menuContainer"></div>
+  <script>
+    fetch("menu.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("menuContainer").innerHTML = html;
+      });
+  </script>
+
   <main>
-    <h1 data-signature="CID:AGENT:CREATOR">AgroProsper V7.1 — DAO з душею</h1>
+    <h1>AgroProsper V7.1 — DAO з душею</h1>
     <p class="slogan">Жива автономна система для етичного агробізнесу</p>
 
     <!-- 🎬 Відео-звернення -->
-    <div class="dao-block" data-signature="CID:AGENT:VIDEO">
+    <div class="dao-block">
       <h2>🎬 Відео-звернення</h2>
       <video controls width="100%" poster="assets/video-cover.jpg">
         <source src="assets/agroprosper-v7.mp4" type="video/mp4">
@@ -114,37 +38,36 @@
     </div>
 
     <!-- 🧠 CID-модуль -->
-    <div class="dao-block" data-signature="CID:AGENT:CID">
+    <div class="dao-block">
       <h2>🧠 CID-модуль</h2>
       <p>Введіть свій DAO-паспорт для активації ролі</p>
       <input type="text" placeholder="CID..." id="cidInput" />
       <button class="btn" onclick="activateCID()">Активувати</button>
     </div>
 
-    <!-- 🏅 NFT-анімація -->
-    <div class="dao-block nft-badge" data-signature="CID:AGENT:NFT">
+    <!-- 🏅 NFT-бейдж -->
+    <div class="dao-block nft-badge">
       <h2>🏅 NFT-бейдж “Супер Партнер”</h2>
       <img src="assets/nft-super-partner.png" alt="NFT-бейдж" width="120" />
       <p>Ваша роль підтверджена. DAO вас вітає!</p>
-     <p>Рівень агента: <strong id="agentLevel">Starter</strong></p>
+      <p>Рівень агента: <strong id="agentLevel">Starter</strong></p>
     </div>
 
     <!-- 🧩 DAO-квест -->
-    <div class="dao-block" data-signature="CID:AGENT:QUEST">
+    <div class="dao-block">
       <h2>🧩 DAO-квест: “Пульс довіри”</h2>
-      <p>Виберіть етичне рішення для ситуації: фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?</p>
+      <p>Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?</p>
       <button class="btn">✅ Підтримати його вибір</button>
       <button class="btn">💰 Переконати продати дорожче</button>
     </div>
 
     <!-- 🤝 DAO-кнопки -->
-    <div class="dao-block" data-signature="CID:AGENT:ACTION">
+    <div class="dao-block">
       <h2>🤝 Дії DAO</h2>
       <button class="btn">📥 Підтримати реліз</button>
       <button class="btn">🧬 Стати агентом DAO</button>
       <button class="btn">📊 Перейти до Dashboard</button>
     </div>
   </main>
-  <script src="scripts/init.js"></script>
 </body>
 </html>
