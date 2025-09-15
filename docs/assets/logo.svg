@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 200 200">
+  <title>AgroProsper DAO</title>
+  <defs>
+    <linearGradient id="leafGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4CAF50"/>
+      <stop offset="100%" stop-color="#2E7D32"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="none">
+    <!-- Листок -->
+    <path d="M100,30 C130,60 130,120 100,150 C70,120 70,60 100,30 Z" fill="url(#leafGradient)" />
+    <!-- Назва DAO -->
+    <text x="100" y="170" text-anchor="middle" font-size="18" font-family="Montserrat, sans-serif" fill="#333" font-weight="bold">
+      AGROPROSPER DAO
+    </text>
+  </g>
+</svg>
