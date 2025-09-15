@@ -1,52 +1,44 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+.dao-menu {
+  text-align: center;
+  margin: 20px 0;
+}
+.dao-menu a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background: #00ff99;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 0 10px #0f0;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px #0f0; }
+  50% { box-shadow: 0 0 20px #0f0; }
+  100% { box-shadow: 0 0 5px #0f0; }
+}
+
+.dao-logo {
+  height: 60px;
+  margin: 10px auto;
+  display: block;
+}
+
+.cid-card {
+  background: #111;
+  border: 2px solid #00ff99;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
   color: #eee;
 }
 
-main {
-  padding: 40px 20px;
-  max-width: 800px;
-  margin: auto;
-}
-
-h1, h2 {
-  color: #00ff99;
+.role-label {
+  font-size: 18px;
+  color: #00ffcc;
+  font-weight: bold;
   margin-bottom: 10px;
-}
-
-p {
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-button {
-  background-color: #00ff99;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #00cc77;
-}
-
-input[type="text"] {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin-right: 10px;
-}
-
-video {
-  margin: 20px 0;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
