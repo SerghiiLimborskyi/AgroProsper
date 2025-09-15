@@ -1,0 +1,8 @@
+<div class="cid-panel">
+  <img src="assets/avatar.svg" alt="CID Avatar" class="cid-avatar" />
+  <div class="cid-info">
+    <span class="cid-label">CID:</span>
+    <span class="cid-value" id="cidDisplay">0xA1F3...D9B</span>
+    <span class="role-badge agent" id="roleDisplay">🧠 Агент</span>
+  </div>
+</div>
