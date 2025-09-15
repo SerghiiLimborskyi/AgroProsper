@@ -4,55 +4,114 @@
   <meta charset="UTF-8" />
   <title>🧩 DAO Suite — AgroProsper</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+    section {
+      margin: 30px 0;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      background: #00ff99;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #0f0;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #00cc77;
+    }
+    iframe {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 0 10px rgba(0,255,153,0.2);
+    }
+  </style>
 </head>
 <body>
-  <!-- Хедер -->
-  <div id="header"></div>
-  <script>
-  const cid = localStorage.getItem("userCID") || "0xAGRO-XXXX";
-  const badgeImg = document.getElementById("badgeImage");
+  <div id="menuContainer"></div>
+  <main>
+    <h1 id="suiteTitle">🧩 DAO Suite</h1>
+    <p id="suiteIntro">Центральна панель для взаємодії з DAO-модулями: голосування, NFT, біржа, аналітика.</p>
 
-  function getBadgeByCID(cid) {
-    if (cid.includes("AN")) return "media/badge-analyst.png";
-    if (cid.includes("PA")) return "media/badge-partner.png";
-    if (cid.includes("AG")) return "media/badge-agent.png";
-    return "media/badge-nft.png"; // Starter by default
-  }
-
-  badgeImg.src = getBadgeByCID(cid);
-</script>
-  
-  <main style="padding:20px; text-align:center;">
-    <h1>🧩 DAO Suite</h1>
-    <p>Центральна панель для взаємодії з DAO-модулями: голосування, NFT, біржа, аналітика.</p>
-
-    <section style="margin:30px 0;">
+    <section>
       <h2>🗳️ Голосування</h2>
-      <p>Обери напрямок розвитку DAO:</p>
-      <button style="padding:10px 20px; background:#0f0; color:#000; font-weight:bold; border-radius:8px; box-shadow:0 0 10px #0f0;" onclick="alert('Голос за варіант A')">✅ Варіант A</button>
-      <button style="padding:10px 20px; background:#0f0; color:#000; font-weight:bold; border-radius:8px; box-shadow:0 0 10px #0f0;" onclick="alert('Голос за варіант B')">✅ Варіант B</button>
+      <p id="voteText">Обери напрямок розвитку DAO:</p>
+      <button onclick="alert('Голос за варіант A')">✅ Варіант A</button>
+      <button onclick="alert('Голос за варіант B')">✅ Варіант B</button>
     </section>
 
-    <section style="margin:30px 0;">
+    <section>
       <h2>🎖️ NFT-бейджі</h2>
-      <p>Ваш статус: <strong>AGT-Гравець</strong></p>
-      <img id="badgeImage" src="media/badge-nft.png" alt="DAO-бейдж" style="height:100px; border-radius:12px;" />
+      <p id="badgeStatus">Ваш статус: <strong id="badgeLabel">AGT-Гравець</strong></p>
+      <img id="badgeImage" src="media/badge-nft.png" alt="DAO-бейдж" style="height:100px;" />
     </section>
 
-    <section style="margin:30px 0;">
+    <section>
       <h2>💱 DAO-біржа</h2>
-      <p>Курс AGT: <strong>1 AGT = 0.42 PLN</strong></p>
-      <button onclick="alert('AGT куплено')" style="padding:10px 20px; background:#0f0; color:#000; font-weight:bold; border-radius:8px;">🛒 Купити AGT</button>
+      <p id="exchangeRate">Курс AGT: <strong>1 AGT = 0.42 PLN</strong></p>
+      <button onclick="alert('AGT куплено')">🛒 Купити AGT</button>
     </section>
 
-    <section style="margin:30px 0;">
+    <section>
       <h2>📊 DAO-аналітика</h2>
-      <iframe src="https://www.tradingview.com/chart/" width="100%" height="300" style="border:none; border-radius:12px;"></iframe>
+      <iframe src="https://www.tradingview.com/chart/" width="100%" height="300"></iframe>
     </section>
   </main>
+  <div id="footerContainer"></div>
+  <script src="public/init.js"></script>
+  <script>
+    const cid = localStorage.getItem("cid") || "0xAGRO-XXXX";
+    const badgeImage = document.getElementById("badgeImage");
+    const badgeLabel = document.getElementById("badgeLabel");
 
-  <footer style="text-align:center; padding:20px; font-size:12px; opacity:0.8;">
-    © 2025 AgroProsper DAO — DAO Suite
-  </footer>
+    function getBadgeByCID(cid) {
+      if (cid.includes("AN")) return ["media/badge-analyst.png", "Аналітик"];
+      if (cid.includes("PA")) return ["media/badge-partner.png", "Партнер"];
+      if (cid.includes("AG")) return ["media/badge-agent.png", "Агент DAO"];
+      return ["media/badge-nft.png", "AGT-Гравець"];
+    }
+
+    const [imgSrc, label] = getBadgeByCID(cid);
+    badgeImage.src = imgSrc;
+    badgeLabel.textContent = label;
+
+    const lang = navigator.language.startsWith("pl") ? "pl"
+                : navigator.language.startsWith("en") ? "en"
+                : "uk";
+
+    const t = {
+      uk: {
+        title: "🧩 DAO Suite",
+        intro: "Центральна панель для взаємодії з DAO-модулями: голосування, NFT, біржа, аналітика.",
+        vote: "Обери напрямок розвитку DAO:"
+      },
+      pl: {
+        title: "🧩 DAO Suite",
+        intro: "Główny panel do interakcji z modułami DAO: głosowanie, NFT, giełda, analityka.",
+        vote: "Wybierz kierunek rozwoju DAO:"
+      },
+      en: {
+        title: "🧩 DAO Suite",
+        intro: "Central panel for interacting with DAO modules: voting, NFT, exchange, analytics.",
+        vote: "Choose the DAO development direction:"
+      }
+    };
+
+    const tr = t[lang];
+    document.getElementById("suiteTitle").textContent = tr.title;
+    document.getElementById("suiteIntro").textContent = tr.intro;
+    document.getElementById("voteText").textContent = tr.vote;
+  </script>
 </body>
 </html>
