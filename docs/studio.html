@@ -4,18 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🎨 DAO Студія</title>
-  <link rel="stylesheet" href="styles/menu.css" />
-  <script src="scripts/menu.js" defer></script>
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 28px;
+      color: #00ff99;
+      margin-bottom: 20px;
+    }
+    .studio-loader {
+      font-size: 16px;
+      color: #ccc;
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="menuContainer"></div>
+  <main id="daoContent">
+    <h1 id="studioTitle">🎨 DAO Студія</h1>
+    <div class="studio-loader" id="studioLoader">Завантаження студії...</div>
+  </main>
+  <div id="footerContainer"></div>
+  <script src="public/init.js"></script>
   <script>
+    const lang = navigator.language.startsWith("pl") ? "pl"
+                : navigator.language.startsWith("en") ? "en"
+                : "uk";
+
+    const t = {
+      uk: {
+        title: "🎨 DAO Студія",
+        loading: "Завантаження студії..."
+      },
+      pl: {
+        title: "🎨 Studio DAO",
+        loading: "Ładowanie studia..."
+      },
+      en: {
+        title: "🎨 DAO Studio",
+        loading: "Loading studio..."
+      }
+    };
+
+    const tr = t[lang];
+    document.getElementById("studioTitle").textContent = tr.title;
+    document.getElementById("studioLoader").textContent = tr.loading;
+
     fetch("components/dao-studio.html")
       .then(res => res.text())
       .then(html => {
         document.getElementById("daoContent").innerHTML = html;
       });
   </script>
-</head>
-<body>
-  <div id="menuContainer"></div>
-  <main id="daoContent"></main>
 </body>
 </html>
