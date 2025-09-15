@@ -1,33 +1,54 @@
-.menu {
+/* 🔷 Загальне меню */
+.dao-menu {
   background: #f8f8f8;
   font-family: 'Montserrat', sans-serif;
-  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
-.menu-toggle {
-  display: none;
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
+
+/* 🔷 Верхній блок з логотипом */
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 1em;
 }
+
+.dao-logo {
+  height: 32px;
+  margin-right: 0.5em;
+}
+
+.dao-title {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #2c3e50;
+}
+
+/* 📋 Основне меню */
 .menu-list {
   list-style: none;
   display: flex;
   gap: 15px;
+  padding: 0.5em 1em;
   flex-wrap: wrap;
 }
+
 .menu-list li {
   position: relative;
 }
+
 .menu-list li a {
   text-decoration: none;
   color: #333;
   padding: 8px 12px;
   border-radius: 4px;
+  transition: background 0.3s;
 }
+
 .menu-list li a:hover {
   background: #e0e0e0;
 }
+
 .submenu {
   display: none;
   position: absolute;
@@ -38,19 +59,111 @@
   padding: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+
 .has-submenu:hover .submenu {
   display: block;
 }
+
+/* 🧠 CID-панель */
+.cid-panel {
+  display: flex;
+  align-items: center;
+  padding: 0.5em 1em;
+  background: #f4f4f4;
+  border-top: 1px solid #ccc;
+}
+
+.cid-avatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  margin-right: 0.5em;
+}
+
+.cid-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cid-label {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.cid-value {
+  font-family: monospace;
+  font-size: 0.85em;
+  color: #555;
+}
+
+.role-badge {
+  margin-top: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.role-badge.agent {
+  background: #3498db;
+  color: white;
+}
+
+.role-badge.architect {
+  background: #8e44ad;
+  color: white;
+}
+
+.role-badge.player {
+  background: #27ae60;
+  color: white;
+}
+
+/* ☰ Гамбургер */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 📱 Мобільна адаптація */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
   }
+
   .menu-list {
     display: none;
     flex-direction: column;
     gap: 10px;
+    padding: 1em;
   }
+
   .menu-list.active {
     display: flex;
+    animation: fadeIn 0.3s ease-in-out;
   }
+
+  .submenu {
+    position: static;
+    box-shadow: none;
+  }
+
+  .has-submenu:hover .submenu {
+    display: none;
+  }
+
+  .has-submenu > a::after {
+    content: " ▼";
+    font-size: 0.8em;
+  }
+}
+
+/* ✨ Анімація */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
