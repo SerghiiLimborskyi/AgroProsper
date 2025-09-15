@@ -1,22 +1,33 @@
 <nav class="dao-menu">
-  <button class="menu-toggle">☰</button>
+  <!-- 🔷 DAO-логотип -->
+  <div class="menu-header">
+    <img src="assets/logo.svg" alt="AgroProsper DAO" class="dao-logo" />
+    <span class="dao-title">AgroProsper DAO</span>
+    <button class="menu-toggle">☰</button>
+  </div>
+
+  <!-- 📋 Основне меню -->
   <ul class="menu-list">
-    <li><a href="index.html"><span>🏠</span> Головна</a></li>
+    <li><a href="index.html">🏠 Головна</a></li>
     <li class="has-submenu">
-      <a href="#"><span>🧩</span> DAO-розділи</a>
+      <a href="#">🧩 DAO-розділи</a>
       <ul class="submenu">
-        <li><a href="agent-panel.html">🧠 Панель агента</a></li>
-        <li><a href="quest-guide.html">🎮 Квести</a></li>
-        <li><a href="dao-suite.html">📦 DAO Suite</a></li>
+        <li><a href="agent.html">🧠 Панель агента</a></li>
+        <li><a href="quest.html">🎮 Квести</a></li>
+        <li><a href="studio.html">🎨 DAO Студія</a></li>
       </ul>
     </li>
-    <li><a href="video.html"><span>🎬</span> Відео-звернення</a></li>
-    <li><a href="dao-studio.html"><span>🎨</span> DAO Студія</a></li>
-    <li><a href="contact.html"><span>📬</span> Контакти</a></li>
+    <li><a href="video.html">🎬 Відео-звернення</a></li>
+    <li><a href="contact.html">📬 Контакти</a></li>
   </ul>
+
+  <!-- 🧠 CID-панель -->
   <div class="cid-panel">
-    <span class="cid-label">CID:</span>
-    <span class="cid-value">0xA1F3...D9B</span>
-    <span class="role-badge">🧠 Агент</span>
+    <img src="assets/avatar.svg" alt="CID Avatar" class="cid-avatar" />
+    <div class="cid-info">
+      <span class="cid-label">CID:</span>
+      <span class="cid-value">0xA1F3...D9B</span>
+      <span class="role-badge agent">🧠 Агент</span>
+    </div>
   </div>
 </nav>
