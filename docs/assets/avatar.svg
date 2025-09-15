@@ -1,8 +1,13 @@
-<div class="cid-panel">
-  <img src="assets/avatar.svg" alt="CID Avatar" class="cid-avatar" />
-  <div class="cid-info">
-    <span class="cid-label">CID:</span>
-    <span class="cid-value" id="cidDisplay">0xA1F3...D9B</span>
-    <span class="role-badge agent" id="roleDisplay">🧠 Агент</span>
-  </div>
-</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 200 200">
+  <title>CID Avatar</title>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6a1b9a"/>
+      <stop offset="100%" stop-color="#26a69a"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="90" fill="url(#grad)" stroke="#f5f5dc" stroke-width="4"/>
+  <text x="100" y="60" text-anchor="middle" font-size="20" fill="#f5f5dc" font-family="Montserrat">CID 123</text>
+  <text x="100" y="140" text-anchor="middle" font-size="18" fill="#f5f5dc" font-family="Montserrat">AGENT</text>
+  <path d="M100,85 a15,15 0 1,0 0.1,0" fill="#f5f5dc"/>
+</svg>
