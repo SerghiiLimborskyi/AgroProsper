@@ -10,6 +10,7 @@
       padding: 40px 20px;
       max-width: 900px;
       margin: auto;
+      text-align: center;
     }
     h1 {
       font-size: 28px;
@@ -22,13 +23,23 @@
       text-align: center;
       margin-top: 40px;
     }
+    .role-label {
+      font-size: 18px;
+      color: #00ffcc;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .badge {
+      height: 100px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
   <div id="menuContainer"></div>
   <main id="daoContent">
     <h1 id="agentTitle">🧠 Панель агента</h1>
-    <div class="agent-loader" id="agentLoader">Завантаження панелі...</div>
+    <p class="agent-loader" id="agentLoader">Завантаження панелі...</p>
   </main>
   <div id="footerContainer"></div>
   <script src="public/init.js"></script>
@@ -40,15 +51,21 @@
     const t = {
       uk: {
         title: "🧠 Панель агента",
-        loading: "Завантаження панелі..."
+        loading: "Завантаження панелі...",
+        role: "Ваша роль:",
+        badge: "Ваш бейдж:"
       },
       pl: {
         title: "🧠 Panel agenta",
-        loading: "Ładowanie panelu..."
+        loading: "Ładowanie panelu...",
+        role: "Twoja rola:",
+        badge: "Twój badge:"
       },
       en: {
         title: "🧠 Agent Panel",
-        loading: "Loading panel..."
+        loading: "Loading panel...",
+        role: "Your role:",
+        badge: "Your badge:"
       }
     };
 
@@ -56,10 +73,35 @@
     document.getElementById("agentTitle").textContent = tr.title;
     document.getElementById("agentLoader").textContent = tr.loading;
 
+    const cid = localStorage.getItem("cid") || "0xAGRO-AG";
+
+    function getRoleByCID(cid) {
+      if (cid.includes("AN")) return "Аналітик DAO";
+      if (cid.includes("PA")) return "Партнер DAO";
+      if (cid.includes("AG")) return "Агент DAO";
+      return "Гість";
+    }
+
+    function getBadgeByCID(cid) {
+      if (cid.includes("AN")) return ["media/badge-analyst.png", "Аналітик"];
+      if (cid.includes("PA")) return ["media/badge-partner.png", "Партнер"];
+      if (cid.includes("AG")) return ["media/badge-agent.png", "Агент"];
+      return ["media/badge-nft.png", "Гість"];
+    }
+
+    const [badgeSrc, badgeLabel] = getBadgeByCID(cid);
+
     fetch("components/agent-panel.html")
       .then(res => res.text())
       .then(html => {
-        document.getElementById("daoContent").innerHTML = html;
+        const container = document.getElementById("daoContent");
+        container.innerHTML = `
+          <h1>${tr.title}</h1>
+          <p class="role-label">${tr.role} ${getRoleByCID(cid)}</p>
+          <p>${tr.badge} ${badgeLabel}</p>
+          <img class="badge" src="${badgeSrc}" alt="Бейдж агента" />
+          ${html}
+        `;
       });
   </script>
 </body>
