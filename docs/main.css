@@ -1,3 +1,4 @@
+/* 🔥 DAO-меню */
 .dao-menu {
   text-align: center;
   margin: 20px 0;
@@ -14,98 +15,15 @@
   box-shadow: 0 0 10px #0f0;
   animation: pulse 2s infinite;
 }
+
+/* 🔥 Пульсація */
 @keyframes pulse {
-  0% { box-shadow: 0 0 5px #0f0; }
-  50% { box-shadow: 0 0 20px #0f0; }
+  0%   { box-shadow: 0 0 5px #0f0; }
+  50%  { box-shadow: 0 0 20px #0f0; }
   100% { box-shadow: 0 0 5px #0f0; }
 }
 
-.dao-logo {
-  height: 60px;
-  margin: 10px auto;
-  display: block;
-}
-
-.cid-card {
-  background: #111;
-  border: 2px solid #00ff99;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px auto;
-  max-width: 600px;
-  color: #eee;
-}
-
-.role-label {
-  font-size: 18px;
-  color: #00ffcc;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-.menu-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background: #001f1f;
-  border-bottom: 2px solid #00ff99;
-}
-
-.dao-title {
-  font-size: 20px;
-  color: #00ffcc;
-  font-weight: bold;
-  margin-left: 10px;
-}
-
-.menu-toggle {
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: #00ff99;
-  cursor: pointer;
-}
-
-.menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-}
-
-.menu-list li {
-  margin: 10px 0;
-}
-
-.submenu {
-  display: none;
-  list-style: none;
-  padding-left: 20px;
-}
-
-.has-submenu:hover .submenu {
-  display: block;
-}
-
-.cid-panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #111;
-  padding: 10px;
-  border-top: 2px solid #00ff99;
-}
-
-.cid-avatar {
-  height: 40px;
-  margin-right: 10px;
-}
-
-.cid-info {
-  color: #eee;
-  font-size: 14px;
-}
-/* 🔥 Пульсація логотипу */
+/* 🎨 Логотип */
 .dao-logo {
   animation: pulse 2s infinite;
   width: 100%;
@@ -120,20 +38,117 @@
   transform: scale(1.05);
 }
 
-/* 🌄 Фон для ролей */
+/* 🧠 CID-картка */
+.cid-card {
+  background: #111;
+  border: 2px solid #00ff99;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+  color: #eee;
+}
+.role-label {
+  font-size: 18px;
+  color: #00ffcc;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.cid-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  padding: 10px;
+  border-top: 2px solid #00ff99;
+}
+.cid-avatar {
+  height: 40px;
+  margin-right: 10px;
+}
+.cid-info {
+  color: #eee;
+  font-size: 14px;
+}
+
+/* 📋 Меню */
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #001f1f;
+  border-bottom: 2px solid #00ff99;
+}
+.dao-title {
+  font-size: 20px;
+  color: #00ffcc;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #00ff99;
+  cursor: pointer;
+}
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.menu-list li {
+  margin: 10px 0;
+}
+.submenu {
+  display: none;
+  list-style: none;
+  padding-left: 20px;
+}
+.has-submenu:hover .submenu {
+  display: block;
+}
+
+/* 🌄 Фон за роллю */
 body.agent {
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
   color: #e0ffe0;
 }
 body.partner {
-  background: linear-gradient(to right, #1c1c1c, #434343);
+  background: radial-gradient(circle at top right, #1c1c1c, #434343);
   color: #ffe0e0;
 }
 body.analyst {
-  background: linear-gradient(to right, #283e51, #485563);
+  background: radial-gradient(circle at center, #283e51, #485563);
   color: #e0e0ff;
 }
 body.guest {
-  background: linear-gradient(to right, #232526, #414345);
+  background: linear-gradient(to bottom, #232526, #414345);
   color: #f0f0f0;
+}
+
+/* 📱 Адаптивність */
+@media (max-width: 600px) {
+  .dao-logo {
+    max-width: 200px;
+  }
+  .menu-list li {
+    margin: 6px 0;
+  }
+  .dao-title {
+    font-size: 16px;
+  }
+}
+
+/* 🌙 Нічний режим */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111;
+    color: #eee;
+  }
+  .dao-logo {
+    box-shadow: 0 0 15px #00ffcc;
+  }
 }
