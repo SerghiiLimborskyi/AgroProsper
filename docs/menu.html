@@ -1,101 +1,50 @@
-<nav class="dao-menu">
-  <!-- 🔷 DAO-логотип -->
-  <div class="menu-header">
-    <img src="assets/logo.svg" alt="AgroProsper DAO" class="dao-logo" />
-    <span class="dao-title" id="menuTitle">AgroProsper DAO</span>
-    <button class="menu-toggle">☰</button>
+<!-- 🔧 MENU.HTML — AgroProsper DAO -->
+<div class="menu-container">
+  <!-- 🔥 Логотип з пульсацією -->
+  <img src="assets/logo-agroprosper.png" alt="AgroProsper DAO Logo" class="dao-logo" />
+
+  <!-- 🌐 CID-блок -->
+  <div class="cid">
+    <img src="assets/avatar.png" alt="CID Avatar" class="cid-avatar" />
+    <span id="cidText">CID: AG-SL-X7K9QZ-2025</span>
   </div>
 
-  <!-- 📋 Основне меню -->
-  <ul class="menu-list">
-    <li><a href="index.html" id="menuHome" class="pulse-button">🏠 Головна</a></li>
-    <li class="has-submenu">
-      <a href="#" id="menuSections" class="pulse-button">🧩 DAO-розділи</a>
-      <ul class="submenu">
-        <li><a href="agent.html" id="menuAgent">🧠 Панель агента</a></li>
-        <li><a href="quest.html" id="menuQuest">🎮 Квести</a></li>
-        <li><a href="studio.html" id="menuStudio">🎨 DAO Студія</a></li>
-      </ul>
-    </li>
-    <li><a href="video.html" id="menuVideo" class="pulse-button">🎬 Відео-звернення</a></li>
-    <li><a href="contact.html" id="menuContact" class="pulse-button">📬 Контакти</a></li>
-  </ul>
+  <!-- ☰ Кнопка розгортання меню -->
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-  <!-- 🧠 CID-панель -->
-  <div class="cid-panel">
-    <img src="assets/avatar.svg" alt="CID Avatar" class="cid-avatar" />
-    <div class="cid-info">
-      <span class="cid-label" id="cidLabel">CID:</span>
-      <span class="cid-value" id="cidValue">0xA1F3...D9B</span>
-      <span class="role-badge agent" id="roleBadge">🧠 Агент</span>
-    </div>
-  </div>
-</nav>
+  <!-- 📋 Меню -->
+  <nav class="menu-links" id="menuLinks">
+    <a href="index.html">🏠 Головна</a>
+    <a href="about.html">📖 Про нас</a>
+    <a href="agent.html">🧠 Панель агента</a>
+    <a href="admin.html" id="adminLink" style="display:none;">🛡 Кабінет адміністратора</a>
+    <a href="quest.html">🎮 Квести</a>
+    <a href="video.html">🎬 Відео</a>
+    <a href="forecast.html">🌦 Прогнози</a>
+    <a href="business.html">🤝 Бізнес</a>
+    <a href="DAO-suite.html">🧪 DAO Suite</a>
+    <a href="support.html">🛠 Підтримка</a>
+  </nav>
+</div>
 
-<!-- 🌐 Автоматична мультимовність + CID логіка -->
+<!-- 🔧 JS-логіка -->
 <script>
-  const lang = navigator.language.startsWith("pl") ? "pl"
-              : navigator.language.startsWith("en") ? "en"
-              : "uk";
+  function toggleMenu() {
+    const menu = document.getElementById("menuLinks");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
 
-  const t = {
-    uk: {
-      title: "AgroProsper DAO",
-      home: "🏠 Головна",
-      sections: "🧩 DAO-розділи",
-      agent: "🧠 Панель агента",
-      quest: "🎮 Квести",
-      studio: "🎨 DAO Студія",
-      video: "🎬 Відео-звернення",
-      contact: "📬 Контакти",
-      cid: "CID:",
-      role: "🧠 Агент"
-    },
-    pl: {
-      title: "AgroProsper DAO",
-      home: "🏠 Strona główna",
-      sections: "🧩 Moduły DAO",
-      agent: "🧠 Panel agenta",
-      quest: "🎮 Misje",
-      studio: "🎨 Studio DAO",
-      video: "🎬 Wideo",
-      contact: "📬 Kontakt",
-      cid: "CID:",
-      role: "🧠 Agent"
-    },
-    en: {
-      title: "AgroProsper DAO",
-      home: "🏠 Home",
-      sections: "🧩 DAO Sections",
-      agent: "🧠 Agent Panel",
-      quest: "🎮 Quests",
-      studio: "🎨 DAO Studio",
-      video: "🎬 Video Message",
-      contact: "📬 Contact",
-      cid: "CID:",
-      role: "🧠 Agent"
-    }
-  };
+  // 🧠 CID-логіка ролей
+  const cid = "0xAGRO-AD"; // приклад CID
+  if (cid === "0xAGRO-AD") {
+    document.getElementById("adminLink").style.display = "inline-block";
+  }
 
-  window.addEventListener("DOMContentLoaded", () => {
-    const tr = t[lang];
-    document.getElementById("menuTitle").textContent = tr.title;
-    document.getElementById("menuHome").textContent = tr.home;
-    document.getElementById("menuSections").textContent = tr.sections;
-    document.getElementById("menuAgent").textContent = tr.agent;
-    document.getElementById("menuQuest").textContent = tr.quest;
-    document.getElementById("menuStudio").textContent = tr.studio;
-    document.getElementById("menuVideo").textContent = tr.video;
-    document.getElementById("menuContact").textContent = tr.contact;
-    document.getElementById("cidLabel").textContent = tr.cid;
-
-    const cid = localStorage.getItem("cid") || "0xAGRO-AG";
-    document.getElementById("cidValue").textContent = cid;
-
-    const role = cid.includes("AN") ? "🧠 Аналітик"
-               : cid.includes("PA") ? "🤝 Партнер"
-               : cid.includes("AG") ? "🧠 Агент"
-               : "👤 Гість";
-    document.getElementById("roleBadge").textContent = role;
-  });
+  // 🌐 Мультимовність
+  const lang = navigator.language || navigator.userLanguage;
+  if (lang.startsWith("pl")) {
+    document.getElementById("cidText").innerText = "CID: AG-SL-X7K9QZ-2025 (PL)";
+  } else if (lang.startsWith("en")) {
+    document.getElementById("cidText").innerText = "CID: AG-SL-X7K9QZ-2025 (EN)";
+  }
 </script>
