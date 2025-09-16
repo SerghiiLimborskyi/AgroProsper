@@ -2,14 +2,19 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>Agent Panel — AgroProsper DAO</title>
+  <title>🧠 Панель агента DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="main.css" />
   <link rel="stylesheet" href="styles/badge.css" />
 </head>
 <body>
+  <!-- 🔧 Меню вставляється динамічно -->
+  <div id="menuContainer"></div>
+
   <header>
-    <h1>🧠 Панель агента DAO</h1>
+    <h1 id="panelTitle">🧠 Панель агента DAO</h1>
     <p>CID: <strong id="cidDisplay">0xAGRO-XXXX</strong></p>
+    <p class="role-label" id="roleLabel">Ваша роль: Гість</p>
   </header>
 
   <section>
@@ -19,20 +24,68 @@
 
   <section>
     <h2>📊 Статистика</h2>
-    <p>Квестів виконано: <span id="questCount">0</span></p>
-    <p>Рівень: <span id="agentLevel">Starter</span></p>
+    <p id="questText">Квестів виконано: <span id="questCount">0</span></p>
+    <p id="levelText">Рівень: <span id="agentLevel">Starter</span></p>
   </section>
+
+  <!-- 🔧 Футер вставляється динамічно -->
+  <div id="footerContainer"></div>
 
   <script src="scripts/badgeViewer.js" defer></script>
   <script>
-    // CID-логіка
-    const cid = localStorage.getItem("cid") || "0xAGRO-XXXX";
+    // 🌐 Мультимовність
+    const lang = navigator.language.startsWith("pl") ? "pl" :
+                 navigator.language.startsWith("en") ? "en" : "uk";
+    const t = {
+      uk: {
+        title: "🧠 Панель агента DAO",
+        role: "Ваша роль",
+        quests: "Квестів виконано",
+        level: "Рівень"
+      },
+      pl: {
+        title: "🧠 Panel agenta DAO",
+        role: "Twoja rola",
+        quests: "Wykonane zadania",
+        level: "Poziom"
+      },
+      en: {
+        title: "🧠 Agent Panel DAO",
+        role: "Your role",
+        quests: "Quests completed",
+        level: "Level"
+      }
+    };
+    document.getElementById("panelTitle").textContent = t[lang].title;
+    document.getElementById("questText").childNodes[0].textContent = `${t[lang].quests}: `;
+    document.getElementById("levelText").childNodes[0].textContent = `${t[lang].level}: `;
+    document.getElementById("roleLabel").textContent = `${t[lang].role}: `;
+
+    // 🧠 CID-логіка
+    const cid = localStorage.getItem("cid") || "0xAGRO-GUEST";
     document.getElementById("cidDisplay").textContent = cid;
 
-    // Статистика (опціонально)
+    let roleClass = "guest", roleName = "Гість";
+    if (cid.includes("AG")) { roleClass = "agent"; roleName = lang === "pl" ? "Agent" : lang === "en" ? "Agent" : "Агент"; }
+    else if (cid.includes("PA")) { roleClass = "partner"; roleName = lang === "pl" ? "Partner" : lang === "en" ? "Partner" : "Партнер"; }
+    else if (cid.includes("AN")) { roleClass = "analyst"; roleName = lang === "pl" ? "Analityk" : lang === "en" ? "Analyst" : "Аналітик"; }
+
+    document.body.classList.add(roleClass);
+    document.getElementById("roleLabel").textContent += roleName;
+
+    // 📊 Статистика
     const quests = JSON.parse(localStorage.getItem("achievements") || "[]");
     document.getElementById("questCount").textContent = quests.length;
     document.getElementById("agentLevel").textContent = localStorage.getItem("agentLevel") || "Starter";
+
+    // 📦 Вставка меню і футера
+    fetch("menu.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("menuContainer").innerHTML = html);
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("footerContainer").innerHTML = html);
   </script>
 </body>
 </html>
