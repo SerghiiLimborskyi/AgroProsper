@@ -2,196 +2,123 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>Галерея бейджів — AgroProsper V7</title>
+  <title>🏅 Галерея бейджів — AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="public/menu.js" defer></script>
-  <section id="guest-badges">
-  <h2>🎫 Гостьові бейджі DAO</h2>
-  <div class="badge-grid">
-    <div class="badge-card">
-      <img src="badges/guest.svg" alt="Гостьовий бейдж" />
-      <h3>Гість DAO</h3>
-      <p>Доступ до презентацій, відео, ознайомлення з платформою</p>
-    </div>
-  </div>
-</section>
-  <section id="badge-gallery">
-  <h2>🏅 Галерея DAO-бейджів</h2>
-  <div class="filter-buttons">
-    <button onclick="filterBadges('all')">Всі</button>
-    <button onclick="filterBadges('guest')">Гості</button>
-    <button onclick="filterBadges('agent')">Агенти</button>
-    <button onclick="filterBadges('partner')">Партнери</button>
-  </div>
-
-  <div class="badge-grid">
-    <div class="badge-card" data-role="guest">
-      <img src="badges/guest.svg" alt="Гість DAO" />
-      <h3>Гість DAO</h3>
-      <p>Ознайомлення з платформою</p>
-    </div>
-    <div class="badge-card" data-role="agent">
-      <img src="badges/agent.svg" alt="Агент DAO" />
-      <h3>Агент DAO</h3>
-      <p>Доступ до голосування та квестів</p>
-    </div>
-    <div class="badge-card" data-role="partner">
-      <img src="badges/partner.svg" alt="Бізнес-Партнер" />
-      <h3>Бізнес-Партнер</h3>
-      <p>Керування студіями та сценаріями</p>
-    </div>
-  </div>
-</section>
-  <style>
-    body {
-      #badge-gallery {
-  padding: 40px;
-  text-align: center;
-}
-
-.filter-buttons {
-  margin-bottom: 20px;
-}
-
-.filter-buttons button {
-  margin: 5px;
-  padding: 10px 20px;
-  background-color: #0f0;
-  color: #000;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 0 8px #0f0;
-}
-
-.badge-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.badge-card {
-  background: #111;
-  border: 2px solid #0f0;
-  border-radius: 12px;
-  padding: 20px;
-  width: 220px;
-  box-shadow: 0 0 12px #0f0;
-  transition: transform 0.3s ease;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.badge-card:hover {
-  transform: scale(1.05);
-}
-
-.badge-card img {
-  width: 80px;
-  margin-bottom: 10px;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-      .badge-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-.badge-card {
-  background: #111;
-  border: 2px solid #0f0;
-  padding: 20px;
-  border-radius: 12px;
-  width: 220px;
-  text-align: center;
-  box-shadow: 0 0 10px #0f0;
-}
-.badge-card img {
-  width: 80px;
-  margin-bottom: 10px;
-}
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f2027;
-      color: white;
-      margin: 0;
-      padding: 40px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-    }
-    .badge {
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .badge:hover {
-      transform: scale(1.05);
-    }
-    .badge img {
-      width: 100px;
-      margin-bottom: 10px;
-    }
-    .badge h2 {
-      margin: 10px 0;
-      color: #00ffcc;
-    }
-    .badge p {
-      font-size: 14px;
-      color: #ccc;
-    }
-  </style>
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
+  <!-- 🔧 Меню -->
+  <div id="menuContainer"></div>
 
-  <h1>🏅 Галерея DAO-бейджів</h1>
+  <header>
+    <h1 id="pageTitle">🏅 Галерея DAO-бейджів</h1>
+    <p>CID: <strong id="cidDisplay">0xAGRO-XXXX</strong></p>
+    <p class="role-label" id="roleLabel">Ваша роль: Гість</p>
+    <p id="badgeStats">Бейджів: 0 · Рівень: Starter</p>
+  </header>
 
-  <div class="gallery">
-
-    <div class="badge">
-      <img src="../assets/badges/liquor_candy.svg" alt="Цукерочка з лікером" />
-      <h2>Цукерочка з лікером</h2>
-      <p>За проходження квесту “Солодкий вибір”. Символ етичного вибору.</p>
+  <!-- 🧠 Фільтри -->
+  <section>
+    <div class="filter-buttons">
+      <button onclick="filterBadges('all')">Всі</button>
+      <button onclick="filterBadges('guest')">Гості</button>
+      <button onclick="filterBadges('agent')">Агенти</button>
+      <button onclick="filterBadges('partner')">Партнери</button>
     </div>
+  </section>
 
-    <div class="badge">
-      <img src="../assets/badges/moon_botanist.svg" alt="Moon Botanist" />
-      <h2>Moon Botanist</h2>
-      <p>За реєстрацію через CID. Символ автономного росту.</p>
-    </div>
+  <!-- 🏅 Галерея -->
+  <section class="badge-grid" id="badgeGallery">
+    <!-- Бейджі вставляються динамічно -->
+  </section>
 
-    <div class="badge">
-      <img src="../assets/badges/agent_of_good.svg" alt="Agent of Good" />
-      <h2>Agent of Good</h2>
-      <p>За доброчинну дію без піару. Символ дії мовчки.</p>
-      <script>
-function filterBadges(role) {
-  const cards = document.querySelectorAll('.badge-card');
-  cards.forEach(card => {
-    if (role === 'all' || card.dataset.role === role) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
+  <!-- 🔧 Футер -->
+  <div id="footerContainer"></div>
+
+  <script>
+    // 🌐 Мультимовність
+    const lang = navigator.language.startsWith("pl") ? "pl" :
+                 navigator.language.startsWith("en") ? "en" : "uk";
+    const t = {
+      uk: {
+        title: "🏅 Галерея DAO-бейджів",
+        role: "Ваша роль",
+        stats: "Бейджів",
+        level: "Рівень"
+      },
+      pl: {
+        title: "🏅 Galeria odznak DAO",
+        role: "Twoja rola",
+        stats: "Odznak",
+        level: "Poziom"
+      },
+      en: {
+        title: "🏅 DAO Badge Gallery",
+        role: "Your role",
+        stats: "Badges",
+        level: "Level"
+      }
+    };
+    const tr = t[lang];
+    document.title = tr.title;
+    document.getElementById("pageTitle").textContent = tr.title;
+
+    // 🧠 CID-логіка
+    const cid = localStorage.getItem("cid") || "0xAGRO-GUEST";
+    document.getElementById("cidDisplay").textContent = cid;
+
+    let roleClass = "guest", roleName = "Гість";
+    if (cid.includes("AG")) { roleClass = "agent"; roleName = lang === "pl" ? "Agent" : lang === "en" ? "Agent" : "Агент"; }
+    else if (cid.includes("PA")) { roleClass = "partner"; roleName = lang === "pl" ? "Partner" : lang === "en" ? "Partner" : "Партнер"; }
+    else if (cid.includes("AN")) { roleClass = "analyst"; roleName = lang === "pl" ? "Analityk" : lang === "en" ? "Analyst" : "Аналітик"; }
+
+    document.body.classList.add(roleClass);
+    document.getElementById("roleLabel").textContent = `${tr.role}: ${roleName}`;
+
+    // 📊 Статистика
+    const badges = JSON.parse(localStorage.getItem("achievements") || "[]");
+    const level = localStorage.getItem("agentLevel") || "Starter";
+    document.getElementById("badgeStats").textContent = `${tr.stats}: ${badges.length} · ${tr.level}: ${level}`;
+
+    // 🏅 Галерея бейджів
+    const badgeGallery = document.getElementById("badgeGallery");
+    const badgeData = [
+      { id: "guest", title: "Гість DAO", img: "badges/guest.svg", desc: "Ознайомлення з платформою", role: "guest" },
+      { id: "agent", title: "Агент DAO", img: "badges/agent.svg", desc: "Доступ до голосування та квестів", role: "agent" },
+      { id: "partner", title: "Бізнес-Партнер", img: "badges/partner.svg", desc: "Керування студіями та сценаріями", role: "partner" },
+      { id: "liquor", title: "Цукерочка з лікером", img: "assets/badges/liquor_candy.svg", desc: "За квест “Солодкий вибір”", role: "agent" },
+      { id: "moon", title: "Moon Botanist", img: "assets/badges/moon_botanist.svg", desc: "За реєстрацію через CID", role: "guest" },
+      { id: "good", title: "Agent of Good", img: "assets/badges/agent_of_good.svg", desc: "За доброчинну дію без піару", role: "agent" }
+    ];
+
+    badgeData.forEach(badge => {
+      const card = document.createElement("div");
+      card.className = "badge-card";
+      card.setAttribute("data-role", badge.role);
+      card.innerHTML = `
+        <img src="${badge.img}" alt="${badge.title}" />
+        <h3>${badge.title}</h3>
+        <p>${badge.desc}</p>
+      `;
+      badgeGallery.appendChild(card);
+    });
+
+    // 🔍 Фільтр
+    function filterBadges(role) {
+      const cards = document.querySelectorAll(".badge-card");
+      cards.forEach(card => {
+        card.style.display = (role === "all" || card.dataset.role === role) ? "block" : "none";
+      });
     }
-  });
-}
-</script>
 
-    </div>
-   
-  </div>
+    // 📦 Вставка меню і футера
+    fetch("menu.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("menuContainer").innerHTML = html);
 
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("footerContainer").innerHTML = html);
+  </script>
 </body>
 </html>
