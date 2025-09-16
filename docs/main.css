@@ -105,3 +105,35 @@
   color: #eee;
   font-size: 14px;
 }
+/* 🔥 Пульсація логотипу */
+.dao-logo {
+  animation: pulse 2s infinite;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00ff99;
+  transition: transform 0.3s ease;
+}
+.dao-logo:hover {
+  transform: scale(1.05);
+}
+
+/* 🌄 Фон для ролей */
+body.agent {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #e0ffe0;
+}
+body.partner {
+  background: linear-gradient(to right, #1c1c1c, #434343);
+  color: #ffe0e0;
+}
+body.analyst {
+  background: linear-gradient(to right, #283e51, #485563);
+  color: #e0e0ff;
+}
+body.guest {
+  background: linear-gradient(to right, #232526, #414345);
+  color: #f0f0f0;
+}
