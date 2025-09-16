@@ -47,4 +47,15 @@
   } else if (lang.startsWith("en")) {
     document.getElementById("cidText").innerText = "CID: AG-SL-X7K9QZ-2025 (EN)";
   }
+  
+  window.addEventListener("DOMContentLoaded", () => {
+  const cid = localStorage.getItem("cid") || "0xAGRO-GUEST";
+  let roleClass = "guest";
+
+  if (cid.includes("AG")) roleClass = "agent";
+  else if (cid.includes("PA")) roleClass = "partner";
+  else if (cid.includes("AN")) roleClass = "analyst";
+
+  document.body.classList.add(roleClass);
+});
 </script>
