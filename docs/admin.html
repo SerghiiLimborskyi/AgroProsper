@@ -2,109 +2,94 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
+  <title>🛡 Кабінет адміністратора DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgroProsper Admin Panel</title>
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- DAO-модулі -->
-  <script src="public/directorBot.js" defer></script>
-  <script src="public/cloudSync.js" defer></script>
-  <script src="public/DAO-suite.js" defer></script>
-  <script src="terms-admin.js"></script>
-
-  <!-- CID-контроль -->
-  <script>
-    window.addEventListener("load", () => {
-      const cid = localStorage.getItem("cid");
-      if (!cid || cid !== "0xAGRO-7F3A") {
-        alert("⛔ Доступ лише для Бізнес-Партнера DAO.");
-        document.body.innerHTML = "<h1>🔐 Доступ заборонено</h1>";
-      } else {
-        console.log("✅ CID підтверджено:", cid);
-        cloudSync.syncAll();
-      }
-    });
-  </script>
-
-  <!-- Нічний режим -->
-  <style>
-    body.night {
-      background-image: url('admin-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #fff;
-    }
-    .dashboard button {
-      border: none;
-      padding: 10px 20px;
-      margin: 10px;
-      background-color: #111;
-      color: #0ff;
-      font-weight: bold;
-      box-shadow: 0 0 10px #0ff;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-    .dashboard button:hover {
-      transform: scale(1.05);
-    }
-    #syncLog, #botLog, #cidStats, #gameBadge, #quantumBox {
-      background: #111;
-      color: #0f0;
-      padding: 10px;
-      margin: 20px;
-      font-family: monospace;
-    }
-  </style>
+  <link rel="stylesheet" href="main.css" />
 </head>
-
 <body>
+  <!-- 🔧 Меню вставляється динамічно -->
+  <div id="menuContainer"></div>
+
   <header>
-    <h1>🌿 AgroProsper DAO — Адмін-панель</h1>
+    <h1 id="adminTitle">🛡 Кабінет адміністратора DAO</h1>
+    <p>CID: <strong id="cidDisplay">0xAGRO-XXXX</strong></p>
+    <p class="role-label" id="roleLabel">Ваша роль: Гість</p>
   </header>
 
-  <section class="dashboard">
-    <button onclick="runFullCycle()">🔄 Повний цикл</button>
-    <button onclick="openStats()">📊 Статистика</button>
-    <button onclick="openVideoManager()">🎥 Відео-контент</button>
-    <button onclick="openPartnerForm()">🤝 Партнери</button>
-    <button onclick="sendTelegramCommand()">📨 Команда боту</button>
-    <button onclick="generateReport()">📁 Звіт до податкової</button>
-    <button onclick="cloudSync.syncAll()">☁️ Синхронізувати DAO-файли</button>
-    <button onclick="directorBot.runScenario()">🎮 Запустити сценарій гри</button>
-    <button onclick="directorBot.suggestCleanup()">🧹 Перевірити пам’ять</button>
-    <button onclick="directorBot.lockFile('runtime-card.json')">🔐 Заблокувати runtime-card</button>
-    <button onclick="directorBot.syncFromCloud()">☁️ Синхронізувати з хмари</button>
+  <section>
+    <h2>📊 DAO Статистика</h2>
+    <ul>
+      <li>Кількість агентів: <span id="agentCount">—</span></li>
+      <li>Активні партнери: <span id="partnerCount">—</span></li>
+      <li>Синхронізовані файли: <span id="syncCount">—</span></li>
+    </ul>
   </section>
 
-  <div id="cidStats"></div>
-  <div id="gameBadge"></div>
-  <div id="quantumBox"></div>
-  <div id="botLog">📋 Лог дій бота-директора:</div>
-  <div id="syncLog">📋 Лог синхронізації DAO-файлів:</div>
-  <div id="adminLogTable" style="margin-top:40px;"></div>
-<script src="admin-logs.js"></script>
+  <section>
+    <h2>🧠 Дії адміністратора</h2>
+    <button onclick="syncDAO()">🔄 Синхронізувати DAO</button>
+    <button onclick="exportLog()">📥 Експортувати лог</button>
+    <button onclick="launchScenario()">🎮 Запустити сценарій гри</button>
+  </section>
 
-  <footer>
-    <p>© 2025 AgroProsper DAO. Всі права захищено.</p>
-  </footer>
+  <!-- 🔧 Футер вставляється динамічно -->
+  <div id="footerContainer"></div>
 
   <script>
-    const hour = new Date().getHours();
-    if (hour >= 20 || hour < 6) {
-      document.body.classList.add('night');
+    // 🔐 Перевірка ролі
+    const cid = localStorage.getItem("cid") || "0xAGRO-GUEST";
+    document.getElementById("cidDisplay").textContent = cid;
+
+    if (!cid.includes("AD")) {
+      alert("⛔ Доступ заборонено. Ви не адміністратор DAO.");
+      window.location.href = "index.html";
     }
 
-    function runFullCycle() {
-      fetch('/run/full')
-        .then(res => res.text())
-        .then(msg => {
-          document.getElementById('botLog').innerHTML += `🌀 Повний цикл: ${msg}<br>`;
-        })
-        .catch(err => {
-          document.getElementById('botLog').innerHTML += `❌ Помилка: ${err}<br>`;
-        });
+    // 🌐 Мультимовність
+    const lang = navigator.language.startsWith("pl") ? "pl" :
+                 navigator.language.startsWith("en") ? "en" : "uk";
+    const t = {
+      uk: {
+        title: "🛡 Кабінет адміністратора DAO",
+        role: "Ваша роль",
+        denied: "⛔ Доступ заборонено. Ви не адміністратор DAO."
+      },
+      pl: {
+        title: "🛡 Panel administratora DAO",
+        role: "Twoja rola",
+        denied: "⛔ Dostęp zabroniony. Nie jesteś administratorem DAO."
+      },
+      en: {
+        title: "🛡 DAO Admin Panel",
+        role: "Your role",
+        denied: "⛔ Access denied. You are not a DAO administrator."
+      }
+    };
+    document.getElementById("adminTitle").textContent = t[lang].title;
+    document.getElementById("roleLabel").textContent = `${t[lang].role}: Адміністратор`;
+
+    // 🎨 Фон
+    document.body.classList.add("admin");
+
+    // 📦 Вставка меню і футера
+    fetch("menu.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("menuContainer").innerHTML = html);
+
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("footerContainer").innerHTML = html);
+
+    // 🧠 Дії адміністратора (заглушки)
+    function syncDAO() {
+      alert("✅ DAO синхронізовано.");
+      document.getElementById("syncCount").textContent = "12";
+    }
+    function exportLog() {
+      alert("📥 Лог експортовано.");
+    }
+    function launchScenario() {
+      alert("🎮 Сценарій гри запущено.");
     }
   </script>
 </body>
