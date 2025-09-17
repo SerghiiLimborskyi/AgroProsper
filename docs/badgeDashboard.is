@@ -1,4 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const lang = navigator.language.startsWith("pl") ? "pl" :
+               navigator.language.startsWith("en") ? "en" : "uk";
+  const t = {
+    uk: { stats: "📊 Статистика", badges: "Бейджів", level: "Рівень", cid: "CID", sync: "🔄 Синхронізувати", export: "📤 Експортувати", role: "Роль", source: "Джерело", date: "Дата", view: "Переглянути на IPFS" },
+    pl: { stats: "📊 Statystyki", badges: "Odznak", level: "Poziom", cid: "CID", sync: "🔄 Synchronizuj", export: "📤 Eksportuj", role: "Rola", source: "Źródło", date: "Data", view: "Zobacz na IPFS" },
+    en: { stats: "📊 Stats", badges: "Badges", level: "Level", cid: "CID", sync: "🔄 Sync", export: "📤 Export", role: "Role", source: "Source", date: "Date", view: "View on IPFS" }
+  };
+  const tr = t[lang];
+
   const container = document.getElementById("badgeDashboard");
   if (!container) return;
 
@@ -9,85 +18,74 @@ document.addEventListener("DOMContentLoaded", () => {
   // 📊 Статистика
   const stats = document.createElement("div");
   stats.innerHTML = `
-    <h2>📊 Статистика</h2>
-    <p>Бейджів: ${achievements.length}</p>
-    <p>Рівень: ${level}</p>
-    <p>CID: ${cid}</p>
+    <h2>${tr.stats}</h2>
+    <p>${tr.badges}: ${achievements.length}</p>
+    <p>${tr.level}: ${level}</p>
+    <p>${tr.cid}: ${cid}</p>
   `;
   container.appendChild(stats);
 
-  // 🔄 Кнопка синхронізації
+  // 🔄 Синхронізація
   const syncBtn = document.createElement("button");
-  syncBtn.textContent = "🔄 Синхронізувати (локально)";
+  syncBtn.textContent = tr.sync;
   syncBtn.style = "margin:10px;padding:8px;background:#ccc;border:none;border-radius:6px;font-weight:bold;";
-  syncBtn.onclick = () => syncBadgesLocally(achievements);
+  syncBtn.onclick = () => {
+    let updated = false;
+    achievements.forEach(badge => {
+      if (!badge.cid) {
+        badge.cid = "bafkre" + Math.random().toString(36).substring(2, 12);
+        updated = true;
+      }
+    });
+    if (updated) {
+      localStorage.setItem("achievements", JSON.stringify(achievements));
+      alert("✅ Синхронізовано");
+      location.reload();
+    } else {
+      alert("ℹ️ CID вже присвоєно");
+    }
+  };
   container.appendChild(syncBtn);
 
-  // 📤 Кнопка експорту
+  // 📤 Експорт
   const exportBtn = document.createElement("button");
-  exportBtn.textContent = "📤 Експортувати CID-index.json";
+  exportBtn.textContent = tr.export + " CID-index.json";
   exportBtn.style = "margin:10px;padding:8px;background:#00ccff;border:none;border-radius:6px;font-weight:bold;";
-  exportBtn.onclick = () => exportCIDIndex(achievements);
+  exportBtn.onclick = () => {
+    const index = {};
+    achievements.forEach(badge => {
+      if (badge.cid) index[badge.cid] = badge.title;
+    });
+    const blob = new Blob([JSON.stringify(index, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "CID-index.json";
+    link.click();
+    URL.revokeObjectURL(url);
+  };
   container.appendChild(exportBtn);
 
-  // 👁️ Галерея бейджів
+  // 👁️ Галерея
   const gallery = document.createElement("section");
   gallery.className = "badge-grid";
 
   achievements.forEach(badge => {
+    const validCID = badge.cid && badge.cid.startsWith("baf");
     const card = document.createElement("div");
     card.className = "badge-card";
-
-    const validCID = badge.cid && badge.cid.startsWith("baf");
-
     card.innerHTML = `
       <img src="${badge.img}" alt="${badge.title}" />
       <h3>${badge.title}</h3>
       <p>${badge.desc}</p>
-      <p>🕒 ${badge.date || "—"}</p>
-      <p>🎯 Роль: ${badge.role || "guest"}</p>
-      <p>📡 Джерело: ${badge.source || "DAO"}</p>
-      <p>🧬 CID: ${validCID ? badge.cid : "—"}</p>
-      ${validCID ? `<small><a href="https://ipfs.io/ipfs/${badge.cid}" target="_blank">🔗 IPFS</a></small>` : ""}
+      <p>🕒 ${tr.date}: ${badge.date || "—"}</p>
+      <p>🎯 ${tr.role}: ${badge.role || "guest"}</p>
+      <p>📡 ${tr.source}: ${badge.source || "DAO"}</p>
+      <p>🧬 ${tr.cid}: ${validCID ? badge.cid : "—"}</p>
+      ${validCID ? `<small><a href="https://ipfs.io/ipfs/${badge.cid}" target="_blank">🔗 ${tr.view}</a></small>` : ""}
     `;
     gallery.appendChild(card);
   });
 
   container.appendChild(gallery);
 });
-
-// 🔄 Локальна синхронізація
-function syncBadgesLocally(badges) {
-  let updated = false;
-  badges.forEach(badge => {
-    if (!badge.cid) {
-      badge.cid = "bafkre" + Math.random().toString(36).substring(2, 12);
-      updated = true;
-    }
-  });
-  if (updated) {
-    localStorage.setItem("achievements", JSON.stringify(badges));
-    alert("✅ Синхронізовано локально");
-    location.reload();
-  } else {
-    alert("ℹ️ Усі бейджі вже мають CID");
-  }
-}
-
-// 📤 Експорт у CID-index.json
-function exportCIDIndex(badges) {
-  const index = {};
-  badges.forEach(badge => {
-    if (badge.cid) index[badge.cid] = badge.title;
-  });
-
-  const blob = new Blob([JSON.stringify(index, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "CID-index.json";
-  link.click();
-
-  URL.revokeObjectURL(url);
-}
