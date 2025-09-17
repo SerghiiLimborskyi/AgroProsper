@@ -5,6 +5,7 @@
   <title>🏅 Галерея бейджів — AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="main.css" />
+  <script src="scripts/badgeViewer.js" defer></script>
 </head>
 <body>
   <!-- 🔧 Меню -->
@@ -26,7 +27,9 @@
       <button onclick="filterBadges('partner')">Партнери</button>
     </div>
   </section>
-
+  
+<section id="badgeContainer" class="badge-grid"></section>
+  
   <!-- 🏅 Галерея -->
   <section class="badge-grid" id="badgeGallery"></section>
 
