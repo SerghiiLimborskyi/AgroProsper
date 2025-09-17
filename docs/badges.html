@@ -28,9 +28,7 @@
   </section>
 
   <!-- 🏅 Галерея -->
-  <section class="badge-grid" id="badgeGallery">
-    <!-- Бейджі вставляються динамічно -->
-  </section>
+  <section class="badge-grid" id="badgeGallery"></section>
 
   <!-- 🔧 Футер -->
   <div id="footerContainer"></div>
@@ -40,24 +38,9 @@
     const lang = navigator.language.startsWith("pl") ? "pl" :
                  navigator.language.startsWith("en") ? "en" : "uk";
     const t = {
-      uk: {
-        title: "🏅 Галерея DAO-бейджів",
-        role: "Ваша роль",
-        stats: "Бейджів",
-        level: "Рівень"
-      },
-      pl: {
-        title: "🏅 Galeria odznak DAO",
-        role: "Twoja rola",
-        stats: "Odznak",
-        level: "Poziom"
-      },
-      en: {
-        title: "🏅 DAO Badge Gallery",
-        role: "Your role",
-        stats: "Badges",
-        level: "Level"
-      }
+      uk: { title: "🏅 Галерея DAO-бейджів", role: "Ваша роль", stats: "Бейджів", level: "Рівень" },
+      pl: { title: "🏅 Galeria odznak DAO", role: "Twoja rola", stats: "Odznak", level: "Poziom" },
+      en: { title: "🏅 DAO Badge Gallery", role: "Your role", stats: "Badges", level: "Level" }
     };
     const tr = t[lang];
     document.title = tr.title;
@@ -76,29 +59,21 @@
     document.getElementById("roleLabel").textContent = `${tr.role}: ${roleName}`;
 
     // 📊 Статистика
-    const badges = JSON.parse(localStorage.getItem("achievements") || "[]");
+    const achievements = JSON.parse(localStorage.getItem("achievements") || "[]");
     const level = localStorage.getItem("agentLevel") || "Starter";
-    document.getElementById("badgeStats").textContent = `${tr.stats}: ${badges.length} · ${tr.level}: ${level}`;
+    document.getElementById("badgeStats").textContent = `${tr.stats}: ${achievements.length} · ${tr.level}: ${level}`;
 
     // 🏅 Галерея бейджів
     const badgeGallery = document.getElementById("badgeGallery");
-    const badgeData = [
-      { id: "guest", title: "Гість DAO", img: "badges/guest.svg", desc: "Ознайомлення з платформою", role: "guest" },
-      { id: "agent", title: "Агент DAO", img: "badges/agent.svg", desc: "Доступ до голосування та квестів", role: "agent" },
-      { id: "partner", title: "Бізнес-Партнер", img: "badges/partner.svg", desc: "Керування студіями та сценаріями", role: "partner" },
-      { id: "liquor", title: "Цукерочка з лікером", img: "assets/badges/liquor_candy.svg", desc: "За квест “Солодкий вибір”", role: "agent" },
-      { id: "moon", title: "Moon Botanist", img: "assets/badges/moon_botanist.svg", desc: "За реєстрацію через CID", role: "guest" },
-      { id: "good", title: "Agent of Good", img: "assets/badges/agent_of_good.svg", desc: "За доброчинну дію без піару", role: "agent" }
-    ];
-
-    badgeData.forEach(badge => {
+    achievements.forEach(badge => {
       const card = document.createElement("div");
       card.className = "badge-card";
-      card.setAttribute("data-role", badge.role);
+      card.setAttribute("data-role", badge.role || "guest");
       card.innerHTML = `
         <img src="${badge.img}" alt="${badge.title}" />
         <h3>${badge.title}</h3>
         <p>${badge.desc}</p>
+        ${badge.cid ? `<small>🔗 <a href="https://ipfs.io/ipfs/${badge.cid}" target="_blank">IPFS</a></small>` : ""}
       `;
       badgeGallery.appendChild(card);
     });
@@ -108,9 +83,6 @@
       const cards = document.querySelectorAll(".badge-card");
       cards.forEach(card => {
         card.style.display = (role === "all" || card.dataset.role === role) ? "block" : "none";
-        if (badge.cid) {
-  card.innerHTML += `<small>🔗 <a href="https://ipfs.io/ipfs/${badge.cid}" target="_blank">IPFS</a></small>`;
-}
       });
     }
 
@@ -122,7 +94,9 @@
     fetch("footer.html")
       .then(res => res.text())
       .then(html => document.getElementById("footerContainer").innerHTML = html);
-      <script src="scripts/badgeSync.js" defer></script>
   </script>
+
+  <!-- 🔄 Синхронізація -->
+  <script src="scripts/badgeSync.js" defer></script>
 </body>
 </html>
