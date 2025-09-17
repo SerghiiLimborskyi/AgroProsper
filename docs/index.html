@@ -2,129 +2,44 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>AgroProsper V7.1 — DAO з душею</title>
+  <title>AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-  <!-- 🔧 Меню -->
   <div id="menuContainer"></div>
 
+  <header>
+    <img src="logo.svg" alt="AgroProsper Logo" class="logo" />
+    <h1 id="pageTitle">🌾 AgroProsper DAO</h1>
+    <p id="welcomeText">Вітаємо в автономній системі для агробізнесу</p>
+
+    <label for="lang">🌐 Мова:</label>
+    <select id="lang">
+      <option value="uk">Українська</option>
+      <option value="en">English</option>
+      <option value="pl">Polski</option>
+    </select>
+
+    <label for="theme">🎨 Тема:</label>
+    <select id="theme">
+      <option value="system">Системна</option>
+      <option value="light">Світла</option>
+      <option value="dark">Темна</option>
+    </select>
+  </header>
+
   <main>
-    <h1 id="mainTitle">AgroProsper V7.1 — DAO з душею</h1>
-    <p class="slogan" id="sloganText">Жива автономна система для етичного агробізнесу</p>
-
-    <!-- 🎬 Відео -->
-    <video controls width="100%" poster="assets/video-cover.jpg">
-      <source src="assets/agroprosper-v7.mp4" type="video/mp4" />
-      Ваш браузер не підтримує відео.
-    </video>
-
-    <!-- 🧠 CID-модуль -->
     <section>
-      <h2>🧠 CID-модуль</h2>
-      <p id="cidLabel">Введіть свій DAO-паспорт для активації ролі</p>
-      <input type="text" placeholder="CID..." id="cidInput" />
-      <button id="activateBtn">Активувати</button>
-      <p id="roleLabel">Ваша роль: Гість</p>
-    </section>
-
-    <!-- 🏅 NFT-бейдж -->
-    <section>
-      <h2>🏅 NFT-бейдж “Супер Партнер”</h2>
-      <img src="assets/nft-super-partner.png" alt="NFT-бейдж" width="120" />
-      <p id="badgeText">Ваша роль підтверджена. DAO вас вітає!</p>
-    </section>
-
-    <!-- 🧩 DAO-квест -->
-    <section>
-      <h2>🧩 DAO-квест: “Пульс довіри”</h2>
-      <p id="questText">Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?</p>
-      <button id="choice1">✅ Підтримати його вибір</button>
-      <button id="choice2">💰 Переконати продати дорожче</button>
+      <p>🧠 Введіть DAO-паспорт для активації ролі:</p>
+      <input type="text" id="cidInput" placeholder="0xAGRO-XXXX" />
+      <button onclick="activateCID()">Активувати</button>
     </section>
   </main>
 
-  <!-- 🔧 Футер -->
   <div id="footerContainer"></div>
 
-  <script>
-    // 🌐 Мультимовність
-    const lang = navigator.language.startsWith("pl") ? "pl" :
-                 navigator.language.startsWith("en") ? "en" : "uk";
-    const t = {
-      uk: {
-        title: "AgroProsper V7.1 — DAO з душею",
-        slogan: "Жива автономна система для етичного агробізнесу",
-        cidLabel: "Введіть свій DAO-паспорт для активації ролі",
-        activate: "Активувати",
-        badge: "Ваша роль підтверджена. DAO вас вітає!",
-        quest: "Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?",
-        choice1: "✅ Підтримати його вибір",
-        choice2: "💰 Переконати продати дорожче",
-        role: "Ваша роль"
-      },
-      pl: {
-        title: "AgroProsper V7.1 — DAO z duszą",
-        slogan: "Autonomiczny system dla etycznego rolnictwa",
-        cidLabel: "Wprowadź swój paszport DAO, aby aktywować rolę",
-        activate: "Aktywuj",
-        badge: "Twoja rola została potwierdzona. DAO Cię wita!",
-        quest: "Rolnik chce sprzedać plony taniej, by pomóc społeczności. Co wybierzesz?",
-        choice1: "✅ Wspieraj jego wybór",
-        choice2: "💰 Przekonaj go do wyższej ceny",
-        role: "Twoja rola"
-      },
-      en: {
-        title: "AgroProsper V7.1 — DAO with soul",
-        slogan: "Autonomous system for ethical agriculture",
-        cidLabel: "Enter your DAO passport to activate your role",
-        activate: "Activate",
-        badge: "Your role is confirmed. DAO welcomes you!",
-        quest: "Farmer wants to sell crops cheaper to help the community. What will you choose?",
-        choice1: "✅ Support their choice",
-        choice2: "💰 Convince to sell higher",
-        role: "Your role"
-      }
-    };
-    const tr = t[lang];
-    document.title = tr.title;
-    document.getElementById("mainTitle").textContent = tr.title;
-    document.getElementById("sloganText").textContent = tr.slogan;
-    document.getElementById("cidLabel").textContent = tr.cidLabel;
-    document.getElementById("activateBtn").textContent = tr.activate;
-    document.getElementById("badgeText").textContent = tr.badge;
-    document.getElementById("questText").textContent = tr.quest;
-    document.getElementById("choice1").textContent = tr.choice1;
-    document.getElementById("choice2").textContent = tr.choice2;
-
-    // 🧠 CID-логіка
-    function activateCID() {
-      const cid = document.getElementById("cidInput").value.trim();
-      if (!cid) return alert("❗ Введіть CID");
-
-      localStorage.setItem("cid", cid);
-      let roleClass = "guest", roleName = "Гість";
-
-      if (cid.includes("AG")) { roleClass = "agent"; roleName = lang === "pl" ? "Agent" : lang === "en" ? "Agent" : "Агент"; }
-      else if (cid.includes("PA")) { roleClass = "partner"; roleName = lang === "pl" ? "Partner" : lang === "en" ? "Partner" : "Партнер"; }
-      else if (cid.includes("AN")) { roleClass = "analyst"; roleName = lang === "pl" ? "Analityk" : lang === "en" ? "Analyst" : "Аналітик"; }
-
-      document.body.className = roleClass;
-      document.getElementById("roleLabel").textContent = `${tr.role}: ${roleName}`;
-    }
-
-    document.getElementById("activateBtn").addEventListener("click", activateCID);
-
-    // 📦 Вставка меню і футера
-    fetch("menu.html")
-      .then(res => res.text())
-      .then(html => document.getElementById("menuContainer").innerHTML = html);
-
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(html => document.getElementById("footerContainer").innerHTML = html);
-  </script>
+  <script src="scripts/lang.js" defer></script>
+  <script src="scripts/menu.js" defer></script>
 </body>
 </html>
