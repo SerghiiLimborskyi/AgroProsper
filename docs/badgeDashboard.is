@@ -1,0 +1,93 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("badgeDashboard");
+  if (!container) return;
+
+  const achievements = JSON.parse(localStorage.getItem("achievements") || "[]");
+  const level = localStorage.getItem("agentLevel") || "Starter";
+  const cid = localStorage.getItem("cid") || "0xAGRO-GUEST";
+
+  // 📊 Статистика
+  const stats = document.createElement("div");
+  stats.innerHTML = `
+    <h2>📊 Статистика</h2>
+    <p>Бейджів: ${achievements.length}</p>
+    <p>Рівень: ${level}</p>
+    <p>CID: ${cid}</p>
+  `;
+  container.appendChild(stats);
+
+  // 🔄 Кнопка синхронізації
+  const syncBtn = document.createElement("button");
+  syncBtn.textContent = "🔄 Синхронізувати (локально)";
+  syncBtn.style = "margin:10px;padding:8px;background:#ccc;border:none;border-radius:6px;font-weight:bold;";
+  syncBtn.onclick = () => syncBadgesLocally(achievements);
+  container.appendChild(syncBtn);
+
+  // 📤 Кнопка експорту
+  const exportBtn = document.createElement("button");
+  exportBtn.textContent = "📤 Експортувати CID-index.json";
+  exportBtn.style = "margin:10px;padding:8px;background:#00ccff;border:none;border-radius:6px;font-weight:bold;";
+  exportBtn.onclick = () => exportCIDIndex(achievements);
+  container.appendChild(exportBtn);
+
+  // 👁️ Галерея бейджів
+  const gallery = document.createElement("section");
+  gallery.className = "badge-grid";
+
+  achievements.forEach(badge => {
+    const card = document.createElement("div");
+    card.className = "badge-card";
+
+    const validCID = badge.cid && badge.cid.startsWith("baf");
+
+    card.innerHTML = `
+      <img src="${badge.img}" alt="${badge.title}" />
+      <h3>${badge.title}</h3>
+      <p>${badge.desc}</p>
+      <p>🕒 ${badge.date || "—"}</p>
+      <p>🎯 Роль: ${badge.role || "guest"}</p>
+      <p>📡 Джерело: ${badge.source || "DAO"}</p>
+      <p>🧬 CID: ${validCID ? badge.cid : "—"}</p>
+      ${validCID ? `<small><a href="https://ipfs.io/ipfs/${badge.cid}" target="_blank">🔗 IPFS</a></small>` : ""}
+    `;
+    gallery.appendChild(card);
+  });
+
+  container.appendChild(gallery);
+});
+
+// 🔄 Локальна синхронізація
+function syncBadgesLocally(badges) {
+  let updated = false;
+  badges.forEach(badge => {
+    if (!badge.cid) {
+      badge.cid = "bafkre" + Math.random().toString(36).substring(2, 12);
+      updated = true;
+    }
+  });
+  if (updated) {
+    localStorage.setItem("achievements", JSON.stringify(badges));
+    alert("✅ Синхронізовано локально");
+    location.reload();
+  } else {
+    alert("ℹ️ Усі бейджі вже мають CID");
+  }
+}
+
+// 📤 Експорт у CID-index.json
+function exportCIDIndex(badges) {
+  const index = {};
+  badges.forEach(badge => {
+    if (badge.cid) index[badge.cid] = badge.title;
+  });
+
+  const blob = new Blob([JSON.stringify(index, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "CID-index.json";
+  link.click();
+
+  URL.revokeObjectURL(url);
+}
