@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🏅 DAO Dashboard — AgroProsper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="main.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: url("background.jpg") center/cover no-repeat fixed;
+      color: #fff;
+    }
+    .theme-light { background-color: #f5f5f5; color: #222; }
+    .theme-dark { background-color: #111; color: #eee; }
+    .badge-card {
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    }
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      padding: 20px;
+    }
+    header, footer {
+      text-align: center;
+      padding: 20px;
+    }
+    select, button {
+      margin: 8px;
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- 📦 Меню -->
+  <div id="menuContainer"></div>
+
+  <header>
+    <h1 id="pageTitle">🏅 DAO Dashboard</h1>
+    <label for="lang">🌐 Мова / Language:</label>
+    <select id="lang">
+      <option value="uk">Українська</option>
+      <option value="en">English</option>
+      <option value="pl">Polski</option>
+    </select>
+
+    <label for="theme">🎨 Тема:</label>
+    <select id="theme">
+      <option value="system">Системна</option>
+      <option value="light">Світла</option>
+      <option value="dark">Темна</option>
+    </select>
+  </header>
+
+  <!-- 🧬 DAO Dashboard -->
+  <section id="badgeDashboard"></section>
+
+  <!-- 📦 Футер -->
+  <div id="footerContainer"></div>
+
+  <script>
+    // 🌐 Мова
+    const translations = {
+      uk: { title: "🏅 DAO Панель", lang: "Мова", theme: "Тема" },
+      en: { title: "🏅 DAO Dashboard", lang: "Language", theme: "Theme" },
+      pl: { title: "🏅 Panel DAO", lang: "Język", theme: "Motyw" }
+    };
+    function applyLanguage(lang) {
+      localStorage.setItem("preferredLang", lang);
+      document.documentElement.lang = lang;
+      document.getElementById("pageTitle").textContent = translations[lang].title;
+    }
+    document.getElementById("lang").onchange = e => applyLanguage(e.target.value);
+    applyLanguage(localStorage.getItem("preferredLang") || "uk");
+    document.getElementById("lang").value = localStorage.getItem("preferredLang") || "uk";
+
+    // 🎨 Тема
+    function applyTheme(theme) {
+      localStorage.setItem("preferredTheme", theme);
+      document.body.classList.remove("theme-light", "theme-dark");
+      if (theme === "light") document.body.classList.add("theme-light");
+      else if (theme === "dark") document.body.classList.add("theme-dark");
+    }
+    document.getElementById("theme").onchange = e => applyTheme(e.target.value);
+    applyTheme(localStorage.getItem("preferredTheme") || "system");
+    document.getElementById("theme").value = localStorage.getItem("preferredTheme") || "system";
+
+    // 📦 Меню / Футер
+    fetch("menu.html").then(res => res.text()).then(html => {
+      document.getElementById("menuContainer").innerHTML = html;
+    });
+    fetch("footer.html").then(res => res.text()).then(html => {
+      document.getElementById("footerContainer").innerHTML = html;
+    });
+  </script>
+
+  <!-- 🧠 DAO Dashboard -->
+  <script src="scripts/badgeDashboard.js" defer></script>
+</body>
+</html>
