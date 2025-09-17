@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📊 Аналітик DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body class="analyst">
+  <div id="menuContainer"></div>
+
+  <main>
+    <h1>📊 Аналітична панель DAO</h1>
+    <p>Завантаження даних...</p>
+  </main>
+
+  <div id="footerContainer"></div>
+
+  <script src="scripts/menu.js" defer></script>
+  <script type="module">
+    import { initAnalystMode } from "./games/analystEngine.js";
+    document.addEventListener("DOMContentLoaded", () => {
+      initAnalystMode();
+    });
+  </script>
+</body>
+</html>
