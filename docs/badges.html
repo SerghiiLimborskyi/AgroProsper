@@ -108,6 +108,9 @@
       const cards = document.querySelectorAll(".badge-card");
       cards.forEach(card => {
         card.style.display = (role === "all" || card.dataset.role === role) ? "block" : "none";
+        if (badge.cid) {
+  card.innerHTML += `<small>🔗 <a href="https://ipfs.io/ipfs/${badge.cid}" target="_blank">IPFS</a></small>`;
+}
       });
     }
 
