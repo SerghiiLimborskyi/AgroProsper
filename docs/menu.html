@@ -1,61 +1,11 @@
-<!-- 🔧 MENU.HTML — AgroProsper DAO -->
-<div class="menu-container">
-  <!-- 🔥 Логотип з пульсацією -->
-  <img src="assets/logo-agroprosper.png" alt="AgroProsper DAO Logo" class="dao-logo" />
-
-  <!-- 🌐 CID-блок -->
-  <div class="cid">
-    <img src="assets/avatar.png" alt="CID Avatar" class="cid-avatar" />
-    <span id="cidText">CID: AG-SL-X7K9QZ-2025</span>
-  </div>
-
-  <!-- ☰ Кнопка розгортання меню -->
-  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
-  <!-- 📋 Меню -->
-  <nav class="menu-links" id="menuLinks">
-    <a href="index.html">🏠 Головна</a>
-    <a href="about.html">📖 Про нас</a>
-    <a href="agent.html">🧠 Панель агента</a>
-    <a href="admin.html" id="adminLink" style="display:none;">🛡 Кабінет адміністратора</a>
-    <a href="quest.html">🎮 Квести</a>
-    <a href="video.html">🎬 Відео</a>
-    <a href="forecast.html">🌦 Прогнози</a>
-    <a href="business.html">🤝 Бізнес</a>
-    <a href="DAO-suite.html">🧪 DAO Suite</a>
-    <a href="support.html">🛠 Підтримка</a>
-  </nav>
-</div>
-
-<!-- 🔧 JS-логіка -->
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("menuLinks");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
-
-  // 🧠 CID-логіка ролей
-  const cid = "0xAGRO-AD"; // приклад CID
-  if (cid === "0xAGRO-AD") {
-    document.getElementById("adminLink").style.display = "inline-block";
-  }
-
-  // 🌐 Мультимовність
-  const lang = navigator.language || navigator.userLanguage;
-  if (lang.startsWith("pl")) {
-    document.getElementById("cidText").innerText = "CID: AG-SL-X7K9QZ-2025 (PL)";
-  } else if (lang.startsWith("en")) {
-    document.getElementById("cidText").innerText = "CID: AG-SL-X7K9QZ-2025 (EN)";
-  }
-  
-  window.addEventListener("DOMContentLoaded", () => {
-  const cid = localStorage.getItem("cid") || "0xAGRO-GUEST";
-  let roleClass = "guest";
-
-  if (cid.includes("AG")) roleClass = "agent";
-  else if (cid.includes("PA")) roleClass = "partner";
-  else if (cid.includes("AN")) roleClass = "analyst";
-
-  document.body.classList.add(roleClass);
-});
-</script>
+<nav class="dao-menu">
+  <img src="logo.svg" alt="Logo" class="logo pulse" />
+  <ul>
+    <li><a href="index.html">Головна</a></li>
+    <li><a href="badgeDashboard.html">Бейджі</a></li>
+    <li><a href="agent.html">Агент</a></li>
+    <li><a href="partner.html">Партнер</a></li>
+    <li><a href="studio.html">Студія</a></li>
+    <li><a href="quest.html">Квести</a></li>
+  </ul>
+</nav>
