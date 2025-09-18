@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>AgroProsper Promo</title>
+  <link rel="stylesheet" href="main.css" />
+  <script src="AgroPromoEngine.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>🌾 AgroProsper DAO</h1>
+    <p>Зареєструйся — і AgroProsper обов’язково знайде можливість фінансової підтримки.</p>
+  </header>
+
+  <section class="promo-section">
+    <video controls autoplay muted loop width="100%" style="max-width: 720px;">
+      <source src="promo-video.mp4" type="video/mp4" />
+      Ваш браузер не підтримує відео.
+    </video>
+
+    <div class="registration-block">
+      <h2>🔐 Реєстрація</h2>
+      <input type="email" id="emailInput" placeholder="Введіть email" />
+      <button onclick="registerUser()">Зареєструватись</button>
+    </div>
+
+    <div id="promoResult" class="promo-output"></div>
+  </section>
+
+  <script>
+    function registerUser() {
+      const email = document.getElementById("emailInput").value;
+      if (email.trim() === "") {
+        alert("Введіть email для реєстрації.");
+        return;
+      }
+      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userCID", "0xAGRO-PA"); // або інший CID
+      location.reload(); // перезапуск для активації логіки
+    }
+  </script>
+</body>
+</html>
