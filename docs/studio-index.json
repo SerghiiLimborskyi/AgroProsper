@@ -1,0 +1,52 @@
+{
+  "videos": [
+    {
+      "id": "director-ua",
+      "title": "🎙️ Звернення директора",
+      "lang": "uk",
+      "role": "any",
+      "type": "intro",
+      "url": "https://www.youtube.com/watch?v=UA_DirectorDAO"
+    },
+    {
+      "id": "director-pl",
+      "title": "🎙️ Przemówienie dyrektora",
+      "lang": "pl",
+      "role": "any",
+      "type": "intro",
+      "url": "https://www.youtube.com/watch?v=PL_DirectorDAO"
+    },
+    {
+      "id": "director-en",
+      "title": "🎙️ Director's Address",
+      "lang": "en",
+      "role": "any",
+      "type": "intro",
+      "url": "https://www.youtube.com/watch?v=EN_DirectorDAO"
+    },
+    {
+      "id": "quest-pulse-ua",
+      "title": "🧩 DAO-квест: Пульс довіри",
+      "lang": "uk",
+      "role": "guest",
+      "type": "quest",
+      "url": "https://www.youtube.com/watch?v=UA_QuestPulse"
+    },
+    {
+      "id": "partner-promo-en",
+      "title": "🎬 Partner Promo",
+      "lang": "en",
+      "role": "partner",
+      "type": "promo",
+      "url": "https://www.youtube.com/watch?v=EN_PartnerPromo"
+    },
+    {
+      "id": "agent-insight-pl",
+      "title": "📊 Panel Agenta",
+      "lang": "pl",
+      "role": "agent",
+      "type": "dashboard",
+      "url": "https://www.youtube.com/watch?v=PL_AgentPanel"
+    }
+  ]
+}
