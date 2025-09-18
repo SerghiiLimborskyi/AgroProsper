@@ -2,40 +2,145 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🎬 DAO Студія · AgroProsper</title>
   <link rel="stylesheet" href="styles/main.css" />
   <style>
-    main { padding: 40px 20px; max-width: 900px; margin: auto; }
-    h1 { font-size: 28px; color: #00ff99; margin-bottom: 20px; }
-    .studio-block { background: #f9fdf9; padding: 2em; border-left: 4px solid #4caf50; margin-top: 2em; }
-    .cta-button { padding: 0.8em 1.5em; background: #4caf50; color: white; border: none; cursor: pointer; margin-top: 1em; }
+    body {
+      font-family: sans-serif;
+      background: #fefefe;
+      margin: 0;
+      padding: 0;
+    }
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 28px;
+      color: #00aa88;
+      margin-bottom: 20px;
+    }
+    .studio-block {
+      background: #f9fdf9;
+      padding: 2em;
+      border-left: 4px solid #4caf50;
+      margin-top: 2em;
+    }
+    .cta-button {
+      padding: 0.8em 1.5em;
+      background: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 1em;
+      font-size: 1em;
+    }
+    @media screen and (max-width: 600px) {
+      main {
+        padding: 20px 10px;
+      }
+      .studio-block {
+        padding: 1em;
+        font-size: 0.95em;
+      }
+      .cta-button {
+        width: 100%;
+        font-size: 1em;
+      }
+    }
   </style>
+  <script>
+    const lang = navigator.language.startsWith("pl") ? "pl"
+               : navigator.language.startsWith("en") ? "en"
+               : "uk";
+
+    const t = {
+      uk: {
+        title: "🎬 DAO Студія",
+        director: "🎙️ Звернення директора",
+        slogan: "🌾 AgroProsper — не просто DAO. Це дія, яка підтримує.",
+        join: "🔐 Долучитись до дії",
+        manifest: "📜 Маніфест платформи",
+        manifestText: "Ми не продаємо токени. Ми не заманюємо рефералками. Ми діємо — через етику, підтримку і довіру.",
+        quest: "🧩 DAO-квест: Пульс довіри",
+        questText: "Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?",
+        option1: "✅ Підтримати його вибір",
+        option2: "💰 Переконати продати дорожче",
+        videoAlt: "Ваш браузер не підтримує відео."
+      },
+      pl: {
+        title: "🎬 Studio DAO",
+        director: "🎙️ Przemówienie dyrektora",
+        slogan: "🌾 AgroProsper — to nie tylko DAO. To działanie, które wspiera.",
+        join: "🔐 Dołącz do działania",
+        manifest: "📜 Manifest platformy",
+        manifestText: "Nie sprzedajemy tokenów. Nie kusimy poleceniami. Działamy — przez etykę, wsparcie i zaufanie.",
+        quest: "🧩 DAO-quest: Puls zaufania",
+        questText: "Rolnik chce sprzedać plony taniej, by pomóc społeczności. Co wybierasz?",
+        option1: "✅ Wspieram jego decyzję",
+        option2: "💰 Namawiam na wyższą cenę",
+        videoAlt: "Twoja przeglądarka nie obsługuje wideo."
+      },
+      en: {
+        title: "🎬 DAO Studio",
+        director: "🎙️ Director's Address",
+        slogan: "🌾 AgroProsper is not just a DAO. It’s action that supports.",
+        join: "🔐 Join the action",
+        manifest: "📜 Platform Manifesto",
+        manifestText: "We don’t sell tokens. We don’t lure with referrals. We act — through ethics, support, and trust.",
+        quest: "🧩 DAO Quest: Pulse of Trust",
+        questText: "A farmer wants to sell the harvest cheaper to help the community. What do you choose?",
+        option1: "✅ Support the choice",
+        option2: "💰 Persuade to sell higher",
+        videoAlt: "Your browser does not support video."
+      }
+    };
+
+    const tr = t[lang];
+    document.documentElement.lang = lang;
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("studioTitle").textContent = tr.title;
+      document.getElementById("directorTitle").textContent = tr.director;
+      document.getElementById("studioSlogan").textContent = tr.slogan;
+      document.getElementById("ctaButton").textContent = tr.join;
+      document.getElementById("manifestTitle").textContent = tr.manifest;
+      document.getElementById("manifestText").textContent = tr.manifestText;
+      document.getElementById("questTitle").textContent = tr.quest;
+      document.getElementById("questText").textContent = tr.questText;
+      document.getElementById("option1").textContent = tr.option1;
+      document.getElementById("option2").textContent = tr.option2;
+      document.getElementById("videoAlt").textContent = tr.videoAlt;
+    });
+  </script>
 </head>
 <body>
   <main>
-    <h1>🎬 DAO Студія</h1>
+    <h1 id="studioTitle">🎬 DAO Студія</h1>
 
     <section class="studio-block">
-      <h2>🎙️ Звернення директора</h2>
+      <h2 id="directorTitle">🎙️ Звернення директора</h2>
       <video controls autoplay muted loop width="100%" style="max-width: 720px;">
         <source src="promo-video.mp4" type="video/mp4" />
-        Ваш браузер не підтримує відео.
+        <p id="videoAlt">Ваш браузер не підтримує відео.</p>
       </video>
-      <p><strong>🌾 AgroProsper — не просто DAO. Це дія, яка підтримує.</strong></p>
-      <button onclick="location.href='promo.html'" class="cta-button">🔐 Долучитись до дії</button>
+      <p id="studioSlogan"><strong>🌾 AgroProsper — не просто DAO. Це дія, яка підтримує.</strong></p>
+      <button id="ctaButton" onclick="location.href='promo.html'" class="cta-button">🔐 Долучитись до дії</button>
     </section>
 
     <section class="studio-block">
-      <h3>📜 Маніфест платформи</h3>
-      <p>Ми не продаємо токени. Ми не заманюємо рефералками. Ми діємо — через етику, підтримку і довіру.</p>
+      <h3 id="manifestTitle">📜 Маніфест платформи</h3>
+      <p id="manifestText">Ми не продаємо токени. Ми не заманюємо рефералками. Ми діємо — через етику, підтримку і довіру.</p>
     </section>
 
     <section class="studio-block">
-      <h3>🧩 DAO-квест: Пульс довіри</h3>
-      <p>Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?</p>
+      <h3 id="questTitle">🧩 DAO-квест: Пульс довіри</h3>
+      <p id="questText">Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?</p>
       <ul>
-        <li>✅ Підтримати його вибір</li>
-        <li>💰 Переконати продати дорожче</li>
+        <li id="option1">✅ Підтримати його вибір</li>
+        <li id="option2">💰 Переконати продати дорожче</li>
       </ul>
     </section>
   </main>
