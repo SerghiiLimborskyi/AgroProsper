@@ -2,65 +2,42 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎨 DAO Студія</title>
+  <title>🎬 DAO Студія · AgroProsper</title>
   <link rel="stylesheet" href="styles/main.css" />
   <style>
-    main {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    h1 {
-      font-size: 28px;
-      color: #00ff99;
-      margin-bottom: 20px;
-    }
-    .studio-loader {
-      font-size: 16px;
-      color: #ccc;
-      text-align: center;
-      margin-top: 40px;
-    }
+    main { padding: 40px 20px; max-width: 900px; margin: auto; }
+    h1 { font-size: 28px; color: #00ff99; margin-bottom: 20px; }
+    .studio-block { background: #f9fdf9; padding: 2em; border-left: 4px solid #4caf50; margin-top: 2em; }
+    .cta-button { padding: 0.8em 1.5em; background: #4caf50; color: white; border: none; cursor: pointer; margin-top: 1em; }
   </style>
 </head>
 <body>
-  <div id="menuContainer"></div>
-  <main id="daoContent">
-    <h1 id="studioTitle">🎨 DAO Студія</h1>
-    <div class="studio-loader" id="studioLoader">Завантаження студії...</div>
+  <main>
+    <h1>🎬 DAO Студія</h1>
+
+    <section class="studio-block">
+      <h2>🎙️ Звернення директора</h2>
+      <video controls autoplay muted loop width="100%" style="max-width: 720px;">
+        <source src="promo-video.mp4" type="video/mp4" />
+        Ваш браузер не підтримує відео.
+      </video>
+      <p><strong>🌾 AgroProsper — не просто DAO. Це дія, яка підтримує.</strong></p>
+      <button onclick="location.href='promo.html'" class="cta-button">🔐 Долучитись до дії</button>
+    </section>
+
+    <section class="studio-block">
+      <h3>📜 Маніфест платформи</h3>
+      <p>Ми не продаємо токени. Ми не заманюємо рефералками. Ми діємо — через етику, підтримку і довіру.</p>
+    </section>
+
+    <section class="studio-block">
+      <h3>🧩 DAO-квест: Пульс довіри</h3>
+      <p>Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?</p>
+      <ul>
+        <li>✅ Підтримати його вибір</li>
+        <li>💰 Переконати продати дорожче</li>
+      </ul>
+    </section>
   </main>
-  <div id="footerContainer"></div>
-  <script src="public/init.js"></script>
-  <script>
-    const lang = navigator.language.startsWith("pl") ? "pl"
-                : navigator.language.startsWith("en") ? "en"
-                : "uk";
-
-    const t = {
-      uk: {
-        title: "🎨 DAO Студія",
-        loading: "Завантаження студії..."
-      },
-      pl: {
-        title: "🎨 Studio DAO",
-        loading: "Ładowanie studia..."
-      },
-      en: {
-        title: "🎨 DAO Studio",
-        loading: "Loading studio..."
-      }
-    };
-
-    const tr = t[lang];
-    document.getElementById("studioTitle").textContent = tr.title;
-    document.getElementById("studioLoader").textContent = tr.loading;
-
-    fetch("components/dao-studio.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("daoContent").innerHTML = html;
-      });
-  </script>
 </body>
 </html>
