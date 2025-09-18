@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎬 DAO Studio Editor</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; background: #fefefe; }
+    h1 { color: #00aa88; }
+    label { display: block; margin-top: 1em; }
+    input, select { width: 100%; padding: 0.5em; margin-top: 0.3em; }
+    button { margin-top: 1em; padding: 0.7em 1.2em; background: #4caf50; color: white; border: none; cursor: pointer; }
+    table { width: 100%; margin-top: 2em; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 0.5em; text-align: left; }
+    .delete-btn { background: #e53935; color: white; border: none; padding: 0.3em 0.6em; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>🎬 DAO Studio Editor</h1>
+
+  <form id="videoForm">
+    <label>🎞️ Назва відео <input type="text" id="title" required /></label>
+    <label>🌐 Мова
+      <select id="lang">
+        <option value="uk">Українська</option>
+        <option value="pl">Polski</option>
+        <option value="en">English</option>
+      </select>
+    </label>
+    <label>🧠 Роль
+      <select id="role">
+        <option value="any">Будь-яка</option>
+        <option value="guest">Гість</option>
+        <option value="agent">Агент</option>
+        <option value="partner">Партнер</option>
+      </select>
+    </label>
+    <label>📦 Тип
+      <select id="type">
+        <option value="intro">Звернення</option>
+        <option value="quest">Квест</option>
+        <option value="promo">Промо</option>
+        <option value="dashboard">Панель</option>
+      </select>
+    </label>
+    <label>🔗 YouTube-посилання <input type="url" id="url" required /></label>
+    <button type="submit">💾 Додати відео</button>
+  </form>
+
+  <table id="videoTable">
+    <thead>
+      <tr>
+        <th>Назва</th><th>Мова</th><th>Роль</th><th>Тип</th><th>Посилання</th><th>🗑️</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    let videos = [];
+
+    function loadVideos() {
+      fetch("studio-index.json")
+        .then(res => res.json())
+        .then(data => {
+          videos = data.videos;
+          renderTable();
+        });
+    }
+
+    function renderTable() {
+      const tbody = document.querySelector("#videoTable tbody");
+      tbody.innerHTML = "";
+      videos.forEach((v, i) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${v.title}</td>
+          <td>${v.lang}</td>
+          <td>${v.role}</td>
+          <td>${v.type}</td>
+          <td><a href="${v.url}" target="_blank">🔗</a></td>
+          <td><button class="delete-btn" onclick="deleteVideo(${i})">✖</button></td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function deleteVideo(index) {
+      videos.splice(index, 1);
+      renderTable();
+    }
+
+    document.getElementById("videoForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const newVideo = {
+        id: `video-${Date.now()}`,
+        title: document.getElementById("title").value,
+        lang: document.getElementById("lang").value,
+        role: document.getElementById("role").value,
+        type: document.getElementById("type").value,
+        url: document.getElementById("url").value
+      };
+      videos.push(newVideo);
+      renderTable();
+      e.target.reset();
+    });
+
+    loadVideos();
+  </script>
+</body>
+</html>
