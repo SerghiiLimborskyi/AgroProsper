@@ -152,3 +152,38 @@ body.guest {
     box-shadow: 0 0 15px #00ffcc;
   }
 }
+
+.promo-section {
+  padding: 2em;
+  background: #f9fdf9;
+  text-align: center;
+}
+
+.registration-block {
+  margin-top: 2em;
+}
+
+.registration-block input {
+  padding: 0.5em;
+  font-size: 1em;
+  width: 250px;
+}
+
+.registration-block button {
+  padding: 0.5em 1em;
+  font-size: 1em;
+  margin-left: 1em;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.promo-output.active {
+  font-size: 1.2em;
+  padding: 1em;
+  background: #f0f9f0;
+  border-left: 4px solid #4caf50;
+  margin-top: 2em;
+  transition: all 0.3s ease;
+}
