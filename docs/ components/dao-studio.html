@@ -1,6 +1,87 @@
 <section class="dao-block">
-  <h2>🎨 DAO Студія</h2>
-  <p>Завантажте сцену, трейлер або бейдж для DAO.</p>
-  <input type="file" />
-  <button onclick="alert('Завантажено!')">Завантажити</button>
+  <h2 id="studioHeader">🎬 DAO Студія</h2>
+  <div id="studioVideo">⏳ Завантаження відео...</div>
+
+  <p id="studioSlogan">🌾 AgroProsper — не просто DAO. Це дія, яка підтримує.</p>
+  <button onclick="location.href='promo.html'" class="cta-button" id="ctaButton">🔐 Долучитись до дії</button>
+
+  <hr />
+
+  <h3 id="manifestTitle">📜 Маніфест платформи</h3>
+  <p id="manifestText">Ми не продаємо токени. Ми не заманюємо рефералками. Ми діємо — через етику, підтримку і довіру.</p>
+
+  <h3 id="questTitle">🧩 DAO-квест: Пульс довіри</h3>
+  <p id="questText">Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?</p>
+  <ul>
+    <li id="option1">✅ Підтримати його вибір</li>
+    <li id="option2">💰 Переконати продати дорожче</li>
+  </ul>
 </section>
+
+<script>
+  const lang = navigator.language.startsWith("pl") ? "pl"
+             : navigator.language.startsWith("en") ? "en"
+             : "uk";
+  const role = localStorage.getItem("userCID")?.includes("Partner") ? "partner"
+             : localStorage.getItem("userCID")?.includes("Agent") ? "agent"
+             : "guest";
+
+  const t = {
+    uk: {
+      header: "🎬 DAO Студія",
+      slogan: "🌾 AgroProsper — не просто DAO. Це дія, яка підтримує.",
+      join: "🔐 Долучитись до дії",
+      manifest: "📜 Маніфест платформи",
+      manifestText: "Ми не продаємо токени. Ми не заманюємо рефералками. Ми діємо — через етику, підтримку і довіру.",
+      quest: "🧩 DAO-квест: Пульс довіри",
+      questText: "Фермер хоче продати урожай дешевше, щоб допомогти громаді. Що ви оберете?",
+      option1: "✅ Підтримати його вибір",
+      option2: "💰 Переконати продати дорожче"
+    },
+    pl: {
+      header: "🎬 Studio DAO",
+      slogan: "🌾 AgroProsper — to nie tylko DAO. To działanie, które wspiera.",
+      join: "🔐 Dołącz do działania",
+      manifest: "📜 Manifest platformy",
+      manifestText: "Nie sprzedajemy tokenów. Nie kusimy poleceniami. Działamy — przez etykę, wsparcie i zaufanie.",
+      quest: "🧩 DAO-quest: Puls zaufania",
+      questText: "Rolnik chce sprzedać plony taniej, by pomóc społeczności. Co wybierasz?",
+      option1: "✅ Wspieram jego decyzję",
+      option2: "💰 Namawiam na wyższą cenę"
+    },
+    en: {
+      header: "🎬 DAO Studio",
+      slogan: "🌾 AgroProsper is not just a DAO. It’s action that supports.",
+      join: "🔐 Join the action",
+      manifest: "📜 Platform Manifesto",
+      manifestText: "We don’t sell tokens. We don’t lure with referrals. We act — through ethics, support, and trust.",
+      quest: "🧩 DAO Quest: Pulse of Trust",
+      questText: "A farmer wants to sell the harvest cheaper to help the community. What do you choose?",
+      option1: "✅ Support the choice",
+      option2: "💰 Persuade to sell higher"
+    }
+  };
+
+  const tr = t[lang];
+  document.getElementById("studioHeader").textContent = tr.header;
+  document.getElementById("studioSlogan").textContent = tr.slogan;
+  document.getElementById("ctaButton").textContent = tr.join;
+  document.getElementById("manifestTitle").textContent = tr.manifest;
+  document.getElementById("manifestText").textContent = tr.manifestText;
+  document.getElementById("questTitle").textContent = tr.quest;
+  document.getElementById("questText").textContent = tr.questText;
+  document.getElementById("option1").textContent = tr.option1;
+  document.getElementById("option2").textContent = tr.option2;
+
+  fetch("studio-index.json")
+    .then(res => res.json())
+    .then(data => {
+      const match = data.videos.find(v => v.lang === lang && (v.role === role || v.role === "any"));
+      if (match) {
+        document.getElementById("studioVideo").innerHTML =
+          `<iframe width="100%" height="400" src="${match.url}" frameborder="0" allowfullscreen></iframe>`;
+      } else {
+        document.getElementById("studioVideo").textContent = "🎥 Відео не знайдено для вашої ролі.";
+      }
+    });
+</script>
