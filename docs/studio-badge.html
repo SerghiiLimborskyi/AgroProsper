@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏅 DAO Ролі та Бейджі</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; background: #f9f9f9; }
+    h1 { color: #00796b; }
+    .badge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1em; margin-top: 2em; }
+    .badge { background: white; border: 2px solid #ccc; padding: 1em; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .badge.active { border-color: #4caf50; background: #e8f5e9; }
+    .badge h3 { margin: 0; font-size: 1.2em; }
+    .badge p { margin: 0.5em 0; font-size: 0.9em; }
+    .badge .status { font-weight: bold; color: #4caf50; }
+    .badge.inactive .status { color: #999; }
+  </style>
+</head>
+<body>
+  <h1>🏅 Ваш DAO-бейдж</h1>
+  <div id="badgeContainer" class="badge-grid"></div>
+
+  <script>
+    const cid = localStorage.getItem("userCID") || "";
+    const role = cid.includes("Admin") ? "admin"
+               : cid.includes("Partner") ? "partner"
+               : cid.includes("Agent") ? "agent"
+               : "guest";
+
+    const badges = [
+      {
+        id: "guest",
+        title: "👤 Гість DAO",
+        description: "Базовий доступ до звернень та публічних відео.",
+        access: "Перегляд",
+      },
+      {
+        id: "agent",
+        title: "🧑‍🌾 Агент DAO",
+        description: "Доступ до квестів, інструкцій та панелей.",
+        access: "Перегляд + взаємодія",
+      },
+      {
+        id: "partner",
+        title: "🤝 Партнер DAO",
+        description: "Промо, партнерські звернення, DAO-квести.",
+        access: "Участь + DAO-модулі",
+      },
+      {
+        id: "admin",
+        title: "🛡️ Адміністратор DAO",
+        description: "Повний доступ до редактора, журналу та публікації.",
+        access: "Редагування + аудит",
+      }
+    ];
+
+    const container = document.getElementById("badgeContainer");
+    badges.forEach(badge => {
+      const div = document.createElement("div");
+      div.className = "badge" + (badge.id === role ? " active" : " inactive");
+      div.innerHTML = `
+        <h3>${badge.title}</h3>
+        <p>${badge.description}</p>
+        <p class="status">Доступ: ${badge.access}</p>
+        ${badge.id === role ? "<p style='color:#4caf50;'>✅ Активовано</p>" : ""}
+      `;
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>
