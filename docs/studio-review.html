@@ -28,8 +28,11 @@
     </thead>
     <tbody></tbody>
   </table>
+  
   <button id="publishBtn" class="btn publish disabled">✅ Публікувати зміни</button>
-
+<button id="viewLogBtn" class="btn">🧾 Переглянути історію</button>
+<div id="logViewer" style="margin-top:2em;"></div>
+  
   <script type="module">
     import {
       getUserRole,
@@ -49,7 +52,28 @@
     const table = document.querySelector("#videoTable");
     const tbody = table.querySelector("tbody");
     const publishBtn = document.getElementById("publishBtn");
-
+    
+document.getElementById("viewLogBtn").onclick = async () => {
+  const res = await fetch("studio-log.json");
+  const data = await res.json();
+  const logDiv = document.getElementById("logViewer");
+  logDiv.innerHTML = "<h3>📜 Історія змін</h3>";
+  data.log.forEach(entry => {
+    const block = document.createElement("div");
+    block.style.borderLeft = "4px solid #ccc";
+    block.style.padding = "1em";
+    block.style.marginBottom = "1em";
+    block.innerHTML = `
+      <strong>${entry.timestamp}</strong><br/>
+      👤 ${entry.editor}<br/>
+      🛠️ ${entry.action}<br/>
+      🎞️ <em>${entry.video.title}</em> (${entry.video.lang}, ${entry.video.role}, ${entry.video.type})<br/>
+      🔗 <a href="${entry.video.url}" target="_blank">Переглянути відео</a>
+    `;
+    logDiv.appendChild(block);
+  });
+};
+    
     function renderTable() {
       tbody.innerHTML = "";
       videos.forEach((v, i) => {
