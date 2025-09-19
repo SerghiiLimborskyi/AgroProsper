@@ -32,6 +32,7 @@
   <button id="publishBtn" class="btn publish disabled">✅ Публікувати зміни</button>
 <button id="viewLogBtn" class="btn">🧾 Переглянути історію</button>
 <div id="logViewer" style="margin-top:2em;"></div>
+  <button id="exportLogBtn" class="btn">📤 Експортувати журнал</button>
   
   <script type="module">
     import {
@@ -72,6 +73,18 @@ document.getElementById("viewLogBtn").onclick = async () => {
     `;
     logDiv.appendChild(block);
   });
+};
+    
+    document.getElementById("exportLogBtn").onclick = async () => {
+  const res = await fetch("studio-log.json");
+  const data = await res.json();
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "studio-log.json";
+  a.click();
+  URL.revokeObjectURL(url);
 };
     
     function renderTable() {
