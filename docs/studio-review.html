@@ -86,6 +86,22 @@ document.getElementById("viewLogBtn").onclick = async () => {
   a.click();
   URL.revokeObjectURL(url);
 };
+
+    import { generateSignature } from "./studio-sign.js";
+
+const logEntry = {
+  timestamp: new Date().toISOString(),
+  editor: "Admin:" + localStorage.getItem("userCID"),
+  action: "Оновлено відео",
+  video: newVideo
+};
+
+logEntry.signature = await generateSignature(logEntry);
+// Додати до studio-log.json
+    import { verifySignature } from "./studio-sign.js";
+
+const valid = await verifySignature(entry);
+if (!valid) block.style.borderLeft = "4px solid red"; // ❌ Підпис недійсний
     
     function renderTable() {
       tbody.innerHTML = "";
