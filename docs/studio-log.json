@@ -1,0 +1,28 @@
+{
+  "log": [
+    {
+      "timestamp": "2025-09-19T09:45:00Z",
+      "editor": "Admin:Serhii",
+      "action": "Додано відео",
+      "video": {
+        "title": "🎙️ Звернення директора",
+        "lang": "uk",
+        "role": "any",
+        "type": "intro",
+        "url": "https://youtube.com/watch?v=UA_DirectorDAO"
+      }
+    },
+    {
+      "timestamp": "2025-09-19T10:05:00Z",
+      "editor": "Admin:Serhii",
+      "action": "Видалено відео",
+      "video": {
+        "title": "📊 Panel Agenta",
+        "lang": "pl",
+        "role": "agent",
+        "type": "dashboard",
+        "url": "https://youtube.com/watch?v=PL_AgentPanel"
+      }
+    }
+  ]
+}
