@@ -102,6 +102,25 @@ logEntry.signature = await generateSignature(logEntry);
 
 const valid = await verifySignature(entry);
 if (!valid) block.style.borderLeft = "4px solid red"; // ❌ Підпис недійсний
+
+    import { verifySignature } from "./studio-sign.js";
+
+data.log.forEach(async entry => {
+  const block = document.createElement("div");
+  const valid = await verifySignature(entry);
+  block.style.borderLeft = valid ? "4px solid #ccc" : "4px solid red";
+  block.style.padding = "1em";
+  block.style.marginBottom = "1em";
+  block.innerHTML = `
+    <strong>${entry.timestamp}</strong><br/>
+    👤 ${entry.editor}<br/>
+    🛠️ ${entry.action}<br/>
+    🎞️ <em>${entry.video.title}</em> (${entry.video.lang}, ${entry.video.role}, ${entry.video.type})<br/>
+    🔗 <a href="${entry.video.url}" target="_blank">Переглянути відео</a><br/>
+    ${valid ? "" : "<span style='color:red;'>❌ Підпис недійсний</span>"}
+  `;
+  logDiv.appendChild(block);
+});
     
     function renderTable() {
       tbody.innerHTML = "";
