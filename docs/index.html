@@ -2,44 +2,81 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>AgroProsper DAO</title>
+  <title>🌾 AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="main.css" />
+  <script type="module" src="scripts/menu.js" defer></script>
+  <script src="scripts/lang.js" defer></script>
 </head>
 <body>
   <div id="menuContainer"></div>
 
-  <header>
+  <header class="hero">
     <img src="logo.svg" alt="AgroProsper Logo" class="logo" />
-    <h1 id="pageTitle">🌾 AgroProsper DAO</h1>
-    <p id="welcomeText">Вітаємо в автономній системі для агробізнесу</p>
+    <h1>🌾 AgroProsper DAO</h1>
+    <p>Жива платформа для етичного агробізнесу</p>
 
-    <label for="lang">🌐 Мова:</label>
-    <select id="lang">
-      <option value="uk">Українська</option>
-      <option value="en">English</option>
-      <option value="pl">Polski</option>
-    </select>
+    <div class="controls">
+      <label for="lang">🌐 Мова:</label>
+      <select id="lang">
+        <option value="uk">Українська</option>
+        <option value="en">English</option>
+        <option value="pl">Polski</option>
+      </select>
+      <label for="theme">🎨 Тема:</label>
+      <select id="theme">
+        <option value="system">Системна</option>
+        <option value="light">Світла</option>
+        <option value="dark">Темна</option>
+      </select>
+    </div>
 
-    <label for="theme">🎨 Тема:</label>
-    <select id="theme">
-      <option value="system">Системна</option>
-      <option value="light">Світла</option>
-      <option value="dark">Темна</option>
-    </select>
-  </header>
-
-  <main>
-    <section>
+    <div class="auth">
       <p>🧠 Введіть DAO-паспорт для активації ролі:</p>
       <input type="text" id="cidInput" placeholder="0xAGRO-XXXX" />
       <button onclick="activateCID()">Активувати</button>
+    </div>
+
+    <div class="actions">
+      <button onclick="location.href='register-panel.html'">📝 Зареєструватися</button>
+      <button onclick="location.href='login.html'">🔐 Увійти</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="video">
+      <h2>🎥 Відео-презентація DAO</h2>
+      <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/GRonxog5mbw?autoplay=1&mute=1&loop=1&playlist=GRonxog5mbw"
+        title="DAO Presentation" frameborder="0"
+        allow="autoplay; encrypted-media" allowfullscreen>
+      </iframe>
+    </section>
+
+    <section class="links">
+      <h2>🔗 DAO Навігація</h2>
+      <div class="link-grid">
+        <button onclick="location.href='dao-ethics.html'">🧾 Кодекс DAO</button>
+        <button onclick="location.href='studio-badge.html'">🏅 Мій бейдж</button>
+        <button onclick="location.href='dashboard.html'">📊 Панель</button>
+        <button onclick="location.href='dao-kvest.html'">🧩 Квести</button>
+      </div>
     </section>
   </main>
 
   <div id="footerContainer"></div>
 
-  <script src="scripts/lang.js" defer></script>
-  <script src="scripts/menu.js" defer></script>
+  <script>
+    window.activateCID = function () {
+      const cid = document.getElementById("cidInput").value.trim();
+      if (cid.length > 5) {
+        localStorage.setItem("userCID", cid);
+        alert("✅ CID активовано: " + cid);
+        location.reload();
+      } else {
+        alert("❌ Невірний формат CID");
+      }
+    };
+  </script>
 </body>
 </html>
