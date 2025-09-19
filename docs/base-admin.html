@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🛡️ Адмін-панель AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/menu.css" />
+  <script type="module" src="scripts/menu.js" defer></script>
+</head>
+<body>
+  <div id="menuContainer"></div>
+
+  <header class="cid-panel">
+    <img src="assets/admin-avatar.svg" class="cid-avatar" alt="Admin Avatar" />
+    <div class="cid-info">
+      <span class="cid-label">CID адміністратора:</span>
+      <span class="cid-value" id="cidRole">CID: 0x000 (Guest)</span>
+      <span class="role-badge architect">Admin</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="dao-section" id="accessCheck">
+      <h2>🔐 Перевірка доступу</h2>
+      <p id="accessMessage">⏳ Перевіряємо роль...</p>
+    </section>
+
+    <section class="dao-section" id="adminPanel" style="display:none;">
+      <h2>📊 Адмін-панель DAO</h2>
+      <button onclick="syncDAO()">☁️ Синхронізувати DAO-файли</button>
+      <button onclick="viewLogs()">📋 Переглянути лог дій</button>
+      <button onclick="launchGame()">🎮 Запустити DAO-гру</button>
+      <button onclick="lockRuntime()">🔐 Заблокувати runtime-card</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>AgroProsper DAO · Адмін-доступ · Версія: v7.1</p>
+  </footer>
+
+  <script>
+    const cid = localStorage.getItem("cid") || "";
+    const role = localStorage.getItem("agentLevel") || "Guest";
+
+    document.getElementById("cidRole").textContent = `CID: ${cid} (${role})`;
+
+    if (role === "Admin" || cid.includes("Admin")) {
+      document.getElementById("accessMessage").textContent = "✅ Доступ дозволено";
+      document.getElementById("adminPanel").style.display = "block";
+    } else {
+      document.getElementById("accessMessage").textContent = "❌ Доступ заборонено. Увійдіть як адміністратор.";
+    }
+
+    function syncDAO() {
+      alert("☁️ DAO-файли синхронізовано.");
+    }
+
+    function viewLogs() {
+      location.href = "admin-logs.html";
+    }
+
+    function launchGame() {
+      location.href = "dao-game.html";
+    }
+
+    function lockRuntime() {
+      alert("🔐 runtime-card заблоковано.");
+    }
+  </script>
+</body>
+</html>
