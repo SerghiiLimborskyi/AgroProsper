@@ -38,7 +38,17 @@ app.post("/api/update-studio-index", async (req, res) => {
       sha,
       branch: config.branch
     });
+    
+// Після оновлення studio-index.json
+const logEntry = {
+  timestamp: new Date().toISOString(),
+  editor: "Admin:Serhii",
+  action: "Оновлено відео",
+  video: newVideo
+};
 
+// Завантажити studio-log.json → додати logEntry → зберегти назад
+    
     res.json({ status: "✅ Оновлено успішно" });
   } catch (err) {
     console.error(err);
