@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎬 DAO Studio Review</title>
+  <script type="module" src="studio-api.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 2em; background: #fefefe; }
+    h1 { color: #00aa88; }
+    table { width: 100%; margin-top: 2em; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 0.5em; text-align: left; }
+    input, select { width: 100%; padding: 0.4em; }
+    .btn { padding: 0.5em 1em; margin-top: 1em; cursor: pointer; }
+    .publish { background: #4caf50; color: white; border: none; }
+    .delete { background: #e53935; color: white; border: none; }
+    .disabled { opacity: 0.5; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <h1>🎬 DAO Studio · Перевірка відео</h1>
+  <div id="accessDenied" style="display:none; color:red;">❌ Доступ заборонено. Тільки для адміністратора DAO.</div>
+  <table id="videoTable" style="display:none;">
+    <thead>
+      <tr>
+        <th>Назва</th><th>Мова</th><th>Роль</th><th>Тип</th><th>Посилання</th><th>🖊️</th><th>🗑️</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <button id="publishBtn" class="btn publish disabled">✅ Публікувати зміни</button>
+
+  <script type="module">
+    import {
+      getUserRole,
+      fetchStudioIndex,
+      updateStudioIndexSecure
+    } from "./studio-api.js";
+
+    const cid = localStorage.getItem("userCID") || "";
+    if (!cid.includes("Admin")) {
+      document.getElementById("accessDenied").style.display = "block";
+      throw new Error("Access denied");
+    }
+
+    let videos = [];
+    let sha = "";
+
+    const table = document.querySelector("#videoTable");
+    const tbody = table.querySelector("tbody");
+    const publishBtn = document.getElementById("publishBtn");
+
+    function renderTable() {
+      tbody.innerHTML = "";
+      videos.forEach((v, i) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><input value="${v.title}" onchange="videos[${i}].title = this.value" /></td>
+          <td>
+            <select onchange="videos[${i}].lang = this.value">
+              <option value="uk" ${v.lang === "uk" ? "selected" : ""}>🇺🇦</option>
+              <option value="pl" ${v.lang === "pl" ? "selected" : ""}>🇵🇱</option>
+              <option value="en" ${v.lang === "en" ? "selected" : ""}>🇬🇧</option>
+            </select>
+          </td>
+          <td>
+            <select onchange="videos[${i}].role = this.value">
+              <option value="any" ${v.role === "any" ? "selected" : ""}>Будь-яка</option>
+              <option value="guest" ${v.role === "guest" ? "selected" : ""}>Гість</option>
+              <option value="agent" ${v.role === "agent" ? "selected" : ""}>Агент</option>
+              <option value="partner" ${v.role === "partner" ? "selected" : ""}>Партнер</option>
+            </select>
+          </td>
+          <td>
+            <select onchange="videos[${i}].type = this.value">
+              <option value="intro" ${v.type === "intro" ? "selected" : ""}>Звернення</option>
+              <option value="quest" ${v.type === "quest" ? "selected" : ""}>Квест</option>
+              <option value="promo" ${v.type === "promo" ? "selected" : ""}>Промо</option>
+              <option value="dashboard" ${v.type === "dashboard" ? "selected" : ""}>Панель</option>
+            </select>
+          </td>
+          <td><input value="${v.url}" onchange="videos[${i}].url = this.value" /></td>
+          <td><button class="btn delete" onclick="deleteVideo(${i})">✖</button></td>
+        `;
+        tbody.appendChild(row);
+      });
+      table.style.display = "table";
+      publishBtn.classList.remove("disabled");
+    }
+
+    window.deleteVideo = function(index) {
+      videos.splice(index, 1);
+      renderTable();
+    };
+
+    publishBtn.onclick = async () => {
+      publishBtn.textContent = "⏳ Публікація...";
+      publishBtn.classList.add("disabled");
+      try {
+        await updateStudioIndexSecure({ videos });
+        alert("✅ Зміни опубліковано");
+      } catch (err) {
+        alert("❌ Помилка публікації");
+      }
+      publishBtn.textContent = "✅ Публікувати зміни";
+      publishBtn.classList.remove("disabled");
+    };
+
+    const { json, sha: currentSha } = await fetchStudioIndex();
+    videos = json.videos;
+    sha = currentSha;
+    renderTable();
+  </script>
+</body>
+</html>
