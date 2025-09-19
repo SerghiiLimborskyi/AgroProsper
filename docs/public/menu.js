@@ -40,18 +40,21 @@
   };
 
   const t = translations[lang] || translations.uk;
+  const cid = localStorage.getItem("cid") || "0x000";
+  const role = localStorage.getItem("agentLevel") || "Starter";
 
   const nav = document.createElement("nav");
-  nav.style = "background: rgba(0,0,0,0.8); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-family: 'Segoe UI', sans-serif;";
+  nav.className = "dao-nav";
+  nav.style = `
+    background: rgba(0,0,0,0.8);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+  `;
+
   nav.innerHTML = `
-  const toggle = document.querySelector(".menu-toggle");
-
-if (toggle && nav) {
-  toggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
-  });
-}
-
     <div>
       <img src="../public/logo.png" alt="AgroProsper Logo" style="height:40px; vertical-align: middle;" />
       <span style="color:#00ffcc; font-weight:bold; margin-left:10px;">AgroProsper V7</span>
@@ -68,70 +71,49 @@ if (toggle && nav) {
       <a href="../slide5.html" style="color:white; margin:0 10px;" onclick="checkAccess(event)">${t.gov}</a>
     </div>
   `;
+
   document.body.insertBefore(nav, document.body.firstChild);
-  fetch("menu.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("menu").innerHTML = html;
+
+  // CID + роль
+  document.addEventListener("DOMContentLoaded", () => {
+    const cidBox = document.getElementById("cidRole");
+    if (cidBox) {
+      cidBox.textContent = `CID: ${cid} (${role})`;
+    }
   });
-  
-document.addEventListener("DOMContentLoaded", () => {
-  const cid = localStorage.getItem("cid") || "0x000";
-  const role = localStorage.getItem("agentLevel") || "Starter";
-  document.getElementById("cidRole").textContent = `CID: ${cid} (${role})`;
-});
-  
-document.addEventListener("DOMContentLoaded", () => {
-  const menuItems = document.querySelectorAll(".menu-item");
 
-  menuItems.forEach(item => {
-    const submenu = item.querySelector(".submenu");
-
-    if (submenu) {
-      // Розгортання при наведенні
-      item.addEventListener("mouseenter", () => submenu.classList.add("active"));
-      item.addEventListener("mouseleave", () => submenu.classList.remove("active"));
-
-      // Розгортання при кліку (мобільна підтримка)
-      item.addEventListener("click", () => {
-        submenu.classList.toggle("active");
+  // Мобільне меню + підменю
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector(".menu-toggle");
+    const navEl = document.querySelector(".nav");
+    if (toggle && navEl) {
+      toggle.addEventListener("click", () => {
+        navEl.classList.toggle("active");
+      });
+      document.addEventListener("click", (e) => {
+        if (!navEl.contains(e.target) && !toggle.contains(e.target)) {
+          navEl.classList.remove("active");
+        }
       });
     }
-  });
-});
-  
-document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav");
 
-  // Розгортання меню
-  toggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
-  });
-
-  // Автозакриття при кліку поза меню
-  document.addEventListener("click", (e) => {
-    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-      nav.classList.remove("active");
-    }
+    const items = document.querySelectorAll(".menu-item");
+    items.forEach(item => {
+      const submenu = item.querySelector(".submenu");
+      if (submenu) {
+        item.addEventListener("mouseenter", () => submenu.classList.add("active"));
+        item.addEventListener("mouseleave", () => submenu.classList.remove("active"));
+        item.addEventListener("click", (e) => {
+          e.stopPropagation();
+          submenu.classList.toggle("active");
+        });
+      }
+    });
   });
 
-  // Підменю при кліку (мобільна підтримка)
-  const items = document.querySelectorAll(".menu-item");
-  items.forEach(item => {
-    const submenu = item.querySelector(".submenu");
-    if (submenu) {
-      item.addEventListener("click", (e) => {
-        e.stopPropagation();
-        submenu.classList.toggle("active");
-      });
-    }
-  });
-});
-
+  // Захист доступу
   window.checkAccess = function (e) {
-    const cid = localStorage.getItem("cid");
-    if (!cid) {
+    if (!cid || cid === "0x000") {
       e.preventDefault();
       alert(t.accessDenied);
     }
