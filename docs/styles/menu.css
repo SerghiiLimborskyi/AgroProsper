@@ -28,6 +28,29 @@
   border: none;
   font-size: 1.5em;
   cursor: pointer;
+  color: #2c3e50;
+}
+
+/* 📋 Основне меню */
+.menu-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  padding: 0.5em 1em;
+  background-color: #fafafa;
+  border-bottom: 1px solid #ddd;
+}
+.menu-links a {
+  text-decoration: none;
+  color: #2e7d32;
+  font-weight: bold;
+  padding: 0.4em 0.8em;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+.menu-links a:hover {
+  background-color: #c8e6c9;
 }
 
 /* 🧩 CID-панель */
@@ -38,29 +61,26 @@
   padding: 0.5em 1em;
   border-bottom: 1px solid #b2ebf2;
 }
-
 .cid-avatar {
   height: 32px;
   width: 32px;
   border-radius: 50%;
   margin-right: 0.8em;
 }
-
 .cid-info {
   display: flex;
   flex-direction: column;
 }
-
 .cid-label {
   font-size: 0.9em;
   color: #00796b;
 }
-
 .cid-value {
   font-weight: bold;
   color: #004d40;
 }
 
+/* 🏅 Рольові бейджі */
 .role-badge {
   font-size: 0.85em;
   padding: 0.2em 0.5em;
@@ -68,17 +88,14 @@
   margin-top: 0.3em;
   display: inline-block;
 }
-
 .role-badge.agent {
   background-color: #d1c4e9;
   color: #4a148c;
 }
-
 .role-badge.architect {
   background-color: #ffe0b2;
   color: #e65100;
 }
-
 .role-badge.player {
   background-color: #c8e6c9;
   color: #1b5e20;
@@ -90,16 +107,18 @@
     flex-direction: column;
     align-items: flex-start;
   }
-
   .menu-toggle {
     align-self: flex-end;
   }
-
+  .menu-links {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1.2em;
+  }
   .cid-panel {
     flex-direction: column;
     align-items: flex-start;
   }
-
   .cid-avatar {
     margin-bottom: 0.5em;
   }
