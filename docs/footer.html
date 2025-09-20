@@ -1,7 +1,7 @@
 <footer>
   <style>
     footer {
-      background-color: rgba(0,0,0,0.3);
+      background-color: rgba(0, 0, 0, 0.3);
       color: #ccc;
       font-family: 'Montserrat', sans-serif;
       text-align: center;
@@ -40,6 +40,17 @@
       font-size: 13px;
       color: #00ff99;
     }
+    .status-indicator {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+      background-color: #00ff99;
+    }
+    .inactive .status-indicator {
+      background-color: #ff4444;
+    }
   </style>
 
   <div class="footer-links">
@@ -49,18 +60,25 @@
     <a href="https://github.com/SerghiiLimborskyi/AgroProsper" target="_blank" id="footerGitHub">🌐 GitHub</a>
   </div>
 
-  <div class="dao-status" id="daoStatus">CID-система: ⏳ Завантаження...</div>
-  <div class="dao-signature" id="daoSignature">AgroProsper DAO © 2025 · Версія: v7.0-Unstoppable · “Unstoppable Autonomy for Smart Agriculture”</div>
+  <div class="dao-status" id="daoStatus">
+    <span class="status-indicator"></span> CID-система: ⏳ Завантаження...
+  </div>
+
+  <div class="dao-signature" id="daoSignature">
+    AgroProsper DAO © 2025 · Версія: v7.0-Unstoppable · “Unstoppable Autonomy for Smart Agriculture”
+  </div>
 
   <script>
-    const cid = localStorage.getItem('cid') || 'AG-SL-X7K9QZ-2025';
+    const cid = localStorage.getItem('userCID') || 'AG-SL-X7K9QZ-2025';
     const role = localStorage.getItem('agentLevel') || 'Starter';
     const status = cid ? '🟢 Активна' : '🔴 Неактивна';
-    document.getElementById('daoStatus').textContent = `CID-система: ${status} · CID: ${cid} · Роль: ${role}`;
+    const statusClass = cid ? '' : 'inactive';
+    document.getElementById('daoStatus').innerHTML =
+      `<span class="status-indicator ${statusClass}"></span> CID-система: ${status} · CID: ${cid} · Роль: ${role}`;
 
     const lang = navigator.language.startsWith("pl") ? "pl"
-                : navigator.language.startsWith("en") ? "en"
-                : "uk";
+               : navigator.language.startsWith("en") ? "en"
+               : "uk";
 
     const t = {
       uk: {
