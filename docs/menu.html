@@ -4,12 +4,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px;
-      background-color: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      background-color: rgba(0,0,0,0.3);
       font-family: 'Montserrat', sans-serif;
     }
     .logo {
-      width: 120px;
+      width: 140px;
     }
     .menu-toggle {
       display: none;
@@ -18,38 +18,38 @@
     }
     nav {
       display: flex;
-      gap: 16px;
+      gap: 20px;
     }
     nav a {
       color: #fff;
       text-decoration: none;
-      font-size: 15px;
+      font-size: 16px;
     }
     .avatar-block {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
     .avatar-block img {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: 2px solid #00a859;
     }
     .cid {
-      font-size: 13px;
+      font-size: 14px;
       color: #00ff99;
     }
     @media (max-width: 768px) {
       nav {
         display: none;
         flex-direction: column;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0,0,0,0.8);
         position: absolute;
         top: 70px;
         left: 0;
         width: 100%;
-        padding: 16px;
+        padding: 20px;
       }
       nav.active {
         display: flex;
@@ -61,30 +61,76 @@
     }
   </style>
 
-  <img src="assets/logo-agroprosper.png" alt="AgroProsper DAO Logo" class="logo" />
+  <img src="assets/logo-agroprosper.png" alt="AgroProsper DAO Logo" class="logo">
   <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">☰</div>
 
-  <nav>
-    <a href="index.html">🏠 Головна</a>
-    <a href="dao.html">🧠 Панель агента</a>
-    <a href="quests.html">🎮 Квести</a>
-    <a href="video.html">🎬 Відео</a>
-    <a href="forecast.html">🌦️ Прогнози</a>
-    <a href="partner.html">🤝 Бізнес</a>
-    <a href="suite.html">🧩 DAO Suite</a>
-    <a href="support.html">🛠️ Підтримка</a>
-    <a id="adminLink" href="admin-dashboard.html" style="display:none;">🛡️ Адмін</a>
-  </nav>
+  <nav id="daoMenu"></nav>
 
   <div class="avatar-block">
-    <img src="assets/avatar.png" alt="Аватар DAO" />
+    <img src="assets/avatar.png" alt="Аватар DAO">
     <div class="cid" id="cidDisplay">CID: ...</div>
   </div>
 
   <script>
+    const lang = navigator.language.startsWith("pl") ? "pl"
+               : navigator.language.startsWith("en") ? "en"
+               : "uk";
+
+    const t = {
+      uk: {
+        home: "🏠 Головна",
+        panel: "🧠 Панель агента",
+        quests: "🎮 Квести",
+        video: "🎬 Відео",
+        forecast: "🌦️ Прогнози",
+        partner: "🤝 Бізнес",
+        suite: "🧩 DAO Suite",
+        support: "🛠️ Підтримка",
+        admin: "🛡️ Адмін"
+      },
+      pl: {
+        home: "🏠 Strona główna",
+        panel: "🧠 Panel agenta",
+        quests: "🎮 Misje",
+        video: "🎬 Wideo",
+        forecast: "🌦️ Prognozy",
+        partner: "🤝 Partnerzy",
+        suite: "🧩 DAO Suite",
+        support: "🛠️ Pomoc",
+        admin: "🛡️ Admin"
+      },
+      en: {
+        home: "🏠 Home",
+        panel: "🧠 Agent Panel",
+        quests: "🎮 Quests",
+        video: "🎬 Video",
+        forecast: "🌦️ Forecast",
+        partner: "🤝 Business",
+        suite: "🧩 DAO Suite",
+        support: "🛠️ Support",
+        admin: "🛡️ Admin"
+      }
+    };
+
+    const l = t[lang];
+    const menu = document.getElementById("daoMenu");
+    menu.innerHTML = `
+      <a href="index.html">${l.home}</a>
+      <a href="dao.html">${l.panel}</a>
+      <a href="quests.html">${l.quests}</a>
+      <a href="video.html">${l.video}</a>
+      <a href="forecast.html">${l.forecast}</a>
+      <a href="partner.html">${l.partner}</a>
+      <a href="suite.html">${l.suite}</a>
+      <a href="support.html">${l.support}</a>
+      <a id="adminLink" href="admin-dashboard.html" style="display:none;">${l.admin}</a>
+    `;
+
     const cid = localStorage.getItem("userCID");
+    const role = localStorage.getItem("agentLevel") || "Starter";
+
     if (cid) {
-      document.getElementById("cidDisplay").textContent = "CID: " + cid;
+      document.getElementById("cidDisplay").textContent = `CID: ${cid} · Роль: ${role}`;
       if (cid.includes("ADMIN") || cid.startsWith("AG-SL")) {
         document.getElementById("adminLink").style.display = "inline-block";
       }
