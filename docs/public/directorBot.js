@@ -1,7 +1,8 @@
 const directorBot = {
   approvedCID: ["0xAGRO-7F3A", "0xAGRO-9C88"],
+  protectedFiles: ["runtime-card.json", "mint-api.js", "directorProtocol.md"],
 
-  log: function (message) {
+  log(message) {
     const logBox = document.getElementById("botLog");
     if (logBox) {
       logBox.innerHTML += `${message}<br>`;
@@ -10,28 +11,36 @@ const directorBot = {
     }
   },
 
-  checkCID: function () {
+  updateStatus(text) {
+    const statusBox = document.getElementById("botStatus");
+    if (statusBox) statusBox.textContent = text;
+  },
+
+  checkCID() {
     const cid = localStorage.getItem("cid");
     if (!cid) {
       alert("🔐 CID не знайдено. Увійдіть через DAO-панель.");
       this.log("⛔ CID не знайдено");
+      this.updateStatus("⛔ Немає CID");
       return false;
     }
-    const cid = localStorage.getItem("cid");
-if (cid.startsWith("0xGUEST")) {
-  alert("⛔ Доступ лише для агентів DAO. Зареєструйтесь для повного доступу.");
-  return;
-}
+    if (cid.startsWith("0xGUEST")) {
+      alert("⛔ Доступ лише для агентів DAO. Зареєструйтесь.");
+      this.updateStatus("⛔ Гість");
+      return false;
+    }
     if (!this.approvedCID.includes(cid)) {
       alert("⛔ CID не має прав Бізнес-Партнера.");
       this.log(`⛔ CID не авторизовано: ${cid}`);
+      this.updateStatus("⛔ CID не підтверджено");
       return false;
     }
     this.log(`✅ CID підтверджено: ${cid}`);
+    this.updateStatus(`✅ CID активний: ${cid}`);
     return true;
   },
 
-  scanPages: function () {
+  scanPages() {
     const pages = [
       "index.html", "about.html", "video.html", "dashboard.html",
       "badges.html", "contact.html", "support.html", "quests.html",
@@ -50,39 +59,51 @@ if (cid.startsWith("0xGUEST")) {
     });
   },
 
-  runScenario: function () {
+  runScenario() {
     if (!this.checkCID()) return;
+    const confirmRun = confirm("🗳️ Підтвердити запуск DAO-сценарію?");
+    if (!confirmRun) {
+      this.log("⛔ Сценарій скасовано користувачем");
+      return;
+    }
     const steps = [
       { step: "start", page: "video.html" },
       { step: "quest", page: "quests.html" },
       { step: "feedback", page: "support.html" }
     ];
-    steps.forEach(s => {
-      this.log(`🎮 Крок: ${s.step} → ${s.page}`);
-    });
+    steps.forEach(s => this.log(`🎮 Крок: ${s.step} → ${s.page}`));
     alert("🎬 Сценарій гри активовано.");
   },
 
-  lockFile: function (filename) {
+  lockFile(filename) {
     if (!this.checkCID()) return;
+    if (!this.protectedFiles.includes(filename)) {
+      this.log(`⚠️ ${filename} не входить до списку захищених`);
+      return;
+    }
     this.log(`🔐 Файл заблоковано: ${filename}`);
     alert(`🛡️ ${filename} тепер захищений від змін.`);
   },
 
-  suggestCleanup: function () {
-    const used = 6.14; // ГБ — приклад
-    const total = 15;
+  suggestCleanup() {
+    const used = 6.14; const total = 15;
     const percent = ((used / total) * 100).toFixed(1);
     this.log(`💾 Використано ${used} ГБ з ${total} ГБ (${percent}%)`);
     if (percent > 80) {
-      alert("⚠️ Пам’ять заповнена. Рекомендується видалити непотрібні файли.");
+      alert("⚠️ Пам’ять заповнена. Рекомендується очищення.");
       this.log("⚠️ Рекомендовано очищення пам’яті");
+      this.mintBadge("MemoryCleaner");
     } else {
       this.log("✅ Пам’яті достатньо");
     }
   },
 
-  syncFromCloud: function () {
+  mintBadge(type) {
+    this.log(`🏅 Видача NFT-бейджа: ${type}`);
+    alert(`🎉 Ви отримали бейдж: ${type}`);
+  },
+
+  syncFromCloud() {
     if (!this.checkCID()) return;
     this.log("☁️ Запуск синхронізації з хмари...");
     if (typeof cloudSync !== "undefined") {
@@ -93,7 +114,7 @@ if (cid.startsWith("0xGUEST")) {
   }
 };
 
-// Автоматичний запуск при вході
+// Автозапуск
 window.addEventListener("load", () => {
   directorBot.scanPages();
   directorBot.suggestCleanup();
