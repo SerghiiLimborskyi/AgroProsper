@@ -1,16 +1,93 @@
-<nav class="dao-menu">
-  <div class="menu-header">
-    <img src="logo.svg" alt="AgroProsper Logo" class="logo pulse" />
-    <span class="dao-title">AgroProsper DAO</span>
+<header>
+  <style>
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      background-color: rgba(0, 0, 0, 0.3);
+      font-family: 'Montserrat', sans-serif;
+    }
+    .logo {
+      width: 120px;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    nav {
+      display: flex;
+      gap: 16px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+    }
+    .avatar-block {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .avatar-block img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #00a859;
+    }
+    .cid {
+      font-size: 13px;
+      color: #00ff99;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 16px;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+        color: #fff;
+      }
+    }
+  </style>
+
+  <img src="media/logo-agroprosper.png" alt="AgroProsper DAO Logo" class="logo" />
+  <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">☰</div>
+
+  <nav>
+    <a href="index.html">🏠 Головна</a>
+    <a href="dao.html">🧠 Панель агента</a>
+    <a href="quests.html">🎮 Квести</a>
+    <a href="video.html">🎬 Відео</a>
+    <a href="forecast.html">🌦️ Прогнози</a>
+    <a href="partner.html">🤝 Бізнес</a>
+    <a href="suite.html">🧩 DAO Suite</a>
+    <a href="support.html">🛠️ Підтримка</a>
+    <a id="adminLink" href="admin-dashboard.html" style="display:none;">🛡️ Адмін</a>
+  </nav>
+
+  <div class="avatar-block">
+    <img src="media/avatar.png" alt="Аватар DAO" />
+    <div class="cid" id="cidDisplay">CID: ...</div>
   </div>
-  <ul class="menu-links">
-    <li><a href="index.html">🏠 Головна</a></li>
-    <li><a href="dao.html">🧠 Про DAO</a></li>
-    <li><a href="studio.html">🎬 Студія</a></li>
-    <li><a href="dashboard.html">📊 Панель</a></li>
-    <li><a href="dao-kvest.html">🧩 Квести</a></li>
-    <li><a href="studio-badge.html">🏅 Бейдж</a></li>
-    <li><a href="dao-ethics.html">🧾 Кодекс</a></li>
-    <li id="adminLink" style="display:none;"><a href="admin-dashboard.html">🛡️ Адмін</a></li>
-  </ul>
-</nav>
+
+  <script>
+    const cid = localStorage.getItem("userCID");
+    if (cid) {
+      document.getElementById("cidDisplay").textContent = "CID: " + cid;
+      if (cid.includes("ADMIN") || cid.startsWith("AG-SL")) {
+        document.getElementById("adminLink").style.display = "inline-block";
+      }
+    }
+  </script>
+</header>
