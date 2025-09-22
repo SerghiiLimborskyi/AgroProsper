@@ -43,4 +43,28 @@ function redeemCredits() {
 
 function openTemple() {
   directorBot.log("🚪 Відкрито Храм Спадщини");
-  alert("Доступ до Храму Спадщини відкрит
+  showScene("templeScene");
+
+  const summary = document.getElementById("legacySummary");
+  summary.innerHTML = `
+    <li>Кредити: ${greenCredits}</li>
+    <li>Бейджі: ${directorBot.badges.join(", ")}</li>
+    <li>Остання сцена: ${currentScene}</li>
+  `;
+
+  const title = greenCredits >= 20 ? "Зберігач Землі" :
+                greenCredits >= 10 ? "Етичний Архітектор" :
+                "DAO-Новачок";
+  document.getElementById("legacyTitle").textContent = title;
+}
+
+function mintLegacyNFT() {
+  const title = document.getElementById("legacyTitle").textContent;
+  directorBot.mintBadge(`Legacy:${title}`);
+  directorBot.log(`🏅 NFT-бейдж “Legacy:${title}” видано`);
+  alert(`Вам видано NFT-бейдж “${title}”`);
+}
+
+function recordLegacy() {
+  directorBot.log("📜 Гравець записаний у Книгу Спадщини");
+  alert("Ваш профіль записано в DAO
