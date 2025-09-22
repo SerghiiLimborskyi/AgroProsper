@@ -6,9 +6,9 @@
   <title>🌱 Насіння Довіри — DAO-квест</title>
   <link rel="stylesheet" href="main.css">
   <script src="directorBot.js" defer></script>
-  <script src="seedQuest.js" defer></script>
   <script src="themeSwitcher.js" defer></script>
   <script src="langSwitcher.js" defer></script>
+  <script src="seedQuest.js" defer></script>
 </head>
 <body>
 
@@ -72,6 +72,16 @@
   <button onclick="redeemCredits()">💰 Обміняти кредити</button>
   <button onclick="openTemple()">🚪 Відкрити Храм Спадщини</button>
   <button onclick="directorBot.mintBadge('Visionary')">🏅 Отримати бейдж “Visionary”</button>
+</div>
+
+<div class="scene" id="templeScene" style="display:none;">
+  <img src="public/images/temple.jpg" alt="DAO Храм Спадщини" class="scene-image">
+  <h2>🏛️ Сцена 5: Храм Спадщини</h2>
+  <p>Ви пройшли шлях етичного вибору. Ось ваш DAO-профіль:</p>
+  <ul id="legacySummary"></ul>
+  <p>Ваш титул: <strong id="legacyTitle">...</strong></p>
+  <button onclick="mintLegacyNFT()">🏅 Отримати NFT-бейдж</button>
+  <button onclick="recordLegacy()">📜 Записати в Книгу Спадщини</button>
 </div>
 
 <!-- DAO-статус -->
