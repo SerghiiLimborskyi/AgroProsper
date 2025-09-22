@@ -6,94 +6,173 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles/admin.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <div id="menuContainer"></div>
+  <script src="scripts/directorBot.js" defer></script>
+  <script src="scripts/themeSwitcher.js" defer></script>
+  <script src="scripts/langSwitcher.js" defer></script>
+</head>
+<body>
+
+<!-- 🌍 Інтерфейс -->
+<section id="interfaceControls">
+  <label>🎨 Тема:
+    <select onchange="setTheme(this.value)">
+      <option value="light">☀️ Світла</option>
+      <option value="dark">🌙 Темна</option>
+      <option value="agro">🌾 Агро</option>
+    </select>
+  </label>
+  <label>🌍 Мова:
+    <select onchange="switchLanguage(this.value)">
+      <option value="uk">🇺🇦 Українська</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="pl">🇵🇱 Polski</option>
+    </select>
+  </label>
+</section>
+
+<!-- 🧠 CID -->
+<header>
+  <h1>🛠️ Панель адміністратора DAO</h1>
+  <p>CID: <strong id="adminCID">Завантаження...</strong></p>
+</header>
+
+<!-- 📊 DAO-графіки -->
+<section>
+  <h2>📊 DAO-графіки</h2>
+  <canvas id="tokenChart" width="400" height="200"></canvas>
+  <canvas id="questChart" width="400" height="200"></canvas>
+</section>
+
+<!-- 💰 AGT-токени -->
+<section>
+  <h2>💰 AGT-токени</h2>
+  <p>Баланс DAO: <strong id="agtBalance">AGT: 0</strong></p>
+  <button onclick="simulateTransfer()">🔄 Симулювати переказ</button>
+</section>
+
+<!-- ⚖️ Моральний баланс -->
+<section>
+  <h2>⚖️ Моральний баланс DAO</h2>
+  <canvas id="moralChart" width="400" height="200"></canvas>
+  <p>Останній титул: <strong id="lastTitle">Завантаження...</strong></p>
+</section>
+
+<!-- 🏅 Бейджі -->
+<section>
+  <h2>🏅 Бейджі гравця</h2>
+  <ul id="badgeList"></ul>
+</section>
+
+<!-- 📜 Логи дій -->
+<section>
+  <h2>📜 Логи дій</h2>
+  <div id="adminLogTable">Завантаження логів...</div>
+</section>
+
+<!-- 🔧 Дії адміністратора -->
+<section>
+  <h2>🔧 Дії адміністратора</h2>
+  <button onclick="updateCID('Farmer')">🔄 Оновити CID до Farmer</button>
+  <button onclick="mintBadgeSelf(1)">🏅 Видати бейдж Farmer</button>
+  <button onclick="openAgentMonitor()">📊 Моніторинг агентів</button>
+</section>
+
+<!-- 📥 Меню + Футер -->
+<div id="menuContainer"></div>
 <script>
   fetch("menu.html")
     .then(res => res.text())
     .then(html => document.getElementById("menuContainer").innerHTML = html);
 </script>
-  <div id="footerContainer"></div>
+
+<div id="footerContainer"></div>
 <script>
   fetch("footer.html")
     .then(res => res.text())
     .then(html => document.getElementById("footerContainer").innerHTML = html);
 </script>
-</head>
-<body>
-  <header>
-    <h1>🛠️ Панель адміністратора DAO</h1>
-    <p>CID: <strong id="adminCID">Завантаження...</strong></p>
-  </header>
 
-  <section>
-    <h2>📊 DAO-графіки</h2>
-    <canvas id="tokenChart" width="400" height="200"></canvas>
-    <canvas id="questChart" width="400" height="200"></canvas>
-  </section>
+<!-- 🧠 DAO-логіка -->
+<script src="scripts/admin-logs.js" defer></script>
+<script src="scripts/questNFT.js" defer></script>
+<script>
+  // CID-вивід
+  const cid = localStorage.getItem("cid") || "0xADMIN-XXXX";
+  document.getElementById("adminCID").textContent = cid;
 
-  <section>
-    <h2>💰 AGT-токени</h2>
-    <p>Баланс DAO: <strong id="agtBalance">AGT: 0</strong></p>
-    <button onclick="simulateTransfer()">🔄 Симулювати переказ</button>
-  </section>
-
-  <section>
-    <h2>📜 Логи дій</h2>
-    <div id="adminLogTable">Завантаження логів...</div>
-  </section>
-
-  <section>
-    <h2>🔧 Дії адміністратора</h2>
-    <button onclick="updateCID('Farmer')">🔄 Оновити CID до Farmer</button>
-    <button onclick="mintBadgeSelf(1)">🏅 Видати бейдж Farmer</button>
-    <button class="btn" onclick="openAgentMonitor()">📊 Моніторинг агентів</button>
-  </section>
-
-  <script src="scripts/admin-logs.js" defer></script>
-  <script src="scripts/questNFT.js" defer></script>
-  <script>
-    // CID-вивід
-    const cid = localStorage.getItem("cid") || "0xADMIN-XXXX";
-    document.getElementById("adminCID").textContent = cid;
-
-    // DAO-графік токенів
-    new Chart(document.getElementById("tokenChart"), {
-      type: "doughnut",
-      data: {
-        labels: ["Фермери", "Трейдери", "Адміністратори"],
-        datasets: [{
-          data: [120, 80, 20],
-          backgroundColor: ["#00ff99", "#ffcc00", "#ff3366"]
-        }]
-      }
-    });
-
-    // DAO-графік квестів
-    new Chart(document.getElementById("questChart"), {
-      type: "bar",
-      data: {
-        labels: ["Солодкий вибір", "Печера Коріння", "Павутина добра"],
-        datasets: [{
-          label: "Виконано",
-          data: [42, 35, 27],
-          backgroundColor: "#00ff99"
-        }]
-      }
-    });
-
-    // Баланс токенів
-    document.getElementById("agtBalance").textContent = "AGT: 1000";
-
-    // Симуляція переказу
-    function simulateTransfer() {
-      alert("💸 Переказ 50 AGT успішно симульовано!");
+  // DAO-графік токенів
+  new Chart(document.getElementById("tokenChart"), {
+    type: "doughnut",
+    data: {
+      labels: ["Фермери", "Трейдери", "Адміністратори"],
+      datasets: [{
+        data: [120, 80, 20],
+        backgroundColor: ["#00ff99", "#ffcc00", "#ff3366"]
+      }]
     }
+  });
 
-    // CID-оновлення
-    function updateCID(newRole) {
-      localStorage.setItem("agentLevel", newRole);
-      alert(`CID оновлено до: ${newRole}`);
+  // DAO-графік квестів
+  new Chart(document.getElementById("questChart"), {
+    type: "bar",
+    data: {
+      labels: ["Солодкий вибір", "Печера Коріння", "Павутина добра"],
+      datasets: [{
+        label: "Виконано",
+        data: [42, 35, 27],
+        backgroundColor: "#00ff99"
+      }]
     }
-  </script>
+  });
+
+  // Баланс токенів
+  document.getElementById("agtBalance").textContent = "AGT: 1000";
+  function simulateTransfer() {
+    alert("💸 Переказ 50 AGT успішно симульовано!");
+  }
+
+  // CID-оновлення
+  function updateCID(newRole) {
+    localStorage.setItem("agentLevel", newRole);
+    alert(`CID оновлено до: ${newRole}`);
+  }
+
+  // Моральний баланс DAO
+  const moralData = {
+    labels: ["Зберігач Землі", "Етичний Архітектор", "DAO-Новачок"],
+    datasets: [{
+      label: "Кількість гравців",
+      data: [12, 18, 6],
+      backgroundColor: ["#8bc34a", "#4caf50", "#ccc"]
+    }]
+  };
+
+  new Chart(document.getElementById("moralChart"), {
+    type: "bar",
+    data: moralData,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: "Розподіл моральних титулів серед гравців"
+        }
+      }
+    }
+  });
+
+  // Останній титул
+  const lastTitle = localStorage.getItem("legacyTitle") || "Невідомо";
+  document.getElementById("lastTitle").textContent = lastTitle;
+
+  // Бейджі
+  const badges = JSON.parse(localStorage.getItem("badgeLog") || "[]");
+  const badgeList = document.getElementById("badgeList");
+  badgeList.innerHTML = badges.length
+    ? badges.map(b => `<li>${b}</li>`).join("")
+    : "<li>Немає бейджів</li>";
+</script>
+
 </body>
 </html>
