@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🔍 Біолюмінесцентний Ліхтар — Нагорода DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/admin-dashboard.css" />
+</head>
+<body>
+
+<header>
+  <h1>🔍 Біолюмінесцентний Ліхтар</h1>
+  <p>Нагорода за екологічну поведінку в квесті</p>
+</header>
+
+<section>
+  <img src="public/tools/biolamp.png" alt="Біолюмінесцентний ліхтар" style="width:100%;max-width:400px;border-radius:12px;" />
+  <p>Цей ліхтар дозволяє досліджувати нічні рослини, не порушуючи їх біоритм. Він створений із біоактивного матеріалу, що реагує на енергію довіри.</p>
+  <button onclick="activateLamp()">🌙 Активувати ліхтар</button>
+</section>
+
+<script>
+  function activateLamp() {
+    alert("🔦 Ліхтар активовано. Ви можете досліджувати нічні рослини.");
+    localStorage.setItem("tool:biolamp", "active");
+  }
+</script>
+
+</body>
+</html>
