@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🏛️ Храм Рівноваги — AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/admin-dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>🏛️ Храм Рівноваги</h1>
+  <p>Ваш екологічний слід у DAO</p>
+</header>
+
+<section>
+  <h2>⚖️ Моральний баланс</h2>
+  <canvas id="balanceChart" width="400" height="200"></canvas>
+</section>
+
+<section>
+  <h2>🏅 Ваш титул</h2>
+  <p><strong id="userTitle">Завантаження...</strong></p>
+</section>
+
+<section>
+  <h2>💚 Зелені кредити</h2>
+  <p>Кількість: <strong id="ecoCredits">0</strong></p>
+  <button onclick="recordLegacy()">📜 Записати в DAO-архів</button>
+</section>
+
+<script>
+  const title = localStorage.getItem("legacyTitle") || "Невідомо";
+  const credits = localStorage.getItem("ecoCredits") || "0";
+
+  document.getElementById("userTitle").textContent = title;
+  document.getElementById("ecoCredits").textContent = credits;
+
+  new Chart(document.getElementById("balanceChart"), {
+    type: "radar",
+    data: {
+      labels: ["Етика", "Природа", "Спільнота", "Знання", "Відмова"],
+      datasets: [{
+        label: "Ваш баланс",
+        data: [8, 10, 7, 9, 6],
+        backgroundColor: "rgba(76, 175, 80, 0.4)",
+        borderColor: "#4caf50"
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: "Ваш моральний профіль"
+        }
+      }
+    }
+  });
+
+  function recordLegacy() {
+    alert("📜 Ваш слід записано в DAO-архів AgroProsper.");
+    console.log("Legacy recorded:", title, credits);
+  }
+</script>
+
+</body>
+</html>
