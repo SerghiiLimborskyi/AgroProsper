@@ -2,14 +2,35 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌱 Насіння Довіри — DAO-квест</title>
   <link rel="stylesheet" href="main.css">
   <script src="directorBot.js" defer></script>
   <script src="seedQuest.js" defer></script>
+  <script src="themeSwitcher.js" defer></script>
+  <script src="langSwitcher.js" defer></script>
 </head>
 <body>
 
-<!-- Сцена 0: Пролог -->
+<!-- 🌍 Інтерфейс -->
+<section id="interfaceControls">
+  <label>🎨 Тема:
+    <select onchange="setTheme(this.value)">
+      <option value="light">☀️ Світла</option>
+      <option value="dark">🌙 Темна</option>
+      <option value="agro">🌾 Агро</option>
+    </select>
+  </label>
+  <label>🌍 Мова:
+    <select onchange="switchLanguage(this.value)">
+      <option value="uk">🇺🇦 Українська</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="pl">🇵🇱 Polski</option>
+    </select>
+  </label>
+</section>
+
+<!-- Сцени -->
 <div class="scene" id="introScene">
   <img src="public/images/sprout.jpg" alt="Руки з паростком" class="hero-image">
   <h2>🌱 AgroProsper: DAO-платформа, що вирощує довіру</h2>
@@ -17,7 +38,6 @@
   <button onclick="startQuest()">🎮 Почати квест</button>
 </div>
 
-<!-- Сцена 1: Архів фермера -->
 <div class="scene" id="archiveScene" style="display:none;">
   <img src="public/images/archive.jpg" alt="Архів фермера">
   <h2>📜 Сцена 1: Архів</h2>
@@ -27,7 +47,6 @@
   <button onclick="chooseAction('plant')">🌾 Висадити на полі</button>
 </div>
 
-<!-- Сцена 2: Дослідження -->
 <div class="scene" id="researchScene" style="display:none;">
   <img src="public/images/lab.jpg" alt="Лабораторія AgroProsper">
   <h2>🧪 Сцена 2: Дослідження</h2>
@@ -37,7 +56,6 @@
   <button onclick="chooseAction('continue')">🔍 Продовжити самостійно</button>
 </div>
 
-<!-- Сцена 3: Голосування -->
 <div class="scene" id="daoVoteScene" style="display:none;">
   <img src="public/images/vote.jpg" alt="DAO-панель">
   <h2>🗳️ Сцена 3: Голосування</h2>
@@ -47,7 +65,6 @@
   <button onclick="vote('heritage')">🛡️ Зберегти як спадщину</button>
 </div>
 
-<!-- Сцена 4: Книга Наслідків -->
 <div class="scene" id="finalScene" style="display:none;">
   <img src="public/images/book.jpg" alt="AgroProsper Book">
   <h2>📖 Сцена 4: Книга Наслідків</h2>
