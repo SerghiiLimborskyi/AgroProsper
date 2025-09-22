@@ -4,36 +4,29 @@
   <meta charset="UTF-8" />
   <title>Admin Dashboard — AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles/admin.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="scripts/directorBot.js" defer></script>
+  <link rel="stylesheet" href="styles/theme-agro.css" />
   <script src="scripts/themeSwitcher.js" defer></script>
-  <script src="scripts/langSwitcher.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-<!-- 🌍 Інтерфейс -->
+<!-- 🎨 Перемикач теми -->
 <section id="interfaceControls">
   <label>🎨 Тема:
     <select onchange="setTheme(this.value)">
-      <option value="light">☀️ Світла</option>
-      <option value="dark">🌙 Темна</option>
-      <option value="agro">🌾 Агро</option>
-    </select>
-  </label>
-  <label>🌍 Мова:
-    <select onchange="switchLanguage(this.value)">
-      <option value="uk">🇺🇦 Українська</option>
-      <option value="en">🇬🇧 English</option>
-      <option value="pl">🇵🇱 Polski</option>
+      <option value="agrosoul">AgroSoul</option>
+      <option value="ethicbloom">EthicBloom</option>
+      <option value="livingdao">LivingDAO</option>
     </select>
   </label>
 </section>
 
-<!-- 🧠 CID -->
+<!-- 🧠 Статус гравця -->
 <header>
   <h1>🛠️ Панель адміністратора DAO</h1>
   <p>CID: <strong id="adminCID">Завантаження...</strong></p>
+  <p>Титул: <strong id="adminTitle">Завантаження...</strong></p>
+  <p>Зелені кредити: <strong id="adminCredits">0</strong></p>
 </header>
 
 <!-- 📊 DAO-графіки -->
@@ -46,7 +39,7 @@
 <!-- 💰 AGT-токени -->
 <section>
   <h2>💰 AGT-токени</h2>
-  <p>Баланс DAO: <strong id="agtBalance">AGT: 0</strong></p>
+  <p>Баланс DAO: <strong id="agtBalance">AGT: 1000</strong></p>
   <button onclick="simulateTransfer()">🔄 Симулювати переказ</button>
 </section>
 
@@ -54,7 +47,15 @@
 <section>
   <h2>⚖️ Моральний баланс DAO</h2>
   <canvas id="moralChart" width="400" height="200"></canvas>
-  <p>Останній титул: <strong id="lastTitle">Завантаження...</strong></p>
+</section>
+
+<!-- 🌍 Стан планети -->
+<section>
+  <h2>🌍 Стан планети</h2>
+  <p>🧪 CO₂: <span id="co2">412 ppm</span></p>
+  <p>☢️ Радіація: <span id="radiation">0.12 µSv/h</span></p>
+  <p>🔆 Сонячний потік: <span id="solar">5.6 W/m²</span></p>
+  <p>📊 Індикатор: <strong id="planetStatus">🟢 Зелений — стабільно</strong></p>
 </section>
 
 <!-- 🏅 Бейджі -->
@@ -77,38 +78,28 @@
   <button onclick="openAgentMonitor()">📊 Моніторинг агентів</button>
 </section>
 
-<!-- 📥 Меню + Футер -->
-<div id="menuContainer"></div>
-<script>
-  fetch("menu.html")
-    .then(res => res.text())
-    .then(html => document.getElementById("menuContainer").innerHTML = html);
-</script>
-
-<div id="footerContainer"></div>
-<script>
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(html => document.getElementById("footerContainer").innerHTML = html);
-</script>
+<!-- 🧭 DAO-навігація -->
+<section>
+  <h2>🧭 DAO-навігація</h2>
+  <button onclick="window.location.href='start.html'">🌱 Портал</button>
+  <button onclick="window.location.href='legacyArchive.html'">📜 Архів</button>
+  <button onclick="window.location.href='ecoMap.html'">🗺️ Еко-мапа</button>
+  <button onclick="window.location.href='daoManifesto.html'">📖 Маніфест</button>
+</section>
 
 <!-- 🧠 DAO-логіка -->
-<script src="scripts/admin-logs.js" defer></script>
-<script src="scripts/questNFT.js" defer></script>
 <script>
-  // CID-вивід
-  const cid = localStorage.getItem("cid") || "0xADMIN-XXXX";
-  document.getElementById("adminCID").textContent = cid;
+  // CID, титул, кредити
+  document.getElementById("adminCID").textContent = localStorage.getItem("userCID") || "0xAGRO-XX";
+  document.getElementById("adminTitle").textContent = localStorage.getItem("legacyTitle") || "Гравець";
+  document.getElementById("adminCredits").textContent = localStorage.getItem("ecoCredits") || "0";
 
   // DAO-графік токенів
   new Chart(document.getElementById("tokenChart"), {
     type: "doughnut",
     data: {
-      labels: ["Фермери", "Трейдери", "Адміністратори"],
-      datasets: [{
-        data: [120, 80, 20],
-        backgroundColor: ["#00ff99", "#ffcc00", "#ff3366"]
-      }]
+      labels: ["Фермери", "Партнери", "Адміністратори"],
+      datasets: [{ data: [120, 80, 20], backgroundColor: ["#00ff99", "#ffcc00", "#ff3366"] }]
     }
   });
 
@@ -117,16 +108,28 @@
     type: "bar",
     data: {
       labels: ["Солодкий вибір", "Печера Коріння", "Павутина добра"],
-      datasets: [{
-        label: "Виконано",
-        data: [42, 35, 27],
-        backgroundColor: "#00ff99"
-      }]
+      datasets: [{ label: "Виконано", data: [42, 35, 27], backgroundColor: "#4caf50" }]
     }
   });
 
-  // Баланс токенів
-  document.getElementById("agtBalance").textContent = "AGT: 1000";
+  // Моральний баланс
+  const moralData = {
+    labels: ["Зберігач Землі", "Етичний Архітектор", "DAO-Новачок"],
+    datasets: [{ label: "Кількість гравців", data: [12, 18, 6], backgroundColor: ["#8bc34a", "#4caf50", "#ccc"] }]
+  };
+  new Chart(document.getElementById("moralChart"), {
+    type: "bar",
+    data: moralData,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        title: { display: true, text: "Розподіл моральних титулів серед гравців" }
+      }
+    }
+  });
+
+  // Симуляція переказу
   function simulateTransfer() {
     alert("💸 Переказ 50 AGT успішно симульовано!");
   }
@@ -137,41 +140,19 @@
     alert(`CID оновлено до: ${newRole}`);
   }
 
-  // Моральний баланс DAO
-  const moralData = {
-    labels: ["Зберігач Землі", "Етичний Архітектор", "DAO-Новачок"],
-    datasets: [{
-      label: "Кількість гравців",
-      data: [12, 18, 6],
-      backgroundColor: ["#8bc34a", "#4caf50", "#ccc"]
-    }]
-  };
-
-  new Chart(document.getElementById("moralChart"), {
-    type: "bar",
-    data: moralData,
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: false },
-        title: {
-          display: true,
-          text: "Розподіл моральних титулів серед гравців"
-        }
-      }
-    }
-  });
-
-  // Останній титул
-  const lastTitle = localStorage.getItem("legacyTitle") || "Невідомо";
-  document.getElementById("lastTitle").textContent = lastTitle;
-
   // Бейджі
   const badges = JSON.parse(localStorage.getItem("badgeLog") || "[]");
   const badgeList = document.getElementById("badgeList");
   badgeList.innerHTML = badges.length
-    ? badges.map(b => `<li>${b}</li>`).join("")
+    ? badges.map(b => `<li><img src="public/badges/${b}.png" alt="${b}" style="width:60px;" /> ${b}</li>`).join("")
     : "<li>Немає бейджів</li>";
+
+  // Логи
+  const logs = JSON.parse(localStorage.getItem("directorLog") || "[]");
+  const table = document.getElementById("adminLogTable");
+  table.innerHTML = logs.length
+    ? logs.map(log => `<p>🧾 ${log}</p>`).join("")
+    : "<p>Немає записів</p>";
 </script>
 
 </body>
