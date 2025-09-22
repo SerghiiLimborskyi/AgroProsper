@@ -67,3 +67,17 @@ img.hero-image, img.scene-image {
   background: rgba(0,0,0,0.05);
   border-radius: 8px;
 }
+
+.eco-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4caf50;
+  color: white;
+  padding: 0.8em 1.2em;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 999;
+}
