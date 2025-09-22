@@ -108,6 +108,50 @@ function claimEcoReward(type) {
   alert(`Ви отримали нагороду: ${badgeName}`);
   window.location.href = redirect;
 }
+let ecoCredits = parseInt(localStorage.getItem("ecoCredits")) || 0;
+
+function grantEcoCredit(amount, reason) {
+  ecoCredits += amount;
+  localStorage.setItem("ecoCredits", ecoCredits);
+  document.getElementById("ecoCreditCount").textContent = ecoCredits;
+
+  if (navigator.vibrate) navigator.vibrate(200);
+
+  const toast = document.createElement("div");
+  toast.textContent = `+${amount} зелених кредитів — ${reason}`;
+  toast.className = "eco-toast";
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+
+  directorBot.mintBadge(`Eco:${reason}`);
+  directorBot.log(`🌿 Кешбек: ${amount} за ${reason}`);
+  showScene("ecoCashbackScene");
+}
+
+function claimEcoReward(type) {
+  let badgeName = "";
+  let redirect = "";
+
+  switch (type) {
+    case "lamp":
+      badgeName = "Eco:Biolamp";
+      redirect = "biolamp.html";
+      break;
+    case "plant":
+      badgeName = "Eco:PlantKnowledge";
+      redirect = "new-plant.html";
+      break;
+    case "temple":
+      badgeName = "Eco:TempleAccess";
+      redirect = "temple-balance.html";
+      break;
+  }
+
+  directorBot.mintBadge(badgeName);
+  directorBot.log(`🎁 Нагорода: ${badgeName}`);
+  alert(`Ви отримали нагороду: ${badgeName}`);
+  window.location.href = redirect;
+}
 
 function recordLegacy() {
   directorBot.log("📜 Гравець записаний у Книгу Спадщини");
