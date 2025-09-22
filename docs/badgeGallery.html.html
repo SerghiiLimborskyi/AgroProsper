@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🏅 Галерея Бейджів</title>
+  <link rel="stylesheet" href="styles/admin-dashboard.css" />
+</head>
+<body>
+  <h1>🏅 Ваші Бейджі</h1>
+  <ul id="badgeGallery"></ul>
+  <script>
+    const badges = JSON.parse(localStorage.getItem("badgeLog") || "[]");
+    const gallery = document.getElementById("badgeGallery");
+    gallery.innerHTML = badges.length
+      ? badges.map(b => `<li><img src="public/badges/${b}.png" alt="${b}" style="width:80px;" /><p>${b}</p></li>`).join("")
+      : "<li>Немає бейджів</li>";
+  </script>
+</body>
+</html>
