@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📜 Архів DAO</title>
+  <link rel="stylesheet" href="styles/theme-agro.css" />
+  <script src="scripts/themeSwitcher.js" defer></script>
+</head>
+<body>
+  <h1>📜 Архів сліду гравців</h1>
+  <table>
+    <tr><th>CID</th><th>Титул</th><th>Дата</th><th>Баланс</th></tr>
+    <tbody id="archiveTable"></tbody>
+  </table>
+
+  <script>
+    const archive = JSON.parse(localStorage.getItem("legacyLog") || "[]");
+    const table = document.getElementById("archiveTable");
+
+    table.innerHTML = archive.map(entry => `
+      <tr>
+        <td>${entry.cid}</td>
+        <td>${entry.title}</td>
+        <td>${entry.date}</td>
+        <td>🌿 ${entry.balance}</td>
+      </tr>
+    `).join("");
+  </script>
+</body>
+</html>
