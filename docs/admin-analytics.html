@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📊 DAO-аналітика — AgroProsper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/theme-agro.css" />
+  <script src="scripts/themeSwitcher.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>📊 DAO-аналітика</h1>
+  <p>Глибокий огляд платформи: ролі, титули, дії, токени, екологія</p>
+  <label>🎨 Тема:
+    <select onchange="setTheme(this.value)">
+      <option value="agrosoul">AgroSoul</option>
+      <option value="ethicbloom">EthicBloom</option>
+      <option value="livingdao">LivingDAO</option>
+    </select>
+  </label>
+</header>
+
+<section>
+  <h2>🧩 Розподіл ролей</h2>
+  <canvas id="roleChart" width="400" height="200"></canvas>
+</section>
+
+<section>
+  <h2>⚖️ Моральні титули</h2>
+  <canvas id="titleChart" width="400" height="200"></canvas>
+</section>
+
+<section>
+  <h2>🏅 Бейджі DAO</h2>
+  <canvas id="badgeChart" width="400" height="200"></canvas>
+</section>
+
+<section>
+  <h2>🌿 Екологічні дії</h2>
+  <canvas id="ecoChart" width="400" height="200"></canvas>
+</section>
+
+<section>
+  <h2>💰 Динаміка AGT-токенів</h2>
+  <canvas id="agtChart" width="400" height="200"></canvas>
+</section>
+
+<script>
+  // Ролі
+  new Chart(document.getElementById("roleChart"), {
+    type: "pie",
+    data: {
+      labels: ["Фермери", "Партнери", "Агенти", "Гості"],
+      datasets: [{ data: [40, 25, 20, 15], backgroundColor: ["#8bc34a", "#ffcc00", "#2196f3", "#ccc"] }]
+    }
+  });
+
+  // Титули
+  new Chart(document.getElementById("titleChart"), {
+    type: "bar",
+    data: {
+      labels: ["Зберігач Землі", "Етичний Архітектор", "DAO-Новачок"],
+      datasets: [{ label: "Кількість", data: [12, 18, 6], backgroundColor: "#4caf50" }]
+    }
+  });
+
+  // Бейджі
+  new Chart(document.getElementById("badgeChart"), {
+    type: "doughnut",
+    data: {
+      labels: ["Eco:Shield", "SolarSeed", "PartnerTrust", "AgentPath"],
+      datasets: [{ data: [14, 9, 7, 5], backgroundColor: ["#66bb6a", "#ffeb3b", "#00bcd4", "#e91e63"] }]
+    }
+  });
+
+  // Еко-дії
+  new Chart(document.getElementById("ecoChart"), {
+    type: "line",
+    data: {
+      labels: ["Вересень", "Жовтень", "Листопад"],
+      datasets: [{
+        label: "Посадки",
+        data: [32, 45, 51],
+        borderColor: "#4caf50",
+        fill: false
+      }, {
+        label: "Відновлення",
+        data: [20, 28, 34],
+        borderColor: "#8bc34a",
+        fill: false
+      }]
+    }
+  });
+
+  // AGT-токени
+  new Chart(document.getElementById("agtChart"), {
+    type: "bar",
+    data: {
+      labels: ["Гравці", "Партнери", "Фонд DAO"],
+      datasets: [{
+        label: "AGT",
+        data: [320, 480, 200],
+        backgroundColor: ["#00ff99", "#ffcc00", "#ff3366"]
+      }]
+    }
+  });
+</script>
+
+</body>
+</html>
