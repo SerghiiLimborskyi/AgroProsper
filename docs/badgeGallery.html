@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🏅 Галерея Бейджів — AgroProsper DAO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/admin-dashboard.css" />
+</head>
+<body>
+
+<header>
+  <h1>🏅 Галерея Бейджів</h1>
+  <p>Ваші досягнення у DAO-квестах</p>
+</header>
+
+<section>
+  <ul id="badgeGallery"></ul>
+</section>
+
+<script>
+  const badges = JSON.parse(localStorage.getItem("badgeLog") || "[]");
+  const gallery = document.getElementById("badgeGallery");
+
+  if (badges.length === 0) {
+    gallery.innerHTML = "<li>Немає бейджів</li>";
+  } else {
+    gallery.innerHTML = badges.map(b => `
+      <li>
+        <img src="public/badges/${b}.png" alt="${b}" style="width:80px;height:80px;" />
+        <p>${b}</p>
+      </li>
+    `).join("");
+  }
+</script>
+
+</body>
+</html>
