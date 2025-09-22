@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>🗺️ Еко-мапа</title>
+  <link rel="stylesheet" href="styles/theme-agro.css" />
+  <script src="scripts/themeSwitcher.js" defer></script>
+</head>
+<body>
+  <h1>🗺️ Еко-мапа дій</h1>
+  <canvas id="ecoCanvas" width="600" height="400"></canvas>
+
+  <script>
+    const ctx = document.getElementById("ecoCanvas").getContext("2d");
+    const actions = JSON.parse(localStorage.getItem("ecoActions") || "[]");
+
+    actions.forEach((act, i) => {
+      ctx.fillStyle = "#4caf50";
+      ctx.beginPath();
+      ctx.arc(50 + i * 60, 200, 20, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#000";
+      ctx.fillText(act.label, 40 + i * 60, 240);
+    });
+  </script>
+</body>
+</html>
