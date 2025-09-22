@@ -2,80 +2,66 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>AgroProsper — DAO WebApp v6</title>
-  <link rel="stylesheet" href="../public/style.css">
+  <title>🌱 AgroProsper DAO — Портал</title>
+  <link rel="stylesheet" href="styles/theme-agro.css" />
+  <script src="scripts/themeSwitcher.js" defer></script>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: #f4f4f4;
-    }
-    header {
-      background: #2e7d32;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    .banner h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    .banner p {
-      margin: 5px 0 0;
-      font-size: 1.2em;
-    }
-    .content {
-      padding: 20px;
-    }
-    .dao-map {
-      margin-top: 30px;
-      text-align: center;
-    }
-    .dao-map svg {
-      width: 80%;
-      height: auto;
-    }
+    .dao-map svg { width: 100%; max-width: 600px; height: auto; margin-top: 20px; }
+    .scene-button { margin: 0.5em; padding: 0.8em 1.2em; font-weight: bold; border-radius: 6px; border: none; cursor: pointer; background: var(--accent); color: var(--bg); }
   </style>
 </head>
 <body>
-  <header>
-    <img src="../public/logo.png" alt="AgroProsper Logo" style="height: 80px;">
-    <div class="banner">
-      <h1>AgroProsper — AI для фермерів</h1>
-      <p>DAO, NFT, токени, аналітика, гейміфікація</p>
-      <img src="public/qr_guest_dashboard.png" alt="QR для входу" />
-<p>📲 Скануй, щоб увійти як гість</p>
-    </div>
-  </header>
 
-  <div class="content">
-    <h2>Що це?</h2>
-    <p>AgroProsper — це автоматизована платформа для агробізнесу з AI, DAO, NFT, токенами та інтерактивними інструментами.</p>
+<header>
+  <img src="public/logo.png" alt="AgroProsper Logo" style="height: 80px;" />
+  <h1>🌱 AgroProsper DAO</h1>
+  <p>Жива платформа для мислення, дії та партнерства</p>
+  <img src="public/qr_guest_dashboard.png" alt="QR для входу" style="max-width: 200px;" />
+  <p>📲 Скануй, щоб увійти як гість</p>
+  <label>🎨 Тема:
+    <select onchange="setTheme(this.value)">
+      <option value="agrosoul">AgroSoul</option>
+      <option value="ethicbloom">EthicBloom</option>
+      <option value="livingdao">LivingDAO</option>
+    </select>
+  </label>
+</header>
 
-    <h2>Можливості:</h2>
-    <ul>
-      <li>🤖 AI-бот для консультацій</li>
-      <li>💰 DAO-фінанси з AGT-токеном</li>
-      <li>📈 Панелі продажів</li>
-      <li>🏅 NFT-бейджі</li>
-      <li>🎮 Гейміфікація</li>
-      <li>🌍 🇺🇦 🇬🇧 🇵🇱 мультимовність</li>
-    </ul>
+<section>
+  <h2>🧩 Сцени DAO</h2>
+  <button class="scene-button" onclick="window.location.href='seedQuest.html'">🎮 Квест</button>
+  <button class="scene-button" onclick="window.location.href='admin-dashboard.html'">⚙️ Панель</button>
+  <button class="scene-button" onclick="window.location.href='badgeGallery.html'">🏅 Бейджі</button>
+  <button class="scene-button" onclick="window.location.href='legacyArchive.html'">📜 Архів</button>
+  <button class="scene-button" onclick="window.location.href='ecoMap.html'">🗺️ Еко-мапа</button>
+  <button class="scene-button" onclick="window.location.href='nightField.html'">🌌 Нічне поле</button>
+  <button class="scene-button" onclick="window.location.href='daoManifesto.html'">📖 Маніфест</button>
+</section>
 
-    <div class="dao-map">
-      <h2>🗺️ DAO-карта мислення</h2>
-      <!-- Встав SVG-карту тут -->
-      <svg viewBox="0 0 600 400">
-        <circle cx="100" cy="100" r="30" fill="#4caf50" />
-        <text x="100" y="105" text-anchor="middle" fill="white">A</text>
-        <circle cx="300" cy="100" r="30" fill="#2196f3" />
-        <text x="300" y="105" text-anchor="middle" fill="white">B</text>
-        <circle cx="500" cy="100" r="30" fill="#ff9800" />
-        <text x="500" y="105" text-anchor="middle" fill="white">C</text>
-        <line x1="130" y1="100" x2="270" y2="100" stroke="#555" stroke-width="2"/>
-        <line x1="330" y1="100" x2="470" y2="100" stroke="#555" stroke-width="2"/>
-      </svg>
-    </div>
-  </div>
+<section class="dao-map">
+  <h2>🗺️ DAO-карта мислення</h2>
+  <svg viewBox="0 0 600 400">
+    <circle cx="100" cy="100" r="30" fill="#4caf50" onclick="window.location.href='seedQuest.html'" />
+    <text x="100" y="105" text-anchor="middle" fill="white">Квест</text>
+
+    <circle cx="300" cy="100" r="30" fill="#2196f3" onclick="window.location.href='admin-dashboard.html'" />
+    <text x="300" y="105" text-anchor="middle" fill="white">Панель</text>
+
+    <circle cx="500" cy="100" r="30" fill="#ff9800" onclick="window.location.href='badgeGallery.html'" />
+    <text x="500" y="105" text-anchor="middle" fill="white">Бейджі</text>
+
+    <circle cx="200" cy="250" r="30" fill="#8bc34a" onclick="window.location.href='ecoMap.html'" />
+    <text x="200" y="255" text-anchor="middle" fill="white">Еко-мапа</text>
+
+    <circle cx="400" cy="250" r="30" fill="#9c27b0" onclick="window.location.href='daoManifesto.html'" />
+    <text x="400" y="255" text-anchor="middle" fill="white">Маніфест</text>
+
+    <line x1="130" y1="100" x2="270" y2="100" stroke="#555" stroke-width="2"/>
+    <line x1="330" y1="100" x2="470" y2="100" stroke="#555" stroke-width="2"/>
+    <line x1="300" y1="130" x2="200" y2="220" stroke="#555" stroke-width="2"/>
+    <line x1="300" y1="130" x2="400" y2="220" stroke="#555" stroke-width="2"/>
+  </svg>
+</section>
+
 </body>
 </html>
