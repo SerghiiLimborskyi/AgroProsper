@@ -5,12 +5,13 @@
   <title>🌱 Насіння Довіри — DAO-квест</title>
   <link rel="stylesheet" href="main.css">
   <script src="directorBot.js" defer></script>
+  <script src="seedQuest.js" defer></script>
 </head>
 <body>
 
 <!-- Сцена 0: Пролог -->
 <div class="scene" id="introScene">
-  <img src="..." alt="Руки з паростком" class="hero-image">
+  <img src="public/images/sprout.jpg" alt="Руки з паростком" class="hero-image">
   <h2>🌱 AgroProsper: DAO-платформа, що вирощує довіру</h2>
   <p>Ви — агент змін. Почнемо квест?</p>
   <button onclick="startQuest()">🎮 Почати квест</button>
@@ -18,7 +19,7 @@
 
 <!-- Сцена 1: Архів фермера -->
 <div class="scene" id="archiveScene" style="display:none;">
-  <img src="..." alt="Архів фермера">
+  <img src="public/images/archive.jpg" alt="Архів фермера">
   <h2>📜 Сцена 1: Архів</h2>
   <p>AI-Бот: Це насіння — рідкісний сорт. Що будемо робити?</p>
   <button onclick="chooseAction('study')">📖 Вивчити щоденник</button>
@@ -28,7 +29,7 @@
 
 <!-- Сцена 2: Дослідження -->
 <div class="scene" id="researchScene" style="display:none;">
-  <img src="..." alt="Лабораторія AgroProsper">
+  <img src="public/images/lab.jpg" alt="Лабораторія AgroProsper">
   <h2>🧪 Сцена 2: Дослідження</h2>
   <p>AI-Бот: Ґрунт підходить, але є ризики. Що робимо?</p>
   <button onclick="chooseAction('poll')">👥 Створити DAO-опитування</button>
@@ -38,7 +39,7 @@
 
 <!-- Сцена 3: Голосування -->
 <div class="scene" id="daoVoteScene" style="display:none;">
-  <img src="..." alt="DAO-панель">
+  <img src="public/images/vote.jpg" alt="DAO-панель">
   <h2>🗳️ Сцена 3: Голосування</h2>
   <p>Обери долю насіння:</p>
   <button onclick="vote('community')">🌾 Спільний врожай</button>
@@ -48,7 +49,7 @@
 
 <!-- Сцена 4: Книга Наслідків -->
 <div class="scene" id="finalScene" style="display:none;">
-  <img src="..." alt="AgroProsper Book">
+  <img src="public/images/book.jpg" alt="AgroProsper Book">
   <h2>📖 Сцена 4: Книга Наслідків</h2>
   <p>Ваш вибір вплинув на розвиток платформи. Оберіть дію:</p>
   <button onclick="redeemCredits()">💰 Обміняти кредити</button>
@@ -57,9 +58,11 @@
 </div>
 
 <!-- DAO-статус -->
-<div id="botStatus">Статус: очікування...</div>
-<div id="botLog">Лог дій:</div>
+<section id="daoStatus">
+  <h3>📊 DAO-Статус</h3>
+  <div id="botStatus">Статус: очікування...</div>
+  <div id="botLog">Лог дій:</div>
+</section>
 
-<script src="seedQuest.js"></script>
 </body>
 </html>
