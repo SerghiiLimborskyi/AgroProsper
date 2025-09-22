@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>📖 Маніфест DAO</title>
+  <link rel="stylesheet" href="styles/theme-agro.css" />
+  <script src="scripts/themeSwitcher.js" defer></script>
+</head>
+<body>
+  <h1>📖 Маніфест AgroProsper</h1>
+  <p>Ми віримо в етику, прозорість, партнерство і живу платформу, де кожна дія має значення.</p>
+  <button onclick="signManifesto()">✍️ Підписати</button>
+
+  <script>
+    function signManifesto() {
+      const cid = localStorage.getItem("userCID") || "0xAGRO-XX";
+      const title = localStorage.getItem("legacyTitle") || "Гравець";
+      const date = new Date().toISOString().split("T")[0];
+      const balance = localStorage.getItem("ecoCredits") || "0";
+
+      const log = JSON.parse(localStorage.getItem("legacyLog") || "[]");
+      log.push({ cid, title, date, balance });
+      localStorage.setItem("legacyLog", JSON.stringify(log));
+
+      alert("📜 Ви підписали маніфест DAO.");
+    }
+  </script>
+</body>
+</html>
