@@ -2,78 +2,111 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <title>🌾 AgroProsper DAO</title>
+  <title>AgroProsper DAO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="main.css" />
-  <script type="module" src="scripts/menu.js" defer></script>
-  <script src="scripts/lang.js" defer></script>
+  <link rel="stylesheet" href="styles/theme-agro.css" />
+  <script type="module" src="scripts/main.js"></script>
+  <script src="scripts/lang.js"></script>
+  <script src="scripts/themeSwitcher.js" defer></script>
+  <script src="scripts/config-loader.js" defer></script>
+  <script src="scripts/planetAlert.js" defer></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e8f5e9, #f1f8e9);
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #4caf50;
+    }
+    select, input, button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 1em;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #388e3c;
+    }
+    #menuContainer {
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
-  <div id="menuContainer"></div>
 
-  <header class="hero">
-    <img src="logo.svg" alt="AgroProsper Logo" class="logo" />
-    <h1>🌾 AgroProsper DAO</h1>
-    <p>Жива платформа для етичного агробізнесу</p>
+  <h1>🌱 AgroProsper DAO</h1>
+  <p>Автономна платформа для агробізнесу, етики та гейміфікації</p>
 
-    <div class="controls">
-      <label for="lang">🌐 Мова:</label>
-      <select id="lang">
+  <div>
+    <img src="logo.svg" alt="AgroProsper" style="width:120px;" />
+  </div>
+
+  <div>
+    <label>🌍 Мова:
+      <select id="langSelect">
         <option value="uk">Українська</option>
         <option value="en">English</option>
         <option value="pl">Polski</option>
       </select>
+    </label>
+  </div>
 
-      <label for="theme">🎨 Тема:</label>
-      <select id="theme">
-        <option value="system">Системна</option>
-        <option value="light">Світла</option>
-        <option value="dark">Темна</option>
+  <div>
+    <label>🎨 Тема:
+      <select onchange="setTheme(this.value)">
+        <option value="agrosoul">AgroSoul</option>
+        <option value="ethicbloom">EthicBloom</option>
+        <option value="livingdao">LivingDAO</option>
       </select>
-    </div>
+    </label>
+  </div>
 
-    <div class="auth">
-      <p>🧠 Введіть DAO-паспорт для активації ролі:</p>
-      <input type="text" id="cidInput" placeholder="0xAGRO-XXXX" />
-      <button onclick="activateCID()">Активувати</button>
-    </div>
+  <div>
+    <p>🔐 Введіть DAO-паспорт:</p>
+    <input type="text" id="passportInput" placeholder="AGRO-xxxxxx" />
+    <br />
+    <button onclick="enterDAO()">Увійти</button>
+    <button onclick="registerDAO()">Зареєструватись</button>
+  </div>
 
-    <div class="actions">
-      <button onclick="location.href='register-panel.html'">📝 Зареєструватися</button>
-      <button onclick="location.href='login.html'">🔐 Увійти</button>
-    </div>
-  </header>
-
-  <main>
-    <section class="intro">
-      <h2>📣 Ласкаво просимо до AgroProsper DAO</h2>
-      <p>Це платформа, де аграрії, дизайнери, режисери та інженери творять спільне майбутнє. Оберіть сцену, активуйте роль, і дійте.</p>
-    </section>
-
-    <section class="links">
-      <h2>🔗 DAO Навігація</h2>
-      <div class="link-grid">
-        <button onclick="location.href='dao-ethics.html'">🧾 Кодекс DAO</button>
-        <button onclick="location.href='studio-badge.html'">🏅 Мій бейдж</button>
-        <button onclick="location.href='dashboard.html'">📊 Панель</button>
-        <button onclick="location.href='dao-kvest.html'">🧩 Квести</button>
-      </div>
-    </section>
-  </main>
-
-  <div id="footerContainer"></div>
+  <div id="menuContainer">
+    <h3>🧭 DAO Навігація</h3>
+    <button onclick="window.location.href='start.html'">🌱 Портал DAO</button>
+    <button onclick="window.location.href='admin-dashboard.html'">⚙️ Панель адміністратора</button>
+    <button onclick="window.location.href='admin-analytics.html'">📊 Аналітика</button>
+    <button onclick="window.location.href='daoManifesto.html'">📖 Кодекс DAO</button>
+  </div>
 
   <script>
-    window.activateCID = function () {
-      const cid = document.getElementById("cidInput").value.trim();
+    function enterDAO() {
+      const cid = document.getElementById("passportInput").value;
       if (cid.length > 5) {
         localStorage.setItem("userCID", cid);
-        alert("✅ CID активовано: " + cid);
-        location.reload();
+        alert("✅ Вхід успішний: " + cid);
+        window.location.href = "start.html";
       } else {
-        alert("❌ Невірний формат CID");
+        alert("❌ Невірний DAO-паспорт");
       }
-    };
+    }
+
+    function registerDAO() {
+      alert("📝 Реєстрація нового DAO-паспорта...");
+      window.location.href = "start.html";
+    }
+
+    document.getElementById("langSelect").addEventListener("change", e => {
+      localStorage.setItem("lang", e.target.value);
+      location.reload();
+    });
   </script>
+
 </body>
 </html>
