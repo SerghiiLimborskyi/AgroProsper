@@ -8,6 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
   renderAGTChart();
 });
 
+fetch("config/analytics-config.json")
+  .then(res => res.json())
+  .then(config => {
+    // Використовуй config.charts для побудови графіків
+  });
+
 // 🧩 Ролі
 function renderRoleChart() {
   const ctx = document.getElementById("roleChart").getContext("2d");
