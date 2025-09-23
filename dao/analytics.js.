@@ -1,0 +1,113 @@
+// analytics.js — DAO-аналітика для admin-analytics.html
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderRoleChart();
+  renderTitleChart();
+  renderBadgeChart();
+  renderEcoChart();
+  renderAGTChart();
+});
+
+// 🧩 Ролі
+function renderRoleChart() {
+  const ctx = document.getElementById("roleChart").getContext("2d");
+  new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: ["Фермери", "Партнери", "Агенти", "Гості"],
+      datasets: [{
+        data: [40, 25, 20, 15],
+        backgroundColor: ["#8bc34a", "#ffcc00", "#2196f3", "#ccc"]
+      }]
+    }
+  });
+}
+
+// ⚖️ Титули
+function renderTitleChart() {
+  const ctx = document.getElementById("titleChart").getContext("2d");
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Зберігач Землі", "Етичний Архітектор", "DAO-Новачок"],
+      datasets: [{
+        label: "Кількість",
+        data: [12, 18, 6],
+        backgroundColor: "#4caf50"
+      }]
+    }
+  });
+}
+
+// 🏅 Бейджі
+function renderBadgeChart() {
+  const ctx = document.getElementById("badgeChart").getContext("2d");
+  const badgeLog = JSON.parse(localStorage.getItem("badgeLog") || "[]");
+  const badgeCounts = countBadges(badgeLog);
+
+  new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: Object.keys(badgeCounts),
+      datasets: [{
+        data: Object.values(badgeCounts),
+        backgroundColor: ["#66bb6a", "#ffeb3b", "#00bcd4", "#e91e63", "#9c27b0"]
+      }]
+    }
+  });
+}
+
+function countBadges(log) {
+  const counts = {};
+  log.forEach(b => {
+    counts[b] = (counts[b] || 0) + 1;
+  });
+  return counts;
+}
+
+// 🌿 Еко-дії
+function renderEcoChart() {
+  const ctx = document.getElementById("ecoChart").getContext("2d");
+  const ecoLog = JSON.parse(localStorage.getItem("ecoActions") || "[]");
+
+  const months = ["Вересень", "Жовтень", "Листопад"];
+  const plantings = [32, 45, 51];
+  const restorations = [20, 28, 34];
+
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: months,
+      datasets: [
+        {
+          label: "Посадки",
+          data: plantings,
+          borderColor: "#4caf50",
+          fill: false
+        },
+        {
+          label: "Відновлення",
+          data: restorations,
+          borderColor: "#8bc34a",
+          fill: false
+        }
+      ]
+    }
+  });
+}
+
+// 💰 AGT-токени
+function renderAGTChart() {
+  const ctx = document.getElementById("agtChart").getContext("2d");
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Гравці", "Партнери", "Фонд DAO"],
+      datasets: [{
+        label: "AGT",
+        data: [320, 480, 200],
+        backgroundColor: ["#00ff99", "#ffcc00", "#ff3366"]
+      }]
+    }
+  });
+}
