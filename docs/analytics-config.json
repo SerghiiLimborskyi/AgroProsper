@@ -1,0 +1,62 @@
+{
+  "charts": {
+    "roleDistribution": {
+      "title": "Розподіл ролей",
+      "type": "pie",
+      "labels": ["Фермери", "Партнери", "Агенти", "Гості"],
+      "colors": ["#8bc34a", "#ffcc00", "#2196f3", "#ccc"],
+      "dataSource": "localStorage.roles"
+    },
+    "moralTitles": {
+      "title": "Моральні титули",
+      "type": "bar",
+      "labels": ["Зберігач Землі", "Етичний Архітектор", "DAO-Новачок"],
+      "colors": ["#4caf50"],
+      "dataSource": "localStorage.titles"
+    },
+    "badgeStats": {
+      "title": "Бейджі DAO",
+      "type": "doughnut",
+      "labels": ["Eco:Shield", "SolarSeed", "PartnerTrust", "AgentPath"],
+      "colors": ["#66bb6a", "#ffeb3b", "#00bcd4", "#e91e63"],
+      "dataSource": "localStorage.badgeLog"
+    },
+    "ecoActions": {
+      "title": "Екологічні дії",
+      "type": "line",
+      "labels": ["Вересень", "Жовтень", "Листопад"],
+      "colors": ["#4caf50", "#8bc34a"],
+      "dataSource": "localStorage.ecoActions"
+    },
+    "agtTokens": {
+      "title": "AGT-токени",
+      "type": "bar",
+      "labels": ["Гравці", "Партнери", "Фонд DAO"],
+      "colors": ["#00ff99", "#ffcc00", "#ff3366"],
+      "dataSource": "localStorage.agtBalances"
+    }
+  },
+  "planetStatus": {
+    "thresholds": {
+      "co2": {
+        "green": 400,
+        "yellow": 450,
+        "red": 500
+      },
+      "radiation": {
+        "green": 0.2,
+        "yellow": 0.4,
+        "red": 0.6
+      }
+    },
+    "labels": {
+      "green": "🟢 Зелений — стабільно",
+      "yellow": "🟠 Жовтий — напружено",
+      "red": "🔴 Червоний — критично"
+    }
+  },
+  "theme": {
+    "default": "agrosoul",
+    "available": ["agrosoul", "ethicbloom", "livingdao"]
+  }
+}
